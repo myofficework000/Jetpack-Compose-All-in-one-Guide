@@ -20,6 +20,7 @@ object Dimens {
     val dp_1: Dp = 1.dp
     val dp_2: Dp = 2.dp
     val dp_3: Dp = 3.dp
+    val dp_10: Dp = 10.dp
 
     val sp_10 = 10.sp
     val sp_12 = 12.sp
