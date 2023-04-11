@@ -1,7 +1,6 @@
 package com.example.jetpack_compose_all_in_one
 
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
@@ -15,14 +14,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import com.example.jetpack_compose_all_in_one.data.Country
-import com.example.jetpack_compose_all_in_one.ui.theme.Dimens.dp_10
+import com.example.jetpack_compose_all_in_one.ui.theme.dp_10
 
 @Composable
-fun HorizontalSimpleList(list: List<Country>){
+fun HorizontalSimpleList(list: List<Country>) {
     LazyRow(
         modifier = Modifier.wrapContentHeight()
-    ){
-        items(list){item ->
+    ) {
+        items(list) { item ->
             Text(text = item.name, fontWeight = FontWeight.Bold)
             Spacer(modifier = Modifier.padding(dp_10))
         }
@@ -30,11 +29,11 @@ fun HorizontalSimpleList(list: List<Country>){
 }
 
 @Composable
-fun VerticalSimpleList(list: List<Country>){
+fun VerticalSimpleList(list: List<Country>) {
     LazyColumn(
         modifier = Modifier.wrapContentHeight()
-    ){
-        items(list){item ->
+    ) {
+        items(list) { item ->
             Text(text = item.name, fontWeight = FontWeight.Bold)
             Spacer(modifier = Modifier.padding(dp_10))
         }
@@ -43,12 +42,12 @@ fun VerticalSimpleList(list: List<Country>){
 
 
 @Composable
-fun SimpleVerticalGridList(list: List<Country>){
+fun SimpleVerticalGridList(list: List<Country>) {
     LazyVerticalGrid(
         GridCells.Fixed(2),
         modifier = Modifier.wrapContentHeight()
-    ){
-        items(list){item ->
+    ) {
+        items(list) { item ->
             Text(text = item.name, fontWeight = FontWeight.Bold)
             Spacer(modifier = Modifier.padding(dp_10))
         }
