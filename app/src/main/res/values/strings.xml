@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Jetpack-Compose-All-In-One</string>
+    <string name="close_desc">close</string>
 </resources>
