@@ -1,5 +1,6 @@
 package com.example.jetpack_compose_all_in_one
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -10,10 +11,9 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import com.example.jetpack_compose_all_in_one.data.Country
@@ -60,17 +60,28 @@ fun SimpleVerticalGridList(list: List<Country>) {
 @Composable
 fun VerticalList(list: List<Country>){
     var listOfItem = remember {mutableStateListOf<Country>()}
-    
+    var openDialog by remember { mutableStateOf(false) }
+    var position: Int = 0
     list.forEach{
         listOfItem.add(it)
     }
     LazyColumn(
-        modifier = Modifier.wrapContentHeight().fillMaxWidth()
+        modifier = Modifier
+            .wrapContentHeight()
+            .fillMaxWidth()
     ){
-        items(listOfItem){item ->
+        itemsIndexed(listOfItem){index,item ->
             CardTextWithIcon(item, onRemoveClicked = {
-                listOfItem.remove(it)
+                openDialog = true
+                position = index
             })
+            if(openDialog){
+                DeleteDialog(onConfirmClicked = {
+                    openDialog = false
+                    listOfItem.removeAt(position)
+                })
+            }
         }
     }
+
 }

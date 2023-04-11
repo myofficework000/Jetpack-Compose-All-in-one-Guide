@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Jetpack-Compose-All-In-One</string>
     <string name="close_desc">close</string>
+    <string name="dialog_title">Alert</string>
+    <string name="dialog_text">Please confirm to delete</string>
+    <string name="confirm_btn">Confirm Button</string>
 </resources>

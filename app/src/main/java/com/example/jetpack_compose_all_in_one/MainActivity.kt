@@ -1,5 +1,6 @@
 package com.example.jetpack_compose_all_in_one
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -28,16 +29,17 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxWidth(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+
                     val coroutineScope = rememberCoroutineScope()
                     val sheetState = rememberModalBottomSheetState()
 
                     DemoSheet(
                         sheetState = sheetState,
                         onDismiss = {
-                        coroutineScope.launch {
-                            sheetState.hide()
-                        }
-                    })
+                            coroutineScope.launch {
+                                sheetState.hide()
+                            }
+                        })
                     Button(
                         onClick = {
                             coroutineScope.launch {
@@ -47,26 +49,34 @@ class MainActivity : ComponentActivity() {
                     )
                     {
                         Text(text = "Open Bottom Sheet")
+                        Column {
+                            //Greeting("Android")
+                            HorizontalSimpleList(getCountries())
+                            VerticalSimpleList(getCountries())
+                            SimpleVerticalGridList(getCountries())
+                            VerticalList(getCountries())
+                            //SimpleDialog()
+                            InputFields()
+                        }
                     }
                 }
             }
         }
     }
-}
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
+    @Composable
+    fun Greeting(name: String) {
+        Text(text = "Hello $name!")
+    }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    JetpackComposeAllInOneTheme {
-        InputFields()
-        TopAppBar()
-        /*Surface(
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Preview(showBackground = true)
+    @Composable
+    fun DefaultPreview() {
+        JetpackComposeAllInOneTheme {
+            InputFields()
+            TopAppBar()
+            /*Surface(
             modifier = Modifier.fillMaxWidth(),
             color = MaterialTheme.colorScheme.background
         ) {
@@ -91,5 +101,6 @@ fun DefaultPreview() {
                 Text(text = "Open Bottom Sheet")
             }
         }*/
+        }
     }
 }
