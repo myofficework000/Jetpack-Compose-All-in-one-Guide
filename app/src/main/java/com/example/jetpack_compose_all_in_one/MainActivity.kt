@@ -31,7 +31,9 @@ class MainActivity : ComponentActivity() {
                         HorizontalSimpleList(getCountries())
                         VerticalSimpleList(getCountries())
                         SimpleVerticalGridList(getCountries())
+                        VerticalList(getCountries())
                         InputFields()
+
                     }
                 }
             }
