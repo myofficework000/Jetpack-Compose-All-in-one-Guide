@@ -4,13 +4,10 @@ import android.app.AlertDialog
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpack_compose_all_in_one.data.getCountries
@@ -29,44 +26,17 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxWidth(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
-                    val coroutineScope = rememberCoroutineScope()
-                    val sheetState = rememberModalBottomSheetState()
-
-                    DemoSheet(
-                        sheetState = sheetState,
-                        onDismiss = {
-                            coroutineScope.launch {
-                                sheetState.hide()
-                            }
-                        })
-                    Button(
-                        onClick = {
-                            coroutineScope.launch {
-                                sheetState.partialExpand()
-                            }
-                        }
-                    )
-                    {
-                        Text(text = "Open Bottom Sheet")
-                        Column {
-                            //Greeting("Android")
-                            HorizontalSimpleList(getCountries())
-                            VerticalSimpleList(getCountries())
-                            SimpleVerticalGridList(getCountries())
-                            VerticalList(getCountries())
-                            //SimpleDialog()
-                            InputFields()
-                        }
-                    }
+                    //HorizontalSimpleList(getCountries())
+                    //VerticalSimpleList(getCountries())
+                    //SimpleVerticalGridList(getCountries())
+                    //VerticalList(getCountries())
+                    //SimpleDialog()
+                    //InputFields()
+                    BottomSheet()
+                    NavigationDrawer()
                 }
             }
         }
-    }
-
-    @Composable
-    fun Greeting(name: String) {
-        Text(text = "Hello $name!")
     }
 
     @OptIn(ExperimentalMaterial3Api::class)
@@ -75,32 +45,6 @@ class MainActivity : ComponentActivity() {
     fun DefaultPreview() {
         JetpackComposeAllInOneTheme {
             InputFields()
-            TopAppBar()
-            /*Surface(
-            modifier = Modifier.fillMaxWidth(),
-            color = MaterialTheme.colorScheme.background
-        ) {
-            val coroutineScope = rememberCoroutineScope()
-            val sheetState = rememberModalBottomSheetState()
-
-            DemoSheet(
-                sheetState = sheetState,
-                onDismiss = {
-                    coroutineScope.launch {
-                        sheetState.hide()
-                    }
-                })
-            Button(
-                onClick = {
-                    coroutineScope.launch {
-                        sheetState.partialExpand()
-                    }
-                }
-            )
-            {
-                Text(text = "Open Bottom Sheet")
-            }
-        }*/
         }
     }
 }
