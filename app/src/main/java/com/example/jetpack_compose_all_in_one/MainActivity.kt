@@ -1,18 +1,16 @@
 package com.example.jetpack_compose_all_in_one
 
-import android.app.AlertDialog
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.jetpack_compose_all_in_one.data.getCountries
+import com.example.jetpack_compose_all_in_one.counter.CounterAppWithService
+import com.example.jetpack_compose_all_in_one.counter.CounterAppWithoutService
 import com.example.jetpack_compose_all_in_one.ui.theme.JetpackComposeAllInOneTheme
-import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
@@ -26,14 +24,16 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxWidth(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    CounterAppWithService()
+                    //CounterAppWithoutService()
                     //HorizontalSimpleList(getCountries())
                     //VerticalSimpleList(getCountries())
                     //SimpleVerticalGridList(getCountries())
                     //VerticalList(getCountries())
                     //SimpleDialog()
                     //InputFields()
-                    BottomSheet()
-                    NavigationDrawer()
+                    // BottomSheet()
+                    // NavigationDrawer()
                 }
             }
         }
