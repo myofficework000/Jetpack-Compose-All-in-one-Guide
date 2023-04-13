@@ -4,4 +4,6 @@
     <string name="dialog_title">Alert</string>
     <string name="dialog_text">Please confirm to delete</string>
     <string name="confirm_btn">Confirm Button</string>
+    <string name="title_activity_quote">QuoteActivity</string>
+    <string name="get_quote_btn">Get Quote</string>
 </resources>
