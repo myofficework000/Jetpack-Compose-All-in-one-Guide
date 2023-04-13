@@ -1,11 +1,36 @@
 package com.example.jetpack_compose_all_in_one
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
 import kotlinx.coroutines.launch
+
+
+@Composable
+fun BottomNavBar(){
+    var selectedIndex by remember { mutableStateOf(0)}
+    val menuList = listOf(
+        Icons.Filled.Home to "Home",
+        Icons.Filled.Person to "Account",
+        Icons.Filled.Menu to "Menu"
+    )
+    Scaffold(bottomBar = {
+        NavigationBar {
+            menuList.forEachIndexed { index, data ->
+                NavigationBarItem(
+                    selected = selectedIndex == index ,
+                    onClick = { selectedIndex = index },
+                    label = { Text(text = data.second) },
+                    icon = {
+                        Icon(imageVector = data.first, contentDescription = data.second)
+                    }
+                )
+            }
+        }
+    }) {
+    }
+}
 
 
 @OptIn(ExperimentalMaterial3Api::class)

@@ -16,9 +16,6 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun NavigationDrawer(){
-    /*val currentPage by remember {
-        mutableStateOf(Menu().firstOrNull()?.second)
-    }*/
 
     val drawerState = rememberDrawerState(DrawerValue.Closed)
 

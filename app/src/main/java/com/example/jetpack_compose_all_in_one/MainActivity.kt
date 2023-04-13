@@ -32,8 +32,9 @@ class MainActivity : ComponentActivity() {
                     //VerticalList(getCountries())
                     //SimpleDialog()
                     //InputFields()
-                    // BottomSheet()
-                    // NavigationDrawer()
+                    //BottomSheet()
+                    //NavigationDrawer()
+                    BottomNavBar()
                 }
             }
         }
