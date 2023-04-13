@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
                     //SimpleDialog()
                     //InputFields()
                     //BottomSheet()
-                    NavigationDrawer()
+                    //NavigationDrawer()
                     BottomNavBar()
                 }
             }
