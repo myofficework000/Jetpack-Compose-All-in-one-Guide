@@ -6,4 +6,7 @@
     <string name="confirm_btn">Confirm Button</string>
     <string name="title_activity_quote">QuoteActivity</string>
     <string name="get_quote_btn">Get Quote</string>
+
+    <string name="registration_success">Registration successful!</string>
+    <string name="registration_fail">Registration failed</string>
 </resources>
