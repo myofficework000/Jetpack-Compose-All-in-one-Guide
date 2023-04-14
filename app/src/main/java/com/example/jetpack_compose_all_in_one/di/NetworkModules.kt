@@ -2,11 +2,16 @@ package com.example.jetpack_compose_all_in_one.di
 
 import com.example.jetpack_compose_all_in_one.data.QuoteAPI.APIService
 import com.example.jetpack_compose_all_in_one.data.QuoteAPI.repository.RemoteRepository
+import com.example.jetpack_compose_all_in_one.data.tmdbapi.APIMovies
+import com.example.jetpack_compose_all_in_one.data.tmdbapi.TmdbApiInterceptor
+import com.example.jetpack_compose_all_in_one.utils.Constants
 import com.example.jetpack_compose_all_in_one.utils.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.Dispatchers
+import okhttp3.OkHttpClient
 import retrofit2.CallAdapter
 import retrofit2.Converter
 import retrofit2.Retrofit
@@ -62,4 +67,21 @@ object NetworkModules {
     fun provideRepository(apiService: APIService): RemoteRepository{
         return RemoteRepository(apiService)
     }
+
+
+
+    @Provides
+    @Singleton
+    @TMDBAPI
+    fun provideApiMovies() = Retrofit.Builder()
+        .baseUrl(Constants.tmdb_base_url)
+        .addConverterFactory(GsonConverterFactory.create())
+        .client(OkHttpClient.Builder().addInterceptor(TmdbApiInterceptor()).build())
+        .build()
+        .create<APIMovies>()
+
+    @Provides
+    @Singleton
+    @TMDBAPI
+    fun provideIoDispatcher() = Dispatchers.IO
 }

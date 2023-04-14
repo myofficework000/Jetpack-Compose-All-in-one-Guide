@@ -14,16 +14,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetpackComposeAllInOne"
         tools:targetApi="31">
-        <activity
-            android:name=".view.QuoteActivity"
+        <activity android:name=".view.tmdbapi.TmdbActivity"
             android:exported="true"
-            android:label="@string/title_activity_quote"
             android:theme="@style/Theme.JetpackComposeAllInOne">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.QuoteActivity"
+            android:exported="true"
+            android:label="@string/title_activity_quote"
+            android:theme="@style/Theme.JetpackComposeAllInOne">
         </activity>
         <service android:name=".counter.CounterAppService"
             android:exported="false"
