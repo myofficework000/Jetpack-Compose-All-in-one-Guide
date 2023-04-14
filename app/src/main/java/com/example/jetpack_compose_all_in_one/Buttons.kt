@@ -7,6 +7,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_3
@@ -49,5 +50,17 @@ fun OutlinedButton() {
 fun TextButton() {
     TextButton(onClick = { }) {
         Text(text = "Text Button")
+    }
+}
+
+@Composable
+fun TextButton(
+    text: String,
+    onClick: () -> Unit,
+    buttonModifier: Modifier = Modifier,
+    textModifier: Modifier = Modifier
+) {
+    TextButton(onClick = { onClick() }, modifier = buttonModifier) {
+        Text(text = text, modifier = textModifier)
     }
 }

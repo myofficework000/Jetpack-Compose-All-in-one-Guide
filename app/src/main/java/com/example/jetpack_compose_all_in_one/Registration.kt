@@ -156,7 +156,7 @@ fun ConfirmPasswordTextField(){
 }
 
 @Composable
-fun PasswordTextField() {
+private fun PasswordTextField() {
 
     val showPassword by remember {
         mutableStateOf(false)

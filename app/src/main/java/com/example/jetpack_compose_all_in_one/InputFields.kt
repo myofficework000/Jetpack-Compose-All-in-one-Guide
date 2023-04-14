@@ -95,7 +95,7 @@ fun TextFieldWithNumbers() {
 }
 
 @Composable
-fun PasswordTextField() {
+private fun PasswordTextField() {
     var text by remember {
         mutableStateOf(TextFieldValue(""))
     }
