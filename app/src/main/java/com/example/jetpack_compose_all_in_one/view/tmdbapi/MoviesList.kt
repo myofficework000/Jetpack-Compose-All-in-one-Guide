@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.jetpack_compose_all_in_one.TextButton
 import com.example.jetpack_compose_all_in_one.data.tmdbapi.TmdbResponse
 
 @Composable
@@ -43,13 +44,15 @@ fun MoviesList(
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Button(onClick = { onPrevPage() }, enabled = dataResult.page > 1) {
-                Text("Prev")
-            }
+            TextButton(
+                text = "Prev",
+                onClick = { onPrevPage() },
+                enabled = dataResult.page > 1)
             Text("Page ${dataResult.page}")
-            Button(onClick = { onNextPage() }, enabled = dataResult.page < dataResult.totalPages) {
-                Text("Next")
-            }
+            TextButton(
+                text = "Next",
+                onClick = { onNextPage() },
+                enabled = dataResult.page < dataResult.totalPages)
         }
     }
 }
