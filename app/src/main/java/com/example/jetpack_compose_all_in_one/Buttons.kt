@@ -16,43 +16,43 @@ import androidx.compose.ui.unit.sp
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_3
 
 @Composable
-fun SimpleButton() {
+fun SimpleButton(buttonMessage: String) {
     Button(onClick = { }) {
-        Text(text = "Simple Button")
+        Text(text = buttonMessage)
     }
 }
 
 @Composable
-fun ButtonWithBorder() {
+fun ButtonWithBorder(buttonMessage: String) {
     Button(
         onClick = { },
         border = BorderStroke(dp_3, Color.Black)
     ) {
-        Text(text = "Simple button with border")
+        Text(text = buttonMessage)
     }
 }
 
 @Composable
-fun ButtonWithRoundedCorners() {
+fun ButtonWithRoundedCorners(buttonMessage: String) {
     Button(
         onClick = { },
         shape = RoundedCornerShape(20.dp)
     ) {
-        Text(text = "Button with rounded corners")
+        Text(text = buttonMessage)
     }
 }
 
 @Composable
-fun OutlinedButton() {
+fun OutlinedButton(buttonMessage: String) {
     OutlinedButton(onClick = { }) {
-        Text(text = "Outlined Button")
+        Text(text = buttonMessage)
     }
 }
 
 @Composable
-fun TextButton() {
+fun TextButton(buttonMessage: String) {
     TextButton(onClick = { }) {
-        Text(text = "Text Button")
+        Text(text = buttonMessage)
     }
 }
 
@@ -67,7 +67,9 @@ fun TextButton(
     isBold: Boolean = false
 ) {
     TextButton(onClick = { onClick() }, modifier = modifier, enabled = enabled) {
-        Text(text = text, modifier = textModifier, fontSize = fontSize,
-            fontWeight = if (isBold) FontWeight.Bold else FontWeight.Normal)
+        Text(
+            text = text, modifier = textModifier, fontSize = fontSize,
+            fontWeight = if (isBold) FontWeight.Bold else FontWeight.Normal
+        )
     }
 }
