@@ -8,8 +8,8 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.jetpack_compose_all_in_one.counter.CounterAppWithService
 import com.example.jetpack_compose_all_in_one.ui.theme.JetpackComposeAllInOneTheme
+import com.example.jetpack_compose_all_in_one.ui.theme.MainContainerOfApp
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -36,7 +36,8 @@ class MainActivity : ComponentActivity() {
                     //BottomSheet()
                     //NavigationDrawer()
                     //BottomNavBar()
-                    RegistrationForm()
+                    //RegistrationForm()
+                    MainContainerOfApp(true)
                 }
             }
         }

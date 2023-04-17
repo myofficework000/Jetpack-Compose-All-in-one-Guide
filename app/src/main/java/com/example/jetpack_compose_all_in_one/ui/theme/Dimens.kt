@@ -29,4 +29,6 @@ val dp_10: Dp = 10.dp
 val dp_3: Dp = 3.dp
 val dp_4: Dp = 4.dp
 val dp_24: Dp = 24.dp
+val dp_50: Dp = 50.dp
+val dp_80: Dp = 80.dp
 
