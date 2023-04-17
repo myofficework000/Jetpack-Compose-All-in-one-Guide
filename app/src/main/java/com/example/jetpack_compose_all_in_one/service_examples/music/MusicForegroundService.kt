@@ -15,7 +15,7 @@ import com.example.jetpack_compose_all_in_one.R
 class MusicForegroundService: Service() {
     private val mediaPlayer by lazy {
         MediaPlayer.create(this, Settings.System.DEFAULT_RINGTONE_URI).apply {
-            setOnCompletionListener { stopSelf(); println("stopped") }
+            setOnCompletionListener { stopSelf() }
         }
     }
 
@@ -23,15 +23,13 @@ class MusicForegroundService: Service() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         intent?.getStringExtra(name_arg)?.let {
-            println("So... $it")
-            println("Uh... ${Uri.parse(it).path}")
-            mediaPlayer.reset()
-            mediaPlayer.setDataSource(this, Settings.System.DEFAULT_RINGTONE_URI)
-            mediaPlayer.prepare()
-            mediaPlayer.start()
+            mediaPlayer.apply {
+                reset()
+                setDataSource(this@MusicForegroundService, Uri.parse(it))
+                prepare()
+                start()
+            }
         }
-        println("started")
-        println(mediaPlayer.isPlaying)
 
         (getSystemService(NOTIFICATION_SERVICE) as NotificationManager).createNotificationChannel(
             notif_channel
@@ -63,6 +61,9 @@ class MusicForegroundService: Service() {
     companion object {
         const val name_arg = "name"
         const val notif_channel_id = 69
-        val notif_channel = NotificationChannel(notif_channel_id.toString(), "Eh", NotificationManager.IMPORTANCE_DEFAULT)
+        val notif_channel = NotificationChannel(
+            notif_channel_id.toString(),
+            "Play music",
+            NotificationManager.IMPORTANCE_DEFAULT)
     }
 }

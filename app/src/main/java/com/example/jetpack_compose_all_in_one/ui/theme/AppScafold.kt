@@ -1,16 +1,12 @@
 package com.example.jetpack_compose_all_in_one.ui.theme
 
-import android.content.Intent
 import android.media.RingtoneManager
 import android.net.Uri
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import com.example.jetpack_compose_all_in_one.BottomNavBar
 import com.example.jetpack_compose_all_in_one.R
-import com.example.jetpack_compose_all_in_one.SimpleButton
 import com.example.jetpack_compose_all_in_one.SimpleIconButton
 
 
