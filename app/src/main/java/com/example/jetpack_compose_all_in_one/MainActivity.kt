@@ -37,7 +37,7 @@ class MainActivity : ComponentActivity() {
                     //NavigationDrawer()
                     //BottomNavBar()
                     //RegistrationForm()
-                    MainContainerOfApp(true)
+                    MainContainerOfApp(false)
                 }
             }
         }

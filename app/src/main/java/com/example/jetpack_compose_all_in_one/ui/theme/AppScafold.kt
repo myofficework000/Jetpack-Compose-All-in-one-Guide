@@ -12,14 +12,14 @@ import com.example.jetpack_compose_all_in_one.R
 
 @Composable
 fun MainContainerOfApp(isOffline: Boolean) {
-    val snackbarHostState = remember { SnackbarHostState() }
 
     Scaffold(
-        snackbarHost = { ShowSnackbar( true, stringResource(id = R.string.no_internet_connected), snackbarHostState) }
+        bottomBar = { BottomNavBar()},
+        snackbarHost = { SnackbarShow(isOffline) }
     ) {
         // Screen content
         if (isOffline) {
-           // NetworkErrorDialog()
+           NetworkErrorDialog()
         } else {
             Text("Internet available")
         }

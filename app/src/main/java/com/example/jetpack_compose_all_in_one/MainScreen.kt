@@ -15,7 +15,6 @@ fun BottomNavBar(){
         Icons.Filled.Person to "Account",
         Icons.Filled.Menu to "Menu"
     )
-    Scaffold(bottomBar = {
         NavigationBar {
             menuList.forEachIndexed { index, data ->
                 NavigationBarItem(
@@ -27,8 +26,6 @@ fun BottomNavBar(){
                     }
                 )
             }
-        }
-    }) {
     }
 }
 
