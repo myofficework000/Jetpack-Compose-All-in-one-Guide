@@ -1,5 +1,6 @@
 package com.example.jetpack_compose_all_in_one
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -8,12 +9,17 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.jetpack_compose_all_in_one.service_examples.music.MusicForegroundService
 import com.example.jetpack_compose_all_in_one.ui.theme.JetpackComposeAllInOneTheme
 import com.example.jetpack_compose_all_in_one.ui.theme.MainContainerOfApp
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    private val playIntentForeground by lazy {
+        Intent(this, MusicForegroundService::class.java)
+    }
+
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +43,15 @@ class MainActivity : ComponentActivity() {
                     //NavigationDrawer()
                     //BottomNavBar()
                     //RegistrationForm()
-                    MainContainerOfApp(false)
+                    MainContainerOfApp(
+                        true,
+                        {
+                            startForegroundService(
+                                playIntentForeground.putExtra(MusicForegroundService.name_arg, it.toString())
+                            )
+                        },
+                        { stopService( playIntentForeground ) }
+                    )
                 }
             }
         }
