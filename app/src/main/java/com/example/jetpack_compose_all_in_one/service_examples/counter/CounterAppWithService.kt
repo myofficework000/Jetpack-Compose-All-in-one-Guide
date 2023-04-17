@@ -1,4 +1,4 @@
-package com.example.jetpack_compose_all_in_one.counter
+package com.example.jetpack_compose_all_in_one.service_examples.counter
 
 import android.content.BroadcastReceiver
 import android.content.Context

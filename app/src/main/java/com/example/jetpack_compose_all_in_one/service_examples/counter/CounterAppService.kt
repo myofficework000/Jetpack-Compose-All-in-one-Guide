@@ -1,4 +1,4 @@
-package com.example.jetpack_compose_all_in_one.counter
+package com.example.jetpack_compose_all_in_one.service_examples.counter
 
 import android.app.Service
 import android.content.Intent

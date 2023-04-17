@@ -24,7 +24,7 @@
             android:label="@string/title_activity_quote"
             android:theme="@style/Theme.JetpackComposeAllInOne">
         </activity>
-        <service android:name=".counter.CounterAppService"
+        <service android:name=".service_examples.counter.CounterAppService"
             android:exported="false"
             />
         <activity
