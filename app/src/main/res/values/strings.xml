@@ -11,4 +11,5 @@
     <string name="registration_fail">Registration failed</string>
     <string name="no_internet_connected">No internet connected!! \n</string>
     <string name="try_again">Try again\n</string>
+    <string name="set_alarm">Set Alarm</string>
 </resources>

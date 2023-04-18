@@ -8,4 +8,6 @@ object Constants {
     const val tmdb_base_url = "https://api.themoviedb.org/3/movie/"
     const val tmdb_endpoint_popular = "popular"
     const val tmdb_image_base_url = "https://image.tmdb.org/t/p/original"
+
+    const val ALARM_REQUEST_CODE = 100
 }
