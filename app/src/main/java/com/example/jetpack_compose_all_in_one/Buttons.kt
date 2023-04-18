@@ -15,8 +15,8 @@ import androidx.compose.ui.unit.sp
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_3
 
 @Composable
-fun SimpleButton(buttonMessage: String) {
-    Button(onClick = { }) {
+fun SimpleTextButton(buttonMessage: String, onClick: () -> Unit) {
+    Button(onClick = { onClick() }) {
         Text(text = buttonMessage)
     }
 }

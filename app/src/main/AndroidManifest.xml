@@ -31,7 +31,7 @@
             />
         <service android:name=".service_examples.music.MusicForegroundService"
             android:exported="false"/>
-        <service android:name=".service_examples.music.MusicBackgroundService"
+        <service android:name=".service_examples.music.MusicBoundService"
             android:exported="false"/>
         <activity
             android:name=".MainActivity"
