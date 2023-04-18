@@ -95,4 +95,8 @@ dependencies {
 
     //compose with liveDate
     implementation 'androidx.compose.runtime:runtime-livedata:1.3.3'
+
+    // Room database
+    kapt "android.arch.persistence.room:compiler:1.1.1"
+    implementation 'android.arch.persistence.room:runtime:1.1.1'
 }

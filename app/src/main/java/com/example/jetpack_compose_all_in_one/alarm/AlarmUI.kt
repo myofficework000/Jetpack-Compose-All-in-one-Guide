@@ -8,7 +8,6 @@ import android.content.Context.ALARM_SERVICE
 import android.content.Intent
 import android.icu.util.Calendar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
@@ -20,6 +19,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.SimpleTextButton
 import com.example.jetpack_compose_all_in_one.SwitchRow
+import com.example.jetpack_compose_all_in_one.alarm.database.AlarmInfo
 import com.example.jetpack_compose_all_in_one.utils.Constants.ALARM_REQUEST_CODE
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -102,7 +102,7 @@ fun setAlarmManager(context: Context, hour: Int, minute: Int) {
         minute,
         true
     )
-
+    // call your viewmodel setAlarms(alarmInfo)
 
 }
 
