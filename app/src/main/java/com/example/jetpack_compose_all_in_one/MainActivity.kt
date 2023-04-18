@@ -17,6 +17,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.jetpack_compose_all_in_one.alarm.AlarmMainUI
+import com.example.jetpack_compose_all_in_one.alarm.cancelAlarm
+import com.example.jetpack_compose_all_in_one.alarm.getAlarmTime
 import com.example.jetpack_compose_all_in_one.alarm.setAlarm
 import com.example.jetpack_compose_all_in_one.service_examples.music.MusicBoundService
 import com.example.jetpack_compose_all_in_one.service_examples.music.MusicForegroundService
@@ -64,6 +67,8 @@ class MainActivity : ComponentActivity() {
                     //NavigationDrawer()
                     //BottomNavBar()
                     //RegistrationForm()
+                    AlarmMainUI()
+
 //                    MainContainerOfApp(
 //                        true,
 //                        {
@@ -77,26 +82,37 @@ class MainActivity : ComponentActivity() {
 //                        { musicBoundService?.pauseMusic(it) },
 //                        { musicBoundService?.resumeMusic() }
 //                    )
-                    SimpleTextButton(buttonMessage = stringResource(id = R.string.set_alarm)) {
-                        setAlarm(context = this)
-                    }
 
-                    Column {
-                        var selected1 by remember { mutableStateOf(false) }
-                        SwitchRow(name = "Row1", change = selected1, onCheckedChange = {
-                            selected1 = it
-                        })
+                    /*
+                                        Column {
+                                            var timeFromAlarmSet: String? = null
+                                            SimpleTextButton(buttonMessage = stringResource(id = R.string.set_alarm)) {
+                                                setAlarm(context = this@MainActivity)
+                                            }
 
-                        var selected2 by remember { mutableStateOf(false) }
+                                            var selected1 by remember { mutableStateOf(false) }
+                                            SwitchRow(name = "fetch alarm", change = selected1, onCheckedChange = {
+                                                selected1 = it
+                                                timeFromAlarmSet = getAlarmTime
+                                            })
 
-                        SwitchRow(name = "Row1", change = selected2, onCheckedChange = {
-                            selected2 = it
-                        })
-                    }
+                                            var selected2 by remember { mutableStateOf(false) }
+                                            timeFromAlarmSet.let { time ->
+                                                SwitchRow(name = "$time", change = selected2, onCheckedChange = {
+                                                    selected2 = it
+                                                    cancelAlarm(this@MainActivity)
+                                                })
+                                            }
+                                        }
+                    */
 
                 }
             }
         }
+    }
+
+    fun getAlarm() {
+
     }
 
     override fun onStart() {
