@@ -10,17 +10,9 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpack_compose_all_in_one.alarm.AlarmMainUI
-import com.example.jetpack_compose_all_in_one.alarm.cancelAlarm
-import com.example.jetpack_compose_all_in_one.alarm.getAlarmTime
-import com.example.jetpack_compose_all_in_one.alarm.setAlarm
 import com.example.jetpack_compose_all_in_one.service_examples.music.MusicBoundService
 import com.example.jetpack_compose_all_in_one.service_examples.music.MusicForegroundService
 import com.example.jetpack_compose_all_in_one.ui.theme.JetpackComposeAllInOneTheme
