@@ -45,6 +45,8 @@
             </intent-filter>
         </activity>
 
+        <receiver android:name=".alarm.AlarmBroadcastReceiver" />
+
     </application>
 
 </manifest>

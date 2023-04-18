@@ -11,7 +11,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.jetpack_compose_all_in_one.alarm.setAlarm
 import com.example.jetpack_compose_all_in_one.service_examples.music.MusicBoundService
 import com.example.jetpack_compose_all_in_one.service_examples.music.MusicForegroundService
 import com.example.jetpack_compose_all_in_one.ui.theme.JetpackComposeAllInOneTheme
@@ -59,19 +61,22 @@ class MainActivity : ComponentActivity() {
                     //NavigationDrawer()
                     //BottomNavBar()
                     //RegistrationForm()
-                    MainContainerOfApp(
-                        true,
-                        {
-                            startForegroundService(
-                                playIntentForeground.putExtra(MusicForegroundService.name_arg, it.toString())
-                            )
-                        },
-                        { stopService( playIntentForeground ) },
-                        { musicBoundService?.startMusic(it) },
-                        { musicBoundService?.stopMusic() },
-                        { musicBoundService?.pauseMusic(it) },
-                        { musicBoundService?.resumeMusic() }
-                    )
+//                    MainContainerOfApp(
+//                        true,
+//                        {
+//                            startForegroundService(
+//                                playIntentForeground.putExtra(MusicForegroundService.name_arg, it.toString())
+//                            )
+//                        },
+//                        { stopService( playIntentForeground ) },
+//                        { musicBoundService?.startMusic(it) },
+//                        { musicBoundService?.stopMusic() },
+//                        { musicBoundService?.pauseMusic(it) },
+//                        { musicBoundService?.resumeMusic() }
+//                    )
+                    SimpleTextButton(buttonMessage = stringResource(id = R.string.set_alarm)) {
+                        setAlarm(context = this)
+                    }
                 }
             }
         }
