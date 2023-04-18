@@ -10,6 +10,10 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -17,7 +21,6 @@ import com.example.jetpack_compose_all_in_one.alarm.setAlarm
 import com.example.jetpack_compose_all_in_one.service_examples.music.MusicBoundService
 import com.example.jetpack_compose_all_in_one.service_examples.music.MusicForegroundService
 import com.example.jetpack_compose_all_in_one.ui.theme.JetpackComposeAllInOneTheme
-import com.example.jetpack_compose_all_in_one.ui.theme.MainContainerOfApp
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -77,6 +80,20 @@ class MainActivity : ComponentActivity() {
                     SimpleTextButton(buttonMessage = stringResource(id = R.string.set_alarm)) {
                         setAlarm(context = this)
                     }
+
+                    Column {
+                        var selected1 by remember { mutableStateOf(false) }
+                        SwitchRow(name = "Row1", change = selected1, onCheckedChange = {
+                            selected1 = it
+                        })
+
+                        var selected2 by remember { mutableStateOf(false) }
+
+                        SwitchRow(name = "Row1", change = selected2, onCheckedChange = {
+                            selected2 = it
+                        })
+                    }
+
                 }
             }
         }
