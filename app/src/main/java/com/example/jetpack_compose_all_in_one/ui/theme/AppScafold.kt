@@ -15,6 +15,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.jetpack_compose_all_in_one.*
 import com.example.jetpack_compose_all_in_one.R
+import com.example.jetpack_compose_all_in_one.alarm.AlarmMainUI
 import com.example.jetpack_compose_all_in_one.download_manager.Download
 
 
@@ -42,6 +43,7 @@ fun MainContainerOfApp(
                 SimpleIconButton(R.drawable.outline_stop_circle_24) {
                     stopMusicFuncForeground()
                 }
+                AlarmMainUI()
             })
         },
         bottomBar = { BottomNavBar()},

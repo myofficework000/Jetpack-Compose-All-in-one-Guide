@@ -20,7 +20,9 @@ class RoomModules {
         context,
         AppDatabase::class.java,
         Constants.ROOMDB_DBNAME
-    ).build()
+    )
+        .allowMainThreadQueries()
+        .build()
 
     @Provides
     @Singleton

@@ -74,7 +74,7 @@ class MainActivity : ComponentActivity() {
                     //NavigationDrawer()
                     //BottomNavBar()
                     //RegistrationForm()
-                    AlarmMainUI()
+
 
 //                    MainContainerOfApp(
 //                        true,
