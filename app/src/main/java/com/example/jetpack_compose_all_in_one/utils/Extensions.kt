@@ -2,7 +2,7 @@ package com.example.jetpack_compose_all_in_one.utils
 
 import android.content.Context
 import android.widget.Toast
-import com.example.jetpack_compose_all_in_one.alarm.database.AlarmInfo
+import com.example.jetpack_compose_all_in_one.features.alarm.database.AlarmInfo
 import java.util.concurrent.TimeUnit
 
 fun showToast(context: Context, message:String) = Toast.makeText(context,message, Toast.LENGTH_SHORT).show()

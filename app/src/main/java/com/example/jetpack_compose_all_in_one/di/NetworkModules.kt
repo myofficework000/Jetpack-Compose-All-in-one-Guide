@@ -1,9 +1,9 @@
 package com.example.jetpack_compose_all_in_one.di
 
-import com.example.jetpack_compose_all_in_one.data.QuoteAPI.APIService
-import com.example.jetpack_compose_all_in_one.data.QuoteAPI.repository.RemoteRepository
-import com.example.jetpack_compose_all_in_one.data.tmdbapi.APIMovies
-import com.example.jetpack_compose_all_in_one.data.tmdbapi.TmdbApiInterceptor
+import com.example.jetpack_compose_all_in_one.features.quotes_using_rx_java.QuoteAPI.APIService
+import com.example.jetpack_compose_all_in_one.features.quotes_using_rx_java.QuoteAPI.repository.RemoteRepository
+import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.APIMovies
+import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.TmdbApiInterceptor
 import com.example.jetpack_compose_all_in_one.utils.Constants
 import com.example.jetpack_compose_all_in_one.utils.Constants.BASE_URL
 import dagger.Module
@@ -58,13 +58,13 @@ object NetworkModules {
 
     @Singleton
     @Provides
-    fun provideAPIService(retrofit: Retrofit): APIService{
+    fun provideAPIService(retrofit: Retrofit): APIService {
         return retrofit.create(APIService::class.java)
     }
 
     @Singleton
     @Provides
-    fun provideRepository(apiService: APIService): RemoteRepository{
+    fun provideRepository(apiService: APIService): RemoteRepository {
         return RemoteRepository(apiService)
     }
 

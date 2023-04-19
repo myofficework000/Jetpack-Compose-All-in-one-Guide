@@ -1,5 +1,6 @@
 package com.example.jetpack_compose_all_in_one.utils
 
+import com.example.jetpack_compose_all_in_one.features.sign_in_sign_up.ValidateRegistration
 import org.junit.Assert.*
 import org.junit.Test
 

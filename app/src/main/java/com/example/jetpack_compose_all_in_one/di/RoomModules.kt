@@ -2,7 +2,7 @@ package com.example.jetpack_compose_all_in_one.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.jetpack_compose_all_in_one.alarm.database.AppDatabase
+import com.example.jetpack_compose_all_in_one.features.alarm.database.AppDatabase
 import com.example.jetpack_compose_all_in_one.utils.Constants
 import dagger.Module
 import dagger.Provides

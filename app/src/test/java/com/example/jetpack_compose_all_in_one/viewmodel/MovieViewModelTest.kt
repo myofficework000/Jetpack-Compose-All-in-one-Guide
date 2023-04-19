@@ -1,23 +1,16 @@
 package com.example.jetpack_compose_all_in_one.viewmodel
 
-import com.example.jetpack_compose_all_in_one.data.tmdbapi.TmdbResponse
-import com.example.jetpack_compose_all_in_one.data.tmdbapi.TmdbResponseItem
-import com.example.jetpack_compose_all_in_one.data.tmdbapi.repository.MovieRepository
-import io.mockk.coEvery
+import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.TmdbResponse
+import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.repository.MovieRepository
+import com.example.jetpack_compose_all_in_one.ui.views.tmdbapi.MovieViewModel
 import io.mockk.every
 import io.mockk.mockk
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.*
 
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-import retrofit2.Response
 
 class MovieViewModelTest {
     private val vm = mockk<MovieViewModel>()
