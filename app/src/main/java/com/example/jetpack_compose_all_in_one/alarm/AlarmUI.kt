@@ -14,59 +14,76 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.jetpack_compose_all_in_one.R
-import com.example.jetpack_compose_all_in_one.SimpleTextButton
+import com.example.jetpack_compose_all_in_one.SimpleIconButton
 import com.example.jetpack_compose_all_in_one.SwitchRow
 import com.example.jetpack_compose_all_in_one.alarm.database.AlarmInfo
-import com.example.jetpack_compose_all_in_one.utils.Constants.ALARM_REQUEST_CODE
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import kotlin.reflect.KFunction1
 
 @Composable
 fun AlarmMainUI(viewModel: AlarmViewModel = hiltViewModel()) {
     val localContext = LocalContext.current
 
-    val response = viewModel.alarmTime.observeAsState()
+    val response by viewModel.alarmTime.observeAsState()
 
-    SimpleTextButton(buttonMessage = stringResource(id = R.string.set_alarm)) {
-        setAlarm(context = localContext)
+    SimpleIconButton(R.drawable.baseline_alarm_add_24) {
+        setAlarm(context = localContext, viewModel::setAlarms)
     }
+    SimpleIconButton(R.drawable.baseline_auto_delete_24) {
+        response?.let{ cancelAlarm(localContext, it, viewModel::removeAlarm) }
+    }
+    /*SimpleTextButton(buttonMessage = stringResource(id = R.string.set_alarm)) {
+        setAlarm(context = localContext, viewModel::setAlarms)
+    }*/
 
     var selected2 by remember { mutableStateOf(true) }
-    response.value?.let {
-        SwitchRow(name = "$it", change = selected2, onCheckedChange = {
-            selected2 = it
-            cancelAlarm(localContext)
+    response?.let {
+        SwitchRow(name = "$it", change = selected2, onCheckedChange = { on ->
+            selected2 = on
+            if (!on) cancelAlarm(localContext, it, viewModel::removeAlarm)
         })
     }
 }
 
-fun setAlarm(context: Context) {
+fun setAlarm(
+    context: Context,
+    setAlarmFunc: KFunction1<AlarmInfo, Int>
+) {
     val calendar = Calendar.getInstance()
     val hour = calendar.get(Calendar.HOUR)
     val minute = calendar.get(Calendar.MINUTE)
     val timePicker = TimePickerDialog(
         context,
         { _, selectedHour, selectedMinute ->
-            setAlarmManager(context, selectedHour, selectedMinute)
+            setAlarmManager(context, selectedHour, selectedMinute, setAlarmFunc)
         }, hour, minute, true
     )
     timePicker.show()
 }
 
-fun cancelAlarm(context: Context) {
+fun cancelAlarm(
+    context: Context,
+    alarms: List<AlarmInfo>,
+    removeAlarmFunc: KFunction1<AlarmInfo, Unit>
+) {
     val alarmManager = context.getSystemService(ALARM_SERVICE) as AlarmManager
     val intent = Intent(context, AlarmBroadcastReceiver::class.java)
-    val pendingIntent = PendingIntent.getBroadcast(
-        context,
-        ALARM_REQUEST_CODE,
-        intent,
-        PendingIntent.FLAG_IMMUTABLE
-    )
-    alarmManager.cancel(pendingIntent)
+
+    alarms.forEach {
+        val pendingIntent = PendingIntent.getBroadcast(
+            context,
+            it.id,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
+
+        alarmManager.cancel(pendingIntent)
+        removeAlarmFunc(it)
+    }
 }
 
 fun getTime(timeInMillis: Long) {
@@ -76,12 +93,19 @@ fun getTime(timeInMillis: Long) {
     formatter.format(date) ?: "No time set"
 }
 
-fun setAlarmManager(context: Context, hour: Int, minute: Int) {
+fun setAlarmManager(
+    context: Context,
+    hour: Int,
+    minute: Int,
+    setAlarmFunc: KFunction1<AlarmInfo, Int>
+) {
+    val alarmId = setAlarmFunc( AlarmInfo(0, hour, minute, true ) )
+
     val alarmManager = context.getSystemService(ALARM_SERVICE) as AlarmManager
     val intent = Intent(context, AlarmBroadcastReceiver::class.java)
     val pendingIntent = PendingIntent.getBroadcast(
         context,
-        ALARM_REQUEST_CODE,
+        alarmId,
         intent,
         PendingIntent.FLAG_IMMUTABLE
     )
@@ -95,15 +119,6 @@ fun setAlarmManager(context: Context, hour: Int, minute: Int) {
         AlarmManager.INTERVAL_DAY,
         pendingIntent
     )
-
-    val alarmInfo = AlarmInfo(
-        ALARM_REQUEST_CODE,
-        hour,
-        minute,
-        true
-    )
-    // call your viewmodel setAlarms(alarmInfo)
-
 }
 
 

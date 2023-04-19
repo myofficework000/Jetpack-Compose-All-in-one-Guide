@@ -10,12 +10,15 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpack_compose_all_in_one.alarm.AlarmMainUI
+import com.example.jetpack_compose_all_in_one.download_manager.Download
 import com.example.jetpack_compose_all_in_one.service_examples.music.MusicBoundService
 import com.example.jetpack_compose_all_in_one.service_examples.music.MusicForegroundService
 import com.example.jetpack_compose_all_in_one.ui.theme.JetpackComposeAllInOneTheme
+import com.example.jetpack_compose_all_in_one.ui.theme.MainContainerOfApp
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -47,6 +50,18 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxWidth(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    val downloadObject = remember{
+                        Download(
+                            "",
+                            applicationContext,
+                            {
+                                println("Download failed")
+                            }
+                        ) {
+                            println("Download done")
+                        }
+                    }
+
                     //CounterAppWithService()
                     //CounterAppWithoutService()
                     //HorizontalSimpleList(getCountries())
@@ -59,7 +74,7 @@ class MainActivity : ComponentActivity() {
                     //NavigationDrawer()
                     //BottomNavBar()
                     //RegistrationForm()
-                    AlarmMainUI()
+
 
 //                    MainContainerOfApp(
 //                        true,
@@ -98,6 +113,21 @@ class MainActivity : ComponentActivity() {
                                         }
                     */
 
+                    MainContainerOfApp(
+                        true,
+                        {
+                            startForegroundService(
+                                playIntentForeground.putExtra(MusicForegroundService.name_arg, it.toString())
+                            )
+                        },
+                        { stopService( playIntentForeground ) },
+                        { musicBoundService?.startMusic(it) },
+                        { musicBoundService?.stopMusic() },
+                        { musicBoundService?.pauseMusic(it) },
+                        { musicBoundService?.resumeMusic() },
+                        downloadObject,
+                        { downloadObject.url = it }
+                    )
                 }
             }
         }
