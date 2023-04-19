@@ -44,11 +44,12 @@ fun SnackbarHost(
     modifier: Modifier = Modifier,
     snackbar: @Composable (SnackbarData) -> Unit = { Snackbar(it) }
 ) {
-    val snackbarHostState = remember { SnackbarHostState() }
     SnackbarHost(
-        hostState = snackbarHostState,
+        hostState = hostState,
+        modifier = modifier,
         snackbar = { message: SnackbarData ->
-            Card(
+            snackbar(message)
+            /*Card(
                 shape = RoundedCornerShape(8.dp),
                 border = BorderStroke(2.dp, Color.White),
                 modifier = Modifier
@@ -63,22 +64,29 @@ fun SnackbarHost(
                     Icon(imageVector = Icons.Default.Notifications, contentDescription = "")
                     Text(text = message.toString())
                 }
-            }
+            }*/
         }
     )
 }
 
 @Composable
-fun SnackbarShow(isOffline: Boolean) {
-    if (isOffline) {
-        Snackbar(
-            action = {
-                Button(onClick = {}) {
-                    Text("MyAction")
-                }
-            },
-            modifier = Modifier.padding(dp_10, dp_0, dp_10, dp_24)
-        ) { Text(text = "This is a snackbar!") }
+fun SnackbarShow(
+    snackbarHostState: SnackbarHostState,
+    isOffline: Boolean
+) {
+    if (snackbarHostState.currentSnackbarData == null) {
+        if (isOffline) {
+            Snackbar(
+                action = {
+                    Button(onClick = {}) {
+                        Text("MyAction")
+                    }
+                },
+                modifier = Modifier.padding(dp_10, dp_0, dp_10, dp_24)
+            ) { Text(text = "This is a snackbar!") }
+        }
+    } else {
+        SnackbarHost(snackbarHostState)
     }
 }
 

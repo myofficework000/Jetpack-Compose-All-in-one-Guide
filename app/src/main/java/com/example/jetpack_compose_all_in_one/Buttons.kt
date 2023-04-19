@@ -1,12 +1,12 @@
 package com.example.jetpack_compose_all_in_one
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.TextUnit
@@ -59,6 +59,23 @@ fun TextButton(buttonMessage: String) {
 fun SimpleIconButton(iconResourceInt: Int, modifier: Modifier = Modifier, onClick: () -> Unit) {
     IconButton(onClick = { onClick() }) {
         Icon(painterResource(id = iconResourceInt), "", modifier)
+    }
+}
+
+@Composable
+fun IconTextButton(
+    iconResInt: Int?,
+    text: String,
+    modifier: Modifier = Modifier,
+    iconModifier: Modifier = Modifier,
+    textModifier: Modifier = Modifier,
+    onClick: () -> Unit
+) {
+    Button(onClick = { onClick() }, modifier) {
+        Row() {
+            iconResInt?.run{Icon(painterResource(this),"", iconModifier)}
+            Text(text, textModifier)
+        }
     }
 }
 
