@@ -23,6 +23,10 @@ class AlarmViewModel @Inject constructor(
         return alarmId
     }
 
+    fun toggleAlarm(alarmInfo: AlarmInfo, enabled: Boolean) {
+        alarmDao.updateAlarm( alarmInfo.copy(enabled = enabled) )
+    }
+
     fun removeAlarm(alarmInfo: AlarmInfo) {
         alarmDao.removeAlarm(alarmInfo)
         getAllAlarms()

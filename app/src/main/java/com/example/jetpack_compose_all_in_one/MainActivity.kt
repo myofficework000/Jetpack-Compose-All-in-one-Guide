@@ -13,7 +13,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.jetpack_compose_all_in_one.alarm.AlarmMainUI
 import com.example.jetpack_compose_all_in_one.download_manager.Download
 import com.example.jetpack_compose_all_in_one.service_examples.music.MusicBoundService
 import com.example.jetpack_compose_all_in_one.service_examples.music.MusicForegroundService
@@ -131,10 +130,6 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-    }
-
-    fun getAlarm() {
-
     }
 
     override fun onStart() {
