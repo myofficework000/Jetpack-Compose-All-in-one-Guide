@@ -1,11 +1,8 @@
-package com.example.jetpack_compose_all_in_one
+package com.example.jetpack_compose_all_in_one.ui.views.sign_in_sign_up
 
 import android.content.Context
 import android.util.Log
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
@@ -23,58 +20,71 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.ui.theme.sp_16
 import com.example.jetpack_compose_all_in_one.ui.theme.sp_32
 import com.example.jetpack_compose_all_in_one.ui.theme.spaceSmall
 import com.example.jetpack_compose_all_in_one.features.sign_in_sign_up.ValidateRegistration.isValidRegistrationInput
+import com.example.jetpack_compose_all_in_one.ui.components.SimpleTextButton
 import com.example.jetpack_compose_all_in_one.ui.components.TextFieldWithNumbers
 import com.example.jetpack_compose_all_in_one.utils.showToast
 
 @Composable
-fun RegistrationForm() {
-    Column(
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-
+fun RegistrationForm(
+    modifier: Modifier = Modifier,
+    onRegister: () -> Unit
+) {
+    Box(
+        Modifier.fillMaxSize().then(modifier),
+        contentAlignment = Alignment.Center
     ) {
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
 
-        val username = remember { mutableStateOf("") }
-        val password = remember { mutableStateOf("") }
-        val confirmPassword = remember { mutableStateOf("") }
+            val username = remember { mutableStateOf("") }
+            val password = remember { mutableStateOf("") }
+            val confirmPassword = remember { mutableStateOf("") }
 
-        Text(
-            text = "Register",
-            fontSize = sp_32,
-            color = Color.Blue,
-            fontFamily = FontFamily.SansSerif,
-            fontWeight = FontWeight.Bold
-        )
-        SpacerSmall()
+            Text(
+                text = "Register",
+                fontSize = sp_32,
+                color = Color.Blue,
+                fontFamily = FontFamily.SansSerif,
+                fontWeight = FontWeight.Bold
+            )
+            SpacerSmall()
 
-        //username
-        UserTextField()
-        SpacerSmall()
+            //username
+            UserTextField()
+            SpacerSmall()
 
-        //email input field
-        EmailTextField()
-        SpacerSmall()
+            //email input field
+            EmailTextField()
+            SpacerSmall()
 
-        //
-        TextFieldWithNumbers()
-        SpacerSmall()
+            //
+            TextFieldWithNumbers()
+            SpacerSmall()
 
-        //password input field
-        PasswordTextField()
-        SpacerSmall()
+            //password input field
+            PasswordTextField()
+            SpacerSmall()
 
-        //confirm password input field
-        ConfirmPasswordTextField()
-        SpacerSmall()
+            //confirm password input field
+            ConfirmPasswordTextField()
+            SpacerSmall()
 
-        //register button
-        RegisterButton()
+            //register button
+            SimpleTextButton("Register") {
+                onRegister
+            }
 
+        }
     }
+
+
 
 }
 
@@ -86,9 +96,9 @@ fun buttonClick(context:Context){
         confirmPassword = confirmPassword
         )
     ) {
-        Log.d("TAG",username)
-        Log.d("TAG",password)
-        Log.d("TAG",confirmPassword)
+        Log.d("TAG", username)
+        Log.d("TAG", password)
+        Log.d("TAG", confirmPassword)
         showToast(context = context, context.getString(R.string.registration_success))
     }
         else{

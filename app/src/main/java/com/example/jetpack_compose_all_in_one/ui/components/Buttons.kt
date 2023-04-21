@@ -15,9 +15,14 @@ import androidx.compose.ui.unit.sp
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_3
 
 @Composable
-fun SimpleTextButton(buttonMessage: String, onClick: () -> Unit) {
-    Button(onClick = { onClick() }) {
-        Text(text = buttonMessage)
+fun SimpleTextButton(
+    buttonMessage: String,
+    modifier: Modifier = Modifier,
+    textModifier: Modifier = Modifier,
+    onClick: () -> Unit
+) {
+    Button(onClick = { onClick() }, modifier) {
+        Text(text = buttonMessage, textModifier)
     }
 }
 
@@ -42,9 +47,14 @@ fun ButtonWithRoundedCorners(buttonMessage: String) {
 }
 
 @Composable
-fun OutlinedButton(buttonMessage: String) {
-    OutlinedButton(onClick = { }) {
-        Text(text = buttonMessage)
+fun OutlinedButton(
+    buttonMessage: String,
+    modifier: Modifier = Modifier,
+    textModifier: Modifier = Modifier,
+    onClick: () -> Unit
+) {
+    OutlinedButton(onClick = { onClick() }, modifier) {
+        Text(text = buttonMessage, textModifier)
     }
 }
 

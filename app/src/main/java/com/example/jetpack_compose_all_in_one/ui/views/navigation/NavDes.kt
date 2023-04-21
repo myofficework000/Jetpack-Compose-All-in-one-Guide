@@ -12,6 +12,8 @@ sealed class NavDes(val data: NavigationDrawerData) {
     object Download: NavDes( NavigationDrawerData("download","Download Manager") )
     object AlarmManager: NavDes( NavigationDrawerData("alarm","Alarm Manager") )
 
+    object Login1: NavDes( NavigationDrawerData("login_style_1","Login Page (Style 1)") )
+
 
     object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
         R.drawable.baseline_contacts_24
@@ -30,7 +32,8 @@ sealed class NavDes(val data: NavigationDrawerData) {
             ForegroundService,
             BoundService,
             Download,
-            AlarmManager
+            AlarmManager,
+            Login1
         )
     }
 }
