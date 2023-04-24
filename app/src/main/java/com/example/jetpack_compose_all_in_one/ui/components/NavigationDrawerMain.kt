@@ -11,6 +11,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import com.example.jetpack_compose_all_in_one.ui.theme.sp_32
 import com.example.jetpack_compose_all_in_one.ui.theme.spaceLarge
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavDes
 
 // content is most likely a Scaffold. So no padding needed.
 @Composable

@@ -22,7 +22,7 @@ import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.features.alarm.AlarmMainUI
 import com.example.jetpack_compose_all_in_one.features.download_manager.Download
 import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginPage
-import com.example.jetpack_compose_all_in_one.ui.views.navigation.NavDes
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavDes
 import com.example.jetpack_compose_all_in_one.ui.views.navigation.NavigationDrawerMain
 import com.example.jetpack_compose_all_in_one.ui.views.tmdbapi.PopularMoviesPage
 import com.example.jetpack_compose_all_in_one.view.Quote

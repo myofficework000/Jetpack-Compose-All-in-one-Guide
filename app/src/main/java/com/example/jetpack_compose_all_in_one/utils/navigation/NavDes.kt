@@ -1,4 +1,4 @@
-package com.example.jetpack_compose_all_in_one.ui.views.navigation
+package com.example.jetpack_compose_all_in_one.utils.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.ui.res.painterResource
