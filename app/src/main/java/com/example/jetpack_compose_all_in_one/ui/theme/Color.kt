@@ -1,7 +1,6 @@
 package com.example.jetpack_compose_all_in_one.ui.theme
 
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 
 val Purple80 = Color(0xFFD0BCFF)
@@ -15,3 +14,10 @@ val Pink40 = Color(0xFF7D5260)
 val Pink80 = Color(0xFFEFB8C8)
 
 val Blue10 = Color(0xFF2a3b71)
+val Blue20 = Color(0xFF445691)
+val Blue30 = Color(0xFF0E3DCF)
+val LightBlue = Color(0xFF8FA2DD)
+
+val WhiteToBlue20 = Brush.horizontalGradient(listOf(Color.White, Blue20))
+val Blue10ToBlue20 = Brush.horizontalGradient(listOf(Blue10, Blue20))
+val LightBlueToBlue30 = Brush.linearGradient(listOf(LightBlue, Blue30))

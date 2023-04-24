@@ -51,10 +51,12 @@ fun MainContainerOfApp(
     ) {
         Scaffold(
             topBar = {
-                TopAppBar(
-                    title = { Text(stringResource(id = R.string.app_name)) },
-                    navigationIcon = { DrawerButton(drawerState,scope) }
-                )
+                if (!NavDes.needCustomAppBar(currentRoute.value)) {
+                    TopAppBar(
+                        title = { Text(stringResource(id = R.string.app_name)) },
+                        navigationIcon = { DrawerButton(drawerState,scope) }
+                    )
+                }
             },
             snackbarHost = { SnackbarShow(snackbarHostState, isOffline) }
         ) {
@@ -134,7 +136,7 @@ fun MainContainerOfApp(
                 }
 
                 composable(NavDes.Login1.data.route) {
-                    LoginPage()
+                    LoginPage(drawerState)
                 }
             }
         }
