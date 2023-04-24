@@ -135,7 +135,6 @@ private fun PasswordTextField() {
 @Composable
 fun GradientTextField(
     value: String,
-    onValueChange: (String) -> Unit,
     gradient: Brush,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
@@ -148,7 +147,8 @@ fun GradientTextField(
     singleLine: Boolean = false,
     maxLines: Int = if (singleLine) 1 else Int.MAX_VALUE,
     minLines: Int = 1,
-    shape: Shape = RoundedCornerShape(10)
+    shape: Shape = RoundedCornerShape(10),
+    onValueChange: (String) -> Unit
 ) {
     TextField(
         value = value,

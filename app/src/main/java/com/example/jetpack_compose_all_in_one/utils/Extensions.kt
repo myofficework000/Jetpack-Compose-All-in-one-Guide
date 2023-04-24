@@ -3,6 +3,8 @@ package com.example.jetpack_compose_all_in_one.utils
 import android.content.Context
 import android.widget.Toast
 import com.example.jetpack_compose_all_in_one.features.alarm.database.AlarmInfo
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 import java.util.concurrent.TimeUnit
 
 fun showToast(context: Context, message:String) = Toast.makeText(context,message, Toast.LENGTH_SHORT).show()
@@ -35,3 +37,5 @@ fun Long.formatTime() = String.format("%02d:%02d:%02d",
             TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(this)),
     TimeUnit.MILLISECONDS.toSeconds(this) -
             TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(this)))
+
+fun LocalTime.simpleFormat() = this.format(DateTimeFormatter.ofPattern("HH:mm"))

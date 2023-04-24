@@ -91,12 +91,11 @@ private fun EmailField(
 ) {
     GradientTextField(
         state.value,
-        { state.value = it },
         WhiteToBlue20,
         Modifier.fillMaxWidth(),
         leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = "") },
         label = { Text(text = "Email") }
-    )
+    ) { state.value = it }
 }
 
 @Composable
@@ -105,12 +104,11 @@ private fun PasswordField(
 ) {
     GradientTextField(
         state.value,
-        { state.value = it },
         WhiteToBlue20,
         Modifier.fillMaxWidth(),
         leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = "") },
         label = { Text(text = "Password") }
-    )
+    ) { state.value = it }
 }
 
 @Composable

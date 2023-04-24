@@ -20,9 +20,11 @@ import androidx.navigation.compose.rememberNavController
 import com.example.jetpack_compose_all_in_one.*
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.features.alarm.AlarmMainUI
+import com.example.jetpack_compose_all_in_one.features.chatmodule.ChatViewModel
 import com.example.jetpack_compose_all_in_one.features.download_manager.Download
 import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginPage
 import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat
+import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat2
 import com.example.jetpack_compose_all_in_one.ui.views.navigation.NavigationDrawerMain
 import com.example.jetpack_compose_all_in_one.ui.views.tmdbapi.PopularMoviesPage
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavDes
@@ -162,8 +164,11 @@ fun MainContainerOfApp(
                 composable(NavDes.Quotes.data.route) {
                     Quote()
                 }
-                composable(NavDes.chatDemoUI.data.route) {
-                    DemoFullChat()
+                composable(NavDes.ChatDemoUI.data.route) {
+                    val vm = hiltViewModel<ChatViewModel>()
+                    DemoFullChat2(
+                        vm.chatHistory.toList()
+                    ) { data -> vm.sendMessage(data) }
                 }
             }
         }

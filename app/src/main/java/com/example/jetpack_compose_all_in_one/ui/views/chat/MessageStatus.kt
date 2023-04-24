@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.jetpack_compose_all_in_one.ui.theme.ChatTimeColor
 
 @Composable
 fun MessageTimeText(
@@ -40,6 +41,7 @@ fun MessageTimeText(
                 modifier = Modifier
                     .padding(top = 1.dp, bottom = 1.dp),
                 text = messageTime,
+                color = ChatTimeColor,
                 fontSize = 12.sp
             )
         }

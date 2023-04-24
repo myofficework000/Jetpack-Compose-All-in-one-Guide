@@ -1,6 +1,7 @@
 package com.example.jetpack_compose_all_in_one.ui.views.chat
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -22,6 +23,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.jetpack_compose_all_in_one.features.chatting.ChatRowData
+import com.example.jetpack_compose_all_in_one.ui.theme.ChatTextColor
 import com.example.jetpack_compose_all_in_one.utils.calculateChatWidthAndHeight
 
 /**
@@ -55,7 +57,7 @@ fun ChatFlexBoxLayout(
     modifier: Modifier = Modifier,
     messageModifier: Modifier = Modifier.padding(horizontal = 6.dp, vertical = 4.dp),
     text: String,
-    color: Color = Color.Unspecified,
+    color: Color = ChatTextColor,
     fontSize: TextUnit = 16.sp,
     fontStyle: FontStyle? = null,
     fontWeight: FontWeight? = null,

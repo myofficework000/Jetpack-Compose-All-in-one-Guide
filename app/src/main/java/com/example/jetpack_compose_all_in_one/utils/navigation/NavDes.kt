@@ -1,9 +1,16 @@
 package com.example.jetpack_compose_all_in_one.utils.navigation
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.ui.res.painterResource
 import com.example.jetpack_compose_all_in_one.R
 
+/*
+    How to add an item in Navigation Drawer:
+    1. Create a sealed class object below. Check all these examples for reference
+    2. Add the created object in drawerList. The order matters.
+    3. If you want your own TopAppBar (Navigation Drawer is not configurable),
+            also add the object into the list of needCustomAppBar.
+    4. Inside the NavHost (Currently positioned in MainContainerOfApp), add a
+            composable item. Again, take reference from the existing items above.
+ */
 sealed class NavDes(val data: NavigationDrawerData) {
     object Home: NavDes( NavigationDrawerData("home","Home") )
     object Internet: NavDes( NavigationDrawerData("internet","Connectivity Manager") )
@@ -18,7 +25,7 @@ sealed class NavDes(val data: NavigationDrawerData) {
 
     object Quotes: NavDes( NavigationDrawerData("quotes", "Quotes API") )
 
-    object chatDemoUI: NavDes( NavigationDrawerData("chatting_feature", "chatting feature") )
+    object ChatDemoUI: NavDes( NavigationDrawerData("chatting_feature", "chatting feature") )
 
     object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
         R.drawable.baseline_contacts_24
@@ -27,7 +34,7 @@ sealed class NavDes(val data: NavigationDrawerData) {
         R.drawable.baseline_history_24
     ) )
     object Settings: NavDes( NavigationDrawerData("settings","Settings",
-    R.drawable.baseline_settings_24
+        R.drawable.baseline_settings_24
     ) )
 
     companion object {
@@ -41,7 +48,7 @@ sealed class NavDes(val data: NavigationDrawerData) {
             Login1,
             Tmdb,
             Quotes,
-            chatDemoUI
+            ChatDemoUI
         )
 
         // Put all pages that need a custom TopAppBar in this list.

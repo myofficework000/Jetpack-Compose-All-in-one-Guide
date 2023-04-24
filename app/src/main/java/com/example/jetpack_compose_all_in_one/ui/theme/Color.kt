@@ -31,3 +31,5 @@ val ReceivedMessageColor = Color.White
 val DateColor = Color(0xffd4eaf4)
 //val BackgroundColor = Color(0xffefe8df)
 val BackgroundColor = Color(0xffFBE9E7)
+val ChatTextColor = Color.Black
+val ChatTimeColor = Color.Gray
