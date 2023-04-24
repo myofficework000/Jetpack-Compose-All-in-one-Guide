@@ -6,6 +6,9 @@ import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.
 import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.TmdbApiInterceptor
 import com.example.jetpack_compose_all_in_one.utils.Constants
 import com.example.jetpack_compose_all_in_one.utils.Constants.BASE_URL
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -84,4 +87,8 @@ object NetworkModules {
     @Singleton
     @TMDBAPI
     fun provideIoDispatcher() = Dispatchers.IO
+
+    @Provides
+    @Singleton
+    fun provideRTDatabase() = Firebase.database
 }

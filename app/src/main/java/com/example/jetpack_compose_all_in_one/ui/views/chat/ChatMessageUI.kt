@@ -1,5 +1,6 @@
 package com.example.jetpack_compose_all_in_one.ui.views.chat
 
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -23,7 +24,7 @@ fun Message(
     modifier: Modifier = Modifier,
     text: AnnotatedString,
     onTextLayout: (TextLayoutResult) -> Unit,
-    color: Color = Color.Unspecified,
+    color: Color = MaterialTheme.colorScheme.onPrimary,
     fontSize: TextUnit = 16.sp,
     fontStyle: FontStyle? = null,
     fontWeight: FontWeight? = null,
@@ -63,7 +64,7 @@ fun Message(
     modifier: Modifier = Modifier,
     text: String,
     onTextLayout: (TextLayoutResult) -> Unit,
-    color: Color = Color.Unspecified,
+    color: Color = MaterialTheme.colorScheme.onPrimary,
     fontSize: TextUnit = 16.sp,
     fontStyle: FontStyle? = null,
     fontWeight: FontWeight? = null,

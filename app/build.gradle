@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'dagger.hilt.android.plugin'
     id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -59,6 +60,7 @@ dependencies {
     implementation 'androidx.compose.material3:material3:1.1.0-beta02'
     implementation 'androidx.compose.material:material:1.1.1'
     implementation 'androidx.work:work-runtime-ktx:2.8.1'
+    implementation 'com.google.firebase:firebase-database-ktx:20.1.0'
 
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'io.mockk:mockk:1.13.4'
