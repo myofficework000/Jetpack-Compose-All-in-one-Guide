@@ -14,6 +14,9 @@ sealed class NavDes(val data: NavigationDrawerData) {
 
     object Login1: NavDes( NavigationDrawerData("login_style_1","Login Page (Style 1)") )
 
+    object Tmdb: NavDes( NavigationDrawerData("tmdb","TMDB API") )
+
+    object Quotes: NavDes( NavigationDrawerData("quotes", "Quotes API") )
 
     object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
         R.drawable.baseline_contacts_24
@@ -33,7 +36,9 @@ sealed class NavDes(val data: NavigationDrawerData) {
             BoundService,
             Download,
             AlarmManager,
-            Login1
+            Login1,
+            Tmdb,
+            Quotes
         )
 
         // Put all pages that need a custom TopAppBar in this list.
