@@ -35,5 +35,15 @@ sealed class NavDes(val data: NavigationDrawerData) {
             AlarmManager,
             Login1
         )
+
+        // Put all pages that need a custom TopAppBar in this list.
+        // It'll be evaluated in MainContainerOfApp.
+        // Even if you only want the TopAppBar to disappear at certain states,
+        //      you still need to recreate the whole bar, pass the necessary
+        //      states from MainContainerOfApp and setup your own logic.
+        // If that's too inconvenient, give me some time to redesign this setup.
+        fun needCustomAppBar(currentRoute: String) = listOf(
+            Login1
+        ).map { it.data.route }.contains(currentRoute)
     }
 }
