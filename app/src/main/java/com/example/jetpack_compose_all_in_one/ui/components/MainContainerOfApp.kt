@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -23,6 +24,8 @@ import com.example.jetpack_compose_all_in_one.features.download_manager.Download
 import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginPage
 import com.example.jetpack_compose_all_in_one.ui.views.navigation.NavDes
 import com.example.jetpack_compose_all_in_one.ui.views.navigation.NavigationDrawerMain
+import com.example.jetpack_compose_all_in_one.ui.views.tmdbapi.PopularMoviesPage
+import com.example.jetpack_compose_all_in_one.view.Quote
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -137,6 +140,14 @@ fun MainContainerOfApp(
 
                 composable(NavDes.Login1.data.route) {
                     LoginPage(drawerState)
+                }
+
+                composable(NavDes.Tmdb.data.route) {
+                    PopularMoviesPage(hiltViewModel())
+                }
+
+                composable(NavDes.Quotes.data.route) {
+                    Quote()
                 }
             }
         }
