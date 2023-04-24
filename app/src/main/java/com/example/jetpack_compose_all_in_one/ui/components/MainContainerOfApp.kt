@@ -22,9 +22,10 @@ import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.features.alarm.AlarmMainUI
 import com.example.jetpack_compose_all_in_one.features.download_manager.Download
 import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginPage
-import com.example.jetpack_compose_all_in_one.utils.navigation.NavDes
+import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat
 import com.example.jetpack_compose_all_in_one.ui.views.navigation.NavigationDrawerMain
 import com.example.jetpack_compose_all_in_one.ui.views.tmdbapi.PopularMoviesPage
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavDes
 import com.example.jetpack_compose_all_in_one.view.Quote
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -42,12 +43,12 @@ fun MainContainerOfApp(
     downloadFileObj: Download,
     setDownloadUrlFunc: (String) -> Unit
 ) {
-    var inputUrl by remember{ mutableStateOf("") }
+    var inputUrl by remember { mutableStateOf("") }
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
     val navController = rememberNavController()
     val currentRoute = remember { mutableStateOf(NavDes.drawerList[0].data.route) }
-    val snackbarHostState = remember{ SnackbarHostState() }
+    val snackbarHostState = remember { SnackbarHostState() }
 
     NavigationDrawerMain(navController, currentRoute, drawerState,
         { scope.launch { drawerState.close() } }
@@ -57,7 +58,7 @@ fun MainContainerOfApp(
                 if (!NavDes.needCustomAppBar(currentRoute.value)) {
                     TopAppBar(
                         title = { Text(stringResource(id = R.string.app_name)) },
-                        navigationIcon = { DrawerButton(drawerState,scope) }
+                        navigationIcon = { DrawerButton(drawerState, scope) }
                     )
                 }
             },
@@ -65,7 +66,7 @@ fun MainContainerOfApp(
         ) {
             NavHost(navController, currentRoute.value, Modifier.padding(it)) {
                 composable(NavDes.Home.data.route) {
-                    Box{}
+                    Box {}
                 }
                 composable(NavDes.Internet.data.route) {
                     if (isOffline) {
@@ -81,7 +82,11 @@ fun MainContainerOfApp(
                     ) {
                         Row {
                             SimpleIconButton(R.drawable.baseline_play_circle_outline_24) {
-                                playMusicFuncForeground(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE))
+                                playMusicFuncForeground(
+                                    RingtoneManager.getDefaultUri(
+                                        RingtoneManager.TYPE_RINGTONE
+                                    )
+                                )
                             }
                             SimpleIconButton(R.drawable.outline_stop_circle_24) {
                                 stopMusicFuncForeground()
@@ -101,16 +106,22 @@ fun MainContainerOfApp(
                                 .background(Color(0.314f, 0.29f, 0.29f, 0.725f))
                                 .padding(16.dp)
                         ) {
-                            item{
-                                SimpleTextButton("Start") { playMusicFuncBound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE)) }
+                            item {
+                                SimpleTextButton("Start") {
+                                    playMusicFuncBound(
+                                        RingtoneManager.getDefaultUri(
+                                            RingtoneManager.TYPE_RINGTONE
+                                        )
+                                    )
+                                }
                             }
-                            item{
+                            item {
                                 SimpleTextButton("Stop") { stopMusicFuncBound() }
                             }
-                            item{
+                            item {
                                 SimpleTextButton("Pause (10s)") { pauseMusicFuncBound(10000L) }
                             }
-                            item{
+                            item {
                                 SimpleTextButton("Resume") { resumeMusicFuncBound() }
                             }
                         }
@@ -124,7 +135,7 @@ fun MainContainerOfApp(
                     ) {
                         TextField(
                             inputUrl,
-                            onValueChange = {url ->
+                            onValueChange = { url ->
                                 inputUrl = url
                                 setDownloadUrlFunc(url)
                             },
@@ -133,9 +144,11 @@ fun MainContainerOfApp(
                     }
                 }
                 composable(NavDes.AlarmManager.data.route) {
-                    AlarmMainUI{ msg, lng -> scope.launch {
-                        snackbarHostState.showText(msg, lng)
-                    } }
+                    AlarmMainUI { msg, lng ->
+                        scope.launch {
+                            snackbarHostState.showText(msg, lng)
+                        }
+                    }
                 }
 
                 composable(NavDes.Login1.data.route) {
@@ -149,6 +162,9 @@ fun MainContainerOfApp(
                 composable(NavDes.Quotes.data.route) {
                     Quote()
                 }
+                composable(NavDes.chatDemoUI.data.route) {
+                    DemoFullChat()
+                }
             }
         }
     }
@@ -161,7 +177,7 @@ fun DrawerButton(
     coroutineScope: CoroutineScope
 ) {
     SimpleIconButton(R.drawable.baseline_menu_24) {
-        with (drawerState) {
+        with(drawerState) {
             if (!isAnimationRunning) coroutineScope.launch { open() }
         }
     }

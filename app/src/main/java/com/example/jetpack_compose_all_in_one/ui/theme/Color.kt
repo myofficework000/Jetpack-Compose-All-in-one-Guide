@@ -21,3 +21,13 @@ val LightBlue = Color(0xFF8FA2DD)
 val WhiteToBlue20 = Brush.horizontalGradient(listOf(Color.White, Blue20))
 val Blue10ToBlue20 = Brush.horizontalGradient(listOf(Blue10, Blue20))
 val LightBlueToBlue30 = Brush.linearGradient(listOf(LightBlue, Blue30))
+
+//For Chatting feature
+val ShadowColor = Color(0xffA1A1A1)
+val DefaultBubbleColor = Color.White
+val DefaultBubbleColor2 = Color(0xffE7FFDB)
+val SentMessageColor = Color(0xffE7FFDB)
+val ReceivedMessageColor = Color.White
+val DateColor = Color(0xffd4eaf4)
+//val BackgroundColor = Color(0xffefe8df)
+val BackgroundColor = Color(0xffFBE9E7)

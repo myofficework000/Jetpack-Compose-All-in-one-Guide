@@ -18,6 +18,8 @@ sealed class NavDes(val data: NavigationDrawerData) {
 
     object Quotes: NavDes( NavigationDrawerData("quotes", "Quotes API") )
 
+    object chatDemoUI: NavDes( NavigationDrawerData("chatting_feature", "chatting feature") )
+
     object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
         R.drawable.baseline_contacts_24
     ) )
@@ -38,7 +40,8 @@ sealed class NavDes(val data: NavigationDrawerData) {
             AlarmManager,
             Login1,
             Tmdb,
-            Quotes
+            Quotes,
+            chatDemoUI
         )
 
         // Put all pages that need a custom TopAppBar in this list.
