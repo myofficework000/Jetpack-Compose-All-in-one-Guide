@@ -1,6 +1,19 @@
 package com.example.jetpack_compose_all_in_one.utils
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.media.RingtoneManager
+import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresApi
+import androidx.core.app.NotificationCompat
+import com.example.jetpack_compose_all_in_one.R
+import com.example.jetpack_compose_all_in_one.ui.views.main_ui.MainActivity
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.FirebaseMessagingService
@@ -12,7 +25,10 @@ import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import java.io.BufferedOutputStream
 import java.io.BufferedWriter
+import java.io.IOException
+import java.io.InputStream
 import java.io.OutputStreamWriter
+import java.net.HttpURLConnection
 import java.net.URL
 import javax.net.ssl.HttpsURLConnection
 
@@ -32,7 +48,74 @@ class FcmRegisterService: FirebaseMessagingService() {
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
         println("Received message: ${message.data}")
-        Log.i("tag","Received message")
+        Log.i("tag", "Received message")
+
+        Log.e("onMessageReceived: ", message.data.toString())
+
+        message.let {
+            val title = it.data["title"]
+            val content = it.data["content"]
+            val imageUrl = it.data["image"]
+            val bitmap = getBitmapFromURL(imageUrl)
+
+
+            val defaultSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+
+            val pendingIntent = PendingIntent.getActivity(
+                applicationContext, 0,
+                intent,
+                PendingIntent.FLAG_IMMUTABLE
+            )
+
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                checkNotificationChannel("1")
+            }
+
+            val notification = NotificationCompat.Builder(applicationContext, "1")
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle(title)
+                .setContentText(content)
+                .setContentIntent(pendingIntent)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setSound(defaultSound)
+                .setLargeIcon(bitmap)
+
+            val notificationManager: NotificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.notify(1, notification.build())
+        }
+    }
+
+    private fun getBitmapFromURL(strURL: String?): Bitmap? {
+        return try {
+            val url = URL(strURL)
+            val connection: HttpURLConnection = url.openConnection() as HttpURLConnection
+            connection.doInput = true
+            connection.connect()
+            val input: InputStream = connection.inputStream
+            BitmapFactory.decodeStream(input)
+        } catch (e: IOException) {
+            e.printStackTrace()
+            null
+        }
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun checkNotificationChannel(channelId: String) {
+        val notificationChannel = NotificationChannel(
+            channelId,
+            getString(R.string.app_name),
+            NotificationManager.IMPORTANCE_HIGH
+        )
+        notificationChannel.description = "CHANNEL_DESCRIPTION"
+        notificationChannel.enableLights(true)
+        notificationChannel.enableVibration(true)
+        val notificationManager = getSystemService(NotificationManager::class.java)
+        notificationManager.createNotificationChannel(notificationChannel)
     }
 
     override fun onDestroy() {
@@ -102,4 +185,6 @@ class FcmRegisterService: FirebaseMessagingService() {
                 .addOnCompleteListener { onSubscribe() }
         }
     }
+
+
 }
