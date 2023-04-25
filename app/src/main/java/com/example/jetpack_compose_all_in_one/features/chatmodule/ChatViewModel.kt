@@ -3,6 +3,7 @@ package com.example.jetpack_compose_all_in_one.features.chatmodule
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import com.bumptech.glide.Glide.init
+import com.example.jetpack_compose_all_in_one.utils.FcmRegisterService
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -56,7 +57,7 @@ class ChatViewModel @Inject constructor(
         val messageId = it.push().key.toString()
         it.child(messageId).setValue(data).addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                // Whatever u wanna do with this.
+                //FcmRegisterService.sendMessage("-NTtTr543nstCHZU20xG")
             }
         }
     }
