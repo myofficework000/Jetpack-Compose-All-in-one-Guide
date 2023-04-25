@@ -35,7 +35,9 @@ import com.example.jetpack_compose_all_in_one.ui.views.sign_in_sign_up.LoginForm
 
 @Composable
 fun LoginPage(
-    drawerState: DrawerState
+    drawerState: DrawerState,
+    onLogin: (String, String, Boolean) -> Unit,
+    onRegister: (String, String) -> Unit
 ) {
     var displayMode by remember{ mutableStateOf("") }
 
@@ -199,7 +201,7 @@ fun LoginFormRegister(
 @Composable
 private fun LoginPagePreview() {
     LoginPage(
-        DrawerState(DrawerValue.Closed)
+        DrawerState(DrawerValue.Closed),{_,_,_->},{_,_->}
     )
 }
 

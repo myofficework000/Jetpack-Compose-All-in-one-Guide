@@ -154,7 +154,11 @@ fun MainContainerOfApp(
                 }
 
                 composable(NavDes.Login1.data.route) {
-                    LoginPage(drawerState)
+                    LoginPage(
+                        drawerState,
+                        onLogin = {_,_,_->},
+                        onRegister = {_,_->}
+                    )
                 }
 
                 composable(NavDes.Tmdb.data.route) {
