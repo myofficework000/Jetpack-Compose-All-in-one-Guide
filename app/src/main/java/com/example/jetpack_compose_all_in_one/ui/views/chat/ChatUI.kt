@@ -1,7 +1,6 @@
 package com.example.jetpack_compose_all_in_one.ui.views.chat
 
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember

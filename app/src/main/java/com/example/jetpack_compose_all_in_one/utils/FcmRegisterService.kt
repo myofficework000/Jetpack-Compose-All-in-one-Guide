@@ -1,5 +1,6 @@
 package com.example.jetpack_compose_all_in_one.utils
 
+import android.util.Log
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.FirebaseMessagingService
@@ -7,6 +8,7 @@ import com.google.firebase.messaging.RemoteMessage
 import com.google.firebase.messaging.ktx.messaging
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import java.io.BufferedOutputStream
 import java.io.BufferedWriter
@@ -30,6 +32,7 @@ class FcmRegisterService: FirebaseMessagingService() {
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
         println("Received message: ${message.data}")
+        Log.i("tag","Received message")
     }
 
     override fun onDestroy() {
@@ -46,9 +49,12 @@ class FcmRegisterService: FirebaseMessagingService() {
         // All these warning tells us to use IO thread. But this whole function
         //      runs on Dispatcher.IO so don't worry about it.
         suspend fun sendMessage(recipientUserId: String, message: String) {
-            val conn = URL(fcmApiUrl).openConnection() as HttpsURLConnection
+            val httpsURLConnection =
+                withContext(Dispatchers.IO) {
+                    URL(fcmApiUrl).openConnection()
+                } as HttpsURLConnection
 
-            conn.apply {
+            httpsURLConnection.apply {
                 readTimeout = 10000
                 connectTimeout = 15000
                 requestMethod = "POST"
@@ -64,25 +70,31 @@ class FcmRegisterService: FirebaseMessagingService() {
                 .put("to", "/topics/$recipientUserId")
 
             // This is where the coroutine is suspended for a long time.
-            val outputStream = BufferedOutputStream(conn.outputStream)
-            BufferedWriter( OutputStreamWriter(outputStream, "utf-8") ).apply {
-                write(body.toString())
-                flush()
-                close()
+            val outputStream = BufferedOutputStream(httpsURLConnection.outputStream)
+            withContext(Dispatchers.IO) {
+                BufferedWriter(OutputStreamWriter(outputStream, "utf-8")).apply {
+                    write(body.toString())
+                    flush()
+                    close()
+                }
             }
-            outputStream.close()
+            withContext(Dispatchers.IO) {
+                outputStream.close()
+            }
 
             // This runs after the post request is complete
-            /*when (conn.responseCode){
+            when (httpsURLConnection.responseCode){
                 200 -> {
                     // Do something with this one
-                    conn.inputStream
+                    httpsURLConnection.inputStream
+                    Log.i("tag","Success")
                 }
                 in 400..499 -> {
                     // Same here
-                    conn.errorStream
+                    httpsURLConnection.errorStream
+                    Log.i("tag","Failure")
                 }
-            }*/
+            }
         }
 
         fun subscribeToUser(userFcmToken: String, onSubscribe: () -> Unit) {
