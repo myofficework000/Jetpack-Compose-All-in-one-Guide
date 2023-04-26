@@ -27,6 +27,8 @@ sealed class NavDes(val data: NavigationDrawerData) {
 
     object ChatDemoUI: NavDes( NavigationDrawerData("chatting_feature", "chatting feature") )
 
+    object ShowImages: NavDes( NavigationDrawerData("img_show", "Show Device Images") )
+
     object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
         R.drawable.baseline_contacts_24
     ) )
@@ -48,7 +50,8 @@ sealed class NavDes(val data: NavigationDrawerData) {
             Login1,
             Tmdb,
             Quotes,
-            ChatDemoUI
+            ChatDemoUI,
+            ShowImages
         )
 
         // Put all pages that need a custom TopAppBar in this list.
