@@ -23,6 +23,7 @@ import com.example.jetpack_compose_all_in_one.features.alarm.AlarmMainUI
 import com.example.jetpack_compose_all_in_one.features.chatmodule.ChatViewModel
 import com.example.jetpack_compose_all_in_one.features.download_manager.Download
 import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginPage
+import com.example.jetpack_compose_all_in_one.features.provideimages.ShowImages
 import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat
 import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat2
 import com.example.jetpack_compose_all_in_one.ui.views.navigation.NavigationDrawerMain
@@ -173,6 +174,10 @@ fun MainContainerOfApp(
                     DemoFullChat2(
                         vm.chatHistory.toList()
                     ) { data -> vm.sendMessage(data) }
+                }
+
+                composable(NavDes.ShowImages.data.route) {
+                    ShowImages(7)
                 }
             }
         }
