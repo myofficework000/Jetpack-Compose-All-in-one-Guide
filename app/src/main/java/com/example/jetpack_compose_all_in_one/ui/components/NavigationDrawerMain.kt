@@ -1,4 +1,4 @@
-package com.example.jetpack_compose_all_in_one.ui.views.navigation
+package com.example.jetpack_compose_all_in_one.ui.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,6 +12,8 @@ import androidx.navigation.NavController
 import com.example.jetpack_compose_all_in_one.ui.theme.sp_32
 import com.example.jetpack_compose_all_in_one.ui.theme.spaceLarge
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavDes
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavigationCategoryData
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavigationDrawerData
 
 // content is most likely a Scaffold. So no padding needed.
 @Composable
@@ -28,19 +30,42 @@ fun NavigationDrawerMain(
             ModalDrawerSheet {
                 DrawerHeader()
                 NavDes.drawerList.forEach {
-                    NavigationDrawerItem(
-                        selected = false,
-                        label = { Text(it.data.displayText) },
-                        icon = it.data.iconResId?.run{ { Icon(painterResource(this),"") } },
-                        onClick = {
-                            navController.navigate(it.data.route)
-                            currentRoute.value = it.data.route
-                            closeDrawerFunc()
-                        })
+                    DrawerCategoryAndItem(it) { des ->
+                        des.data as NavigationDrawerData // This is for smart casting
+                        navController.navigate(des.data.route)
+                        currentRoute.value = des.data.route
+                        closeDrawerFunc()
+                    }
                 }
             }
         }
     ) { content() }
+}
+
+@Composable
+private fun DrawerCategoryAndItem(
+    item: NavDes,
+    onItemClick: (NavDes) -> Unit
+) {
+    if (item.data is NavigationCategoryData) {
+        ExpandableContent({
+            Text(
+                item.data.displayName,
+                Modifier.padding(ButtonDefaults.TextButtonContentPadding),
+                MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }) {
+            item.data.items.forEach {
+                DrawerCategoryAndItem(it, onItemClick) }
+        }
+    } else {
+        item.data as NavigationDrawerData // This is for smart casting
+        NavigationDrawerItem(
+            selected = false,
+            label = { Text(item.data.displayText) },
+            icon = item.data.iconResId?.run{ { Icon(painterResource(this),"") } },
+            onClick = { onItemClick(item) })
+    }
 }
 
 @Composable

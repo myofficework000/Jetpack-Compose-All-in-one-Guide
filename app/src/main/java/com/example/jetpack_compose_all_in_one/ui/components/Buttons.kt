@@ -135,6 +135,7 @@ fun TextButton(
     text: String,
     modifier: Modifier = Modifier,
     textModifier: Modifier = Modifier,
+    color: Color = Color.Unspecified,
     enabled: Boolean = true,
     fontSize: TextUnit = 16.sp,
     isBold: Boolean = false,
@@ -148,7 +149,7 @@ fun TextButton(
         contentPadding = if (hasPadding) ButtonDefaults.TextButtonContentPadding else PaddingValues(0.dp)
     ) {
         Text(
-            text = text, modifier = textModifier, fontSize = fontSize,
+            text = text, modifier = textModifier, fontSize = fontSize, color = color,
             fontWeight = if (isBold) FontWeight.Bold else FontWeight.Normal
         )
     }
