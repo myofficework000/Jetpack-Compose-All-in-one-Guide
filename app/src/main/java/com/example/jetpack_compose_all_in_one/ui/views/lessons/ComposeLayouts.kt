@@ -84,16 +84,32 @@ fun ComposeLayouts() {
             Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("This is a box that with aligning")
+            Text("This is a box that with aligning with Parent")
             Box(
-                Modifier.background(L1BoxColor3).size(200.dp)
+                Modifier.background(L1BoxColor3).size(250.dp)
             ) {
-                Text("1", Modifier.align(Alignment.TopStart))
-                Text("2", Modifier.align(Alignment.TopEnd))
-                Text("3", Modifier.align(Alignment.BottomStart))
-                Text("4", Modifier.align(Alignment.BottomCenter))
-                Text("(R.I.P. OCD)", Modifier.align(Alignment.BottomEnd), fontSize = 4.sp)
-                Text("5", Modifier.align(Alignment.Center))
+                Text("Center", Modifier.align(Alignment.Center))
+                Text("Top Start", Modifier.align(Alignment.TopStart))
+                Text("Top End", Modifier.align(Alignment.TopEnd))
+                Text("Bottom Start", Modifier.align(Alignment.BottomStart))
+                Text("Bottom End", Modifier.align(Alignment.BottomEnd))
+            }
+        }
+
+        Spacer(Modifier.height(32.dp))
+
+        Column(
+            Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text("This is a box that with aligning with Parent Edges and center")
+            Box(
+                Modifier.background(L1BoxColor3).size(250.dp)
+            ) {
+                Text("Top Center", Modifier.align(Alignment.TopCenter))
+                Text("Center Start", Modifier.align(Alignment.CenterStart))
+                Text("Center End", Modifier.align(Alignment.CenterEnd))
+                Text("Bottom Center", Modifier.align(Alignment.BottomCenter))
             }
         }
     }
