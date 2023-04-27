@@ -150,7 +150,7 @@ class FcmRegisterService: FirebaseMessagingService() {
             // Creating the JSON with post params
             val body = JSONObject()
                 .put("data", JSONObject().put("message", message))
-                .put("to", "/topics/$recipientUserId")
+                .put("to", "$recipientUserId")
 
             // This is where the coroutine is suspended for a long time.
             val outputStream = BufferedOutputStream(httpsURLConnection.outputStream)
@@ -171,6 +171,7 @@ class FcmRegisterService: FirebaseMessagingService() {
                     // Do something with this one
                     httpsURLConnection.inputStream
                     Log.i("tag","Success")
+                    Log.i("tag", httpsURLConnection.responseMessage)
                 }
                 in 400..499 -> {
                     // Same here
