@@ -24,9 +24,9 @@ import com.example.jetpack_compose_all_in_one.features.chatmodule.ChatViewModel
 import com.example.jetpack_compose_all_in_one.features.download_manager.Download
 import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginPage
 import com.example.jetpack_compose_all_in_one.features.provideimages.ShowImages
-import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat
+import com.example.jetpack_compose_all_in_one.ui.views.lessons.ComposeLayouts
 import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat2
-import com.example.jetpack_compose_all_in_one.ui.views.navigation.NavigationDrawerMain
+import com.example.jetpack_compose_all_in_one.ui.views.lessons.MaterialComponents
 import com.example.jetpack_compose_all_in_one.ui.views.tmdbapi.PopularMoviesPage
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavDes
 import com.example.jetpack_compose_all_in_one.view.Quote
@@ -50,7 +50,7 @@ fun MainContainerOfApp(
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
     val navController = rememberNavController()
-    val currentRoute = remember { mutableStateOf(NavDes.drawerList[0].data.route) }
+    val currentRoute = remember { mutableStateOf(NavDes.startDestination.route()) }
     val snackbarHostState = remember { SnackbarHostState() }
 
     NavigationDrawerMain(navController, currentRoute, drawerState,
@@ -68,17 +68,17 @@ fun MainContainerOfApp(
             snackbarHost = { SnackbarShow(snackbarHostState, isOffline) }
         ) {
             NavHost(navController, currentRoute.value, Modifier.padding(it)) {
-                composable(NavDes.Home.data.route) {
+                composable(NavDes.Home.route()) {
                     Box {}
                 }
-                composable(NavDes.Internet.data.route) {
+                composable(NavDes.Internet.route()) {
                     if (isOffline) {
                         NetworkErrorDialog()
                     } else {
                         Text("Internet available")
                     }
                 }
-                composable(NavDes.ForegroundService.data.route) {
+                composable(NavDes.ForegroundService.route()) {
                     Box(
                         Modifier.fillMaxSize(),
                         contentAlignment = Alignment.Center
@@ -97,7 +97,7 @@ fun MainContainerOfApp(
                         }
                     }
                 }
-                composable(NavDes.BoundService.data.route) {
+                composable(NavDes.BoundService.route()) {
                     Column(
                         Modifier.fillMaxSize(),
                         verticalArrangement = Arrangement.Center,
@@ -130,7 +130,7 @@ fun MainContainerOfApp(
                         }
                     }
                 }
-                composable(NavDes.Download.data.route) {
+                composable(NavDes.Download.route()) {
                     Column(
                         Modifier.fillMaxSize(),
                         horizontalAlignment = Alignment.CenterHorizontally,
@@ -146,7 +146,7 @@ fun MainContainerOfApp(
                         SimpleTextButton(buttonMessage = "Download") { downloadFileObj.start() }
                     }
                 }
-                composable(NavDes.AlarmManager.data.route) {
+                composable(NavDes.AlarmManager.route()) {
                     AlarmMainUI { msg, lng ->
                         scope.launch {
                             snackbarHostState.showText(msg, lng)
@@ -154,7 +154,7 @@ fun MainContainerOfApp(
                     }
                 }
 
-                composable(NavDes.Login1.data.route) {
+                composable(NavDes.Login1.route()) {
                     LoginPage(
                         drawerState,
                         onLogin = {_,_,_->},
@@ -162,22 +162,30 @@ fun MainContainerOfApp(
                     )
                 }
 
-                composable(NavDes.Tmdb.data.route) {
+                composable(NavDes.Tmdb.route()) {
                     PopularMoviesPage(hiltViewModel())
                 }
 
-                composable(NavDes.Quotes.data.route) {
+                composable(NavDes.Quotes.route()) {
                     Quote()
                 }
-                composable(NavDes.ChatDemoUI.data.route) {
+                composable(NavDes.ChatDemoUI.route()) {
                     val vm = hiltViewModel<ChatViewModel>()
                     DemoFullChat2(
                         vm.chatHistory.toList()
                     ) { data -> vm.sendMessage(data) }
                 }
 
-                composable(NavDes.ShowImages.data.route) {
+                composable(NavDes.ShowImages.route()) {
                     ShowImages(7)
+                }
+
+                composable(NavDes.L1Layouts.route()) {
+                    ComposeLayouts()
+                }
+
+                composable(NavDes.L2Components.route()) {
+                    MaterialComponents()
                 }
             }
         }

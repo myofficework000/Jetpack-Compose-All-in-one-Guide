@@ -1,7 +1,5 @@
 package com.example.jetpack_compose_all_in_one.utils.navigation
 
-import com.example.jetpack_compose_all_in_one.R
-
 /*
     How to add an item in Navigation Drawer:
     1. Create a sealed class object below. Check all these examples for reference
@@ -11,7 +9,9 @@ import com.example.jetpack_compose_all_in_one.R
     4. Inside the NavHost (Currently positioned in MainContainerOfApp), add a
             composable item. Again, take reference from the existing items above.
  */
-sealed class NavDes(val data: NavigationDrawerData) {
+sealed class NavDes(val data: INavigationDrawerItem) {
+
+    // These are for individual items
     object Home: NavDes( NavigationDrawerData("home","Home") )
     object Internet: NavDes( NavigationDrawerData("internet","Connectivity Manager") )
     object ForegroundService: NavDes( NavigationDrawerData("fService","Foreground Services") )
@@ -29,7 +29,11 @@ sealed class NavDes(val data: NavigationDrawerData) {
 
     object ShowImages: NavDes( NavigationDrawerData("img_show", "Show Device Images") )
 
-    object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
+    object L1Layouts: NavDes( NavigationDrawerData("l1", "Row, Column, Box") )
+
+    object L2Components: NavDes( NavigationDrawerData("l2", "Material Components") )
+
+    /*object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
         R.drawable.baseline_contacts_24
     ) )
     object History: NavDes( NavigationDrawerData("history","History",
@@ -37,22 +41,49 @@ sealed class NavDes(val data: NavigationDrawerData) {
     ) )
     object Settings: NavDes( NavigationDrawerData("settings","Settings",
         R.drawable.baseline_settings_24
-    ) )
+    ) )*/
+
+
+
+    // These are for the categories
+    object CategoryApis: NavDes( NavigationCategoryData(
+        listOf(Tmdb, Quotes), "API implementations")
+    )
+    object CategoryServices: NavDes( NavigationCategoryData(
+        listOf(ForegroundService, BoundService, AlarmManager), "Service implementations")
+    )
+
+    object CategoryLessons: NavDes( NavigationCategoryData(
+        listOf(
+            L1Layouts,
+            L2Components
+        ), "Lessons")
+    )
+    object CategoryFeatures: NavDes( NavigationCategoryData(
+        listOf(
+            Home,
+            ShowImages,
+            CategoryServices,
+            CategoryApis,
+            Internet,
+            Download,
+            Login1,
+            ChatDemoUI
+        ), "Features")
+    )
+
+    // Some utils
+    fun route() = (data as NavigationDrawerData).route
 
     companion object {
+        // This is a mix of individual destinations and categories,
+        //      but for now only categories are needed.
         val drawerList = listOf(
-            Home,
-            Internet,
-            ForegroundService,
-            BoundService,
-            Download,
-            AlarmManager,
-            Login1,
-            Tmdb,
-            Quotes,
-            ChatDemoUI,
-            ShowImages
+            CategoryLessons,
+            CategoryFeatures
         )
+
+        val startDestination = Home
 
         // Put all pages that need a custom TopAppBar in this list.
         // It'll be evaluated in MainContainerOfApp.
@@ -62,6 +93,6 @@ sealed class NavDes(val data: NavigationDrawerData) {
         // If that's too inconvenient, give me some time to redesign this setup.
         fun needCustomAppBar(currentRoute: String) = listOf(
             Login1
-        ).map { it.data.route }.contains(currentRoute)
+        ).map { it.route() }.contains(currentRoute)
     }
 }

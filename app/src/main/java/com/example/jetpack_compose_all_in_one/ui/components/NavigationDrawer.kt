@@ -89,7 +89,7 @@ fun NavigationDrawer() {
 }
 
 @Composable
-fun DrawerHeader() {
+private fun DrawerHeader() {
     Box(
         modifier = Modifier
             .fillMaxWidth()

@@ -33,3 +33,7 @@ val DateColor = Color(0xffd4eaf4)
 val BackgroundColor = Color(0xffFBE9E7)
 val ChatTextColor = Color.Black
 val ChatTimeColor = Color.Gray
+
+val L1BoxColor1 = Color(0xFF6B720E)
+val L1BoxColor2 = Color(0xFF4B8A2C)
+val L1BoxColor3 = Color(0xFF1E420D)
