@@ -14,7 +14,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.jetpack_compose_all_in_one.ui.components.ScrollableColumn
 import com.example.jetpack_compose_all_in_one.ui.theme.L1BoxColor1
 import com.example.jetpack_compose_all_in_one.ui.theme.L1BoxColor2
@@ -68,13 +67,21 @@ fun ComposeLayouts() {
         ) {
             Text("This is a box that with no aligning")
             Box(
-                Modifier.background(L1BoxColor3).size(200.dp)
+                Modifier
+                    .background(L1BoxColor1)
+                    .size(200.dp)
             ) {
-                Text("1")
-                Text("2")
-                Text("3")
-                Text("4")
-                Text("5")
+                Box(
+                    Modifier
+                        .background(L1BoxColor2)
+                        .size(150.dp)
+                ) {
+                    Box(
+                        Modifier
+                            .background(L1BoxColor3)
+                            .size(50.dp)
+                    )
+                }
             }
         }
 
@@ -86,7 +93,9 @@ fun ComposeLayouts() {
         ) {
             Text("This is a box that with aligning with Parent")
             Box(
-                Modifier.background(L1BoxColor3).size(250.dp)
+                Modifier
+                    .background(L1BoxColor3)
+                    .size(250.dp)
             ) {
                 Text("Center", Modifier.align(Alignment.Center))
                 Text("Top Start", Modifier.align(Alignment.TopStart))
@@ -104,7 +113,9 @@ fun ComposeLayouts() {
         ) {
             Text("This is a box that with aligning with Parent Edges and center")
             Box(
-                Modifier.background(L1BoxColor3).size(250.dp)
+                Modifier
+                    .background(L1BoxColor3)
+                    .size(250.dp)
             ) {
                 Text("Top Center", Modifier.align(Alignment.TopCenter))
                 Text("Center Start", Modifier.align(Alignment.CenterStart))
