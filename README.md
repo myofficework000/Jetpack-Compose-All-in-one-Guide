@@ -13,6 +13,8 @@ Lesson are -
 ...
 
 
+
+
 Features are
 1. Android Activity life cycle scenario's visualization - Not yet implemented
 2. Fragment Lifecycle scenario's visualization - Not yet implemented
@@ -25,3 +27,11 @@ Features are
 6. Quotes Demo - Implemented API using RxJava with Retrofit using MVVM architecture
 7. TMDB Demo - Implemented Kotlin Flows using Retrofit using MVVM + Paging 3 for pagination features
 8. Animations Demo
+
+
+| Lesson                                                                                                                                                                                                                     | Preview                                               |
+|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------ |
+| <h3>1-1 Column, Row, Box, Modifiers</h3><br/>Create Row that adds elements in horizontal order, and Column that adds elements in vertical order.<br><br> • Column<br>• Row<br>• Box<br>• Modifier<br>              | <video src ='https://user-images.githubusercontent.com/51234843/235175501-fa694680-3003-481f-8a55-fddedf50aae9.mp4' width=200/> |
+                                                                                                               
+
+
