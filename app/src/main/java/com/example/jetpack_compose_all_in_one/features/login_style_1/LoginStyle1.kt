@@ -25,13 +25,13 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.ui.components.DrawerButton
-import com.example.jetpack_compose_all_in_one.ui.views.sign_in_sign_up.RegistrationForm
 import com.example.jetpack_compose_all_in_one.ui.components.OutlinedButton
 import com.example.jetpack_compose_all_in_one.ui.components.ScrollableColumn
 import com.example.jetpack_compose_all_in_one.ui.components.SimpleTextButton
 import com.example.jetpack_compose_all_in_one.ui.components.TextButtonWithIcon
 import com.example.jetpack_compose_all_in_one.ui.theme.LightBlueToBlue30
 import com.example.jetpack_compose_all_in_one.ui.views.sign_in_sign_up.LoginForm1
+import com.example.jetpack_compose_all_in_one.ui.views.sign_in_sign_up.RegistrationForm
 
 @Composable
 fun LoginPage(

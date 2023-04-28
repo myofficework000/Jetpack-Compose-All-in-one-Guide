@@ -3,12 +3,14 @@ package com.example.jetpack_compose_all_in_one.features.download_manager
 import android.app.DownloadManager
 import android.content.Context
 import android.net.Uri
-import android.os.Build
 import android.os.Environment
 import androidx.activity.ComponentActivity
-import androidx.work.*
+import androidx.work.Constraints
+import androidx.work.ExistingWorkPolicy
+import androidx.work.NetworkType
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
 import com.example.jetpack_compose_all_in_one.utils.extractFileName
-import java.io.File
 
 class Download(
     var url: String,

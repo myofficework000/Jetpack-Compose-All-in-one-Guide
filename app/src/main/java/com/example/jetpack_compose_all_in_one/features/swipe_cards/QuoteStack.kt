@@ -7,8 +7,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.jetpack_compose_all_in_one.ui.views.quotes_ui.QuoteCard
 import com.example.jetpack_compose_all_in_one.utils.InfiniteList
-import com.example.jetpack_compose_all_in_one.view.QuoteCard
 
 @Composable
 fun <T> QuoteStack(
@@ -42,5 +42,5 @@ fun <T> QuoteStack(
 @Composable
 fun StackPreview() {
     val items = InfiniteList(listOf("12345","23456","34567","45678"))
-    QuoteStack(items = items) {QuoteCard(it,"-Nobody")}
+    QuoteStack(items = items) { QuoteCard(it,"-Nobody") }
 }

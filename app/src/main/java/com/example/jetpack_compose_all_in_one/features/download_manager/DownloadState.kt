@@ -1,7 +1,6 @@
 package com.example.jetpack_compose_all_in_one.features.download_manager
 
 import android.app.DownloadManager
-import android.net.Uri
 
 class DownloadState(
     var downloadId: Long,

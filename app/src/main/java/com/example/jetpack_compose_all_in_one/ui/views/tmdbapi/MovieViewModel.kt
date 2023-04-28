@@ -2,9 +2,9 @@ package com.example.jetpack_compose_all_in_one.ui.views.tmdbapi
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.jetpack_compose_all_in_one.di.TMDBAPI
 import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.TmdbResponse
 import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.repository.IMovieRepository
-import com.example.jetpack_compose_all_in_one.di.TMDBAPI
 import com.example.jetpack_compose_all_in_one.utils.ResultState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher

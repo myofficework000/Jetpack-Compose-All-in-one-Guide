@@ -8,7 +8,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.activity.ComponentActivity
 import androidx.work.WorkManager
-import java.util.*
+import java.util.UUID
 
 class DownloadReceiver: BroadcastReceiver() {
     override fun onReceive(p0: Context, p1: Intent) {

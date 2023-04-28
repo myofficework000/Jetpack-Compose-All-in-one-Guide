@@ -9,8 +9,8 @@ import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
 import android.provider.Settings
-import com.example.jetpack_compose_all_in_one.ui.views.main_ui.MainActivity
 import com.example.jetpack_compose_all_in_one.R
+import com.example.jetpack_compose_all_in_one.ui.views.main_ui.MainActivity
 
 class MusicForegroundService: Service() {
     private val mediaPlayer by lazy {

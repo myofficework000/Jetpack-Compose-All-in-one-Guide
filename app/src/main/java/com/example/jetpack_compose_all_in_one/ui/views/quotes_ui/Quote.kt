@@ -1,6 +1,10 @@
 package com.example.jetpack_compose_all_in_one.view
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -12,6 +16,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.jetpack_compose_all_in_one.features.quotes_using_rx_java.QuoteAPI.QuoteResponse
+import com.example.jetpack_compose_all_in_one.ui.views.quotes_ui.QuoteCard
 import com.example.jetpack_compose_all_in_one.ui.views.quotes_ui.QuoteViewModel
 
 @Composable

@@ -20,7 +20,6 @@ import com.bumptech.glide.integration.compose.GlideImage
 import com.example.jetpack_compose_all_in_one.ui.components.SimpleTextButton
 import com.example.jetpack_compose_all_in_one.utils.requestReadPerm
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
-import com.google.accompanist.permissions.rememberPermissionState
 import java.io.File
 
 @OptIn(ExperimentalGlideComposeApi::class, ExperimentalPermissionsApi::class)

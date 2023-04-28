@@ -1,9 +1,9 @@
 package com.example.jetpack_compose_all_in_one.ui.views.chat
 
-import com.example.jetpack_compose_all_in_one.ui.views.chat.bubble.BubbleState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.example.jetpack_compose_all_in_one.ui.views.chat.bubble.BubbleState
 import com.example.jetpack_compose_all_in_one.ui.views.chat.bubble.drawBubble
 import com.example.jetpack_compose_all_in_one.ui.views.chat.bubble.drawBubbleWithShape
 

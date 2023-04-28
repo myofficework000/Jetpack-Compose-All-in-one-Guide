@@ -25,17 +25,16 @@ import com.example.jetpack_compose_all_in_one.features.download_manager.Download
 import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginPage
 import com.example.jetpack_compose_all_in_one.features.provideimages.ShowImages
 import com.example.jetpack_compose_all_in_one.features.swipe_cards.QuoteStack
-import com.example.jetpack_compose_all_in_one.ui.views.lessons.ComposeLayouts
 import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat2
+import com.example.jetpack_compose_all_in_one.ui.views.lessons.ComposeLayouts
 import com.example.jetpack_compose_all_in_one.ui.views.lessons.MaterialComponents
+import com.example.jetpack_compose_all_in_one.ui.views.quotes_ui.QuoteCard
 import com.example.jetpack_compose_all_in_one.ui.views.tmdbapi.PopularMoviesPage
 import com.example.jetpack_compose_all_in_one.utils.InfiniteList
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavDes
 import com.example.jetpack_compose_all_in_one.view.Quote
-import com.example.jetpack_compose_all_in_one.view.QuoteCard
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import java.util.Stack
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

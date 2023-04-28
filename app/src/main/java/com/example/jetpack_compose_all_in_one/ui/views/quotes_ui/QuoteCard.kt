@@ -1,53 +1,58 @@
-package com.example.jetpack_compose_all_in_one.view
+package com.example.jetpack_compose_all_in_one.ui.views.quotes_ui
 
-import android.graphics.fonts.FontStyle
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.example.jetpack_compose_all_in_one.ui.theme.dp_10
+import com.example.jetpack_compose_all_in_one.ui.theme.dp_100
+import com.example.jetpack_compose_all_in_one.ui.theme.dp_15
+import com.example.jetpack_compose_all_in_one.ui.theme.sp_10
+import com.example.jetpack_compose_all_in_one.ui.theme.sp_16
 
 @Composable
-fun QuoteCard(quote: String, author: String){
+fun QuoteCard(quote: String, author: String) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(100.dp),
-        shape = RoundedCornerShape(15.dp),
+            .height(dp_100),
+        shape = RoundedCornerShape(dp_10),
         border = BorderStroke(0.5.dp, Color.Gray),
-        elevation = CardDefaults.cardElevation(20.dp),
+        elevation = CardDefaults.cardElevation(dp_15),
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight()
-                .padding(10.dp),
+                .padding(dp_10),
             verticalArrangement = Arrangement.Center
         ) {
             Text(
                 modifier = Modifier.fillMaxWidth(),
-                text= quote,
+                text = quote,
                 fontWeight = FontWeight.Bold,
-                fontSize = 15.sp,
+                fontSize = sp_16,
                 textAlign = TextAlign.Center
             )
             Text(
                 modifier = Modifier.fillMaxWidth(),
-                text= author,
-                fontSize = 10.sp,
+                text = author,
+                fontSize = sp_10,
                 textAlign = TextAlign.Center
             )
         }
-
     }
 }
