@@ -33,6 +33,8 @@ sealed class NavDes(val data: INavigationDrawerItem) {
 
     object L2Components: NavDes( NavigationDrawerData("l2", "Material Components") )
 
+    object QuoteSwipe: NavDes( NavigationDrawerData("quote2", "Swipe Quotes") )
+
     /*object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
         R.drawable.baseline_contacts_24
     ) )
@@ -68,7 +70,8 @@ sealed class NavDes(val data: INavigationDrawerItem) {
             Internet,
             Download,
             Login1,
-            ChatDemoUI
+            ChatDemoUI,
+            QuoteSwipe
         ), "Features")
     )
 
