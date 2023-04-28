@@ -13,6 +13,8 @@ Lesson are -
 ...
 
 
+
+
 Features are
 1. Android Activity life cycle scenario's visualization - Not yet implemented
 2. Fragment Lifecycle scenario's visualization - Not yet implemented
@@ -29,7 +31,7 @@ Features are
 
 | Lesson                                                                                                                                                                                                                     | Preview                                               |
 |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------ |
-| <h3>1-1 Column, Row, Box, Modifiers</h3><br/>Create Row that adds elements in horizontal order, and Column that adds elements in vertical order.<br><br> • Column<br>• Row<br>• Box<br>• Modifier<br>              | <video src ='https://user-images.githubusercontent.com/51234843/235006941-ee3e73b8-9320-4363-a233-0cf1d02df5c0.mp4' width=200/> |
+| <h3>1-1 Column, Row, Box, Modifiers</h3><br/>Create Row that adds elements in horizontal order, and Column that adds elements in vertical order.<br><br> • Column<br>• Row<br>• Box<br>• Modifier<br>              | <video src ='https://user-images.githubusercontent.com/51234843/235175501-fa694680-3003-481f-8a55-fddedf50aae9.mp4' width=200/> |
                                                                                                                
 
 
