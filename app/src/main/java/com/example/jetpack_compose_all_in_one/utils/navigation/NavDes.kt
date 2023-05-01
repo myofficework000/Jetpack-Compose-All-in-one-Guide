@@ -31,11 +31,11 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object ShowImages : NavDes(NavigationDrawerData("img_show", "Show Device Images"))
 
-    object L1Layouts : NavDes(NavigationDrawerData("l1", "Row, Column, Box"))
+    object L1Layouts : NavDes(NavigationDrawerData("l1", "Lesson 1: Row, Column, Box"))
 
-    object L2Chapter1 : NavDes(NavigationDrawerData("chapter_1", "Lesson 2, Chapter: Shapes"))
+    object L2Chapter1 : NavDes(NavigationDrawerData("chapter_1", "Chapter 1: Shapes"))
 
-    object L2Chapter2 : NavDes(NavigationDrawerData("chapter_2", "Lesson 2, Chapter: Text"))
+    object L2Chapter2 : NavDes(NavigationDrawerData("chapter_2", "Chapter 2: Text"))
 
     object QuoteSwipe : NavDes(NavigationDrawerData("quote2", "Swipe Quotes"))
 
@@ -63,7 +63,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object L2Components : NavDes(
         NavigationCategoryData(
-            listOf(L2Chapter1, L2Chapter2), "Material Designs"
+            listOf(L2Chapter1, L2Chapter2), "Lesson 2: Material Designs"
         )
     )
 
