@@ -27,7 +27,7 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavigationDrawerD
 @Composable
 fun NavigationDrawerMain(
     navController: NavController,
-    currentRoute: MutableState<String>,
+    currentRoute: MutableState<NavDes>,
     drawerState: DrawerState,
     closeDrawerFunc: () -> Unit,
     content: @Composable () -> Unit
@@ -41,7 +41,7 @@ fun NavigationDrawerMain(
                     DrawerCategoryAndItem(it) { des ->
                         des.data as NavigationDrawerData // This is for smart casting
                         navController.navigate(des.data.route)
-                        currentRoute.value = des.data.route
+                        currentRoute.value = des
                         closeDrawerFunc()
                     }
                 }

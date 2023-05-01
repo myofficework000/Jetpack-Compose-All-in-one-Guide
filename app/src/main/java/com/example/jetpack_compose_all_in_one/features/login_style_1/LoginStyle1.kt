@@ -32,6 +32,7 @@ import com.example.jetpack_compose_all_in_one.ui.components.TextButtonWithIcon
 import com.example.jetpack_compose_all_in_one.ui.theme.LightBlueToBlue30
 import com.example.jetpack_compose_all_in_one.ui.views.sign_in_sign_up.LoginForm1
 import com.example.jetpack_compose_all_in_one.ui.views.sign_in_sign_up.RegistrationForm
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavDes
 
 @Composable
 fun LoginPage(
@@ -79,7 +80,7 @@ fun LoginMainMenu(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(stringResource(id = R.string.app_name)) },
+                title = { Text(NavDes.Login1.displayText()) },
                 navigationIcon = { DrawerButton(drawerState,scope) }
             )
         },

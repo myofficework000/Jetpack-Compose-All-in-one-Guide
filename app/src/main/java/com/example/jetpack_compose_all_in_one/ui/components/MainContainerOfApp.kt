@@ -53,7 +53,7 @@ fun MainContainerOfApp(
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
     val navController = rememberNavController()
-    val currentRoute = remember { mutableStateOf(NavDes.startDestination.route()) }
+    val currentRoute:MutableState<NavDes> = remember { mutableStateOf(NavDes.startDestination) }
     val snackbarHostState = remember { SnackbarHostState() }
 
     NavigationDrawerMain(navController, currentRoute, drawerState,
@@ -63,14 +63,18 @@ fun MainContainerOfApp(
             topBar = {
                 if (!NavDes.needCustomAppBar(currentRoute.value)) {
                     TopAppBar(
-                        title = { Text(stringResource(id = R.string.app_name)) },
+                        title = { Text(
+                            currentRoute.value.customAppBarStringId?.run{
+                                stringResource(id = this)
+                            } ?: currentRoute.value.displayText()
+                        ) },
                         navigationIcon = { DrawerButton(drawerState, scope) }
                     )
                 }
             },
             snackbarHost = { SnackbarShow(snackbarHostState, isOffline) }
         ) {
-            NavHost(navController, currentRoute.value, Modifier.padding(it)) {
+            NavHost(navController, currentRoute.value.route(), Modifier.padding(it)) {
                 composable(NavDes.Home.route()) {
                     Box {}
                 }

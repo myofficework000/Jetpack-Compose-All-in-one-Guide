@@ -1,5 +1,7 @@
 package com.example.jetpack_compose_all_in_one.utils.navigation
 
+import com.example.jetpack_compose_all_in_one.R
+
 /*
     How to add an item in Navigation Drawer:
     1. Create a sealed class object below. Check all these examples for reference
@@ -9,10 +11,10 @@ package com.example.jetpack_compose_all_in_one.utils.navigation
     4. Inside the NavHost (Currently positioned in MainContainerOfApp), add a
             composable item. Again, take reference from the existing items above.
  */
-sealed class NavDes(val data: INavigationDrawerItem) {
+sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: Int? = null) {
 
     // These are for individual items
-    object Home: NavDes( NavigationDrawerData("home","Home") )
+    object Home: NavDes( NavigationDrawerData("home","Home"), R.string.app_name )
     object Internet: NavDes( NavigationDrawerData("internet","Connectivity Manager") )
     object ForegroundService: NavDes( NavigationDrawerData("fService","Foreground Services") )
     object BoundService: NavDes( NavigationDrawerData("bService","Bound Services") )
@@ -77,6 +79,7 @@ sealed class NavDes(val data: INavigationDrawerItem) {
 
     // Some utils
     fun route() = (data as NavigationDrawerData).route
+    fun displayText() = (data as NavigationDrawerData).displayText
 
     companion object {
         // This is a mix of individual destinations and categories,
@@ -94,8 +97,8 @@ sealed class NavDes(val data: INavigationDrawerItem) {
         //      you still need to recreate the whole bar, pass the necessary
         //      states from MainContainerOfApp and setup your own logic.
         // If that's too inconvenient, give me some time to redesign this setup.
-        fun needCustomAppBar(currentRoute: String) = listOf(
+        fun needCustomAppBar(currentRoute: NavDes) = listOf(
             Login1
-        ).map { it.route() }.contains(currentRoute)
+        ).contains(currentRoute)
     }
 }
