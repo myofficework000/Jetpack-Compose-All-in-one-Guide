@@ -20,6 +20,7 @@ val sp_12 = 12.sp
 val sp_14 = 14.sp
 val sp_16 = 16.sp
 val sp_32 = 32.sp
+val sp_36 = 36.sp
 
 
 val dp_0: Dp = 0.dp

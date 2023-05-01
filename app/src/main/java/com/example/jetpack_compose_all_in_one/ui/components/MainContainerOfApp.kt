@@ -31,6 +31,8 @@ import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Screen
 import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat2
 import com.example.jetpack_compose_all_in_one.ui.views.lessons.ComposeLayouts
+import com.example.jetpack_compose_all_in_one.ui.views.lessons.MaterialComponents
+import com.example.jetpack_compose_all_in_one.ui.views.quote_swipe.QuoteSwipe
 import com.example.jetpack_compose_all_in_one.ui.views.quotes_ui.QuoteCard
 import com.example.jetpack_compose_all_in_one.ui.views.tmdbapi.PopularMoviesPage
 import com.example.jetpack_compose_all_in_one.utils.InfiniteList
@@ -197,11 +199,7 @@ fun MainContainerOfApp(
                 }
 
                 composable(NavDes.QuoteSwipe.route()) {
-                    QuoteStack(
-                        items = InfiniteList(listOf("12345", "23456", "34567", "45678", "56789"))
-                    ) { data ->
-                        QuoteCard(data, "Testing")
-                    }
+                    QuoteSwipe(vm = hiltViewModel())
                 }
 
                 composable(NavDes.L2Chapter1.route()) {

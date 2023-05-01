@@ -2,10 +2,11 @@ package com.example.jetpack_compose_all_in_one.di
 
 import com.example.jetpack_compose_all_in_one.features.quotes_using_rx_java.QuoteAPI.APIService
 import com.example.jetpack_compose_all_in_one.features.quotes_using_rx_java.QuoteAPI.repository.RemoteRepository
+import com.example.jetpack_compose_all_in_one.features.swipe_cards.ApiQuotes
 import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.APIMovies
 import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.TmdbApiInterceptor
 import com.example.jetpack_compose_all_in_one.utils.Constants
-import com.example.jetpack_compose_all_in_one.utils.Constants.BASE_URL
+import com.example.jetpack_compose_all_in_one.utils.Constants.QUOTES_BASE_URL
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import dagger.Module
@@ -29,7 +30,7 @@ object NetworkModules {
     @Singleton
     @Provides
     fun provideBaseUrl(): String{
-        return BASE_URL
+        return QUOTES_BASE_URL
     }
 
     @Singleton
@@ -84,8 +85,17 @@ object NetworkModules {
 
     @Provides
     @Singleton
-    @TMDBAPI
+    @QuotesAPI
+    fun provideApiQuotes() = Retrofit.Builder()
+        .baseUrl(QUOTES_BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+        .create<ApiQuotes>()
+
+    @Provides
+    @Singleton
     fun provideIoDispatcher() = Dispatchers.IO
+
 
     @Provides
     @Singleton
