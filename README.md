@@ -31,7 +31,7 @@ Features are
 
 | Lesson                                                                                                                                                                                                                     | Preview                                               |
 |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------ |
-| <h3>1-1 Column, Row, Box, Modifiers</h3><br/>Create Row that adds elements in horizontal order, and Column that adds elements in vertical order.<br><br> • Column<br>• Row<br>• Box<br>• Modifier<br>              | <video src ='https://user-images.githubusercontent.com/51234843/235175501-fa694680-3003-481f-8a55-fddedf50aae9.mp4' width=200/> |
+| <h3><b>Lesson 1:</b> Column, Row, Box, Modifiers</h3><br/>Create Row that adds elements in horizontal order, and Column that adds elements in vertical order.<br><br> • Column<br>• Row<br>• Box<br>• Modifier<br>              | <video src ='https://user-images.githubusercontent.com/51234843/235175501-fa694680-3003-481f-8a55-fddedf50aae9.mp4' width=200/> |
                                                                                                                
 
 
