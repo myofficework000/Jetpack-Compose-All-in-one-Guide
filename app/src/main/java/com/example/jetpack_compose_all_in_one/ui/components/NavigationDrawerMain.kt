@@ -37,12 +37,14 @@ fun NavigationDrawerMain(
         drawerContent = {
             ModalDrawerSheet {
                 DrawerHeader()
-                NavDes.drawerList.forEach {
-                    DrawerCategoryAndItem(it) { des ->
-                        des.data as NavigationDrawerData // This is for smart casting
-                        navController.navigate(des.data.route)
-                        currentRoute.value = des
-                        closeDrawerFunc()
+                ScrollableColumn {
+                    NavDes.drawerList.forEach {
+                        DrawerCategoryAndItem(it) { des ->
+                            des.data as NavigationDrawerData // This is for smart casting
+                            navController.navigate(des.data.route)
+                            currentRoute.value = des
+                            closeDrawerFunc()
+                        }
                     }
                 }
             }
@@ -64,26 +66,27 @@ private fun DrawerCategoryAndItem(
             )
         }) {
             item.data.items.forEach {
-                DrawerCategoryAndItem(it, onItemClick) }
+                DrawerCategoryAndItem(it, onItemClick)
+            }
         }
     } else {
         item.data as NavigationDrawerData // This is for smart casting
         NavigationDrawerItem(
             selected = false,
             label = { Text(item.data.displayText) },
-            icon = item.data.iconResId?.run{ { Icon(painterResource(this),"") } },
+            icon = item.data.iconResId?.run { { Icon(painterResource(this), "") } },
             onClick = { onItemClick(item) })
     }
 }
 
 @Composable
-private fun DrawerHeader(){
+private fun DrawerHeader() {
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = spaceLarge),
         contentAlignment = Alignment.Center
     ) {
-        Text(text = "Header" , fontSize = sp_32)
+        Text(text = "Header", fontSize = sp_32)
     }
 }
