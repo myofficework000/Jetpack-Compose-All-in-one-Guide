@@ -23,11 +23,14 @@ import com.example.jetpack_compose_all_in_one.features.alarm.AlarmMainUI
 import com.example.jetpack_compose_all_in_one.features.chatmodule.ChatViewModel
 import com.example.jetpack_compose_all_in_one.features.download_manager.Download
 import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginPage
+import com.example.jetpack_compose_all_in_one.features.news_sample.NewsSample
 import com.example.jetpack_compose_all_in_one.features.provideimages.ShowImages
 import com.example.jetpack_compose_all_in_one.features.swipe_cards.QuoteStack
+import com.example.jetpack_compose_all_in_one.features.weather_sample.WeatherSample
+import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_Shape
+import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Screen
 import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat2
 import com.example.jetpack_compose_all_in_one.ui.views.lessons.ComposeLayouts
-import com.example.jetpack_compose_all_in_one.ui.views.lessons.MaterialComponents
 import com.example.jetpack_compose_all_in_one.ui.views.quotes_ui.QuoteCard
 import com.example.jetpack_compose_all_in_one.ui.views.tmdbapi.PopularMoviesPage
 import com.example.jetpack_compose_all_in_one.utils.InfiniteList
@@ -53,7 +56,7 @@ fun MainContainerOfApp(
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
     val navController = rememberNavController()
-    val currentRoute:MutableState<NavDes> = remember { mutableStateOf(NavDes.startDestination) }
+    val currentRoute: MutableState<NavDes> = remember { mutableStateOf(NavDes.startDestination) }
     val snackbarHostState = remember { SnackbarHostState() }
 
     NavigationDrawerMain(navController, currentRoute, drawerState,
@@ -63,11 +66,13 @@ fun MainContainerOfApp(
             topBar = {
                 if (!NavDes.needCustomAppBar(currentRoute.value)) {
                     TopAppBar(
-                        title = { Text(
-                            currentRoute.value.customAppBarStringId?.run{
-                                stringResource(id = this)
-                            } ?: currentRoute.value.displayText()
-                        ) },
+                        title = {
+                            Text(
+                                currentRoute.value.customAppBarStringId?.run {
+                                    stringResource(id = this)
+                                } ?: currentRoute.value.displayText()
+                            )
+                        },
                         navigationIcon = { DrawerButton(drawerState, scope) }
                     )
                 }
@@ -164,8 +169,8 @@ fun MainContainerOfApp(
                 composable(NavDes.Login1.route()) {
                     LoginPage(
                         drawerState,
-                        onLogin = {_,_,_->},
-                        onRegister = {_,_->}
+                        onLogin = { _, _, _ -> },
+                        onRegister = { _, _ -> }
                     )
                 }
 
@@ -191,16 +196,26 @@ fun MainContainerOfApp(
                     ComposeLayouts()
                 }
 
-                composable(NavDes.L2Components.route()) {
-                    MaterialComponents()
-                }
-
                 composable(NavDes.QuoteSwipe.route()) {
                     QuoteStack(
-                        items = InfiniteList(listOf("12345","23456","34567","45678","56789"))
+                        items = InfiniteList(listOf("12345", "23456", "34567", "45678", "56789"))
                     ) { data ->
-                        QuoteCard(data,"-You Suck")
+                        QuoteCard(data, "Testing")
                     }
+                }
+
+                composable(NavDes.L2Chapter1.route()) {
+                    Lesson_2_Chapter_Shape()
+                }
+                composable(NavDes.L2Chapter2.route()) {
+                    Lesson_2_Screen()
+                }
+
+                composable(NavDes.NewsSample.route()) {
+                    NewsSample()
+                }
+                composable(NavDes.WeatherSample.route()) {
+                    WeatherSample()
                 }
             }
         }

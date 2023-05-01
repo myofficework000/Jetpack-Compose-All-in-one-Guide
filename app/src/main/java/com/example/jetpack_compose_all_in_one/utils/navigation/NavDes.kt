@@ -14,28 +14,34 @@ import com.example.jetpack_compose_all_in_one.R
 sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: Int? = null) {
 
     // These are for individual items
-    object Home: NavDes( NavigationDrawerData("home","Home"), R.string.app_name )
-    object Internet: NavDes( NavigationDrawerData("internet","Connectivity Manager") )
-    object ForegroundService: NavDes( NavigationDrawerData("fService","Foreground Services") )
-    object BoundService: NavDes( NavigationDrawerData("bService","Bound Services") )
-    object Download: NavDes( NavigationDrawerData("download","Download Manager") )
-    object AlarmManager: NavDes( NavigationDrawerData("alarm","Alarm Manager") )
+    object Home : NavDes(NavigationDrawerData("home", "Home"), R.string.app_name)
+    object Internet : NavDes(NavigationDrawerData("internet", "Connectivity Manager"))
+    object ForegroundService : NavDes(NavigationDrawerData("fService", "Foreground Services"))
+    object BoundService : NavDes(NavigationDrawerData("bService", "Bound Services"))
+    object Download : NavDes(NavigationDrawerData("download", "Download Manager"))
+    object AlarmManager : NavDes(NavigationDrawerData("alarm", "Alarm Manager"))
 
-    object Login1: NavDes( NavigationDrawerData("login_style_1","Login Page (Style 1)") )
+    object Login1 : NavDes(NavigationDrawerData("login_style_1", "Login Page (Style 1)"))
 
-    object Tmdb: NavDes( NavigationDrawerData("tmdb","TMDB API") )
+    object Tmdb : NavDes(NavigationDrawerData("tmdb", "TMDB API"))
 
-    object Quotes: NavDes( NavigationDrawerData("quotes", "Quotes API") )
+    object Quotes : NavDes(NavigationDrawerData("quotes", "Quotes API"))
 
-    object ChatDemoUI: NavDes( NavigationDrawerData("chatting_feature", "chatting feature") )
+    object ChatDemoUI : NavDes(NavigationDrawerData("chatting_feature", "chatting feature"))
 
-    object ShowImages: NavDes( NavigationDrawerData("img_show", "Show Device Images") )
+    object ShowImages : NavDes(NavigationDrawerData("img_show", "Show Device Images"))
 
-    object L1Layouts: NavDes( NavigationDrawerData("l1", "Row, Column, Box") )
+    object L1Layouts : NavDes(NavigationDrawerData("l1", "Row, Column, Box"))
 
-    object L2Components: NavDes( NavigationDrawerData("l2", "Material Components") )
+    object L2Chapter1 : NavDes(NavigationDrawerData("chapter_1", "Lesson 2, Chapter: Shapes"))
 
-    object QuoteSwipe: NavDes( NavigationDrawerData("quote2", "Swipe Quotes") )
+    object L2Chapter2 : NavDes(NavigationDrawerData("chapter_2", "Lesson 2, Chapter: Text"))
+
+    object QuoteSwipe : NavDes(NavigationDrawerData("quote2", "Swipe Quotes"))
+
+    object NewsSample : NavDes(NavigationDrawerData("newsSample", "News Sample"))
+
+    object WeatherSample : NavDes(NavigationDrawerData("weatherSample", "Weather Sample"))
 
     /*object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
         R.drawable.baseline_contacts_24
@@ -48,33 +54,48 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     ) )*/
 
 
-
     // These are for the categories
-    object CategoryApis: NavDes( NavigationCategoryData(
-        listOf(Tmdb, Quotes), "API implementations")
-    )
-    object CategoryServices: NavDes( NavigationCategoryData(
-        listOf(ForegroundService, BoundService, AlarmManager), "Service implementations")
+    object CategoryApis : NavDes(
+        NavigationCategoryData(
+            listOf(Tmdb, Quotes, NewsSample, WeatherSample), "API implementations"
+        )
     )
 
-    object CategoryLessons: NavDes( NavigationCategoryData(
-        listOf(
-            L1Layouts,
-            L2Components
-        ), "Lessons")
+    object L2Components : NavDes(
+        NavigationCategoryData(
+            listOf(L2Chapter1, L2Chapter2), "Material Designs"
+        )
     )
-    object CategoryFeatures: NavDes( NavigationCategoryData(
-        listOf(
-            Home,
-            ShowImages,
-            CategoryServices,
-            CategoryApis,
-            Internet,
-            Download,
-            Login1,
-            ChatDemoUI,
-            QuoteSwipe
-        ), "Features")
+
+    object CategoryServices : NavDes(
+        NavigationCategoryData(
+            listOf(ForegroundService, BoundService, AlarmManager), "Service implementations"
+        )
+    )
+
+    object CategoryLessons : NavDes(
+        NavigationCategoryData(
+            listOf(
+                L1Layouts,
+                L2Components
+            ), "Lessons"
+        )
+    )
+
+    object CategoryFeatures : NavDes(
+        NavigationCategoryData(
+            listOf(
+                Home,
+                ShowImages,
+                CategoryServices,
+                CategoryApis,
+                Internet,
+                Download,
+                Login1,
+                ChatDemoUI,
+                QuoteSwipe
+            ), "Features"
+        )
     )
 
     // Some utils
@@ -96,7 +117,6 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
         // Even if you only want the TopAppBar to disappear at certain states,
         //      you still need to recreate the whole bar, pass the necessary
         //      states from MainContainerOfApp and setup your own logic.
-        // If that's too inconvenient, give me some time to redesign this setup.
         fun needCustomAppBar(currentRoute: NavDes) = listOf(
             Login1
         ).contains(currentRoute)
