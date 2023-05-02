@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.sp
 import com.example.jetpack_compose_all_in_one.ui.components.LessonHeader
 import com.example.jetpack_compose_all_in_one.ui.components.LessonText2
 
+@Preview()
 @Composable
 fun Lesson_2_Chapter_Shape() {
     LessonContent()

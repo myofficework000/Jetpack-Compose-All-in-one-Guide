@@ -23,19 +23,16 @@ import com.example.jetpack_compose_all_in_one.features.alarm.AlarmMainUI
 import com.example.jetpack_compose_all_in_one.features.chatmodule.ChatViewModel
 import com.example.jetpack_compose_all_in_one.features.download_manager.Download
 import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginPage
+import com.example.jetpack_compose_all_in_one.features.login_style_2.LoginScreen2
 import com.example.jetpack_compose_all_in_one.features.news_sample.NewsSample
 import com.example.jetpack_compose_all_in_one.features.provideimages.ShowImages
-import com.example.jetpack_compose_all_in_one.features.swipe_cards.QuoteStack
 import com.example.jetpack_compose_all_in_one.features.weather_sample.WeatherSample
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_Shape
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Screen
 import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat2
 import com.example.jetpack_compose_all_in_one.ui.views.lessons.ComposeLayouts
-import com.example.jetpack_compose_all_in_one.ui.views.lessons.MaterialComponents
 import com.example.jetpack_compose_all_in_one.ui.views.quote_swipe.QuoteSwipe
-import com.example.jetpack_compose_all_in_one.ui.views.quotes_ui.QuoteCard
 import com.example.jetpack_compose_all_in_one.ui.views.tmdbapi.PopularMoviesPage
-import com.example.jetpack_compose_all_in_one.utils.InfiniteList
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavDes
 import com.example.jetpack_compose_all_in_one.view.Quote
 import kotlinx.coroutines.CoroutineScope
@@ -174,6 +171,10 @@ fun MainContainerOfApp(
                         onLogin = { _, _, _ -> },
                         onRegister = { _, _ -> }
                     )
+                }
+
+                composable(NavDes.Login2.route()) {
+                    LoginScreen2()
                 }
 
                 composable(NavDes.Tmdb.route()) {
