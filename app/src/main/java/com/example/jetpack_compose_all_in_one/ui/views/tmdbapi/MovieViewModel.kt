@@ -16,7 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MovieViewModel @Inject constructor(
     @TMDBAPI val movieRepository: IMovieRepository,
-    @TMDBAPI private val ioDispatcher: CoroutineDispatcher
+    private val ioDispatcher: CoroutineDispatcher
 ): ViewModel() {
     private val _popularMovies: MutableStateFlow<ResultState<TmdbResponse>> = MutableStateFlow(
         ResultState.Loading()

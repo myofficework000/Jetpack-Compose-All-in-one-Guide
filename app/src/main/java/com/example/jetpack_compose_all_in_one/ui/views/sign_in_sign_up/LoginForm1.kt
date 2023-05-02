@@ -26,6 +26,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginStateHolder
 import com.example.jetpack_compose_all_in_one.ui.components.CheckboxText
 import com.example.jetpack_compose_all_in_one.ui.components.GradientButton
 import com.example.jetpack_compose_all_in_one.ui.components.GradientTextField
@@ -36,13 +37,10 @@ import com.example.jetpack_compose_all_in_one.ui.theme.WhiteToBlue20
 @Composable
 fun LoginForm1(
     modifier: Modifier = Modifier,
+    loginStateHolder: LoginStateHolder,
     onGotoRegister: () -> Unit = {},
-    onLogin: (String, String, Boolean) -> Unit
+    onLogin: () -> Unit
 ) {
-    val email = rememberSaveable { mutableStateOf("") }
-    val password = rememberSaveable { mutableStateOf("") }
-    val rememberMe = rememberSaveable { mutableStateOf(false) }
-
     Box(
         Modifier
             .fillMaxSize()
@@ -71,16 +69,14 @@ fun LoginForm1(
 
             Spacer(Modifier.size(16.dp))
 
-            EmailField(email)
+            EmailField(loginStateHolder.email)
             SpacerSmall()
-            PasswordField(password)
-            ExtrasField(rememberMe){}
+            PasswordField(loginStateHolder.password)
+            ExtrasField(loginStateHolder.rememberMe){}
 
             Spacer(Modifier.weight(1f))
 
-            SubmitBox(onGotoRegister = onGotoRegister) {
-                onLogin(email.value, password.value, rememberMe.value)
-            }
+            SubmitBox(onGotoRegister = onGotoRegister, onSubmit = onLogin)
         }
     }
 }

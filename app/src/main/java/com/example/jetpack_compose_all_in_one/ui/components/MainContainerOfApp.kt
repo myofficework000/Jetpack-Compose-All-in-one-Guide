@@ -23,17 +23,19 @@ import com.example.jetpack_compose_all_in_one.features.alarm.AlarmMainUI
 import com.example.jetpack_compose_all_in_one.features.chatmodule.ChatViewModel
 import com.example.jetpack_compose_all_in_one.features.download_manager.Download
 import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginPage
-import com.example.jetpack_compose_all_in_one.features.news_sample.NewsSample
+import com.example.jetpack_compose_all_in_one.features.login_style_2.LoginScreen2
+import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginStyle1ViewModel
 import com.example.jetpack_compose_all_in_one.features.provideimages.ShowImages
 import com.example.jetpack_compose_all_in_one.features.swipe_cards.QuoteStack
 import com.example.jetpack_compose_all_in_one.features.weather_sample.view.WeatherSample
+import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_2_Screen
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_Shape
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Screen
 import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat2
 import com.example.jetpack_compose_all_in_one.ui.views.lessons.ComposeLayouts
-import com.example.jetpack_compose_all_in_one.ui.views.quotes_ui.QuoteCard
+import com.example.jetpack_compose_all_in_one.ui.views.quote_swipe.QuoteSwipe
+import com.example.jetpack_compose_all_in_one.ui.views.news_ui.LatestNewsPage
 import com.example.jetpack_compose_all_in_one.ui.views.tmdbapi.PopularMoviesPage
-import com.example.jetpack_compose_all_in_one.utils.InfiniteList
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavDes
 import com.example.jetpack_compose_all_in_one.view.Quote
 import kotlinx.coroutines.CoroutineScope
@@ -167,11 +169,18 @@ fun MainContainerOfApp(
                 }
 
                 composable(NavDes.Login1.route()) {
+                    val vm = hiltViewModel<LoginStyle1ViewModel>()
+
                     LoginPage(
                         drawerState,
-                        onLogin = { _, _, _ -> },
+                        loginStateHolder = vm.loginDetail,
+                        onLogin = { vm.login() },
                         onRegister = { _, _ -> }
                     )
+                }
+
+                composable(NavDes.Login2.route()) {
+                    LoginScreen2()
                 }
 
                 composable(NavDes.Tmdb.route()) {
@@ -197,11 +206,7 @@ fun MainContainerOfApp(
                 }
 
                 composable(NavDes.QuoteSwipe.route()) {
-                    QuoteStack(
-                        items = InfiniteList(listOf("12345", "23456", "34567", "45678", "56789"))
-                    ) { data ->
-                        QuoteCard(data, "Testing")
-                    }
+                    QuoteSwipe(vm = hiltViewModel())
                 }
 
                 composable(NavDes.L2Chapter1.route()) {
@@ -211,8 +216,12 @@ fun MainContainerOfApp(
                     Lesson_2_Screen()
                 }
 
+                composable(NavDes.L2Chapter3.route()) {
+                    Lesson_2_Chapter_2_Screen()
+                }
+
                 composable(NavDes.NewsSample.route()) {
-                    NewsSample()
+                    LatestNewsPage()
                 }
                 composable(NavDes.WeatherSample.route()) {
                     WeatherSample()

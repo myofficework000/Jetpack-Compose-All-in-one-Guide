@@ -1,11 +1,16 @@
 package com.example.jetpack_compose_all_in_one.di
 
+import com.example.jetpack_compose_all_in_one.features.login_style_1.ApiLoginService
+import com.example.jetpack_compose_all_in_one.features.news_sample.data.remote.NewsService
+import com.example.jetpack_compose_all_in_one.features.news_sample.data.remote.NewsApiInterceptor
+import com.example.jetpack_compose_all_in_one.features.news_sample.repository.NewsRepository
 import com.example.jetpack_compose_all_in_one.features.quotes_using_rx_java.QuoteAPI.APIService
 import com.example.jetpack_compose_all_in_one.features.quotes_using_rx_java.QuoteAPI.repository.RemoteRepository
+import com.example.jetpack_compose_all_in_one.features.swipe_cards.ApiQuotes
 import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.APIMovies
 import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.TmdbApiInterceptor
 import com.example.jetpack_compose_all_in_one.utils.Constants
-import com.example.jetpack_compose_all_in_one.utils.Constants.BASE_URL
+import com.example.jetpack_compose_all_in_one.utils.Constants.QUOTES_BASE_URL
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import dagger.Module
@@ -28,19 +33,19 @@ object NetworkModules {
 
     @Singleton
     @Provides
-    fun provideBaseUrl(): String{
-        return BASE_URL
+    fun provideBaseUrl(): String {
+        return QUOTES_BASE_URL
     }
 
     @Singleton
     @Provides
-    fun provideRXJavaAdapterFactory(): CallAdapter.Factory{
+    fun provideRXJavaAdapterFactory(): CallAdapter.Factory {
         return RxJava2CallAdapterFactory.create()
     }
 
     @Singleton
     @Provides
-    fun provideConverterFactory():Converter.Factory{
+    fun provideConverterFactory(): Converter.Factory {
         return GsonConverterFactory.create()
     }
 
@@ -50,7 +55,7 @@ object NetworkModules {
         baseUrl: String,
         callAdapter: CallAdapter.Factory,
         converterFactory: Converter.Factory
-    ): Retrofit{
+    ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(baseUrl)
             .addCallAdapterFactory(callAdapter)
@@ -70,7 +75,17 @@ object NetworkModules {
         return RemoteRepository(apiService)
     }
 
-
+    @Provides
+    @Singleton
+    @NewsAPI
+    fun provideNewsApiService() =
+        Retrofit.Builder()
+            .baseUrl(Constants.NEWS_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .client(OkHttpClient.Builder().addInterceptor(NewsApiInterceptor()).build())
+            .build()
+            .create<NewsService>()
 
     @Provides
     @Singleton
@@ -84,8 +99,26 @@ object NetworkModules {
 
     @Provides
     @Singleton
-    @TMDBAPI
+    @QuotesAPI
+    fun provideApiQuotes() = Retrofit.Builder()
+        .baseUrl(QUOTES_BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+        .create<ApiQuotes>()
+
+    // This api is fake atm.
+    @Provides
+    @Singleton
+    fun provideApiLogin() = Retrofit.Builder()
+        .baseUrl("https://you.need.therapy")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+        .create(ApiLoginService::class.java)
+
+    @Provides
+    @Singleton
     fun provideIoDispatcher() = Dispatchers.IO
+
 
     @Provides
     @Singleton

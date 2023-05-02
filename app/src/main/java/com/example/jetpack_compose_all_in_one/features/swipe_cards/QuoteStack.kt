@@ -1,6 +1,7 @@
 package com.example.jetpack_compose_all_in_one.features.swipe_cards
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -19,6 +20,7 @@ fun <T> QuoteStack(
     itemContent: @Composable (T) -> Unit,
 ) {
     var currentPageNum by remember{ mutableStateOf(0) }
+
     val swipeState = rememberSwipeableState(
         onLeft = { items.current?.let{
             onReject(it)
