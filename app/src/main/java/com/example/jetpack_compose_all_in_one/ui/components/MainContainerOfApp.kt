@@ -33,7 +33,12 @@ import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Screen
 import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat2
 import com.example.jetpack_compose_all_in_one.ui.views.lessons.ComposeLayouts
+<<<<<<< Updated upstream
 import com.example.jetpack_compose_all_in_one.ui.views.quote_swipe.QuoteSwipe
+=======
+import com.example.jetpack_compose_all_in_one.ui.views.news_ui.LatestNewsPage
+import com.example.jetpack_compose_all_in_one.ui.views.quotes_ui.QuoteCard
+>>>>>>> Stashed changes
 import com.example.jetpack_compose_all_in_one.ui.views.tmdbapi.PopularMoviesPage
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavDes
 import com.example.jetpack_compose_all_in_one.view.Quote
@@ -216,7 +221,7 @@ fun MainContainerOfApp(
                 }
 
                 composable(NavDes.NewsSample.route()) {
-                    NewsSample()
+                    LatestNewsPage()
                 }
                 composable(NavDes.WeatherSample.route()) {
                     WeatherSample()
