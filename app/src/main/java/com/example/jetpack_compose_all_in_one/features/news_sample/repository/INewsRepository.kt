@@ -5,7 +5,6 @@ import com.example.jetpack_compose_all_in_one.features.news_sample.data.data.Lat
 import io.reactivex.disposables.Disposable
 
 interface INewsRepository {
-
     fun getLatestNews() : Disposable
     val latestNewsResponse : MutableLiveData<LatestNewsResponse>
 }

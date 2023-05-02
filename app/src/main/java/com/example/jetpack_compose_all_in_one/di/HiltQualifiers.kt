@@ -9,3 +9,7 @@ annotation class TMDBAPI
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
 annotation class QuotesAPI
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class NewsAPI

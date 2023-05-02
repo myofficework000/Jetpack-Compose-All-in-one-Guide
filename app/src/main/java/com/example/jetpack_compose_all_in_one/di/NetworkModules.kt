@@ -33,19 +33,19 @@ object NetworkModules {
 
     @Singleton
     @Provides
-    fun provideBaseUrl(): String{
+    fun provideBaseUrl(): String {
         return QUOTES_BASE_URL
     }
 
     @Singleton
     @Provides
-    fun provideRXJavaAdapterFactory(): CallAdapter.Factory{
+    fun provideRXJavaAdapterFactory(): CallAdapter.Factory {
         return RxJava2CallAdapterFactory.create()
     }
 
     @Singleton
     @Provides
-    fun provideConverterFactory():Converter.Factory{
+    fun provideConverterFactory(): Converter.Factory {
         return GsonConverterFactory.create()
     }
 
@@ -55,7 +55,7 @@ object NetworkModules {
         baseUrl: String,
         callAdapter: CallAdapter.Factory,
         converterFactory: Converter.Factory
-    ): Retrofit{
+    ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(baseUrl)
             .addCallAdapterFactory(callAdapter)
@@ -79,21 +79,13 @@ object NetworkModules {
     @Singleton
     @NewsAPI
     fun provideNewsApiService() =
-         Retrofit.Builder()
+        Retrofit.Builder()
             .baseUrl(Constants.NEWS_URL)
             .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(OkHttpClient.Builder().addInterceptor(NewsApiInterceptor()).build())
             .build()
             .create<NewsService>()
-
-
-    @Singleton
-    @Provides
-    @NewsAPI
-    fun provideNewsRepository(newsService: NewsService): NewsRepository {
-        return NewsRepository(newsService)
-    }
-
 
     @Provides
     @Singleton
