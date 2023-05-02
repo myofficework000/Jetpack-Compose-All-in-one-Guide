@@ -1,5 +1,6 @@
 package com.example.jetpack_compose_all_in_one.features.login_style_1
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -11,7 +12,7 @@ import javax.inject.Inject
 class LoginStyle1ViewModel @Inject constructor(
     private val api: ApiLoginService,
     private val ioDispatcher: CoroutineDispatcher
-):ViewModel() {
+) : ViewModel() {
     val loginDetail = LoginStateHolder()
 
     fun login() {
@@ -21,15 +22,16 @@ class LoginStyle1ViewModel @Inject constructor(
         )
 
         viewModelScope.launch(ioDispatcher) {
-            api.login(loginBody).apply {
-                body()?.let {
-                    println(it.user?.username)
-                } ?: run {
-                    errorBody()?.let {
-                        println(it.string())
+            Log.i("tag", "Success")
+            /*api.login(loginBody).apply {
+                    body()?.let {
+                        println(it.user?.username)
+                    } ?: run {
+                        errorBody()?.let {
+                            println(it.string())
+                        }
                     }
-                }
-            }
+                }*/
         }
     }
 
