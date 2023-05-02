@@ -1,12 +1,15 @@
 package com.example.jetpack_compose_all_in_one.ui.views.main_ui
 
 import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.os.IBinder
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -14,6 +17,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpack_compose_all_in_one.features.download_manager.Download
+import com.example.jetpack_compose_all_in_one.features.internet.InternetViewModel
+import com.example.jetpack_compose_all_in_one.features.internet.NetworkState
 import com.example.jetpack_compose_all_in_one.features.service_examples.music.MusicBoundService
 import com.example.jetpack_compose_all_in_one.features.service_examples.music.MusicForegroundService
 import com.example.jetpack_compose_all_in_one.ui.components.InputFields
@@ -38,6 +43,11 @@ class MainActivity : ComponentActivity() {
             musicBoundService = null
         }
     }
+
+    private val connectivityManager by lazy {
+        getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    }
+    private val internetViewModel by viewModels<InternetViewModel>()
 
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -114,7 +124,7 @@ class MainActivity : ComponentActivity() {
                     */
 
                     MainContainerOfApp(
-                        false,
+                        internetViewModel,
                         {
                             startForegroundService(
                                 playIntentForeground.putExtra(MusicForegroundService.name_arg, it.toString())
@@ -145,6 +155,24 @@ class MainActivity : ComponentActivity() {
     override fun onStop() {
         super.onStop()
         unbindService(bindConnection)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        connectivityManager.registerNetworkCallback(
+            internetViewModel.networkRequest,
+            internetViewModel.networkCallback
+        )
+        internetViewModel.networkState.value =
+            if (connectivityManager.activeNetwork != null) NetworkState.Connected
+            else NetworkState.Disconnected
+    }
+
+    override fun onPause() {
+        super.onPause()
+        connectivityManager.unregisterNetworkCallback(
+            internetViewModel.networkCallback
+        )
     }
 
     @OptIn(ExperimentalMaterial3Api::class)

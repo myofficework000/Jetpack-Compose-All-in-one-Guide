@@ -22,6 +22,7 @@ import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.features.alarm.AlarmMainUI
 import com.example.jetpack_compose_all_in_one.features.chatmodule.ChatViewModel
 import com.example.jetpack_compose_all_in_one.features.download_manager.Download
+import com.example.jetpack_compose_all_in_one.features.internet.InternetViewModel
 import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginPage
 import com.example.jetpack_compose_all_in_one.features.login_style_2.LoginScreen2
 import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginStyle1ViewModel
@@ -32,6 +33,7 @@ import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_Shape
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Screen
 import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat2
+import com.example.jetpack_compose_all_in_one.ui.views.internet.InternetDemo
 import com.example.jetpack_compose_all_in_one.ui.views.lessons.ComposeLayouts
 import com.example.jetpack_compose_all_in_one.ui.views.quote_swipe.QuoteSwipe
 import com.example.jetpack_compose_all_in_one.ui.views.news_ui.LatestNewsPage
@@ -44,7 +46,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainContainerOfApp(
-    isOffline: Boolean = false,
+    internetViewModel: InternetViewModel,
     playMusicFuncForeground: (Uri) -> Unit,
     stopMusicFuncForeground: () -> Unit,
     playMusicFuncBound: (Uri) -> Unit,
@@ -79,18 +81,14 @@ fun MainContainerOfApp(
                     )
                 }
             },
-            snackbarHost = { SnackbarShow(snackbarHostState, isOffline) }
+            snackbarHost = { SnackbarShow(snackbarHostState, internetViewModel.networkState) }
         ) {
             NavHost(navController, currentRoute.value.route(), Modifier.padding(it)) {
                 composable(NavDes.Home.route()) {
                     Box {}
                 }
                 composable(NavDes.Internet.route()) {
-                    if (isOffline) {
-                        NetworkErrorDialog()
-                    } else {
-                        Text("Internet available")
-                    }
+                    InternetDemo()
                 }
                 composable(NavDes.ForegroundService.route()) {
                     Box(
