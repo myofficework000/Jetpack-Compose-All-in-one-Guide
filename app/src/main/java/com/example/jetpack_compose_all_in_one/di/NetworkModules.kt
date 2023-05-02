@@ -1,5 +1,6 @@
 package com.example.jetpack_compose_all_in_one.di
 
+import com.example.jetpack_compose_all_in_one.features.login_style_1.ApiLoginService
 import com.example.jetpack_compose_all_in_one.features.quotes_using_rx_java.QuoteAPI.APIService
 import com.example.jetpack_compose_all_in_one.features.quotes_using_rx_java.QuoteAPI.repository.RemoteRepository
 import com.example.jetpack_compose_all_in_one.features.swipe_cards.ApiQuotes
@@ -91,6 +92,15 @@ object NetworkModules {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create<ApiQuotes>()
+
+    // This api is fake atm.
+    @Provides
+    @Singleton
+    fun provideApiLogin() = Retrofit.Builder()
+        .baseUrl("https://you.need.therapy")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+        .create(ApiLoginService::class.java)
 
     @Provides
     @Singleton

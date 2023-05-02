@@ -24,6 +24,8 @@ import com.example.jetpack_compose_all_in_one.features.chatmodule.ChatViewModel
 import com.example.jetpack_compose_all_in_one.features.download_manager.Download
 import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginPage
 import com.example.jetpack_compose_all_in_one.features.login_style_2.LoginScreen2
+import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginStateHolder
+import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginStyle1ViewModel
 import com.example.jetpack_compose_all_in_one.features.news_sample.NewsSample
 import com.example.jetpack_compose_all_in_one.features.provideimages.ShowImages
 import com.example.jetpack_compose_all_in_one.features.weather_sample.WeatherSample
@@ -166,9 +168,12 @@ fun MainContainerOfApp(
                 }
 
                 composable(NavDes.Login1.route()) {
+                    val vm = hiltViewModel<LoginStyle1ViewModel>()
+
                     LoginPage(
                         drawerState,
-                        onLogin = { _, _, _ -> },
+                        loginStateHolder = vm.loginDetail,
+                        onLogin = { vm.login() },
                         onRegister = { _, _ -> }
                     )
                 }
