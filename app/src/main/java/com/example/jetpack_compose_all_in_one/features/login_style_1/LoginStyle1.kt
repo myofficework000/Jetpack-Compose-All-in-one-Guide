@@ -17,7 +17,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -37,7 +36,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavDes
 @Composable
 fun LoginPage(
     drawerState: DrawerState,
-    onLogin: (String, String, Boolean) -> Unit,
+    loginStateHolder: LoginStateHolder,
+    onLogin: () -> Unit,
     onRegister: (String, String) -> Unit
 ) {
     var displayMode by remember{ mutableStateOf("") }
@@ -46,9 +46,11 @@ fun LoginPage(
         "login" -> {
             LoginFormLogin(
                 banner = painterResource(R.drawable.placeholder_banner_2),
+                loginStateHolder = loginStateHolder,
                 onBack = { displayMode = "" },
-                onGotoRegister = { displayMode = "register" }
-            ) {_,_,_->}
+                onGotoRegister = { displayMode = "register" },
+                onLogin = onLogin
+            )
         }
         "register" -> {
             LoginFormRegister(
@@ -127,9 +129,10 @@ fun LoginMainMenu(
 @Composable
 fun LoginFormLogin(
     banner: Painter? = null,
+    loginStateHolder: LoginStateHolder,
     onBack: () -> Unit,
     onGotoRegister: () -> Unit,
-    onLogin: (String, String, Boolean) -> Unit
+    onLogin: () -> Unit
 ) {
     BackHandler { onBack() }
 
@@ -154,6 +157,7 @@ fun LoginFormLogin(
             }
 
             LoginForm1(
+                loginStateHolder = loginStateHolder,
                 onGotoRegister = onGotoRegister,
                 onLogin = onLogin
             )
@@ -202,7 +206,7 @@ fun LoginFormRegister(
 @Composable
 private fun LoginPagePreview() {
     LoginPage(
-        DrawerState(DrawerValue.Closed),{_,_,_->},{_,_->}
+        DrawerState(DrawerValue.Closed),LoginStateHolder(),{},{_,_->}
     )
 }
 
@@ -220,9 +224,10 @@ private fun LoginMainMenuPreview() {
 private fun LoginFormLoginPreview() {
     LoginFormLogin(
         banner = painterResource(R.drawable.placeholder_banner_2),
+        loginStateHolder = LoginStateHolder(),
         onBack = {},
         onGotoRegister = {}
-    ){_,_,_->}
+    ){}
 }
 
 @Preview(showSystemUi = true, showBackground = true)
