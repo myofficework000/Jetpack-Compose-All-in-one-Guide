@@ -30,6 +30,7 @@ import com.example.jetpack_compose_all_in_one.features.provideimages.ShowImages
 import com.example.jetpack_compose_all_in_one.features.swipe_cards.QuoteStack
 import com.example.jetpack_compose_all_in_one.features.weather_sample.view.WeatherSample
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_2_Screen
+import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_4_Image
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_Shape
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Screen
 import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat2
@@ -216,6 +217,10 @@ fun MainContainerOfApp(
 
                 composable(NavDes.L2Chapter3.route()) {
                     Lesson_2_Chapter_2_Screen()
+                }
+
+                composable(NavDes.L2Chapter4.route()) {
+                    Lesson_2_Chapter_4_Image()
                 }
 
                 composable(NavDes.NewsSample.route()) {
