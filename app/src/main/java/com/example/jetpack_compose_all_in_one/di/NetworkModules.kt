@@ -1,9 +1,8 @@
 package com.example.jetpack_compose_all_in_one.di
 
 import com.example.jetpack_compose_all_in_one.features.login_style_1.ApiLoginService
-import com.example.jetpack_compose_all_in_one.features.news_sample.data.remote.NewsService
 import com.example.jetpack_compose_all_in_one.features.news_sample.data.remote.NewsApiInterceptor
-import com.example.jetpack_compose_all_in_one.features.news_sample.repository.NewsRepository
+import com.example.jetpack_compose_all_in_one.features.news_sample.data.remote.NewsService
 import com.example.jetpack_compose_all_in_one.features.quotes_using_rx_java.QuoteAPI.APIService
 import com.example.jetpack_compose_all_in_one.features.quotes_using_rx_java.QuoteAPI.repository.RemoteRepository
 import com.example.jetpack_compose_all_in_one.features.swipe_cards.ApiQuotes

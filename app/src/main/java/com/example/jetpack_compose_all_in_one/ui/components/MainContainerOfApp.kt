@@ -219,7 +219,7 @@ fun MainContainerOfApp(
                 }
 
                 composable(NavDes.NewsSample.route()) {
-                    LatestNewsPage()
+                    LatestNewsPage(viewModel = hiltViewModel())
                 }
                 composable(NavDes.WeatherSample.route()) {
                     WeatherSample()
