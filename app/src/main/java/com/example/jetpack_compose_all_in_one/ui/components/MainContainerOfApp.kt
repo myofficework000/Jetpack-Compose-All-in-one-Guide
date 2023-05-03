@@ -22,21 +22,17 @@ import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.features.alarm.AlarmMainUI
 import com.example.jetpack_compose_all_in_one.features.chatmodule.ChatViewModel
 import com.example.jetpack_compose_all_in_one.features.download_manager.Download
-import com.example.jetpack_compose_all_in_one.features.internet.InternetViewModel
 import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginPage
 import com.example.jetpack_compose_all_in_one.features.login_style_2.LoginScreen2
-import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginStyle1ViewModel
+import com.example.jetpack_compose_all_in_one.features.login_style_2.LoginStyle2ViewModel
+import com.example.jetpack_compose_all_in_one.features.news_sample.NewsSample
 import com.example.jetpack_compose_all_in_one.features.provideimages.ShowImages
-import com.example.jetpack_compose_all_in_one.features.swipe_cards.QuoteStack
-import com.example.jetpack_compose_all_in_one.features.weather_sample.view.WeatherSample
-import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_2_Screen
+import com.example.jetpack_compose_all_in_one.features.weather_sample.WeatherSample
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_Shape
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Screen
 import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat2
-import com.example.jetpack_compose_all_in_one.ui.views.internet.InternetDemo
 import com.example.jetpack_compose_all_in_one.ui.views.lessons.ComposeLayouts
 import com.example.jetpack_compose_all_in_one.ui.views.quote_swipe.QuoteSwipe
-import com.example.jetpack_compose_all_in_one.ui.views.news_ui.LatestNewsPage
 import com.example.jetpack_compose_all_in_one.ui.views.tmdbapi.PopularMoviesPage
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavDes
 import com.example.jetpack_compose_all_in_one.view.Quote
@@ -46,7 +42,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainContainerOfApp(
-    internetViewModel: InternetViewModel,
+    isOffline: Boolean = false,
     playMusicFuncForeground: (Uri) -> Unit,
     stopMusicFuncForeground: () -> Unit,
     playMusicFuncBound: (Uri) -> Unit,
@@ -81,14 +77,18 @@ fun MainContainerOfApp(
                     )
                 }
             },
-            snackbarHost = { SnackbarShow(snackbarHostState, internetViewModel.networkState) }
+            snackbarHost = { SnackbarShow(snackbarHostState, isOffline) }
         ) {
             NavHost(navController, currentRoute.value.route(), Modifier.padding(it)) {
                 composable(NavDes.Home.route()) {
                     Box {}
                 }
                 composable(NavDes.Internet.route()) {
-                    InternetDemo()
+                    if (isOffline) {
+                        NetworkErrorDialog()
+                    } else {
+                        Text("Internet available")
+                    }
                 }
                 composable(NavDes.ForegroundService.route()) {
                     Box(
@@ -167,18 +167,16 @@ fun MainContainerOfApp(
                 }
 
                 composable(NavDes.Login1.route()) {
-                    val vm = hiltViewModel<LoginStyle1ViewModel>()
-
                     LoginPage(
                         drawerState,
-                        loginStateHolder = vm.loginDetail,
-                        onLogin = { vm.login() },
+                        onLogin = { _, _, _ -> },
                         onRegister = { _, _ -> }
                     )
                 }
 
                 composable(NavDes.Login2.route()) {
-                    LoginScreen2()
+                    val vm = LoginStyle2ViewModel()
+                    LoginScreen2(vm)
                 }
 
                 composable(NavDes.Tmdb.route()) {
@@ -214,12 +212,8 @@ fun MainContainerOfApp(
                     Lesson_2_Screen()
                 }
 
-                composable(NavDes.L2Chapter3.route()) {
-                    Lesson_2_Chapter_2_Screen()
-                }
-
                 composable(NavDes.NewsSample.route()) {
-                    LatestNewsPage()
+                    NewsSample()
                 }
                 composable(NavDes.WeatherSample.route()) {
                     WeatherSample()
