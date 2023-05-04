@@ -35,13 +35,6 @@ import com.example.jetpack_compose_all_in_one.ui.components.StyleableLessonText
  * * [Column] contains it's children in vertical order
  * * [Row] contains it's children in horizontal order.
  * * [Box] stacks it's children on top of each other.
- *
- * * [Modifier] is used to set properties such as dimensions, padding, background color,
- * click action, ***padding***, and more.
- *
- * ## Note
- * Order of modifiers matter. Depending on which order **padding** is added
- * it makes UI component(Compose) to have either margin or padding.
  */
 @Composable
 fun Lesson_1_Screen() {

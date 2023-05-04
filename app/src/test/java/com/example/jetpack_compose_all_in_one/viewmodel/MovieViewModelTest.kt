@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaType
 import org.junit.Before
 import org.junit.Test
 
@@ -26,13 +27,12 @@ class MovieViewModelTest {
 
     @Before
     fun setUp() {
-        vm = MovieViewModel(repo,ioDispatcher)
+        vm = MovieViewModel(repo, ioDispatcher)
     }
 
-
     @Test
-    fun `GIVEN emptyResponse WHEN getPopularMovies(1) THEN invoke sequence`() = runTest{
-        coEvery { repo.getPopularMovies(1) } returns flow{
+    fun `GIVEN emptyResponse WHEN getPopularMovies(1) THEN invoke sequence`() = runTest {
+        coEvery { repo.getPopularMovies(1) } returns flow {
             emit(ResultState.Success(emptyResponse))
         }
 
@@ -46,8 +46,8 @@ class MovieViewModelTest {
     }
 
     @Test
-    fun `GIVEN page2Response WHEN getPopularMovies(2) THEN invoke sequences`() = runTest{
-        coEvery { repo.getPopularMovies(2) } returns flow{
+    fun `GIVEN page2Response WHEN getPopularMovies(2) THEN invoke sequences`() = runTest {
+        coEvery { repo.getPopularMovies(2) } returns flow {
             emit(ResultState.Success(page2Response))
         }
 
@@ -65,11 +65,11 @@ class MovieViewModelTest {
     // runTest nullifies all delay(), and since this test does require a small delay
     //      to load data, runBlocking is used instead
     @Test
-    fun `GIVEN page2Response WHEN getPopularMoviesNext() THEN gets page 2`() = runBlocking{
-        coEvery { repo.getPopularMovies(1) } returns flow{
+    fun `GIVEN page2Response WHEN getPopularMoviesNext() THEN gets page 2`() = runBlocking {
+        coEvery { repo.getPopularMovies(1) } returns flow {
             emit(ResultState.Success(page1Response))
         }
-        coEvery { repo.getPopularMovies(2) } returns flow{
+        coEvery { repo.getPopularMovies(2) } returns flow {
             emit(ResultState.Success(page2Response))
         }
 
@@ -91,13 +91,13 @@ class MovieViewModelTest {
     }
 
     @Test
-    fun `GIVEN page1Response WHEN getPopularMoviesPrev() THEN goes back to page 1`() = runBlocking{
-        coEvery { repo.getPopularMovies(1) } returns flow{
+    fun `GIVEN page1Response WHEN getPopularMoviesPrev() THEN goes back to page 1`() = runBlocking {
+        coEvery { repo.getPopularMovies(1) } returns flow {
             emit(ResultState.Success(page1Response))
         }
         // Even if page 2 is not checked, the system still needs to know
         //      the result. Otherwise it'll crash.
-        coEvery { repo.getPopularMovies(2) } returns flow{
+        coEvery { repo.getPopularMovies(2) } returns flow {
             emit(ResultState.Success(page2Response))
         }
 
@@ -152,7 +152,7 @@ class MovieViewModelTest {
             3
         )
 
-        val mediaType: MediaType = MediaType.get("application/json; charset=utf-8")
+        val mediaType: MediaType = "application/json; charset=utf-8".toMediaType()
         const val TEST_DELAY = 10L
     }
 }

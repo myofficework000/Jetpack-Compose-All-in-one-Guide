@@ -1,6 +1,8 @@
 package com.example.jetpack_compose_all_in_one.lessons.lesson_2
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -149,6 +151,7 @@ private fun LessonContent() {
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun TextFontExample() {
     LessonText2(text = "Font Size")
@@ -188,6 +191,9 @@ private fun TextFontExample() {
         CustomText(text = "SansSerif", fontFamily = FontFamily.SansSerif)
         CustomText(text = "Serif", fontFamily = FontFamily.Serif)
     }
+
+    LessonText2(text = "Marquee Example")
+    MarqueeTextExample(input = "Hi How are you? I am good and how about you? Hi How are you? I am good and how about you?")
 }
 
 /**
@@ -539,4 +545,13 @@ fun TextSampleRow(content: @Composable () -> Unit) {
     ) {
         content()
     }
+}
+
+@ExperimentalFoundationApi
+@Composable
+fun MarqueeTextExample(input: String) {
+    Text(
+        text = input,
+        modifier = Modifier.basicMarquee()
+    )
 }
