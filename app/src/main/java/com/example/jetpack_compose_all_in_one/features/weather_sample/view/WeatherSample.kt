@@ -33,10 +33,10 @@ fun WeatherSample() {
     //Luan will add UI and data for this
     val weatherViewModel: WeatherViewModel = initViewModel()
     val weatherData = weatherViewModel.weatherData.observeAsState()
-    var inputValue by remember{ mutableStateOf(TextFieldValue(""))}
+    var inputValue by remember { mutableStateOf(TextFieldValue("")) }
     val scope = rememberCoroutineScope()
 
-     LaunchedEffect(weatherData) {
+    LaunchedEffect(weatherData) {
         weatherViewModel.getWeather(city = "California")
     }
 
@@ -51,7 +51,7 @@ fun WeatherSample() {
 //    val minTemp = weatherData.value?.main?.temp_min?.let{ Converters.tempConverter(it)}.toString()
     val weatherIcon = weatherData.value?.weather?.get(0)?.icon.toString()
     val date = weatherData.value?.dt?.let { Converters.dateConverter(it) }.toString()
-    
+
     val temp = weatherData.value?.main?.temp
     val feelLikeTemp = weatherData.value?.main?.feels_like
     val maxTemp = weatherData.value?.main?.temp_max
@@ -67,23 +67,25 @@ fun WeatherSample() {
             .padding(dp_10),
         verticalArrangement = Arrangement.spacedBy(dp_4),
         horizontalAlignment = Alignment.CenterHorizontally
-    ){
+    ) {
         Row(
             modifier = Modifier
-                .fillMaxWidth()
-                .height(IntrinsicSize.Max),
+                .fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
             TextField(
-                modifier = Modifier.fillMaxHeight(),
+                modifier = Modifier
+                    .weight(1f),
                 value = inputValue,
-                onValueChange = {newValue ->
+                onValueChange = { newValue ->
                     inputValue = newValue
                 },
-                placeholder = {Text(text = "Search city")}
+                placeholder = { Text(text = "Search city") }
             )
             Button(
-                modifier = Modifier.fillMaxHeight(),
+                modifier = Modifier
+                    .wrapContentWidth()
+                    .height(IntrinsicSize.Max),
                 shape = RectangleShape,
                 onClick = {
                     scope.launch(Dispatchers.IO) {
@@ -94,19 +96,6 @@ fun WeatherSample() {
                 Text(text = "Search")
             }
         }
-        /*WeatherCard(
-            city,
-            temp,
-            feelLikeTemp,
-            description,
-            humidity,
-            visibility,
-            pressure,
-            maxTemp,
-            minTemp,
-            weatherIcon,
-            date,
-        )*/
         WeatherCard(
             city = city,
             description = description,
@@ -123,6 +112,7 @@ fun WeatherSample() {
         )
     }
 }
+
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun WeatherCard(
@@ -164,9 +154,9 @@ fun WeatherCard(
                 fontSize = 30.sp,
                 fontWeight = FontWeight.Bold
             )
-            Row (
+            Row(
                 horizontalArrangement = Arrangement.Start
-            ){
+            ) {
                 GlideImage(
                     model = "${IMG_URL}/${weatherIcon}.png",
                     contentDescription = "",
@@ -176,7 +166,8 @@ fun WeatherCard(
                 )
                 Text(
                     text = " ${temp}℉",
-                    fontSize = 30.sp)
+                    fontSize = 30.sp
+                )
             }
             Text(
                 text = "Feels like ${feelLikeTemp}℉, $description",
@@ -247,18 +238,22 @@ fun WeatherCard(
     ) {
         Box(Modifier.fillMaxWidth()) {
             LabeledSwitch(
-                Pair("℃","℉"),
-                Modifier.align(Alignment.TopEnd).padding(cardPadding)
+                Pair("℃", "℉"),
+                Modifier
+                    .align(Alignment.TopEnd)
+                    .padding(cardPadding)
             ) { isFahrenheit.value = it }
-            
+
             Column(
-                modifier = Modifier.fillMaxWidth().padding(cardPadding),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(cardPadding),
                 verticalArrangement = Arrangement.SpaceBetween,
                 horizontalAlignment = Alignment.Start
             ) {
                 Text(text = date, fontSize = 15.sp, color = Color.Red, fontWeight = FontWeight.Bold)
                 Text(text = city, fontSize = 30.sp, fontWeight = FontWeight.Bold)
-                Row (horizontalArrangement = Arrangement.Start){
+                Row(horizontalArrangement = Arrangement.Start) {
                     GlideImage(
                         model = "${IMG_URL}/${weatherIcon}.png",
                         contentDescription = "",
@@ -280,12 +275,20 @@ fun WeatherCard(
                         .height(IntrinsicSize.Max),
                     horizontalArrangement = Arrangement.spacedBy(dp_15)
                 ) {
-                    Divider(color = Color.Black, modifier = Modifier
-                        .fillMaxHeight()
-                        .width(dp_1))
+                    Divider(
+                        color = Color.Black, modifier = Modifier
+                            .fillMaxHeight()
+                            .width(dp_1)
+                    )
 
                     Column {
-                        Text("${maxTemp?.toReadable(isFahrenheit.value)} / ${minTemp?.toReadable(isFahrenheit.value)}", fontSize = 17.sp)
+                        Text(
+                            "${maxTemp?.toReadable(isFahrenheit.value)} / ${
+                                minTemp?.toReadable(
+                                    isFahrenheit.value
+                                )
+                            }", fontSize = 17.sp
+                        )
                         Text("Humidity: ${humidity}%", fontSize = 17.sp)
                         Text("Visibility: ${visibility?.div(1000)}km", fontSize = 17.sp)
                         Text("Pressure: ${pressure}hPa", fontSize = 17.sp)
@@ -301,7 +304,8 @@ private fun Double.toReadable(isFahrenheit: Boolean) =
 
 
 fun initViewModel(): WeatherViewModel {
-    val remoteWeatherRepository = RemoteWeatherRepository(RetrofitBuilder.getRetrofit().create(ApiWeatherService::class.java))
+    val remoteWeatherRepository =
+        RemoteWeatherRepository(RetrofitBuilder.getRetrofit().create(ApiWeatherService::class.java))
     return WeatherViewModel(remoteWeatherRepository)
 }
 

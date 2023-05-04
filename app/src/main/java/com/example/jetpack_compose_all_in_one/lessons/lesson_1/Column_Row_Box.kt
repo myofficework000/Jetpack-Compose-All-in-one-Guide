@@ -38,6 +38,7 @@ import com.example.jetpack_compose_all_in_one.ui.components.StyleableLessonText
  */
 @Composable
 fun Lesson_1_Screen() {
+    //References for this lesson https://m3.material.io/components
     LessonContent()
 }
 
