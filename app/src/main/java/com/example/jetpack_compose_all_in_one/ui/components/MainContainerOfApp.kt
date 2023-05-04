@@ -28,6 +28,10 @@ import com.example.jetpack_compose_all_in_one.features.login_style_2.LoginStyle2
 import com.example.jetpack_compose_all_in_one.features.news_sample.NewsSample
 import com.example.jetpack_compose_all_in_one.features.provideimages.ShowImages
 import com.example.jetpack_compose_all_in_one.features.weather_sample.WeatherSample
+import com.example.jetpack_compose_all_in_one.features.swipe_cards.QuoteStack
+import com.example.jetpack_compose_all_in_one.features.weather_sample.view.WeatherSample
+import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_2_Screen
+import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_4_Image
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_Shape
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Screen
 import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat2
@@ -214,6 +218,16 @@ fun MainContainerOfApp(
 
                 composable(NavDes.NewsSample.route()) {
                     NewsSample()
+                composable(NavDes.L2Chapter3.route()) {
+                    Lesson_2_Chapter_2_Screen()
+                }
+
+                composable(NavDes.L2Chapter4.route()) {
+                    Lesson_2_Chapter_4_Image()
+                }
+
+                composable(NavDes.NewsSample.route()) {
+                    LatestNewsPage(viewModel = hiltViewModel())
                 }
                 composable(NavDes.WeatherSample.route()) {
                     WeatherSample()

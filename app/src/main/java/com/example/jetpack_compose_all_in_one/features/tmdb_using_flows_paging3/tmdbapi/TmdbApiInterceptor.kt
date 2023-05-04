@@ -8,7 +8,7 @@ class TmdbApiInterceptor: Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response = chain.run {
         proceed(
             request().newBuilder().url(
-                request().url().newBuilder().addQueryParameter(
+                request().url.newBuilder().addQueryParameter(
                     "api_key", Constants.tmdb_api_key_temp
                 ).build()
             ).build()

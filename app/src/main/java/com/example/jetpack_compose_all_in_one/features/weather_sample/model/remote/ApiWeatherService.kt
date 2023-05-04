@@ -11,6 +11,7 @@ interface ApiWeatherService {
     @GET(Constants.END_POINT_WEATHER)
     suspend fun getWeather(
         @Query("q") city: String,
-        @Query("appid") apiKey: String
+        @Query("appid") apiKey: String,
+        @Query("units") units: String = "metric"
     ): Response<WeatherResponse>
 }
