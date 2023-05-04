@@ -37,8 +37,8 @@ class MovieViewModelTest {
             )
         }
 
-        /*val result = repo.getPopularMovies(1).first()
+        //*val result = repo.getPopularMovies(1).first()
 
-        assertTrue{ repo.getPopularMovies(1).first() == }*/
+        assertTrue{ repo.getPopularMovies(1).first() == }*//*
     }
 }
