@@ -12,7 +12,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.last
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
 import okhttp3.MediaType
@@ -32,7 +31,7 @@ class MovieViewModelTest {
 
 
     @Test
-    fun `Get popular movies Returns 0 items`() = runTest{
+    fun `GIVEN emptyResponse WHEN getPopularMovies(1) THEN invoke sequence`() = runTest{
         coEvery { repo.getPopularMovies(1) } returns flow{
             emit(ResultState.Success(emptyResponse))
         }
@@ -47,7 +46,7 @@ class MovieViewModelTest {
     }
 
     @Test
-    fun `getPopularMovies(2) gets page2Response`() = runTest{
+    fun `GIVEN page2Response WHEN getPopularMovies(2) THEN invoke sequences`() = runTest{
         coEvery { repo.getPopularMovies(2) } returns flow{
             emit(ResultState.Success(page2Response))
         }
@@ -58,15 +57,15 @@ class MovieViewModelTest {
         assert(vm.popularMovies.first() is ResultState.Success)
 
         val response = (vm.popularMovies.first() as ResultState.Success).body
-        assert(response?.totalResults == 3)
-        assert(response?.results?.count() == 2)
-        assert(response?.results?.first()?.title == "answer")
+        assert(response!!.totalResults == 3)
+        assert(response.results.count() == 2)
+        assert(response.results.first().title == "answer")
     }
 
     // runTest nullifies all delay(), and since this test does require a small delay
     //      to load data, runBlocking is used instead
     @Test
-    fun `getPopularMoviesNext() gets page2Response`() = runBlocking{
+    fun `GIVEN page2Response WHEN getPopularMoviesNext() THEN gets page 2`() = runBlocking{
         coEvery { repo.getPopularMovies(1) } returns flow{
             emit(ResultState.Success(page1Response))
         }
@@ -77,21 +76,22 @@ class MovieViewModelTest {
         vm.getPopularMovies(1) // This does run after the page loaded.
         // Delay is required or the totalPages will not be updated fast enough
         //      for getPopularMoviesNext()
-        delay(10)
+        delay(TEST_DELAY)
         vm.getPopularMoviesNext()
+        delay(TEST_DELAY)
 
-        coVerify { repo.getPopularMovies(1) }
+        coVerify { repo.getPopularMovies(2) }
         assert(vm.popularMovies.value is ResultState.Success)
 
         val response = (vm.popularMovies.value as ResultState.Success).body
         assert(vm.page == 2)
-        assert(response?.totalResults == 3)
-        assert(response?.results?.count() == 2)
-        assert(response?.results?.last()?.title == "question")
+        assert(response!!.totalResults == 3)
+        assert(response.results.count() == 2)
+        assert(response.results.last().title == "question")
     }
 
     @Test
-    fun `getPopularMoviesPrev() gets page1Response`() = runBlocking{
+    fun `GIVEN page1Response WHEN getPopularMoviesPrev() THEN goes back to page 1`() = runBlocking{
         coEvery { repo.getPopularMovies(1) } returns flow{
             emit(ResultState.Success(page1Response))
         }
@@ -102,22 +102,23 @@ class MovieViewModelTest {
         }
 
         vm.getPopularMovies(1)
-        delay(10)
+        delay(TEST_DELAY)
         vm.getPopularMoviesNext() // This is to move to page 2 first
-        delay(10)
+        delay(TEST_DELAY)
         vm.getPopularMoviesPrev()
+        delay(TEST_DELAY)
 
         coVerify { repo.getPopularMovies(1) }
         assert(vm.popularMovies.value is ResultState.Success)
 
         val response = (vm.popularMovies.value as ResultState.Success).body
         assert(vm.page == 1)
-        assert(response?.totalResults == 3)
-        assert(response?.results?.count() == 1)
-        assert(response?.results?.last()?.id == 69)
+        assert(response!!.totalResults == 3)
+        assert(response.results.count() == 1)
+        assert(response.results.last().id == 69)
     }
 
-    companion object {
+    private companion object {
         val emptyResponse = TmdbResponse(
             1,
             listOf(),
@@ -152,5 +153,6 @@ class MovieViewModelTest {
         )
 
         val mediaType: MediaType = MediaType.get("application/json; charset=utf-8")
+        const val TEST_DELAY = 10L
     }
 }
