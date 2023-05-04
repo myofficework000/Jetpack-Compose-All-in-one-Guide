@@ -5,5 +5,5 @@ import com.example.jetpack_compose_all_in_one.utils.ResultState
 import kotlinx.coroutines.flow.Flow
 
 interface IMovieRepository {
-    fun getPopularMovies(page: Int): Flow<ResultState<TmdbResponse>>
+    suspend fun getPopularMovies(page: Int): Flow<ResultState<TmdbResponse>>
 }

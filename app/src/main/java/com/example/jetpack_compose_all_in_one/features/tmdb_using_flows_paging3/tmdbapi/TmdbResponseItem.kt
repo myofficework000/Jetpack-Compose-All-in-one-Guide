@@ -32,4 +32,23 @@ data class TmdbResponseItem(
     val voteAverage: Double,
     @SerializedName("vote_count")
     val voteCount: Int
-)
+) {
+    companion object {
+        val empty = TmdbResponseItem(
+            adult = false,
+            backdropPath = null,
+            genreIds = listOf(),
+            id = 0,
+            originalLanguage = "",
+            originalTitle = "",
+            overview = "",
+            popularity = 0.0,
+            posterPath = "",
+            releaseDate = "",
+            title = "",
+            video = false,
+            voteAverage = 0.0,
+            voteCount = 0
+        )
+    }
+}
