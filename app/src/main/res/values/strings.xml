@@ -13,4 +13,5 @@
     <string name="try_again">Try again\n</string>
     <string name="set_alarm">Set Alarm</string>
     <string name="no_internet">No Internet</string>
+    <string name="empty_login">Please check your email and password again!</string>
 </resources>

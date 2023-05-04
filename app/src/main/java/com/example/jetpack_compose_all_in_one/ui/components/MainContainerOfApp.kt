@@ -26,8 +26,8 @@ import com.example.jetpack_compose_all_in_one.features.internet.InternetViewMode
 import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginPage
 import com.example.jetpack_compose_all_in_one.features.login_style_2.LoginScreen2
 import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginStyle1ViewModel
+import com.example.jetpack_compose_all_in_one.features.login_style_2.LoginStyle2ViewModel
 import com.example.jetpack_compose_all_in_one.features.provideimages.ShowImages
-import com.example.jetpack_compose_all_in_one.features.swipe_cards.QuoteStack
 import com.example.jetpack_compose_all_in_one.features.weather_sample.view.WeatherSample
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_2_Screen
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_4_Image
@@ -179,7 +179,8 @@ fun MainContainerOfApp(
                 }
 
                 composable(NavDes.Login2.route()) {
-                    LoginScreen2()
+                    val vm = LoginStyle2ViewModel()
+                    LoginScreen2(vm)
                 }
 
                 composable(NavDes.Tmdb.route()) {
