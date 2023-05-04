@@ -1,6 +1,9 @@
 package com.example.jetpack_compose_all_in_one.features.weather_sample.viewmodel
 
 import android.app.Application
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,6 +18,7 @@ class WeatherViewModel(
     private val repository: RemoteWeatherRepository
 ): ViewModel(){
     var weatherData = MutableLiveData<WeatherResponse>()
+    val isFahrenheit = mutableStateOf(false)
 
     fun getWeather(city: String) = viewModelScope.launch(Dispatchers.IO){
         try {
