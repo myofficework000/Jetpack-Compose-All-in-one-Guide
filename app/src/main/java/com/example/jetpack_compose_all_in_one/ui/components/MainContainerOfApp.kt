@@ -21,6 +21,7 @@ import com.example.jetpack_compose_all_in_one.*
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.features.alarm.AlarmMainUI
 import com.example.jetpack_compose_all_in_one.features.chatmodule.ChatViewModel
+import com.example.jetpack_compose_all_in_one.features.dog_api.view.RandomDogUI
 import com.example.jetpack_compose_all_in_one.features.download_manager.Download
 import com.example.jetpack_compose_all_in_one.features.internet.InternetViewModel
 import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginPage
@@ -235,6 +236,10 @@ fun MainContainerOfApp(
 
                 composable(NavDes.DomainSearch.route()) {
                     DomainSearch(vm = hiltViewModel())
+                }
+
+                composable(NavDes.DogApi.route()) {
+                    RandomDogUI(hiltViewModel())
                 }
             }
         }

@@ -24,26 +24,22 @@
         android:theme="@style/Theme.JetpackComposeAllInOne"
         tools:targetApi="31">
         <activity
-            android:name=".features.dog_api.view.DogActivity"
-            android:exported="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
+            android:name=".ui.views.main_ui.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.JetpackComposeAllInOne">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.views.tmdbapi.TmdbActivity"
-            android:exported="false"
-            android:theme="@style/Theme.JetpackComposeAllInOne"></activity>
+
+        <activity android:name=".features.dog_api.view.DogActivity"/>
         <activity
             android:name=".ui.views.quotes_ui.QuoteActivity"
             android:exported="false"
             android:label="@string/title_activity_quote"
-            android:theme="@style/Theme.JetpackComposeAllInOne"></activity>
+            android:theme="@style/Theme.JetpackComposeAllInOne"/>
 
         <service
             android:name=".features.service_examples.counter.CounterAppService"
@@ -54,14 +50,6 @@
         <service
             android:name=".features.service_examples.music.MusicBoundService"
             android:exported="false" />
-
-        <activity
-            android:name=".ui.views.main_ui.MainActivity"
-            android:exported="false"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.JetpackComposeAllInOne">
-
-        </activity>
 
         <receiver android:name=".features.alarm.AlarmBroadcastReceiver" />
 
