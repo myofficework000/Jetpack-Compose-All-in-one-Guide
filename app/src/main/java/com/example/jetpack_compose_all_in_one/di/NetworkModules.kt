@@ -1,5 +1,6 @@
 package com.example.jetpack_compose_all_in_one.di
 
+import com.example.jetpack_compose_all_in_one.features.dog_api.model.DogApiService
 import com.example.jetpack_compose_all_in_one.features.login_style_1.ApiLoginService
 import com.example.jetpack_compose_all_in_one.features.news_sample.data.remote.NewsApiInterceptor
 import com.example.jetpack_compose_all_in_one.features.news_sample.data.remote.NewsService
@@ -20,6 +21,7 @@ import kotlinx.coroutines.Dispatchers
 import okhttp3.OkHttpClient
 import retrofit2.CallAdapter
 import retrofit2.Converter
+import retrofit2.Converter.Factory
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -105,6 +107,15 @@ object NetworkModules {
         .build()
         .create<ApiQuotes>()
 
+    @Provides
+    @Singleton
+    @DogAPI
+    fun provideDogApi() = Retrofit.Builder()
+        .baseUrl("https://random.dog/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+        .create(DogApiService::class.java)
+
     // This api is fake atm.
     @Provides
     @Singleton
@@ -122,4 +133,6 @@ object NetworkModules {
     @Provides
     @Singleton
     fun provideRTDatabase() = Firebase.database
+
+
 }

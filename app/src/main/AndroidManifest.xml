@@ -3,12 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"
+    <uses-permission
+        android:name="android.permission.READ_MEDIA_IMAGES"
         android:minSdkVersion="33" />
 
     <application
@@ -21,43 +23,55 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetpackComposeAllInOne"
         tools:targetApi="31">
-        <activity android:name=".ui.views.tmdbapi.TmdbActivity"
-            android:exported="true"
-            android:theme="@style/Theme.JetpackComposeAllInOne">
-        </activity>
         <activity
-            android:name=".view.QuoteActivity"
-            android:exported="true"
-            android:label="@string/title_activity_quote"
-            android:theme="@style/Theme.JetpackComposeAllInOne">
-        </activity>
-        <service android:name=".features.service_examples.counter.CounterAppService"
-            android:exported="false"
-            />
-        <service android:name=".features.service_examples.music.MusicForegroundService"
-            android:exported="false"/>
-        <service android:name=".features.service_examples.music.MusicBoundService"
-            android:exported="false"/>
-        <activity
-            android:name=".ui.views.main_ui.MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.JetpackComposeAllInOne">
+            android:name=".features.dog_api.view.DogActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.views.tmdbapi.TmdbActivity"
+            android:exported="false"
+            android:theme="@style/Theme.JetpackComposeAllInOne"></activity>
+        <activity
+            android:name=".ui.views.quotes_ui.QuoteActivity"
+            android:exported="false"
+            android:label="@string/title_activity_quote"
+            android:theme="@style/Theme.JetpackComposeAllInOne"></activity>
+
+        <service
+            android:name=".features.service_examples.counter.CounterAppService"
+            android:exported="false" />
+        <service
+            android:name=".features.service_examples.music.MusicForegroundService"
+            android:exported="false" />
+        <service
+            android:name=".features.service_examples.music.MusicBoundService"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.views.main_ui.MainActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.JetpackComposeAllInOne">
+
+        </activity>
 
         <receiver android:name=".features.alarm.AlarmBroadcastReceiver" />
-        <service android:name=".utils.FcmRegisterService"
+
+        <service
+            android:name=".utils.FcmRegisterService"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
     </application>
 
 </manifest>

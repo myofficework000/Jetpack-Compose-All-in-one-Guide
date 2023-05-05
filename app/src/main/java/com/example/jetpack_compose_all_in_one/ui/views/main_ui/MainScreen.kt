@@ -1,5 +1,6 @@
 package com.example.jetpack_compose_all_in_one
 
+import android.annotation.SuppressLint
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
@@ -8,6 +9,7 @@ import com.example.jetpack_compose_all_in_one.ui.components.SimpleBottomSheet
 import kotlinx.coroutines.launch
 
 
+@SuppressLint("SuspiciousIndentation")
 @Composable
 fun BottomNavBar(){
     var selectedIndex by remember { mutableStateOf(0)}
