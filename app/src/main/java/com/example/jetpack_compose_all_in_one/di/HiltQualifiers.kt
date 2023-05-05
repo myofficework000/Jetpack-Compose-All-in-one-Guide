@@ -13,3 +13,7 @@ annotation class QuotesAPI
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
 annotation class NewsAPI
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class DogAPI

@@ -1,5 +1,7 @@
 package com.example.jetpack_compose_all_in_one.di
 
+import com.example.jetpack_compose_all_in_one.features.dog_api.model.DogRepository
+import com.example.jetpack_compose_all_in_one.features.dog_api.model.IDogRepository
 import com.example.jetpack_compose_all_in_one.features.domain_search.DomainSearchRepository
 import com.example.jetpack_compose_all_in_one.features.domain_search.IDomainSearchRepository
 import com.example.jetpack_compose_all_in_one.features.news_sample.repository.INewsRepository
@@ -24,6 +26,11 @@ abstract class RepositoryModules {
     @Singleton
     @NewsAPI
     abstract fun bindNewsRepository(impl: NewsRepository): INewsRepository
+
+    @Binds
+    @Singleton
+    @DogAPI
+    abstract fun bindDogRepository(impl:DogRepository): IDogRepository
 
     @Binds
     @Singleton
