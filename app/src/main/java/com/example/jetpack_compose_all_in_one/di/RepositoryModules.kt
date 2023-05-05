@@ -2,6 +2,8 @@ package com.example.jetpack_compose_all_in_one.di
 
 import com.example.jetpack_compose_all_in_one.features.dog_api.model.DogRepository
 import com.example.jetpack_compose_all_in_one.features.dog_api.model.IDogRepository
+import com.example.jetpack_compose_all_in_one.features.domain_search.DomainSearchRepository
+import com.example.jetpack_compose_all_in_one.features.domain_search.IDomainSearchRepository
 import com.example.jetpack_compose_all_in_one.features.news_sample.repository.INewsRepository
 import com.example.jetpack_compose_all_in_one.features.news_sample.repository.NewsRepository
 import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.repository.IMovieRepository
@@ -29,4 +31,8 @@ abstract class RepositoryModules {
     @Singleton
     @DogAPI
     abstract fun bindDogRepository(impl:DogRepository): IDogRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindDomainSearchRepository(impl: DomainSearchRepository): IDomainSearchRepository
 }

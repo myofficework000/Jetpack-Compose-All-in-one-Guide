@@ -49,6 +49,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object WeatherSample : NavDes(NavigationDrawerData("weatherSample", "Weather Sample"))
 
+    object DomainSearch : NavDes(NavigationDrawerData("domainSearch", "Domain Name Search"))
+
     /*object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
         R.drawable.baseline_contacts_24
     ) )
@@ -63,7 +65,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     // These are for the categories
     object CategoryApis : NavDes(
         NavigationCategoryData(
-            listOf(Tmdb, Quotes, NewsSample, WeatherSample), "API implementations"
+            listOf(Tmdb, Quotes, NewsSample, WeatherSample, DomainSearch), "API implementations"
         )
     )
 
