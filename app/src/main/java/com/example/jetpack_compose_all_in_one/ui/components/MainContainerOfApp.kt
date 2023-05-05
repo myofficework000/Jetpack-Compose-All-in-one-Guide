@@ -35,6 +35,7 @@ import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_Shape
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Screen
 import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat2
+import com.example.jetpack_compose_all_in_one.ui.views.domain_search.DomainSearch
 import com.example.jetpack_compose_all_in_one.ui.views.internet.InternetDemo
 import com.example.jetpack_compose_all_in_one.ui.views.lessons.ComposeLayouts
 import com.example.jetpack_compose_all_in_one.ui.views.quote_swipe.QuoteSwipe
@@ -230,6 +231,10 @@ fun MainContainerOfApp(
                 }
                 composable(NavDes.WeatherSample.route()) {
                     WeatherSample()
+                }
+
+                composable(NavDes.DomainSearch.route()) {
+                    DomainSearch(vm = hiltViewModel())
                 }
             }
         }

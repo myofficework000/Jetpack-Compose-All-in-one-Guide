@@ -1,5 +1,6 @@
 package com.example.jetpack_compose_all_in_one.di
 
+import com.example.jetpack_compose_all_in_one.features.domain_search.ApiDomainSearch
 import com.example.jetpack_compose_all_in_one.features.login_style_1.ApiLoginService
 import com.example.jetpack_compose_all_in_one.features.news_sample.data.remote.NewsApiInterceptor
 import com.example.jetpack_compose_all_in_one.features.news_sample.data.remote.NewsService
@@ -104,6 +105,14 @@ object NetworkModules {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create<ApiQuotes>()
+
+    @Provides
+    @Singleton
+    fun provideApiDomainSearch() = Retrofit.Builder()
+        .baseUrl("https://api.domainsdb.info/v1/domains/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+        .create(ApiDomainSearch::class.java)
 
     // This api is fake atm.
     @Provides

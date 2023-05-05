@@ -17,13 +17,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
+import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.features.weather_sample.model.remote.ApiWeatherService
 import com.example.jetpack_compose_all_in_one.features.weather_sample.model.remote.RetrofitBuilder
 import com.example.jetpack_compose_all_in_one.features.weather_sample.model.repository.RemoteWeatherRepository
 import com.example.jetpack_compose_all_in_one.features.weather_sample.utils.Constants.IMG_URL
 import com.example.jetpack_compose_all_in_one.features.weather_sample.utils.Converters
 import com.example.jetpack_compose_all_in_one.features.weather_sample.viewmodel.WeatherViewModel
+import com.example.jetpack_compose_all_in_one.ui.components.GradientTextField
 import com.example.jetpack_compose_all_in_one.ui.components.LabeledSwitch
+import com.example.jetpack_compose_all_in_one.ui.components.SimpleIconButton
 import com.example.jetpack_compose_all_in_one.ui.theme.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -74,7 +77,7 @@ fun WeatherSample() {
                 .height(IntrinsicSize.Max),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            TextField(
+            /*TextField(
                 modifier = Modifier.fillMaxHeight(),
                 value = inputValue,
                 onValueChange = {newValue ->
@@ -92,6 +95,21 @@ fun WeatherSample() {
                 }
             ) {
                 Text(text = "Search")
+            }*/
+
+            Row(
+                Modifier.padding(dp_10),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                GradientTextField(
+                    value = inputValue.text,
+                    gradient = WhiteToBlue20,
+                    modifier = Modifier.weight(1f)
+                ) { inputValue = TextFieldValue(it) }
+
+                SimpleIconButton(iconResourceInt = R.drawable.baseline_search_24) {
+                    weatherViewModel.getWeather(city = inputValue.text)
+                }
             }
         }
         /*WeatherCard(
