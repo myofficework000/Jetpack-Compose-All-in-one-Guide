@@ -18,7 +18,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.jetpack_compose_all_in_one.features.news_sample.data.data.LatestNewsResponse
 
-
 @Composable
 fun LatestNewsPage(
     viewModel : NewsViewModel = hiltViewModel()
@@ -30,10 +29,6 @@ fun LatestNewsPage(
     LaunchedEffect(result){
         viewModel.getLatestNews()
     }
-
-    /*result?.let {
-        NewsList(newsData = it)
-    }*/
 
     result?.let {latestNewsResponse ->
         Column {
@@ -64,5 +59,4 @@ fun NewsList(
             }
         }
     }
-
 }
