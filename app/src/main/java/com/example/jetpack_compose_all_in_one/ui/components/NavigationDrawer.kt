@@ -32,7 +32,7 @@ import com.example.jetpack_compose_all_in_one.ui.theme.sp_32
 import com.example.jetpack_compose_all_in_one.ui.theme.spaceLarge
 import kotlinx.coroutines.launch
 
-@Composable
+/*@Composable
 fun NavigationDrawer() {
 
     val drawerState = rememberDrawerState(DrawerValue.Closed)
@@ -86,7 +86,7 @@ fun NavigationDrawer() {
         }
 
     }
-}
+}*/
 
 @Composable
 private fun DrawerHeader() {
