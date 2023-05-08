@@ -251,7 +251,7 @@ fun MainContainerOfApp(
                 }
 
                 composable(NavDes.Maps.route()) {
-                    ComposeDemoApp()
+                    ComposeDemoApp(hiltViewModel())
                 }
             }
         }

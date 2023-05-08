@@ -1,5 +1,7 @@
 package com.example.jetpack_compose_all_in_one.utils
 
+import com.google.android.gms.maps.model.LatLng
+
 object Constants {
     const val BASE_URL_OLD = "https://api.quotable.io/"
     const val RANDOM_ENDPOINT = "random"
@@ -18,4 +20,6 @@ object Constants {
 
     const val ALARM_REQUEST_CODE = 100
     const val ROOMDB_DBNAME = "allInOne"
+
+    val MAP_POS_BIGBEN = LatLng(51.5007761,-0.124546)
 }
