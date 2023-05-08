@@ -13,6 +13,7 @@ import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.State
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -29,6 +30,7 @@ fun NavigationDrawerMain(
     navController: NavController,
     currentRoute: MutableState<NavDes>,
     drawerState: DrawerState,
+    noSwiping: State<Boolean>,
     closeDrawerFunc: () -> Unit,
     content: @Composable () -> Unit
 ) {
@@ -48,7 +50,8 @@ fun NavigationDrawerMain(
                     }
                 }
             }
-        }
+        },
+        gesturesEnabled = if (noSwiping.value) drawerState.isOpen else true
     ) { content() }
 }
 
