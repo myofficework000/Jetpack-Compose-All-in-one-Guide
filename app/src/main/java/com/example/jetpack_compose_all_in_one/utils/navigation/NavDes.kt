@@ -53,6 +53,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object DogApi : NavDes(NavigationDrawerData("dogApi", "Dog API"))
 
+    object Maps : NavDes(NavigationDrawerData("maps", "Play with Maps"))
+
     /*object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
         R.drawable.baseline_contacts_24
     ) )
@@ -67,7 +69,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     // These are for the categories
     object CategoryApis : NavDes(
         NavigationCategoryData(
-            listOf(Tmdb, Quotes, NewsSample, WeatherSample, DomainSearch, DogApi),
+            listOf(Tmdb, Quotes, NewsSample, WeatherSample, DomainSearch, DogApi, Maps),
             "API implementations"
         )
     )
@@ -96,7 +98,6 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     object CategoryFeatures : NavDes(
         NavigationCategoryData(
             listOf(
-                Home,
                 ShowImages,
                 CategoryServices,
                 CategoryApis,
@@ -118,6 +119,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
         // This is a mix of individual destinations and categories,
         //      but for now only categories are needed.
         val drawerList = listOf(
+            Home,
             CategoryLessons,
             CategoryFeatures
         )
@@ -131,6 +133,12 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
         //      states from MainContainerOfApp and setup your own logic.
         fun needCustomAppBar(currentRoute: NavDes) = listOf(
             Login1
+        ).contains(currentRoute)
+
+        // The drawer's swipe gesture blocks all horizontal dragging interactions.
+        // Add the page to the list so drawer can't swipe.
+        fun disableDrawerSwiping(currentRoute: NavDes) = listOf(
+            Maps
         ).contains(currentRoute)
     }
 }

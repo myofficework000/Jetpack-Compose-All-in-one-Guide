@@ -28,6 +28,7 @@ import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginPage
 import com.example.jetpack_compose_all_in_one.features.login_style_2.LoginScreen2
 import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginStyle1ViewModel
 import com.example.jetpack_compose_all_in_one.features.login_style_2.LoginStyle2ViewModel
+import com.example.jetpack_compose_all_in_one.features.play_with_maps.ComposeDemoApp
 import com.example.jetpack_compose_all_in_one.features.provideimages.ShowImages
 import com.example.jetpack_compose_all_in_one.features.weather_sample.view.WeatherSample
 import com.example.jetpack_compose_all_in_one.lessons.lesson_1.Lesson_1_Screen
@@ -67,12 +68,19 @@ fun MainContainerOfApp(
     val currentRoute: MutableState<NavDes> = remember { mutableStateOf(NavDes.startDestination) }
     val snackbarHostState = remember { SnackbarHostState() }
 
-    NavigationDrawerMain(navController, currentRoute, drawerState,
+    val customAppBarState = remember{ derivedStateOf {
+        NavDes.needCustomAppBar(currentRoute.value)
+    } }
+    val noSwipeState = remember{ derivedStateOf {
+        NavDes.disableDrawerSwiping(currentRoute.value)
+    } }
+
+    NavigationDrawerMain(navController, currentRoute, drawerState, noSwipeState,
         { scope.launch { drawerState.close() } }
     ) {
         Scaffold(
             topBar = {
-                if (!NavDes.needCustomAppBar(currentRoute.value)) {
+                if (!customAppBarState.value) {
                     TopAppBar(
                         title = {
                             Text(
@@ -240,6 +248,10 @@ fun MainContainerOfApp(
 
                 composable(NavDes.DogApi.route()) {
                     RandomDogUI(hiltViewModel())
+                }
+
+                composable(NavDes.Maps.route()) {
+                    ComposeDemoApp()
                 }
             }
         }
