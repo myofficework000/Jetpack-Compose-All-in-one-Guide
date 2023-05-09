@@ -27,6 +27,9 @@ import androidx.compose.ui.unit.sp
 import com.example.jetpack_compose_all_in_one.ui.components.LessonHeader
 import com.example.jetpack_compose_all_in_one.ui.components.LessonText2
 import com.example.jetpack_compose_all_in_one.ui.components.StyleableLessonText
+import com.example.jetpack_compose_all_in_one.ui.theme.Pink80
+import com.example.jetpack_compose_all_in_one.ui.theme.dp_10
+import com.example.jetpack_compose_all_in_one.ui.theme.dp_200
 
 
 /**
@@ -134,10 +137,10 @@ fun RowExample() {
 @Composable
 fun ColumnExample() {
     val modifier = Modifier
-        .padding(8.dp)
+        .padding(dp_10)
         .fillMaxWidth()
-        .height(200.dp)
-        .background(Color.LightGray)
+        .height(dp_200)
+        .background(Pink80)
 
     LessonText2(text = "Arrangement.Top")
     Column(modifier = modifier, verticalArrangement = Arrangement.Top) {
@@ -175,17 +178,17 @@ fun ColumnExample() {
 fun RowTexts() {
     Text(
         text = "Row1", modifier = Modifier
-            .background(Color(0xFFFF9800))
+            .background(Color(0xFF0022FF))
             .padding(4.dp)
     )
     Text(
         text = "Row2", modifier = Modifier
-            .background(Color(0xFFFFA726))
+            .background(Color(0xFF324EFF))
             .padding(4.dp)
     )
     Text(
         text = "Row3", modifier = Modifier
-            .background(Color(0xFFFFB74D))
+            .background(Color(0xFF677AF8))
             .padding(4.dp)
     )
 }
