@@ -1,5 +1,6 @@
 package com.example.jetpack_compose_all_in_one.ui.components
 
+import android.location.Location
 import android.media.RingtoneManager
 import android.net.Uri
 import androidx.compose.foundation.background
@@ -52,6 +53,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun MainContainerOfApp(
     internetViewModel: InternetViewModel,
+    getCurrentLocationFunc: ((Location?) -> Unit) -> Unit,
     playMusicFuncForeground: (Uri) -> Unit,
     stopMusicFuncForeground: () -> Unit,
     playMusicFuncBound: (Uri) -> Unit,
@@ -251,7 +253,7 @@ fun MainContainerOfApp(
                 }
 
                 composable(NavDes.Maps.route()) {
-                    ComposeDemoApp(hiltViewModel())
+                    ComposeDemoApp( hiltViewModel(), getCurrentLocationFunc )
                 }
             }
         }

@@ -1,10 +1,19 @@
 package com.example.jetpack_compose_all_in_one.utils
 
 import android.Manifest
+import android.content.Context
+import android.content.pm.PackageManager
 import android.os.Build
 import androidx.compose.runtime.Composable
+import androidx.core.app.ActivityCompat
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
+import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import com.google.accompanist.permissions.rememberPermissionState
+
+/*
+* Notes:
+*   1. These composable doesn't start the request when defined. Remember to launch them.
+* */
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
@@ -13,4 +22,35 @@ fun requestReadPerm(isGranted: (Boolean) -> Unit) = rememberPermissionState(
         Manifest.permission.READ_MEDIA_IMAGES
     else
         Manifest.permission.READ_EXTERNAL_STORAGE
-) {isGranted(it) }
+) { isGranted(it) }
+
+@OptIn(ExperimentalPermissionsApi::class)
+@Composable
+fun requestCoarseLocation(isGranted: (Boolean) -> Unit) = rememberPermissionState(
+    Manifest.permission.ACCESS_COARSE_LOCATION
+) { isGranted(it) }
+
+@OptIn(ExperimentalPermissionsApi::class)
+@Composable
+fun requestFineLocation(isGranted: (Boolean) -> Unit) = rememberPermissionState(
+    Manifest.permission.ACCESS_FINE_LOCATION
+) { isGranted(it) }
+
+@OptIn(ExperimentalPermissionsApi::class)
+@Composable
+fun requestAllLocation(isGranted: (Boolean) -> Unit) = rememberMultiplePermissionsState(
+    listOf(
+        Manifest.permission.ACCESS_COARSE_LOCATION,
+        Manifest.permission.ACCESS_FINE_LOCATION
+    )
+) { isGranted(it.all { x -> x.value }) }
+
+fun isLocationAllowed(context: Context) =
+    ActivityCompat.checkSelfPermission(
+        context,
+        Manifest.permission.ACCESS_FINE_LOCATION
+    ) == PackageManager.PERMISSION_GRANTED ||
+    ActivityCompat.checkSelfPermission(
+        context,
+        Manifest.permission.ACCESS_COARSE_LOCATION
+    ) == PackageManager.PERMISSION_GRANTED

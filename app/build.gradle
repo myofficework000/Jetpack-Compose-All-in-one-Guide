@@ -117,10 +117,14 @@ dependencies {
 
     implementation 'com.google.maps.android:maps-compose:2.11.4'
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
+<<<<<<< HEAD
 
     // LiveData
    // implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1'
+=======
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
+>>>>>>> ab4b721ba475cc32cfe93aed0acf02b331609925
 }
 
 // Remember to add this to local.properties
