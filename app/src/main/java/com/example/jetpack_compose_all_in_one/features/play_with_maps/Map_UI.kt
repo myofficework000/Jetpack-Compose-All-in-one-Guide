@@ -57,7 +57,7 @@ fun ComposeDemoApp(
     val willDraw = rememberSaveable { mutableStateOf(false) }
 
     var isLocationAvailable by remember{ mutableStateOf(false) }
-    var requestingLocation = requestAllLocation{ isLocationAvailable = it }
+    val requestingLocation = requestAllLocation{ isLocationAvailable = it }
     var currentLocation by remember { mutableStateOf<Location?>(null) }
     val currentLocationMarker = remember{ derivedStateOf { MarkerState(
         if (currentLocation == null) MAP_POS_BIGBEN

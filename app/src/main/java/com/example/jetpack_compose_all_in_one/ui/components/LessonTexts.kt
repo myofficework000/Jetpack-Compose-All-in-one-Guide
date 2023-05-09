@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -22,7 +23,7 @@ import androidx.compose.ui.unit.sp
 val boldRegex = Regex("(?<!\\*)\\*\\*(?!\\*).*?(?<!\\*)\\*\\*(?!\\*)")
 
 @Composable
-fun LessonHeader(text: String, modifier: Modifier = Modifier) {
+fun LessonHeader(text: String, modifier: Modifier = Modifier, textAlign: TextAlign? = null) {
 
     Text(
         modifier = modifier
@@ -30,6 +31,7 @@ fun LessonHeader(text: String, modifier: Modifier = Modifier) {
             .padding(start = 8.dp, end = 8.dp, top = 12.dp, bottom = 6.dp),
         fontWeight = FontWeight.Bold,
         fontSize = 22.sp,
+        textAlign = textAlign,
         text = text
     )
 }
