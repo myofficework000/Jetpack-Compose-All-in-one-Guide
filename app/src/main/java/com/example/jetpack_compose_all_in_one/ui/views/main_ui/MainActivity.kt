@@ -1,5 +1,7 @@
 package com.example.jetpack_compose_all_in_one.ui.views.main_ui
 
+import android.Manifest
+import android.annotation.SuppressLint
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -16,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.app.ActivityCompat
 import com.example.jetpack_compose_all_in_one.features.download_manager.Download
 import com.example.jetpack_compose_all_in_one.features.internet.InternetViewModel
 import com.example.jetpack_compose_all_in_one.features.internet.NetworkState
@@ -24,6 +27,11 @@ import com.example.jetpack_compose_all_in_one.features.service_examples.music.Mu
 import com.example.jetpack_compose_all_in_one.ui.components.InputFields
 import com.example.jetpack_compose_all_in_one.ui.components.MainContainerOfApp
 import com.example.jetpack_compose_all_in_one.ui.theme.JetpackComposeAllInOneTheme
+import com.example.jetpack_compose_all_in_one.utils.isLocationAllowed
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.Priority
+import com.google.android.gms.tasks.CancellationTokenSource
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -49,9 +57,17 @@ class MainActivity : ComponentActivity() {
     }
     private val internetViewModel by viewModels<InternetViewModel>()
 
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private val locationCancelToken by lazy{ CancellationTokenSource() }
+
+
+
+    @SuppressLint("MissingPermission") // isLocationAllowed() checked this, but Lint doesn't know.
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         setContent {
             JetpackComposeAllInOneTheme {
                 // A surface container using the 'background' color from the theme
@@ -125,6 +141,14 @@ class MainActivity : ComponentActivity() {
 
                     MainContainerOfApp(
                         internetViewModel,
+                        {
+                            if (!isLocationAllowed(this)) it(null)
+                            else fusedLocationClient
+                                .getCurrentLocation(
+                                    Priority.PRIORITY_BALANCED_POWER_ACCURACY,
+                                    locationCancelToken.token)
+                                .addOnCompleteListener { loc -> it(loc.result) }
+                        },
                         {
                             startForegroundService(
                                 playIntentForeground.putExtra(MusicForegroundService.name_arg, it.toString())
