@@ -14,4 +14,6 @@
     <string name="set_alarm">Set Alarm</string>
     <string name="no_internet">No Internet</string>
     <string name="empty_login">Please check your email and password again!</string>
+    <string name="login_label">Login</string>
+    <string name="register_label">Register</string>
 </resources>

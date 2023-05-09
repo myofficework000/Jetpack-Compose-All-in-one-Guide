@@ -24,6 +24,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -39,10 +40,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.jetpack_compose_all_in_one.R
+import com.example.jetpack_compose_all_in_one.ui.components.LabeledSwitch
 import com.example.jetpack_compose_all_in_one.ui.theme.Blue10
 import com.example.jetpack_compose_all_in_one.ui.theme.Pink10
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_50
 import com.example.jetpack_compose_all_in_one.utils.showToast
+import kotlin.math.log
 
 @Composable
 fun LoginScreen2(
@@ -51,6 +54,21 @@ fun LoginScreen2(
     var context = LocalContext.current
     var showPassword: Boolean by remember {
         mutableStateOf(false)
+    }
+    var isLoginScreen: Boolean by remember {
+        mutableStateOf(true)
+    }
+    val loginStatus = viewModel.loginStatus.observeAsState()
+    val registerStatus = viewModel.registerStatus.observeAsState()
+    loginStatus.runCatching {
+        if (loginStatus.value != "") {
+            showToast(context, loginStatus.value!!)
+        }
+    }
+    registerStatus.runCatching {
+        if (registerStatus.value != "") {
+            showToast(context, registerStatus.value!!)
+        }
     }
 
     Box(
@@ -73,11 +91,17 @@ fun LoginScreen2(
                 modifier = Modifier.size(120.dp)
             )
             Text(
-                text = "Login",
+                text = if (isLoginScreen) context.getString(R.string.login_label)
+                        else context.getString(R.string.register_label),
                 fontSize = 40.sp,
                 color = Color.White,
                 modifier = Modifier.fillMaxWidth()
             )
+            LabeledSwitch(
+                Pair(context.getString(R.string.login_label), context.getString(R.string.register_label)),
+                Modifier
+                    .padding(24.dp)
+            ) { isLoginScreen = it }
             TextField(
                 modifier = Modifier
                     .fillMaxWidth(),
@@ -118,15 +142,18 @@ fun LoginScreen2(
                 border = BorderStroke(1.dp, Color.White),
                 onClick = {
                     if (viewModel.email.value != "" && viewModel.password.value != "") {
-                        viewModel.login {
-                            showToast(context, "${viewModel.email.value} logged in!")
+                        if (isLoginScreen) {
+                            viewModel.login()
+                        } else {
+                            viewModel.register()
                         }
                     } else {
                         showToast(context, context.getString(R.string.empty_login))
                     }
 
                 }) {
-                Text(text = "Login")
+                Text(text = if (isLoginScreen) context.getString(R.string.login_label)
+                            else context.getString(R.string.register_label))
             }
         }
         Column(

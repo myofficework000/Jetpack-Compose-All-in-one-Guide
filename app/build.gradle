@@ -64,6 +64,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database-ktx:20.2.1'
     implementation 'com.google.firebase:firebase-messaging-ktx:23.1.2'
     implementation 'com.google.accompanist:accompanist-permissions:0.31.1-alpha'
+    implementation 'com.google.firebase:firebase-auth-ktx:21.3.0'
 
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'io.mockk:mockk:1.13.4'
