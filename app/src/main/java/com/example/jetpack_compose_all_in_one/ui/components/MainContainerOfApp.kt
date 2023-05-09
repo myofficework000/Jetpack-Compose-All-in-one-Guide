@@ -190,8 +190,8 @@ fun MainContainerOfApp(
                 }
 
                 composable(NavDes.Login2.route()) {
-                    val vm = LoginStyle2ViewModel()
-                    LoginScreen2(vm)
+                   // val vm = LoginStyle2ViewModel()
+                    LoginScreen2()
                 }
 
                 composable(NavDes.Tmdb.route()) {

@@ -1,5 +1,6 @@
 package com.example.jetpack_compose_all_in_one.features.login_style_2
 
+import android.content.Context
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -39,36 +40,53 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.ui.components.LabeledSwitch
 import com.example.jetpack_compose_all_in_one.ui.theme.Blue10
 import com.example.jetpack_compose_all_in_one.ui.theme.Pink10
+import com.example.jetpack_compose_all_in_one.ui.theme.dp_1
+import com.example.jetpack_compose_all_in_one.ui.theme.dp_10
+import com.example.jetpack_compose_all_in_one.ui.theme.dp_20
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_50
 import com.example.jetpack_compose_all_in_one.utils.showToast
-import kotlin.math.log
 
 @Composable
-fun LoginScreen2(
-    viewModel: LoginStyle2ViewModel
-) {
-    var context = LocalContext.current
+fun LoginScreen2() {
+    val viewModel: LoginStyle2ViewModel = viewModel()
+    val context = LocalContext.current
     var showPassword: Boolean by remember {
         mutableStateOf(false)
     }
     var isLoginScreen: Boolean by remember {
         mutableStateOf(true)
     }
+
     val loginStatus = viewModel.loginStatus.observeAsState()
     val registerStatus = viewModel.registerStatus.observeAsState()
-    loginStatus.runCatching {
-        if (loginStatus.value != "") {
-            showToast(context, loginStatus.value!!)
-        }
+    val verifyEmailStatus = viewModel.verifyEmailStatus.observeAsState()
+
+    /* loginStatus.runCatching {
+         if (loginStatus.value != "") {
+             showToast(context, loginStatus.value!!)
+         }
+     }
+     registerStatus.runCatching {
+         if (registerStatus.value != "") {
+             showToast(context, registerStatus.value!!)
+         }
+     }*/
+
+    registerStatus.value?.let {
+        showToast(context, it)
     }
-    registerStatus.runCatching {
-        if (registerStatus.value != "") {
-            showToast(context, registerStatus.value!!)
-        }
+
+    loginStatus.value?.let {
+        showToast(context, it)
+    }
+
+    loginStatus.value?.let {
+        showToast(context, it)
     }
 
     Box(
@@ -92,13 +110,16 @@ fun LoginScreen2(
             )
             Text(
                 text = if (isLoginScreen) context.getString(R.string.login_label)
-                        else context.getString(R.string.register_label),
+                else context.getString(R.string.register_label),
                 fontSize = 40.sp,
                 color = Color.White,
                 modifier = Modifier.fillMaxWidth()
             )
             LabeledSwitch(
-                Pair(context.getString(R.string.login_label), context.getString(R.string.register_label)),
+                Pair(
+                    context.getString(R.string.login_label),
+                    context.getString(R.string.register_label)
+                ),
                 Modifier
                     .padding(24.dp)
             ) { isLoginScreen = it }
@@ -136,29 +157,26 @@ fun LoginScreen2(
                 textAlign = TextAlign.Right,
                 modifier = Modifier.fillMaxWidth()
             )
-            Spacer(modifier = Modifier.padding(20.dp))
+            Spacer(modifier = Modifier.padding(dp_20))
 
             OutlinedButton(
-                border = BorderStroke(1.dp, Color.White),
+                border = BorderStroke(dp_1, Color.White),
                 onClick = {
-                    if (viewModel.email.value != "" && viewModel.password.value != "") {
-                        if (isLoginScreen) {
-                            viewModel.login()
-                        } else {
-                            viewModel.register()
-                        }
-                    } else {
-                        showToast(context, context.getString(R.string.empty_login))
-                    }
-
+                    invokeViewModelMethods(
+                        context = context,
+                        isLoginScreen = isLoginScreen,
+                        viewModel = viewModel
+                    )
                 }) {
-                Text(text = if (isLoginScreen) context.getString(R.string.login_label)
-                            else context.getString(R.string.register_label))
+                Text(
+                    text = if (isLoginScreen) context.getString(R.string.login_label)
+                    else context.getString(R.string.register_label)
+                )
             }
         }
         Column(
             modifier = Modifier
-                .padding(10.dp)
+                .padding(dp_10)
                 .align(Alignment.BottomStart),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
@@ -167,7 +185,7 @@ fun LoginScreen2(
         }
         Column(
             modifier = Modifier
-                .padding(10.dp)
+                .padding(dp_10)
                 .align(Alignment.BottomEnd),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
@@ -188,5 +206,21 @@ fun LoginScreen2(
                 )
             }
         }
+    }
+}
+
+private fun invokeViewModelMethods(
+    context: Context,
+    isLoginScreen: Boolean,
+    viewModel: LoginStyle2ViewModel
+) = with(viewModel) {
+    if (email.value.isNotEmpty() && password.value.isNotEmpty()) {
+        if (isLoginScreen) {
+            login()
+        } else {
+            register()
+        }
+    } else {
+        showToast(context, context.getString(R.string.empty_login))
     }
 }
