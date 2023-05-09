@@ -35,13 +35,15 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object L1Layouts : NavDes(NavigationDrawerData("l1", "Lesson 1: Row, Column, Box"))
 
-    object L2Chapter1 : NavDes(NavigationDrawerData("chapter_1", "Chapter 1: Shapes"))
+    object L2Chapter1 : NavDes(NavigationDrawerData("l2_c1", "Chapter 1: Shapes"))
 
-    object L2Chapter2 : NavDes(NavigationDrawerData("chapter_2", "Chapter 2: Text"))
+    object L2Chapter2 : NavDes(NavigationDrawerData("l2_c2", "Chapter 2: Text"))
 
-    object L2Chapter3 : NavDes(NavigationDrawerData("chapter_3", "Chapter 3: Buttons"))
+    object L2Chapter3 : NavDes(NavigationDrawerData("l2_c3", "Chapter 3: Buttons"))
 
-    object L2Chapter4 : NavDes(NavigationDrawerData("chapter_4", "Chapter 4: Image"))
+    object L2Chapter4 : NavDes(NavigationDrawerData("l2_c4", "Chapter 4: Image"))
+
+    object L5Chapter1: NavDes(NavigationDrawerData("l5_c1", "Chapter 1: Map Basics"))
 
     object QuoteSwipe : NavDes(NavigationDrawerData("quote2", "Swipe Quotes"))
 
@@ -80,6 +82,12 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
         )
     )
 
+    object L5Maps : NavDes(
+        NavigationCategoryData(
+            listOf(L5Chapter1), "Lesson 5: Maps"
+        )
+    )
+
     object CategoryServices : NavDes(
         NavigationCategoryData(
             listOf(ForegroundService, BoundService, AlarmManager), "Service implementations"
@@ -90,7 +98,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
         NavigationCategoryData(
             listOf(
                 L1Layouts,
-                L2Components
+                L2Components,
+                L5Maps
             ), "Lessons"
         )
     )
@@ -138,7 +147,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
         // The drawer's swipe gesture blocks all horizontal dragging interactions.
         // Add the page to the list so drawer can't swipe.
         fun disableDrawerSwiping(currentRoute: NavDes) = listOf(
-            Maps
+            Maps,
+            L5Chapter1
         ).contains(currentRoute)
     }
 }
