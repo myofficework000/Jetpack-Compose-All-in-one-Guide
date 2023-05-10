@@ -18,4 +18,5 @@
     <string name="register_label">Register</string>
     <string name="prev">Prev</string>
     <string name="next">Next\n</string>
+    <string name="inflate_marker_on_map">Inflate Marker On Map</string>
 </resources>

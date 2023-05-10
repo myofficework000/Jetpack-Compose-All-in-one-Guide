@@ -1,6 +1,7 @@
 package com.example.jetpack_compose_all_in_one.ui.components
 
 import android.content.res.Configuration
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ContentAlpha
@@ -11,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -33,6 +35,24 @@ fun LessonHeader(text: String, modifier: Modifier = Modifier, textAlign: TextAli
         fontSize = 22.sp,
         textAlign = textAlign,
         text = text
+    )
+}
+
+@Composable
+fun LessonHeaderWithStringRes(
+    @StringRes text: Int,
+    modifier: Modifier = Modifier,
+    textAlign: TextAlign? = null
+) {
+    val resources = LocalContext.current.resources
+    Text(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(start = 8.dp, end = 8.dp, top = 12.dp, bottom = 6.dp),
+        fontWeight = FontWeight.Bold,
+        fontSize = 22.sp,
+        textAlign = textAlign,
+        text = resources.getText(text).toString()
     )
 }
 
