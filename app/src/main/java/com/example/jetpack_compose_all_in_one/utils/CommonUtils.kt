@@ -49,18 +49,20 @@ fun bitmapDescriptorFromRes(
 @Composable
 fun LogicPager(
     modifier: Modifier = Modifier,
-    pages: List<() -> Unit>,
+    pages: List<() -> Unit> = listOf(),
     cleanupPerPage: List<() -> Unit> = listOf(),
     cleanupAllPages: () -> Unit = {},
+    pageCount: Int? = null,
     currentPage: MutableState<Int> = rememberSaveable { mutableStateOf(0) },
     content: @Composable (PaddingValues) -> Unit
 ) {
     val boxHeight = rememberSaveable { mutableStateOf(0) }
     val density = LocalDensity.current
+    val pageSize = pageCount ?: pages.size
 
     content(PaddingValues(top = boxHeight.value.dp))
 
-    if (pages.size > 1) {
+    if (pageSize > 1) {
         Box(
             modifier.then(Modifier.onGloballyPositioned {
                 with(density) { boxHeight.value = it.size.height.toDp().value.toInt() }
@@ -79,23 +81,23 @@ fun LogicPager(
                     if (currentPage.value < cleanupPerPage.size) cleanupPerPage[currentPage.value]()
                     cleanupAllPages()
                     currentPage.value--
-                    pages[currentPage.value]()
+                    if (currentPage.value < pages.size) pages[currentPage.value]()
                 }
 
                 Row {
-                    for (i in pages.indices) {
+                    for (i in 0 until pageSize) {
                         if (i == currentPage.value) Text("X") else Text("O")
                     }
                 }
 
                 SimpleTextButton(
                     stringResource(id = R.string.next),
-                    enabled = currentPage.value < pages.size - 1
+                    enabled = currentPage.value < pageSize - 1
                 ) {
                     if (currentPage.value < cleanupPerPage.size) cleanupPerPage[currentPage.value]()
                     cleanupAllPages()
                     currentPage.value++
-                    pages[currentPage.value]()
+                    if (currentPage.value < pages.size) pages[currentPage.value]()
                 }
             }
         }

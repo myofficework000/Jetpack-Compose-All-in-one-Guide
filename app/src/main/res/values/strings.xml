@@ -17,6 +17,21 @@
     <string name="login_label">Login</string>
     <string name="register_label">Register</string>
     <string name="prev">Prev</string>
-    <string name="next">Next\n</string>
-    <string name="inflate_marker_on_map">Inflate Marker On Map</string>
+    <string name="next">Next</string>
+
+    <string-array name="l5c1_header_text">
+        <item>Simple Map</item>
+        <item>Inflate Marker On Map</item>
+        <item>Customize Marker On Map</item>
+        <item>Create PolyLine on Map</item>
+        <item>Create Polygon on Map</item>
+        <item>Create Circle on Map</item>
+    </string-array>
+    <string-array name="l5c2_header_text">
+        <item>Map type - Normal</item>
+        <item>Map type - Terrain</item>
+        <item>Map type - Satellite</item>
+        <item>Map type - Hybrid</item>
+        <item>Map type - None</item>
+    </string-array>
 </resources>
