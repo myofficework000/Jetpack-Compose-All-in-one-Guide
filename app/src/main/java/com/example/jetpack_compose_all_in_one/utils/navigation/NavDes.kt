@@ -47,6 +47,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object L5Chapter2: NavDes(NavigationDrawerData("l5_c2", "Chapter 2: Map Types"))
 
+    object L5Chapter3: NavDes(NavigationDrawerData("l5_c3", "Chapter 3: Current Location on Map"))
+
     object QuoteSwipe : NavDes(NavigationDrawerData("quote2", "Swipe Quotes"))
 
     object NewsSample : NavDes(NavigationDrawerData("newsSample", "News Sample"))
@@ -86,7 +88,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object L5Maps : NavDes(
         NavigationCategoryData(
-            listOf(L5Chapter1, L5Chapter2), "Lesson 5: Maps"
+            listOf(L5Chapter1, L5Chapter2, L5Chapter3), "Lesson 5: Maps"
         )
     )
 
@@ -150,7 +152,9 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
         // Add the page to the list so drawer can't swipe.
         fun disableDrawerSwiping(currentRoute: NavDes) = listOf(
             Maps,
-            L5Chapter1
+            L5Chapter1,
+            L5Chapter2,
+            L5Chapter3
         ).contains(currentRoute)
     }
 }
