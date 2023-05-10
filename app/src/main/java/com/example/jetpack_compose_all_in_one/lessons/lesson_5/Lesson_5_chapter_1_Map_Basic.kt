@@ -5,15 +5,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpack_compose_all_in_one.R
@@ -28,8 +25,6 @@ import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.Circle
 import com.google.maps.android.compose.GoogleMap
-import com.google.maps.android.compose.MapProperties
-import com.google.maps.android.compose.MapType
 import com.google.maps.android.compose.Marker
 import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.Polygon
@@ -45,33 +40,15 @@ fun Lesson_5_Chapter_Map_Basic() {
 @Composable
 private fun LessonContent() {
     val cameraPositionState = rememberCameraPositionState {
-        position = CameraPosition.fromLatLngZoom(Constants.MAP_POS_BIGBEN, 18.54f)
+        position = CameraPosition.fromLatLngZoom(
+            Constants.MAP_POS_BIGBEN,
+            Constants.MAP_DEFAULT_ZOOM_1
+        )
     }
     val currentPage = rememberSaveable { mutableStateOf(0) }
-    val lessonHeaderText by remember {
-        derivedStateOf {
-            when (currentPage.value) {
-                1 -> "Inflate Marker On Map"
-                2 -> "Customize Marker On Map"
-                3 -> "Create PolyLine on Map"
-                4 -> "Create Polygon on Map"
-                5 -> "Create Circle on Map"
-                else -> "Simple Map"
-            }
-        }
-    }
-
-    val mapType by remember { mutableStateOf(MapType.NORMAL) }
 
     LogicPager(
-        pages = listOf(
-            {},
-            {},
-            {},
-            {},
-            {},
-            {}
-        ),
+        pageCount = 6,
         currentPage = currentPage
     ) {
         Column(
@@ -80,7 +57,7 @@ private fun LessonContent() {
                 .padding(it)
         ) {
             LessonHeader(
-                lessonHeaderText,
+                stringArrayResource(R.array.l5c1_header_text)[currentPage.value],
                 Modifier
                     .fillMaxWidth()
                     .padding(dp_15),
@@ -91,8 +68,7 @@ private fun LessonContent() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(dp_15),
-                cameraPositionState = cameraPositionState,
-                properties = MapProperties(mapType = mapType)
+                cameraPositionState = cameraPositionState
             ) {
                 when (currentPage.value) {
                     0 -> {}
