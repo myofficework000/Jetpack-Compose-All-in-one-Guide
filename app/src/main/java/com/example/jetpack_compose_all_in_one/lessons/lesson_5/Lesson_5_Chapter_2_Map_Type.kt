@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -40,29 +39,38 @@ private fun LessonContent() {
         )
     }
     val currentPage = rememberSaveable { mutableStateOf(0) }
-    val mapType = remember{ derivedStateOf {
-        when (currentPage.value) {
-            1 -> MapType.TERRAIN
-            2 -> MapType.SATELLITE
-            3 -> MapType.HYBRID
-            4 -> MapType.NONE
-            else -> MapType.NORMAL
+    val mapType = remember {
+        derivedStateOf {
+            when (currentPage.value) {
+                1 -> MapType.NORMAL
+                2 -> MapType.SATELLITE
+                3 -> MapType.HYBRID
+                4 -> MapType.NONE
+                else -> MapType.TERRAIN
+            }
         }
-    } }
+    }
 
     LogicPager(
         pageCount = 5,
         currentPage = currentPage
     ) {
-        Column( Modifier.fillMaxSize().padding(it) ) {
+        Column(
+            Modifier
+                .fillMaxSize()
+                .padding(it)) {
             LessonHeader(
                 stringArrayResource(R.array.l5c2_header_text)[currentPage.value],
-                Modifier.fillMaxWidth().padding(dp_15),
+                Modifier
+                    .fillMaxWidth()
+                    .padding(dp_15),
                 TextAlign.Center
             )
 
             GoogleMap(
-                modifier = Modifier.fillMaxWidth().padding(dp_15),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(dp_15),
                 cameraPositionState = cameraPositionState,
                 properties = MapProperties(mapType = mapType.value)
             )
