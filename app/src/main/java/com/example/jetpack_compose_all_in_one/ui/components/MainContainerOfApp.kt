@@ -37,6 +37,7 @@ import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_Shape
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Screen
 import com.example.jetpack_compose_all_in_one.lessons.lesson_5.Lesson_5_Chapter_2_Map_Type
+import com.example.jetpack_compose_all_in_one.lessons.lesson_5.Lesson_5_Chapter_3_CurrentLocation_On_Map
 import com.example.jetpack_compose_all_in_one.lessons.lesson_5.Lesson_5_Chapter_Map_Basic
 import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat2
 import com.example.jetpack_compose_all_in_one.ui.views.domain_search.DomainSearch
@@ -262,6 +263,10 @@ fun MainContainerOfApp(
 
                 composable(NavDes.L5Chapter2.route()) {
                     Lesson_5_Chapter_2_Map_Type()
+                }
+
+                composable(NavDes.L5Chapter3.route()) {
+                    Lesson_5_Chapter_3_CurrentLocation_On_Map(getCurrentLocationFunc)
                 }
             }
         }

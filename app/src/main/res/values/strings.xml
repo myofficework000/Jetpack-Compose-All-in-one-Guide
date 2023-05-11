@@ -34,4 +34,5 @@
         <item>Map type - Hybrid</item>
         <item>Map type - None</item>
     </string-array>
+    <string name="l5c3_header_text">Your current location</string>
 </resources>
