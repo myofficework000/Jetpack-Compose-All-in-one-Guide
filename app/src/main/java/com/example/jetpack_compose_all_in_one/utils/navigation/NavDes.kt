@@ -25,6 +25,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object Login2 : NavDes(NavigationDrawerData("login_style_2", "Login Page (Style 2)"))
 
+    object QrCodeScanner : NavDes(NavigationDrawerData("qrcode_scanner", "QR Code Scanner"))
+
     object Tmdb : NavDes(NavigationDrawerData("tmdb", "TMDB API"))
 
     object Quotes : NavDes(NavigationDrawerData("quotes", "Quotes API"))
@@ -118,6 +120,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 Download,
                 Login1,
                 Login2,
+                QrCodeScanner,
                 ChatDemoUI,
                 QuoteSwipe
             ), "Features"

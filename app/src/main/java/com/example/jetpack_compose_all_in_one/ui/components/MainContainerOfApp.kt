@@ -30,6 +30,7 @@ import com.example.jetpack_compose_all_in_one.features.login_style_2.LoginScreen
 import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginStyle1ViewModel
 import com.example.jetpack_compose_all_in_one.features.play_with_maps.ComposeDemoApp
 import com.example.jetpack_compose_all_in_one.features.provideimages.ShowImages
+import com.example.jetpack_compose_all_in_one.features.qrcodescanner.QrCodeScanner
 import com.example.jetpack_compose_all_in_one.features.weather_sample.view.WeatherSample
 import com.example.jetpack_compose_all_in_one.lessons.lesson_1.Lesson_1_Screen
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_2_Screen
@@ -195,6 +196,10 @@ fun MainContainerOfApp(
                 composable(NavDes.Login2.route()) {
                    // val vm = LoginStyle2ViewModel()
                     LoginScreen2()
+                }
+
+                composable(NavDes.QrCodeScanner.route()) {
+                    QrCodeScanner()
                 }
 
                 composable(NavDes.Tmdb.route()) {

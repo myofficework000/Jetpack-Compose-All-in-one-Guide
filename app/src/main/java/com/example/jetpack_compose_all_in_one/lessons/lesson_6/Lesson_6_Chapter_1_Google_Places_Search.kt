@@ -15,7 +15,7 @@ fun Lesson_6_Chapter_1_Google_Places_Search() {
 }
 
 @Composable
-private fun LessonContent() {g
+private fun LessonContent() {
     GoogleMap(
         modifier = Modifier
             .fillMaxWidth()
