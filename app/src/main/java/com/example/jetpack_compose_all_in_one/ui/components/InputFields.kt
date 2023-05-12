@@ -1,17 +1,28 @@
 package com.example.jetpack_compose_all_in_one.ui.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Phone
+import androidx.compose.material3.Card
+import androidx.compose.material3.Divider
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
@@ -34,6 +45,9 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.tooling.preview.Preview
+import com.example.jetpack_compose_all_in_one.R
+import com.example.jetpack_compose_all_in_one.ui.theme.dp_15
 import com.example.jetpack_compose_all_in_one.ui.theme.spaceSmall
 
 
@@ -184,4 +198,94 @@ fun GradientTextField(
             errorIndicatorColor = Color.Transparent,
         )
     )
+}
+
+@Composable
+fun SimpleSearchBar(
+    text: String,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    label: String? = null,
+    onChange: (String) -> Unit = {},
+    onSearch: () -> Unit
+) {
+
+    ElevatedCard {
+        OutlinedTextField(
+            value = text,
+            onValueChange = onChange,
+            modifier = modifier,
+            enabled = enabled,
+            label = label?.run { { Text(this) } },
+            trailingIcon = {
+                SimpleIconButton(
+                    iconResourceInt = R.drawable.baseline_search_24,
+                    onClick = onSearch
+                )
+            }
+        )
+    }
+}
+
+@Composable
+fun AutoCompleteSearchBar(
+    text: String,
+    suggestions: List<String>,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    label: String? = null,
+    suggestionsComponent: (@Composable (String) -> Unit)? = null,
+    maxItems: Int = 5,
+    onChange: (String) -> Unit = {},
+    onSuggestionClick: (Int) -> Unit = {},
+    onSearch: () -> Unit
+) {
+    ElevatedCard(
+        modifier = modifier.then(Modifier.width(IntrinsicSize.Min))
+    ) {
+        OutlinedTextField(
+            value = text,
+            onValueChange = onChange,
+            modifier = Modifier.fillMaxWidth().padding(dp_15),
+            enabled = enabled,
+            label = label?.run { { Text(this) } },
+            trailingIcon = {
+                SimpleIconButton(
+                    iconResourceInt = R.drawable.baseline_search_24,
+                    onClick = onSearch
+                )
+            }
+        )
+
+        for (i in 0 until minOf(suggestions.size, maxItems)) {
+            suggestionsComponent?.invoke(text) ?: Text(
+                suggestions[i],
+                Modifier
+                    .fillMaxWidth()
+                    .clickable { onSuggestionClick(i) }
+                    .padding(dp_15)
+            )
+            if (i < minOf(suggestions.size, maxItems)) Divider()
+        }
+    }
+}
+
+
+
+@Preview
+@Composable
+private fun SimpleSearchBarPreview() {
+    SimpleSearchBar(
+        "Testing testing...",
+
+    ) {}
+}
+
+@Preview
+@Composable
+private fun AutocompleteSearchBarPreview() {
+    AutoCompleteSearchBar(
+        "Testing testing...",
+        listOf("1","222222....","3. Hey Bob the mic is not working.")
+    ) {}
 }

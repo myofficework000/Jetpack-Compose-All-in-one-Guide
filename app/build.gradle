@@ -11,6 +11,10 @@ android {
     namespace 'com.example.jetpack_compose_all_in_one'
     compileSdk 33
 
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+    def mapApi = properties.getProperty("GOOGLE_MAPS_API_KEY")
+
     defaultConfig {
         applicationId "com.example.jetpack_compose_all_in_one"
         minSdk 26
@@ -22,9 +26,12 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+
+        resValue "string", "GOOGLE_MAPS_API_KEY", "\"$mapApi\""
     }
 
     buildTypes {
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -65,6 +72,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging-ktx:23.1.2'
     implementation 'com.google.accompanist:accompanist-permissions:0.31.1-alpha'
     implementation 'com.google.firebase:firebase-auth-ktx:21.3.0'
+    implementation 'com.google.android.libraries.places:places:3.1.0'
 
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'io.mockk:mockk:1.13.4'

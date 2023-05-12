@@ -1,6 +1,7 @@
 package com.example.jetpack_compose_all_in_one.ui.views.news_ui.list
 
 import android.util.Log
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -70,7 +71,7 @@ fun NewsList(
             }
         }
         openDetailUI.value?.let {
-            DetailScreen(newsItem = it)
+            DetailScreen(newsItem = it) { openDetailUI.value = null }
         }
     }
 }

@@ -51,6 +51,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object L5Chapter3: NavDes(NavigationDrawerData("l5_c3", "Chapter 3: Current Location on Map"))
 
+    object L5Chapter4: NavDes(NavigationDrawerData("l5_c4", "Chapter 4: Search on Map"))
+
     object QuoteSwipe : NavDes(NavigationDrawerData("quote2", "Swipe Quotes"))
 
     object NewsSample : NavDes(NavigationDrawerData("newsSample", "News Sample"))
@@ -90,7 +92,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object L5Maps : NavDes(
         NavigationCategoryData(
-            listOf(L5Chapter1, L5Chapter2, L5Chapter3), "Lesson 5: Maps"
+            listOf(L5Chapter1, L5Chapter2, L5Chapter3, L5Chapter4), "Lesson 5: Maps"
         )
     )
 
@@ -157,7 +159,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
             Maps,
             L5Chapter1,
             L5Chapter2,
-            L5Chapter3
+            L5Chapter3,
+            L5Chapter4
         ).contains(currentRoute)
     }
 }
