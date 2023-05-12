@@ -43,8 +43,8 @@ import com.example.jetpack_compose_all_in_one.lessons.lesson_5.Lesson_5_Chapter_
 import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat2
 import com.example.jetpack_compose_all_in_one.ui.views.domain_search.DomainSearch
 import com.example.jetpack_compose_all_in_one.ui.views.internet.InternetDemo
+import com.example.jetpack_compose_all_in_one.ui.views.news_ui.list.LatestNewsPage
 import com.example.jetpack_compose_all_in_one.ui.views.quote_swipe.QuoteSwipe
-import com.example.jetpack_compose_all_in_one.ui.views.news_ui.LatestNewsPage
 import com.example.jetpack_compose_all_in_one.ui.views.tmdbapi.PopularMoviesPage
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavDes
 import com.example.jetpack_compose_all_in_one.view.Quote

@@ -9,14 +9,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpack_compose_all_in_one.ui.theme.JetpackComposeAllInOneTheme
+import com.example.jetpack_compose_all_in_one.ui.views.news_ui.list.LatestNewsPage
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class LatestNewsActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
-        
-        setContent{
+
+        setContent {
             JetpackComposeAllInOneTheme {
                 androidx.compose.material3.Surface(
                     modifier = Modifier.fillMaxSize(),

@@ -9,7 +9,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.example.jetpack_compose_all_in_one.ui.theme.JetpackComposeAllInOneTheme
-import com.example.jetpack_compose_all_in_one.ui.views.news_ui.LatestNewsPage
+import com.example.jetpack_compose_all_in_one.ui.views.news_ui.list.LatestNewsPage
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
