@@ -37,6 +37,7 @@ import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_4_Image
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_Shape
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Screen
+import com.example.jetpack_compose_all_in_one.lessons.lesson_3.Lesson_3_Chapter_ListTypes
 import com.example.jetpack_compose_all_in_one.lessons.lesson_5.Lesson_5_Chapter_2_Map_Type
 import com.example.jetpack_compose_all_in_one.lessons.lesson_5.Lesson_5_Chapter_3_CurrentLocation_On_Map
 import com.example.jetpack_compose_all_in_one.lessons.lesson_5.Lesson_5_Chapter_Map_Basic
@@ -72,12 +73,16 @@ fun MainContainerOfApp(
     val currentRoute: MutableState<NavDes> = remember { mutableStateOf(NavDes.startDestination) }
     val snackbarHostState = remember { SnackbarHostState() }
 
-    val customAppBarState = remember{ derivedStateOf {
-        NavDes.needCustomAppBar(currentRoute.value)
-    } }
-    val noSwipeState = remember{ derivedStateOf {
-        NavDes.disableDrawerSwiping(currentRoute.value)
-    } }
+    val customAppBarState = remember {
+        derivedStateOf {
+            NavDes.needCustomAppBar(currentRoute.value)
+        }
+    }
+    val noSwipeState = remember {
+        derivedStateOf {
+            NavDes.disableDrawerSwiping(currentRoute.value)
+        }
+    }
 
     NavigationDrawerMain(navController, currentRoute, drawerState, noSwipeState,
         { scope.launch { drawerState.close() } }
@@ -194,7 +199,7 @@ fun MainContainerOfApp(
                 }
 
                 composable(NavDes.Login2.route()) {
-                   // val vm = LoginStyle2ViewModel()
+                    // val vm = LoginStyle2ViewModel()
                     LoginScreen2()
                 }
 
@@ -243,6 +248,10 @@ fun MainContainerOfApp(
                     Lesson_2_Chapter_4_Image()
                 }
 
+                composable(NavDes.L3Chapter1.route()) {
+                    Lesson_3_Chapter_ListTypes()
+                }
+
                 composable(NavDes.NewsSample.route()) {
                     LatestNewsPage(viewModel = hiltViewModel())
                 }
@@ -259,7 +268,7 @@ fun MainContainerOfApp(
                 }
 
                 composable(NavDes.Maps.route()) {
-                    ComposeDemoApp( hiltViewModel(), getCurrentLocationFunc )
+                    ComposeDemoApp(hiltViewModel(), getCurrentLocationFunc)
                 }
 
                 composable(NavDes.L5Chapter1.route()) {

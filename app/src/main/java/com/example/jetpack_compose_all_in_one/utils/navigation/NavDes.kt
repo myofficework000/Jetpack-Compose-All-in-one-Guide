@@ -45,11 +45,13 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object L2Chapter4 : NavDes(NavigationDrawerData("l2_c4", "Chapter 4: Image"))
 
-    object L5Chapter1: NavDes(NavigationDrawerData("l5_c1", "Chapter 1: Map Basics"))
+    object L3Chapter1 : NavDes(NavigationDrawerData("l3_c1", "Chapter 1: List Types"))
 
-    object L5Chapter2: NavDes(NavigationDrawerData("l5_c2", "Chapter 2: Map Types"))
+    object L5Chapter1 : NavDes(NavigationDrawerData("l5_c1", "Chapter 1: Map Basics"))
 
-    object L5Chapter3: NavDes(NavigationDrawerData("l5_c3", "Chapter 3: Current Location on Map"))
+    object L5Chapter2 : NavDes(NavigationDrawerData("l5_c2", "Chapter 2: Map Types"))
+
+    object L5Chapter3 : NavDes(NavigationDrawerData("l5_c3", "Chapter 3: Current Location on Map"))
 
     object QuoteSwipe : NavDes(NavigationDrawerData("quote2", "Swipe Quotes"))
 
@@ -88,6 +90,12 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
         )
     )
 
+    object L3List : NavDes(
+        NavigationCategoryData(
+            listOf(L3Chapter1), "Lesson 3: List"
+        )
+    )
+
     object L5Maps : NavDes(
         NavigationCategoryData(
             listOf(L5Chapter1, L5Chapter2, L5Chapter3), "Lesson 5: Maps"
@@ -105,6 +113,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
             listOf(
                 L1Layouts,
                 L2Components,
+                L3List,
                 L5Maps
             ), "Lessons"
         )

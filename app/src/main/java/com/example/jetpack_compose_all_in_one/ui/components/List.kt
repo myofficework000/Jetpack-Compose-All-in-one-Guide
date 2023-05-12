@@ -61,7 +61,7 @@ fun SimpleVerticalGridList(list: List<Country>) {
 }
 
 @Composable
-fun VerticalList(list: List<Country>) {
+fun CustomVerticalList(list: List<Country>) {
     var listOfItem = remember { mutableStateListOf<Country>() }
     var openDialog by remember { mutableStateOf(false) }
     var position: Int = 0

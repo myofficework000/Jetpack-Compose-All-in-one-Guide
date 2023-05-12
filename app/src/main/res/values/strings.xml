@@ -27,6 +27,14 @@
         <item>Create Polygon on Map</item>
         <item>Create Circle on Map</item>
     </string-array>
+
+    <string-array name="l3_header_text">
+        <item>Simple List</item>
+        <item>Custom Vertical List</item>
+        <item>Simple Horizontal List</item>
+        <item>Simple Grid List</item>
+    </string-array>
+
     <string-array name="l5c2_header_text">
         <item>Map type - Normal</item>
         <item>Map type - Terrain</item>
