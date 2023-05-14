@@ -43,4 +43,6 @@
         <item>Map type - None</item>
     </string-array>
     <string name="l5c3_header_text">Your current location</string>
+    <string name="read_full_article">Read Article</string>
+    <string name="close">Close</string>
 </resources>

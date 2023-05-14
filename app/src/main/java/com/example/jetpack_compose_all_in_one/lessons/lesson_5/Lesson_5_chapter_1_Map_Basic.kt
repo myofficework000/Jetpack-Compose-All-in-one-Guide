@@ -84,7 +84,7 @@ private fun LessonContent() {
 }
 
 @Composable
-fun InflateMarkerOnMap() {
+private fun InflateMarkerOnMap() {
     Marker(
         state = MarkerState(position = Constants.MAP_POS_BIGBEN),
         title = "Regular marker",
@@ -93,7 +93,7 @@ fun InflateMarkerOnMap() {
 }
 
 @Composable
-fun CustomMarkerOnMap() {
+private fun CustomMarkerOnMap() {
     Marker(
         state = MarkerState(position = Constants.MAP_POS_BIGBEN),
         title = "Custom Marker",
@@ -104,7 +104,7 @@ fun CustomMarkerOnMap() {
 
 
 @Composable
-fun CreatePolyLineOnMap() {
+private fun CreatePolyLineOnMap() {
     Polyline(
         points = listOf(
             LatLng(
@@ -132,7 +132,7 @@ fun CreatePolyLineOnMap() {
 }
 
 @Composable
-fun CreatePolygonOnMap() {
+private fun CreatePolygonOnMap() {
     Polygon(
         points = listOf(
             LatLng(
@@ -155,7 +155,7 @@ fun CreatePolygonOnMap() {
 }
 
 @Composable
-fun CreateCircleOnMap() {
+private fun CreateCircleOnMap() {
     Circle(
         center = Constants.MAP_POS_BIGBEN,
         radius = 10.0
