@@ -36,6 +36,7 @@ import com.example.jetpack_compose_all_in_one.ui.components.TextFieldWithNumbers
 import com.example.jetpack_compose_all_in_one.ui.theme.sp_16
 import com.example.jetpack_compose_all_in_one.ui.theme.sp_32
 import com.example.jetpack_compose_all_in_one.ui.theme.spaceSmall
+import com.example.jetpack_compose_all_in_one.utils.showLongToast
 import com.example.jetpack_compose_all_in_one.utils.showToast
 
 @Composable
@@ -44,17 +45,15 @@ fun RegistrationForm(
     onRegister: () -> Unit
 ) {
     Box(
-        Modifier.fillMaxSize().then(modifier),
+        Modifier
+            .fillMaxSize()
+            .then(modifier),
         contentAlignment = Alignment.Center
     ) {
         Column(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-
-            val username = remember { mutableStateOf("") }
-            val password = remember { mutableStateOf("") }
-            val confirmPassword = remember { mutableStateOf("") }
 
             Text(
                 text = "Register",
@@ -94,30 +93,28 @@ fun RegistrationForm(
     }
 
 
-
 }
 
-fun buttonClick(context:Context){
+fun buttonClick(context: Context) {
 
     if (isValidRegistrationInput(
-        username = username,
-        password = password,
-        confirmPassword = confirmPassword
+            username = username,
+            password = password,
+            confirmPassword = confirmPassword
         )
     ) {
         Log.d("TAG", username)
         Log.d("TAG", password)
         Log.d("TAG", confirmPassword)
         showToast(context = context, context.getString(R.string.registration_success))
-    }
-        else{
-            showToast(context = context, context.getString(R.string.registration_fail) )
+    } else {
+        showLongToast(context = context, context.getString(R.string.registration_fail))
 
     }
 }
 
 @Composable
-fun SpacerSmall(){
+fun SpacerSmall() {
     Spacer(modifier = Modifier.padding(spaceSmall))
 }
 
@@ -125,7 +122,7 @@ fun SpacerSmall(){
 fun RegisterButton() {
     val context = LocalContext.current
     Button(
-        onClick = { buttonClick(context =context) },
+        onClick = { buttonClick(context = context) },
         shape = RoundedCornerShape(20.dp)
     ) {
         Text(text = "Register", fontSize = sp_16)
@@ -136,7 +133,7 @@ fun RegisterButton() {
 fun UserTextField() {
     OutlinedTextField(
         value = username,
-        leadingIcon = {Icon(imageVector = Icons.Default.Person, contentDescription = "userIcon")},
+        leadingIcon = { Icon(imageVector = Icons.Default.Person, contentDescription = "userIcon") },
         onValueChange = { username = it },
         label = { Text(text = "Username") }
     )
@@ -155,17 +152,12 @@ fun EmailTextField() {
 }
 
 @Composable
-fun ConfirmPasswordTextField(){
-
-    val showPassword by remember {
-        mutableStateOf(false)
-    }
+fun ConfirmPasswordTextField() {
     OutlinedTextField(
         value = confirmPassword,
         leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = "lockIcon") },
         onValueChange = { confirmPassword = it },
         label = { Text(text = "Confirm Password") },
-        //visualTransformation = if (showPassword) VisualTransformation.None else PasswordVisualTransformation()
     )
 }
 
@@ -180,12 +172,11 @@ private fun PasswordTextField() {
         leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = "lockIcon") },
         onValueChange = { password = it },
         label = { Text(text = "Password") },
-        //visualTransformation = if (showPassword) VisualTransformation.None else PasswordVisualTransformation()
     )
 }
 
 
-    var email : String by mutableStateOf("")
-    var username : String by mutableStateOf("")
-    var password : String by mutableStateOf("")
-    var confirmPassword: String by mutableStateOf("")
+var email: String by mutableStateOf("")
+var username: String by mutableStateOf("")
+var password: String by mutableStateOf("")
+var confirmPassword: String by mutableStateOf("")

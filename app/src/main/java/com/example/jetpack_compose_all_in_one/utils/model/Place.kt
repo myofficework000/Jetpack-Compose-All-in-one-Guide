@@ -4,7 +4,6 @@ import androidx.annotation.DrawableRes
 import androidx.compose.runtime.Immutable
 import kotlin.random.Random
 
-
 @Immutable
 data class Place(
     val id: Long,
