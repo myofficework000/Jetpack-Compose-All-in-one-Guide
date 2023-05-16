@@ -33,6 +33,7 @@
         <item>Custom Vertical List</item>
         <item>Simple Horizontal List</item>
         <item>Simple Grid List</item>
+        <item>Expandable List</item>
     </string-array>
 
     <string-array name="l5c2_header_text">
@@ -45,4 +46,5 @@
     <string name="l5c3_header_text">Your current location</string>
     <string name="read_full_article">Read Article</string>
     <string name="close">Close</string>
+    <string name="additional_info_for_expandable_list">additional info</string>
 </resources>
