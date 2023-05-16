@@ -35,6 +35,7 @@ import com.example.jetpack_compose_all_in_one.features.weather_sample.view.Weath
 import com.example.jetpack_compose_all_in_one.lessons.lesson_1.Lesson_1_Screen
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_2_Screen
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_4_Image
+import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_5_Progressbar
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_Shape
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Screen
 import com.example.jetpack_compose_all_in_one.lessons.lesson_3.Lesson_3_Chapter_ListTypes
@@ -247,6 +248,10 @@ fun MainContainerOfApp(
 
                 composable(NavDes.L2Chapter4.route()) {
                     Lesson_2_Chapter_4_Image()
+                }
+
+                composable(NavDes.L2Chapter5.route()) {
+                    Lesson_2_Chapter_5_Progressbar()
                 }
 
                 composable(NavDes.L3Chapter1.route()) {
