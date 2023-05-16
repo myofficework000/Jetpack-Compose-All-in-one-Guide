@@ -109,7 +109,6 @@ fun buttonClick(context: Context) {
         showToast(context = context, context.getString(R.string.registration_success))
     } else {
         showLongToast(context = context, context.getString(R.string.registration_fail))
-
     }
 }
 

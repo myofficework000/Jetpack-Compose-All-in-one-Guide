@@ -62,7 +62,7 @@ fun SimpleVerticalGridList(list: List<Country>) {
 
 @Composable
 fun CustomVerticalList(list: List<Country>) {
-    var listOfItem = remember { mutableStateListOf<Country>() }
+    val listOfItem = remember { mutableStateListOf<Country>() }
     var openDialog by remember { mutableStateOf(false) }
     var position: Int = 0
     list.forEach {
@@ -86,6 +86,11 @@ fun CustomVerticalList(list: List<Country>) {
             }
         }
     }
+}
+
+@Composable
+fun CollapsableList(){
+    g
 }
 
 data class Country(val name: String)
