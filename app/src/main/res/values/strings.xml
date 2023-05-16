@@ -36,6 +36,13 @@
         <item>Expandable List</item>
     </string-array>
 
+    <string-array name="l2c5_header_text">
+        <item>Simple Progress</item>
+        <item>Custom Progress</item>
+        <item>Linear Progress</item>
+        <item>Custom Linear Progress</item>
+    </string-array>
+
     <string-array name="l5c2_header_text">
         <item>Map type - Normal</item>
         <item>Map type - Terrain</item>
