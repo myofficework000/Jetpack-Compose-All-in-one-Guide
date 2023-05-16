@@ -90,7 +90,7 @@ fun CustomVerticalList(list: List<Country>) {
 
 @Composable
 fun CollapsableList(){
-    g
+
 }
 
 data class Country(val name: String)
