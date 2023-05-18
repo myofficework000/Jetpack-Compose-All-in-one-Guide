@@ -37,7 +37,6 @@ fun SimpleProgress() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-
         CircularProgressIndicator(
             modifier = Modifier.padding(dp_16),
             color = Purple40,

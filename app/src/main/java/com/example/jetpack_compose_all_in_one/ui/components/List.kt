@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -82,7 +81,7 @@ fun SimpleVerticalGridList(list: List<Country>) {
 fun CustomVerticalList(list: List<Country>) {
     val listOfItem = remember { mutableStateListOf<Country>() }
     var openDialog by remember { mutableStateOf(false) }
-    var position: Int = 0
+    var position = 0
     list.forEach {
         listOfItem.add(it)
     }
@@ -106,11 +105,6 @@ fun CustomVerticalList(list: List<Country>) {
     }
 }
 
-/*@Composable
-fun CollapsableList(list: List<Country>){
-
-}*/
-
 @Composable
 fun ExpandableCardList(items: List<Country>) {
     LazyColumn {
@@ -130,7 +124,9 @@ fun ExpandableCard(item: Country) {
             .padding(dp_15)
     ) {
         Column(
-            modifier = Modifier.fillMaxWidth().padding(dp_15),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(dp_15),
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -143,27 +139,28 @@ fun ExpandableCard(item: Country) {
                     fontSize = sp_16,
                     modifier = Modifier.align(CenterVertically)
                 )
-                IconButton( onClick = { expandedState.value = !expandedState.value  }) {
-                    if(expandedState.value){
+                IconButton(onClick = { expandedState.value = !expandedState.value }) {
+                    if (expandedState.value) {
                         Icon(
                             imageVector = Icons.Filled.ExpandLess,
-                            contentDescription = "Click to close")
-                    }else{
+                            contentDescription = "Click to close"
+                        )
+                    } else {
                         Icon(
                             imageVector = Icons.Filled.ExpandMore,
-                            contentDescription = "Click to view more")
+                            contentDescription = "Click to view more"
+                        )
                     }
                 }
             }
             if (expandedState.value) {
                 Text(
-                    text = stringResource(id = R.string.additional_info_for_expandable_list))
+                    text = stringResource(id = R.string.additional_info_for_expandable_list)
+                )
             }
         }
     }
 }
-
-
 
 data class Country(val name: String)
 
