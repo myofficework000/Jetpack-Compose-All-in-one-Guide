@@ -1,5 +1,6 @@
 package com.example.jetpack_compose_all_in_one.lessons.lesson_5
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,6 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpack_compose_all_in_one.lessons.lesson_5.viewmodels.MapSearchViewModel
 import com.example.jetpack_compose_all_in_one.ui.components.AutoCompleteSearchBar
 import com.example.jetpack_compose_all_in_one.ui.components.SimpleSearchBar
+import com.example.jetpack_compose_all_in_one.ui.theme.PAGER_BACKGROUND
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_15
 import com.example.jetpack_compose_all_in_one.utils.Constants
 import com.google.android.gms.maps.model.CameraPosition
@@ -33,6 +35,7 @@ private fun LessonContent(vm: MapSearchViewModel) {
     Box(
         Modifier
             .fillMaxSize()
+            .background(PAGER_BACKGROUND)
     ) {
         GoogleMap(
             cameraPositionState = cameraPositionState

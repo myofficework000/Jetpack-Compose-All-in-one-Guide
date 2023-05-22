@@ -41,4 +41,5 @@ val L1BoxColor1 = Color(0xFF40C9D8)
 val L1BoxColor2 = Color(0xFF17A5F3)
 val L1BoxColor3 = Color(0xFFF39D13)
 
-val PAGER_BACKGROUND = Color(0xFFFFFF00)
+val PAGER_BACKGROUND = Color(0xFF154C79)
+val LESSON_HEADER_COLOR = Color.White

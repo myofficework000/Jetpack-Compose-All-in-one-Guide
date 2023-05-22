@@ -21,6 +21,7 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.jetpack_compose_all_in_one.ui.theme.LESSON_HEADER_COLOR
 
 val boldRegex = Regex("(?<!\\*)\\*\\*(?!\\*).*?(?<!\\*)\\*\\*(?!\\*)")
 
@@ -34,7 +35,8 @@ fun LessonHeader(text: String, modifier: Modifier = Modifier, textAlign: TextAli
         fontWeight = FontWeight.Bold,
         fontSize = 22.sp,
         textAlign = textAlign,
-        text = text
+        text = text,
+        color = LESSON_HEADER_COLOR
     )
 }
 
