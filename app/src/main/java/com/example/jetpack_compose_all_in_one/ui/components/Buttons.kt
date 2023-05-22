@@ -44,6 +44,8 @@ fun SimpleTextButton(
     textModifier: Modifier = Modifier,
     enabled: Boolean = true,
     buttonColors: ButtonColors = ButtonDefaults.buttonColors(),
+    textColor: Color = Color.Unspecified,
+    fontWeight: FontWeight? = null,
     onClick: () -> Unit
 ) {
     Button(
@@ -52,7 +54,12 @@ fun SimpleTextButton(
         enabled = enabled,
         colors = buttonColors
     ) {
-        Text(text = buttonMessage, textModifier)
+        Text(
+            text = buttonMessage,
+            modifier = textModifier,
+            color = textColor,
+            fontWeight = fontWeight
+        )
     }
 }
 

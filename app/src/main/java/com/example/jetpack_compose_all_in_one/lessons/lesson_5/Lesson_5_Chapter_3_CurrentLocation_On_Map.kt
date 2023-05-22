@@ -1,6 +1,7 @@
 package com.example.jetpack_compose_all_in_one.lessons.lesson_5
 
 import android.location.Location
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,6 +19,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.ui.components.LessonHeader
+import com.example.jetpack_compose_all_in_one.ui.theme.PAGER_BACKGROUND
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_15
 import com.example.jetpack_compose_all_in_one.utils.Constants
 import com.example.jetpack_compose_all_in_one.utils.requestAllLocation
@@ -84,7 +86,7 @@ private fun LessonContent(
         }
     }
 
-    Column( Modifier.fillMaxSize() ) {
+    Column( Modifier.fillMaxSize().background(PAGER_BACKGROUND) ) {
         LessonHeader(
             stringResource(id = R.string.l5c3_header_text),
             Modifier

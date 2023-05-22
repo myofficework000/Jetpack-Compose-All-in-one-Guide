@@ -11,22 +11,27 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.ui.components.SimpleTextButton
+import com.example.jetpack_compose_all_in_one.ui.theme.LESSON_HEADER_COLOR
 import com.example.jetpack_compose_all_in_one.ui.theme.PAGER_BACKGROUND
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 
@@ -53,6 +58,7 @@ fun LogicPager(
     cleanupPerPage: List<() -> Unit> = listOf(),
     cleanupAllPages: () -> Unit = {},
     pageCount: Int? = null,
+    dotTint: Color = Color.Unspecified,
     currentPage: MutableState<Int> = rememberSaveable { mutableStateOf(0) },
     content: @Composable (PaddingValues) -> Unit
 ) {
@@ -70,13 +76,14 @@ fun LogicPager(
             contentAlignment = Alignment.Center
         ) {
             Row(
-                Modifier.fillMaxWidth(),
+                Modifier.fillMaxWidth().padding(top = 8.dp),
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 SimpleTextButton(
                     stringResource(id = R.string.prev),
-                    enabled = currentPage.value > 0
+                    enabled = currentPage.value > 0,
+                    fontWeight = FontWeight.Bold
                 ) {
                     if (currentPage.value < cleanupPerPage.size) cleanupPerPage[currentPage.value]()
                     cleanupAllPages()
@@ -84,15 +91,28 @@ fun LogicPager(
                     if (currentPage.value < pages.size) pages[currentPage.value]()
                 }
 
-                Row {
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
                     for (i in 0 until pageSize) {
-                        if (i == currentPage.value) Text("X") else Text("O")
+                        if (i == currentPage.value)
+                            Icon(
+                                painterResource(R.drawable.baseline_dot_12), "",
+                                Modifier.size(14.dp),
+                                tint = dotTint
+                            )
+                        else Icon(
+                            painterResource(R.drawable.outline_dot_12), "",
+                            tint = dotTint
+                        )
                     }
                 }
 
                 SimpleTextButton(
                     stringResource(id = R.string.next),
-                    enabled = currentPage.value < pageSize - 1
+                    enabled = currentPage.value < pageSize - 1,
+                    fontWeight = FontWeight.Bold
                 ) {
                     if (currentPage.value < cleanupPerPage.size) cleanupPerPage[currentPage.value]()
                     cleanupAllPages()
