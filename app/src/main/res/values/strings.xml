@@ -27,6 +27,22 @@
         <item>Create Polygon on Map</item>
         <item>Create Circle on Map</item>
     </string-array>
+
+    <string-array name="l3_header_text">
+        <item>Simple List</item>
+        <item>Custom Vertical List</item>
+        <item>Simple Horizontal List</item>
+        <item>Simple Grid List</item>
+        <item>Expandable List</item>
+    </string-array>
+
+    <string-array name="l2c5_header_text">
+        <item>Simple Progress</item>
+        <item>Custom Progress</item>
+        <item>Linear Progress</item>
+        <item>Custom Linear Progress</item>
+    </string-array>
+
     <string-array name="l5c2_header_text">
         <item>Map type - Normal</item>
         <item>Map type - Terrain</item>
@@ -37,4 +53,5 @@
     <string name="l5c3_header_text">Your current location</string>
     <string name="read_full_article">Read Article</string>
     <string name="close">Close</string>
+    <string name="additional_info_for_expandable_list">additional info</string>
 </resources>

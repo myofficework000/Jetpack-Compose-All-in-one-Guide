@@ -31,38 +31,6 @@ fun ShowSnackbar(isOffline: Boolean, contentMessage: String, snackbarHostState: 
     }
 }
 
-
-@Composable
-fun SnackbarHost(
-    hostState: SnackbarHostState,
-    modifier: Modifier = Modifier,
-    snackbar: @Composable (SnackbarData) -> Unit = { Snackbar(it) }
-) {
-    SnackbarHost(
-        hostState = hostState,
-        modifier = modifier,
-        snackbar = { message: SnackbarData ->
-            snackbar(message)
-            /*Card(
-                shape = RoundedCornerShape(8.dp),
-                border = BorderStroke(2.dp, Color.White),
-                modifier = Modifier
-                    .padding(16.dp)
-                    .wrapContentSize()
-            ) {
-                Column(
-                    modifier = Modifier.padding(8.dp),
-                    verticalArrangement = Arrangement.spacedBy(4.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Icon(imageVector = Icons.Default.Notifications, contentDescription = "")
-                    Text(text = message.toString())
-                }
-            }*/
-        }
-    )
-}
-
 @Composable
 fun SnackbarShow(
     snackbarHostState: SnackbarHostState,
