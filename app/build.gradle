@@ -95,10 +95,6 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:2.2.7"
     implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
 
-    //RxJava 3
-    implementation 'io.reactivex.rxjava3:rxjava3:1.0.0'
-    implementation 'io.reactivex.rxjava3:rxandroid:1.0.0'
-
     //RxJava2 with Retrofit
     implementation "com.squareup.retrofit2:adapter-rxjava2:2.9.0"
 
