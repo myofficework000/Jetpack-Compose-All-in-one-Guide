@@ -11,12 +11,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import io.reactivex.disposables.CompositeDisposable
 
 @Composable
-fun SearchScreen() {
-    val viewModel: SearchViewModel by viewModel()
+fun SearchScreen(
+    viewModel: SearchViewModel,
+    onSearch: (String) -> Unit
+) {
     var searchQuery by remember { mutableStateOf("") }
     val compositeDisposable = remember { CompositeDisposable() }
 
@@ -28,10 +31,7 @@ fun SearchScreen() {
                 compositeDisposable.clear() // Clear previous disposables
                 if (it.isNotEmpty()) {
                     val disposable = viewModel.search(it)
-                        .subscribe { _ ->
-                            // Process the debounced search result
-                            // e.g., update UI or make network request
-                        }
+                        .subscribe { input -> onSearch(input) }
                     compositeDisposable.add(disposable)
                 }
             },

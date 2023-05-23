@@ -1,11 +1,13 @@
 package com.example.jetpack_compose_all_in_one.utils
 
+import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.widget.Toast
 import com.example.jetpack_compose_all_in_one.features.alarm.database.AlarmInfo
+import java.text.SimpleDateFormat
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 import java.util.concurrent.TimeUnit
@@ -61,3 +63,10 @@ fun Context.shareToOthers(quote: String) {
     intent.putExtra(Intent.EXTRA_TEXT, quote)
     startActivity(Intent.createChooser(intent, "Share via"))
 }
+
+@SuppressLint("SimpleDateFormat")
+fun String.formatDate(): Long =
+    SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z").parse(this)?.time ?: 0L
+
+@SuppressLint("SimpleDateFormat")
+fun Long.toNewsDate(): String = SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z").format(this)
