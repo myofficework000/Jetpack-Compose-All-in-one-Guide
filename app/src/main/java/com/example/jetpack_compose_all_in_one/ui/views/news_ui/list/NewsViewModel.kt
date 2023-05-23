@@ -8,6 +8,7 @@ import com.example.jetpack_compose_all_in_one.di.NewsAPI
 import com.example.jetpack_compose_all_in_one.features.news_sample.data.data.LatestNewsResponse
 import com.example.jetpack_compose_all_in_one.features.news_sample.repository.INewsRepository
 import com.example.jetpack_compose_all_in_one.features.news_sample.repository.NewsRepository
+import com.example.jetpack_compose_all_in_one.utils.toNewsDate
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -41,11 +42,35 @@ class NewsViewModel @Inject constructor(
         )
     }
 
-    init {
+    fun searchNews(
+        keywords: String,
+        start_date: Long,
+        end_date: Long,
+        category: String? = null,
+        country: String? = null,
+        language: String? = null
+    ) {
+        newsRepository.searchNews(
+            keywords,
+            start_date.toNewsDate(),
+            end_date.toNewsDate(),
+            category,
+            country,
+            language
+        )
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { _latestNewsResponse.value = it },
+                { _error.value = it.message }
+            ).also { disposable.add(it) }
+    }
+
+    /*init {
         latestNewsResponse.observeForever {
             Log.i("NewsViewModel", "Latest news response received: $it")
         }
-    }
+    }*/
 
     override fun onCleared() {
         super.onCleared()

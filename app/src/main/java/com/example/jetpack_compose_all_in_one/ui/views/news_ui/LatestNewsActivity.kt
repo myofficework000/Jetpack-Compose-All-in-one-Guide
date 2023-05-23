@@ -23,7 +23,7 @@ class LatestNewsActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = androidx.compose.material3.MaterialTheme.colorScheme.background
                 ) {
-                    LatestNewsPage()
+                    //LatestNewsPage()
                 }
             }
         }
