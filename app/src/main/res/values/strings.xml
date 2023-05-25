@@ -28,6 +28,12 @@
         <item>Create Circle on Map</item>
     </string-array>
 
+    <string-array name="lesson_1_header_text">
+        <item>Row Examples</item>
+        <item>Column Examples</item>
+        <item>Box Examples</item>
+    </string-array>
+
     <string-array name="l3_header_text">
         <item>Simple List</item>
         <item>Custom Vertical List</item>

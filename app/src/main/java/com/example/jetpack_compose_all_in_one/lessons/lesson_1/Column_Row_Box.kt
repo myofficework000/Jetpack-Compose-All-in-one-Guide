@@ -7,13 +7,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -21,83 +19,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.jetpack_compose_all_in_one.ui.components.LessonHeader
 import com.example.jetpack_compose_all_in_one.ui.components.LessonText2
-import com.example.jetpack_compose_all_in_one.ui.components.StyleableLessonText
 import com.example.jetpack_compose_all_in_one.ui.theme.Pink80
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_10
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_200
-
-
-/**
- * Lesson about [Column]s, [Row]s, [Box] and [Modifier]s.
- *
- * * [Column] contains it's children in vertical order
- * * [Row] contains it's children in horizontal order.
- * * [Box] stacks it's children on top of each other.
- */
-@Composable
-fun Lesson_1_Screen() {
-    //References for this lesson https://m3.material.io/components
-    LessonContent()
-}
-
-@Composable
-private fun LessonContent() {
-
-    LazyColumn(Modifier.fillMaxSize()) {
-
-        item {
-            LessonHeader(text = "Row")
-            StyleableLessonText(text = "1-) **Row** is a layout composable that places its children in a horizontal sequence.")
-            RowExample()
-
-            LessonHeader(text = "Column")
-            StyleableLessonText(text = "2-) **Column** is a layout composable that places its children in a vertical sequence.")
-            ColumnExample()
-
-            StyleableLessonText(
-                text = "3-) Padding order determines whether it's padding or margin for that component."
-                        + "In example below check out paddings."
-            )
-            ColumnsAndRowPaddingsExample()
-
-            StyleableLessonText(text = "4-) Shadow can be applied to Column or Row.")
-            ShadowExample()
-
-            LessonHeader(text = "Box")
-            StyleableLessonText(
-                text = "5-) **Box** aligns children on top of each other like a Stack. " +
-                        "The one declared last is on top"
-            )
-            BoxExample()
-
-            StyleableLessonText(
-                text = "6-) Elements in Box can be aligned with different alignments."
-            )
-            BoxShadowAndAlignmentExample()
-
-            LessonHeader(text = "Spacer")
-
-            StyleableLessonText(
-                text = "7-) Spacer can be used to align elements to end or bottom of screen"
-            )
-            WeightExample()
-
-            LessonHeader(text = "Weight and Spacer")
-            StyleableLessonText(
-                text = "8-) **Weight** determines, based on total weight, how much of the parent's " +
-                        "dimensions should be occupied by each child. **Spacer** is used to " +
-                        "create horizontal or vertical " +
-                        "space between components."
-            )
-            WeightAndSpacerExample()
-        }
-    }
-}
 
 @Composable
 fun RowExample() {
@@ -504,10 +431,4 @@ fun WeightAndSpacerExample() {
 
     // This spacer is for column which behaves as padding below this component
     Spacer(modifier = Modifier.height(16.dp))
-}
-
-@Preview
-@Composable
-private fun Tutorial1_1Preview() {
-    LessonContent()
 }
