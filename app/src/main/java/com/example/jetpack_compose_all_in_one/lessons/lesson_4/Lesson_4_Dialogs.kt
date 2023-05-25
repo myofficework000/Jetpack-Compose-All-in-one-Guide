@@ -12,9 +12,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.text.style.TextAlign
 import com.example.jetpack_compose_all_in_one.R
-import com.example.jetpack_compose_all_in_one.ui.components.DeleteDialog
+import com.example.jetpack_compose_all_in_one.ui.components.AlertDialog
 import com.example.jetpack_compose_all_in_one.ui.components.LessonHeader
-import com.example.jetpack_compose_all_in_one.ui.components.SimpleDialog
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_15
 import com.example.jetpack_compose_all_in_one.utils.LogicPager
 
@@ -37,7 +36,7 @@ private fun LessonContent() {
                 .padding(it)
         ) {
             LessonHeader(
-                stringArrayResource(R.array.l4_header_text)[currentPage.value],
+                stringArrayResource(R.array.lesson_4_header_text)[currentPage.value],
                 Modifier
                     .fillMaxWidth()
                     .padding(dp_15),
@@ -45,9 +44,10 @@ private fun LessonContent() {
             )
 
             when (currentPage.value) {
-                0 -> SimpleDialog()
-                1 -> DeleteDialog(onConfirmClicked = {})
-                2 -> Box() {}
+                0 -> AlertDialog()
+                1 -> Box() {}
+                2 -> AppRatingDialog()
+                3 -> LogoutDialogUI()
             }
         }
     }

@@ -34,18 +34,19 @@
         <item>Box Examples</item>
     </string-array>
 
+    <string-array name="lesson_4_header_text">
+        <item>Alert dialog</item>
+        <item>BottomSheet dialog</item>
+        <item>App rating dialog</item>
+        <item>Logout dialog</item>
+    </string-array>
+
     <string-array name="l3_header_text">
         <item>Simple List</item>
         <item>Custom Vertical List</item>
         <item>Simple Horizontal List</item>
         <item>Simple Grid List</item>
         <item>Expandable List</item>
-    </string-array>
-
-    <string-array name="l4_header_text">
-        <item>Dialog 1</item>
-        <item>Dialog 2</item>
-        <item>Dialog 3</item>
     </string-array>
 
     <string-array name="l2c5_header_text">

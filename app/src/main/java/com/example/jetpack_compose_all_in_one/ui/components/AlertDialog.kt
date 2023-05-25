@@ -12,7 +12,7 @@ import androidx.compose.ui.res.stringResource
 import com.example.jetpack_compose_all_in_one.R
 
 @Composable
-fun SimpleDialog(){
+fun AlertDialog(){
     var showPopUp by remember { mutableStateOf(true) }
     val onPopupDismissed = {showPopUp = false}
 
