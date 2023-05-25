@@ -68,4 +68,10 @@
     <string name="read_full_article">Read Article</string>
     <string name="close">Close</string>
     <string name="additional_info_for_expandable_list">additional info</string>
+    <string name="rate_app_title">Rate this app</string>
+    <string name="rate_app_text">If you enjoy using this app, would you mind taking a moment to rate it? Thank you for your support!</string>
+    <string name="submit_rating">Submit\n\t\t\t</string>
+    <string name="rate_icon">star icon\t\t</string>
+    <string name="rate_app_comment">Tell us your comments</string>
+    <string name="rate_app_submit_toast">Thank you for your comments. Have a great day!</string>
 </resources>
