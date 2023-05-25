@@ -16,11 +16,13 @@ import com.example.jetpack_compose_all_in_one.ui.components.CustomVerticalList
 import com.example.jetpack_compose_all_in_one.ui.components.ExpandableCardList
 import com.example.jetpack_compose_all_in_one.ui.components.HorizontalSimpleList
 import com.example.jetpack_compose_all_in_one.ui.components.LessonHeader
+import com.example.jetpack_compose_all_in_one.ui.components.SimpleHorizontalGridList
 import com.example.jetpack_compose_all_in_one.ui.components.SimpleVerticalGridList
 import com.example.jetpack_compose_all_in_one.ui.components.VerticalSimpleList
 import com.example.jetpack_compose_all_in_one.ui.components.getCountries
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_15
 import com.example.jetpack_compose_all_in_one.utils.LogicPager
+import com.example.jetpack_compose_all_in_one.utils.model.getNumbers
 
 @Preview
 @Composable
@@ -33,7 +35,7 @@ private fun LessonContent() {
     val currentPage = rememberSaveable { mutableStateOf(0) }
 
     LogicPager(
-        pageCount = 5,
+        pageCount = 6,
         currentPage = currentPage
     ) {
         Column(
@@ -42,7 +44,7 @@ private fun LessonContent() {
                 .padding(it)
         ) {
             LessonHeader(
-                stringArrayResource(R.array.l3_header_text)[currentPage.value],
+                stringArrayResource(R.array.lesson_3_header_text)[currentPage.value],
                 Modifier
                     .fillMaxWidth()
                     .padding(dp_15),
@@ -53,8 +55,9 @@ private fun LessonContent() {
                 0 -> VerticalSimpleList(getCountries())
                 1 -> CustomVerticalList(getCountries())
                 2 -> HorizontalSimpleList(getCountries())
-                3 -> SimpleVerticalGridList(getCountries())
-                4 -> ExpandableCardList(getCountries())
+                3 -> SimpleVerticalGridList(list = getNumbers(), numOfColumns = 2)
+                4 -> SimpleHorizontalGridList(list = getNumbers(), numOfRows = 2)
+                5 -> ExpandableCardList(getCountries())
             }
         }
     }

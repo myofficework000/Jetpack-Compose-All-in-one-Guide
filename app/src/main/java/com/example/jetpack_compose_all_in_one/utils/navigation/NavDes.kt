@@ -1,6 +1,7 @@
 package com.example.jetpack_compose_all_in_one.utils.navigation
 
 import com.example.jetpack_compose_all_in_one.R
+import com.example.jetpack_compose_all_in_one.utils.Constants.HOME
 
 /*
     How to add an item in Navigation Drawer:
@@ -14,7 +15,7 @@ import com.example.jetpack_compose_all_in_one.R
 sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: Int? = null) {
 
     // These are for individual items
-    object Home : NavDes(NavigationDrawerData("home", "Home"), R.string.app_name)
+    object Home : NavDes(NavigationDrawerData(HOME, HOME), R.string.app_name)
     object Internet : NavDes(NavigationDrawerData("internet", "Connectivity Manager"))
     object ForegroundService : NavDes(NavigationDrawerData("fService", "Foreground Services"))
     object BoundService : NavDes(NavigationDrawerData("bService", "Bound Services"))
@@ -57,7 +58,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object L5Chapter3 : NavDes(NavigationDrawerData("l5_c3", "Chapter 3: Current Location on Map"))
 
-    object L5Chapter4: NavDes(NavigationDrawerData("l5_c4", "Chapter 4: Search on Map"))
+    object L5Chapter4 : NavDes(NavigationDrawerData("l5_c4", "Chapter 4: Search on Map"))
 
     object QuoteSwipe : NavDes(NavigationDrawerData("quote2", "Swipe Quotes"))
 
@@ -92,7 +93,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object L2Components : NavDes(
         NavigationCategoryData(
-            listOf(L2Chapter1, L2Chapter2, L2Chapter3, L2Chapter4, L2Chapter5), "Lesson 2: Material Designs"
+            listOf(L2Chapter1, L2Chapter2, L2Chapter3, L2Chapter4, L2Chapter5),
+            "Lesson 2: Material Designs"
         )
     )
 

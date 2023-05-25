@@ -41,11 +41,12 @@
         <item>Logout dialog</item>
     </string-array>
 
-    <string-array name="l3_header_text">
+    <string-array name="lesson_3_header_text">
         <item>Simple List</item>
         <item>Custom Vertical List</item>
         <item>Simple Horizontal List</item>
-        <item>Simple Grid List</item>
+        <item>Vertical Grid List</item>
+        <item>Horizontal Grid List</item>
         <item>Expandable List</item>
     </string-array>
 

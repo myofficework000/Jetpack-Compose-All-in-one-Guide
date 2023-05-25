@@ -16,24 +16,24 @@ import javax.inject.Inject
 @HiltViewModel
 class DogViewModel @Inject constructor(private val repository: DogRepository) : ViewModel() {
 
-    val dogLiveData = MutableLiveData<DogResponse>()
-    val error = MutableLiveData<String>()
+    private val dogLiveData = MutableLiveData<DogResponse>()
+    private val error = MutableLiveData<String>()
 
     var dogFluff by mutableStateOf(DogResponse.empty)
 
-    fun getDogImageFromApi(){
+    fun getDogImageFromApi() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val response = repository.getDogImage()
-                if (response.isSuccessful){
+                if (response.isSuccessful) {
                     response.body()?.let {
                         dogLiveData.postValue(it)
                         dogFluff = it
                     }
-                }else{
+                } else {
                     error.postValue("Failed to load data!")
                 }
-            }catch (e:Exception){
+            } catch (e: Exception) {
                 error.postValue(e.toString())
                 e.printStackTrace()
             }
