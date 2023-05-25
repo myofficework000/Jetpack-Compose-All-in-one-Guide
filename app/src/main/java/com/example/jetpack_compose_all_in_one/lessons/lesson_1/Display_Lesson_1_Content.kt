@@ -18,7 +18,7 @@ import com.example.jetpack_compose_all_in_one.utils.LogicPager
 
 @Preview
 @Composable
-private fun Lesson_1_Display() {
+fun Lesson_1_Display() {
     val currentPage = rememberSaveable { mutableStateOf(0) }
 
     LogicPager(

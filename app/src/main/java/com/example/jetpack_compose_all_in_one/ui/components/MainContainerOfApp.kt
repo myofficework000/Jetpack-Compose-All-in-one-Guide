@@ -26,13 +26,13 @@ import com.example.jetpack_compose_all_in_one.features.dog_api.view.RandomDogUI
 import com.example.jetpack_compose_all_in_one.features.download_manager.Download
 import com.example.jetpack_compose_all_in_one.features.internet.InternetViewModel
 import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginPage
-import com.example.jetpack_compose_all_in_one.features.login_style_2.LoginScreen2
 import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginStyle1ViewModel
+import com.example.jetpack_compose_all_in_one.features.login_style_2.LoginScreen2
 import com.example.jetpack_compose_all_in_one.features.play_with_maps.ComposeDemoApp
 import com.example.jetpack_compose_all_in_one.features.provideimages.ShowImages
 import com.example.jetpack_compose_all_in_one.features.qrcodescanner.QrCodeScanner
 import com.example.jetpack_compose_all_in_one.features.weather_sample.view.WeatherSample
-import com.example.jetpack_compose_all_in_one.lessons.lesson_1.Lesson_1_Screen
+import com.example.jetpack_compose_all_in_one.lessons.lesson_1.Lesson_1_Display
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_2_Screen
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_4_Image
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_5_Progressbar
@@ -42,8 +42,8 @@ import com.example.jetpack_compose_all_in_one.lessons.lesson_3.Lesson_3_Chapter_
 import com.example.jetpack_compose_all_in_one.lessons.lesson_4.Lesson_4_Chapter_Dialogs
 import com.example.jetpack_compose_all_in_one.lessons.lesson_5.Lesson_5_Chapter_2_Map_Type
 import com.example.jetpack_compose_all_in_one.lessons.lesson_5.Lesson_5_Chapter_3_CurrentLocation_On_Map
-import com.example.jetpack_compose_all_in_one.lessons.lesson_5.Lesson_5_Chapter_Map_Basic
 import com.example.jetpack_compose_all_in_one.lessons.lesson_5.Lesson_5_Chapter_4_Map_Search
+import com.example.jetpack_compose_all_in_one.lessons.lesson_5.Lesson_5_Chapter_Map_Basic
 import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat2
 import com.example.jetpack_compose_all_in_one.ui.views.domain_search.DomainSearch
 import com.example.jetpack_compose_all_in_one.ui.views.internet.InternetDemo
@@ -229,7 +229,7 @@ fun MainContainerOfApp(
                 }
 
                 composable(NavDes.L1Layouts.route()) {
-                    Lesson_1_Screen()
+                    Lesson_1_Display()
                 }
 
                 composable(NavDes.QuoteSwipe.route()) {
