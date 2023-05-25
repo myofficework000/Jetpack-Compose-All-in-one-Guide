@@ -22,7 +22,6 @@ import com.example.jetpack_compose_all_in_one.*
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.features.alarm.AlarmMainUI
 import com.example.jetpack_compose_all_in_one.features.chatmodule.ChatViewModel
-import com.example.jetpack_compose_all_in_one.features.debounce_search.SearchViewModel
 import com.example.jetpack_compose_all_in_one.features.dog_api.view.RandomDogUI
 import com.example.jetpack_compose_all_in_one.features.download_manager.Download
 import com.example.jetpack_compose_all_in_one.features.internet.InternetViewModel
@@ -40,6 +39,7 @@ import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_Shape
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Screen
 import com.example.jetpack_compose_all_in_one.lessons.lesson_3.Lesson_3_Chapter_ListTypes
+import com.example.jetpack_compose_all_in_one.lessons.lesson_4.Lesson_4_Chapter_Dialogs
 import com.example.jetpack_compose_all_in_one.lessons.lesson_5.Lesson_5_Chapter_2_Map_Type
 import com.example.jetpack_compose_all_in_one.lessons.lesson_5.Lesson_5_Chapter_3_CurrentLocation_On_Map
 import com.example.jetpack_compose_all_in_one.lessons.lesson_5.Lesson_5_Chapter_Map_Basic
@@ -257,6 +257,10 @@ fun MainContainerOfApp(
 
                 composable(NavDes.L3Chapter1.route()) {
                     Lesson_3_Chapter_ListTypes()
+                }
+
+                composable(NavDes.L4Chapter1.route()) {
+                    Lesson_4_Chapter_Dialogs()
                 }
 
                 composable(NavDes.NewsSample.route()) {
