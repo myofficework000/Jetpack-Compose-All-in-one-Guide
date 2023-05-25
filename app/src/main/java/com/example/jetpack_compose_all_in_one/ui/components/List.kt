@@ -37,6 +37,7 @@ import androidx.compose.ui.text.font.FontWeight
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_10
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_15
+import com.example.jetpack_compose_all_in_one.ui.theme.dp_3
 import com.example.jetpack_compose_all_in_one.ui.theme.sp_16
 
 @Composable
@@ -58,7 +59,7 @@ fun VerticalSimpleList(list: List<Country>) {
     ) {
         items(list) { item ->
             Text(text = item.name, fontWeight = FontWeight.Bold)
-            Spacer(modifier = Modifier.padding(dp_10))
+            CustomSpacer(height = dp_3)
         }
     }
 }

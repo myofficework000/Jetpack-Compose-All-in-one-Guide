@@ -5,8 +5,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.example.jetpack_compose_all_in_one.ui.components.CustomSpacer
 import com.example.jetpack_compose_all_in_one.ui.components.LessonHeader
 import com.example.jetpack_compose_all_in_one.ui.components.StyleableLessonText
+import com.example.jetpack_compose_all_in_one.ui.theme.dp_5
 
 /**
  * Lesson about [Row]s
@@ -18,16 +20,18 @@ fun LessonRow() {
     LazyColumn(Modifier.fillMaxSize()) {
         item {
             LessonHeader(text = "Row")
-            StyleableLessonText(text = "1-) **Row** is a layout composable that places its children in a horizontal sequence.")
+            StyleableLessonText(text = "**Row** is a layout composable that places its children in a horizontal sequence.")
             RowExample()
+            CustomSpacer(height = dp_5)
 
             StyleableLessonText(
-                text = "3-) Padding order determines whether it's padding or margin for that component."
+                text = "Padding order determines whether it's padding or margin for that component."
                         + "In example below check out paddings."
             )
             ColumnsAndRowPaddingsExample()
+            CustomSpacer(height = dp_5)
 
-            StyleableLessonText(text = "4-) Shadow can be applied to Column or Row.")
+            StyleableLessonText(text = "Shadow can be applied to Column or Row.")
             ShadowExample()
         }
     }

@@ -5,8 +5,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.example.jetpack_compose_all_in_one.ui.components.CustomSpacer
 import com.example.jetpack_compose_all_in_one.ui.components.LessonHeader
 import com.example.jetpack_compose_all_in_one.ui.components.StyleableLessonText
+import com.example.jetpack_compose_all_in_one.ui.theme.dp_5
 
 
 /**
@@ -22,22 +24,24 @@ fun LessonBox() {
         item {
             LessonHeader(text = "Box")
             StyleableLessonText(
-                text = "5-) **Box** aligns children on top of each other like a Stack. " +
+                text = "**Box** aligns children on top of each other like a Stack. " +
                         "The one declared last is on top"
             )
             BoxExample()
+            CustomSpacer(height = dp_5)
 
             StyleableLessonText(
-                text = "6-) Elements in Box can be aligned with different alignments."
+                text = "Elements in Box can be aligned with different alignments."
             )
             BoxShadowAndAlignmentExample()
 
             LessonHeader(text = "Spacer")
 
             StyleableLessonText(
-                text = "7-) Spacer can be used to align elements to end or bottom of screen"
+                text = "Spacer can be used to align elements to end or bottom of screen"
             )
             WeightExample()
+            CustomSpacer(height = dp_5)
 
             LessonHeader(text = "Weight and Spacer")
             StyleableLessonText(
@@ -47,6 +51,7 @@ fun LessonBox() {
                         "space between components."
             )
             WeightAndSpacerExample()
+            CustomSpacer(height = dp_5)
         }
     }
 }
