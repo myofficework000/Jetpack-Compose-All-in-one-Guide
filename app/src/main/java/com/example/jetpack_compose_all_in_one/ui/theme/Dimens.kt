@@ -35,6 +35,7 @@ val dp_15: Dp = 15.dp
 val dp_16: Dp = 16.dp
 val dp_20: Dp = 20.dp
 val dp_24: Dp = 24.dp
+val dp_30: Dp = 30.dp
 val dp_50: Dp = 50.dp
 val dp_80: Dp = 80.dp
 val dp_100: Dp = 100.dp

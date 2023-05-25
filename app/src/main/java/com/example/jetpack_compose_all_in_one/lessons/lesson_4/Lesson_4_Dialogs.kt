@@ -27,7 +27,7 @@ private fun LessonContent() {
     val currentPage = rememberSaveable { mutableStateOf(0) }
 
     LogicPager(
-        pageCount = 3,
+        pageCount = 4,
         currentPage = currentPage
     ) {
         Column(
