@@ -1,7 +1,11 @@
 package com.example.jetpack_compose_all_in_one.ui.components
 
 
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -156,11 +160,6 @@ fun ExpandableCardList(items: List<Country>) {
 }
 
 @Composable
-fun ExpandableAnimatedList(items: List<Country>){
-
-}
-
-@Composable
 fun ExpandableCard(item: Country) {
     val expandedState = remember { mutableStateOf(false) }
     Card(
@@ -206,6 +205,87 @@ fun ExpandableCard(item: Country) {
         }
     }
 }
+@Composable
+fun ExpandableAnimatedList(items: List<Country>){
+    LazyColumn{
+        items(items){ item ->
+            AnimatedExpandableCard(item = item)
+            Divider()
+
+        }
+    }
+}
+
+@Composable
+fun AnimatedExpandableCard(item: Country) {
+    val expanded = remember { mutableStateOf(false) }
+
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(dp_15)
+            .animateContentSize(
+                animationSpec = spring(
+                    dampingRatio = Spring.DampingRatioMediumBouncy,
+                    stiffness = Spring.StiffnessMedium
+                )
+            )
+            .clickable { expanded.value = !expanded.value },
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(dp_15),
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.Top,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    text = item.name,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = sp_16,
+                    modifier = Modifier.align(CenterVertically)
+                )
+                IconButton(onClick = { expanded.value = !expanded.value }) {
+                    if (expanded.value) {
+                        Icon(
+                            imageVector = Icons.Filled.ExpandLess,
+                            contentDescription = "Click to close"
+                        )
+                    } else {
+                        Icon(
+                            imageVector = Icons.Filled.ExpandMore,
+                            contentDescription = "Click to view more"
+                        )
+                    }
+                }
+            }
+            if (expanded.value) {
+                Text(
+                    text = stringResource(id = R.string.additional_info_for_expandable_list)
+                )
+                Text(
+                    text = stringResource(id = R.string.additional_info_for_expandable_list)
+                )
+                Text(
+                    text = stringResource(id = R.string.additional_info_for_expandable_list)
+                )
+                Text(
+                    text = stringResource(id = R.string.additional_info_for_expandable_list)
+                )
+                Text(
+                    text = stringResource(id = R.string.additional_info_for_expandable_list)
+                )
+                Text(
+                    text = stringResource(id = R.string.additional_info_for_expandable_list)
+                )
+            }
+        }
+    }
+}
+
 
 data class Country(val name: String)
 
