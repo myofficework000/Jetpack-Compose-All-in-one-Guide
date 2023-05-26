@@ -156,6 +156,11 @@ fun ExpandableCardList(items: List<Country>) {
 }
 
 @Composable
+fun ExpandableAnimatedList(items: List<Country>){
+
+}
+
+@Composable
 fun ExpandableCard(item: Country) {
     val expandedState = remember { mutableStateOf(false) }
     Card(

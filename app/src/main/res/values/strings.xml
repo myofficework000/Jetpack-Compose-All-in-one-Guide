@@ -48,6 +48,7 @@
         <item>Vertical Grid List</item>
         <item>Horizontal Grid List</item>
         <item>Expandable List</item>
+        <item>Expandable Animated List</item>
     </string-array>
 
     <string-array name="l2c5_header_text">

@@ -13,6 +13,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.ui.components.CustomVerticalList
+import com.example.jetpack_compose_all_in_one.ui.components.ExpandableAnimatedList
 import com.example.jetpack_compose_all_in_one.ui.components.ExpandableCardList
 import com.example.jetpack_compose_all_in_one.ui.components.HorizontalSimpleList
 import com.example.jetpack_compose_all_in_one.ui.components.LessonHeader
@@ -35,7 +36,7 @@ private fun LessonContent() {
     val currentPage = rememberSaveable { mutableStateOf(0) }
 
     LogicPager(
-        pageCount = 6,
+        pageCount = 7,
         currentPage = currentPage
     ) {
         Column(
@@ -58,6 +59,7 @@ private fun LessonContent() {
                 3 -> SimpleVerticalGridList(list = getNumbers(), numOfColumns = 2)
                 4 -> SimpleHorizontalGridList(list = getNumbers(), numOfRows = 2)
                 5 -> ExpandableCardList(getCountries())
+                6 -> ExpandableAnimatedList(getCountries())
             }
         }
     }
