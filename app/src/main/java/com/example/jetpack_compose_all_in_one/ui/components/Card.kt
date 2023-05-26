@@ -1,11 +1,17 @@
 package com.example.jetpack_compose_all_in_one.ui.components
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
-import androidx.compose.material3.*
+import androidx.compose.material3.Card
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -15,7 +21,6 @@ import androidx.compose.ui.unit.dp
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_4
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CardTextWithIcon(country: Country, onRemoveClicked: (country: Country) -> Unit) {
     Card(
@@ -43,5 +48,4 @@ fun CardTextWithIcon(country: Country, onRemoveClicked: (country: Country) -> Un
             }
         }
     }
-
 }
