@@ -45,3 +45,15 @@ val L1BoxColor3 = Color(0xFFF39D13)
 
 val PAGER_BACKGROUND = Color(0xFF154C79)
 val LESSON_HEADER_COLOR = Color.White
+
+val RedA100 = Color(0xFFFF8A80)
+val PinkA100 = Color(0xFFFF80AB)
+val LavenderA100 = Color(0xFFEA80FC)
+val VioletA100 = Color(0xFF8C9EFF)
+val OceanA100 = Color(0xFF80D8FF)
+val SkyA100 = Color(0xFF84FFFF)
+val MintA100 = Color(0xFFA7FFEB)
+val GreenA100 = Color(0xFFCCFF90)
+val YellowA100 = Color(0xFFFFE57F)
+val BlueA100 = Color(0xFFFF9E80)
+
