@@ -1,5 +1,7 @@
 package com.example.jetpack_compose_all_in_one.features.swipe_cards
 
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
@@ -7,7 +9,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import com.example.jetpack_compose_all_in_one.ui.views.quotes_ui.QuoteCard
 import com.example.jetpack_compose_all_in_one.utils.InfiniteList
 
@@ -30,6 +36,16 @@ fun <T> QuoteStack(
             onLike(it)
             currentPageNum = items.moveToNext()
         } }
+    )
+
+    // Placeholder
+    Text(
+        "Swipeable Cards",
+        Modifier.fillMaxWidth(),
+        color = Color.White,
+        textAlign = TextAlign.Center,
+        fontSize = 40.sp,
+        fontWeight = FontWeight.Bold
     )
 
     items[currentPageNum+1]?.let { profile ->

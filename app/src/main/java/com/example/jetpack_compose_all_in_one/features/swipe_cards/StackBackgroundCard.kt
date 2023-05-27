@@ -14,11 +14,11 @@ fun StackBackgroundCard(
     state: SwipeableState,
     content: @Composable () -> Unit,
 ) = with(state) {
-    Card(modifier.graphicsLayer {
-        scaleX = animatedScale.value
-        scaleY = animatedScale.value
-    }) {
-        Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+    Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        Box(modifier.graphicsLayer {
+            scaleX = animatedScale.value
+            scaleY = animatedScale.value
+        }) {
             content()
         }
     }

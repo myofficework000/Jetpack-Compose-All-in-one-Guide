@@ -75,7 +75,7 @@ fun QuoteCard(
     Card(
         modifier = modifier.then(Modifier.padding(dp_15)),
         shape = RoundedCornerShape(dp_10),
-        border = BorderStroke(0.5.dp, Color.Gray),
+        //border = BorderStroke(0.5.dp, Color.Gray),
         elevation = CardDefaults.cardElevation(dp_15),
     ) {
         Column(
