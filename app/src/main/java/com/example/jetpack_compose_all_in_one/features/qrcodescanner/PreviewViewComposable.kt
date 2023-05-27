@@ -9,13 +9,47 @@ import androidx.camera.core.ImageCapture
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
+import com.example.jetpack_compose_all_in_one.utils.requestCamera
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import java.util.concurrent.Executors
+
+@OptIn(ExperimentalPermissionsApi::class)
+@Composable
+fun PreviewViewComposable() {
+    var cameraPermissionRequested by remember{ mutableStateOf(false) }
+    var isCameraGranted by remember{ mutableStateOf(false) }
+    val cameraPermission = requestCamera{
+        isCameraGranted = it
+        cameraPermissionRequested = true
+    }
+
+    LaunchedEffect(Unit) { cameraPermission.launchPermissionRequest() }
+
+    Box(
+        Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        if (cameraPermissionRequested) {
+            if (isCameraGranted) QrCodeScanner()
+            else Text("Camera permission not granted")
+        }
+    }
+}
 
 @Composable
 fun QrCodeScanner() {

@@ -30,6 +30,7 @@ import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginStyle1
 import com.example.jetpack_compose_all_in_one.features.login_style_2.LoginScreen2
 import com.example.jetpack_compose_all_in_one.features.play_with_maps.ComposeDemoApp
 import com.example.jetpack_compose_all_in_one.features.provideimages.ShowImages
+import com.example.jetpack_compose_all_in_one.features.qrcodescanner.PreviewViewComposable
 import com.example.jetpack_compose_all_in_one.features.qrcodescanner.QrCodeScanner
 import com.example.jetpack_compose_all_in_one.features.weather_sample.view.WeatherSample
 import com.example.jetpack_compose_all_in_one.lessons.lesson_1.Lesson_1_Display
@@ -208,7 +209,7 @@ fun MainContainerOfApp(
                 }
 
                 composable(NavDes.QrCodeScanner.route()) {
-                    QrCodeScanner()
+                    PreviewViewComposable()
                 }
 
                 composable(NavDes.Tmdb.route()) {
