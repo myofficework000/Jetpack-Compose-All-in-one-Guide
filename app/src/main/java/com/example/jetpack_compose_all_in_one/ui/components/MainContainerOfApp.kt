@@ -32,6 +32,7 @@ import com.example.jetpack_compose_all_in_one.features.play_with_maps.ComposeDem
 import com.example.jetpack_compose_all_in_one.features.provideimages.ShowImages
 import com.example.jetpack_compose_all_in_one.features.qrcodescanner.PreviewViewComposable
 import com.example.jetpack_compose_all_in_one.features.random_dog_api.view.NextRandomDog
+import com.example.jetpack_compose_all_in_one.features.random_fox.view.RandomFoxUI
 import com.example.jetpack_compose_all_in_one.features.weather_sample.view.WeatherSample
 import com.example.jetpack_compose_all_in_one.lessons.lesson_1.Lesson_1_Display
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_2_Screen
@@ -51,9 +52,9 @@ import com.example.jetpack_compose_all_in_one.ui.views.domain_search.DomainSearc
 import com.example.jetpack_compose_all_in_one.ui.views.internet.InternetDemo
 import com.example.jetpack_compose_all_in_one.ui.views.news_ui.list.LatestNewsPage
 import com.example.jetpack_compose_all_in_one.ui.views.quote_swipe.QuoteSwipe
+import com.example.jetpack_compose_all_in_one.ui.views.quotes_ui.Quote
 import com.example.jetpack_compose_all_in_one.ui.views.tmdbapi.PopularMoviesPage
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavDes
-import com.example.jetpack_compose_all_in_one.ui.views.quotes_ui.Quote
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -289,6 +290,10 @@ fun MainContainerOfApp(
 
                 composable(NavDes.RandomDogApi.route()) {
                     NextRandomDog()
+                }
+
+                composable(NavDes.RandomFox.route()) {
+                    RandomFoxUI()
                 }
 
                 composable(NavDes.Maps.route()) {
