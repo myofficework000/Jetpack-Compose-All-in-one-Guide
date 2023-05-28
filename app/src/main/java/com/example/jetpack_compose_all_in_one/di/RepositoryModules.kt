@@ -6,6 +6,8 @@ import com.example.jetpack_compose_all_in_one.features.domain_search.DomainSearc
 import com.example.jetpack_compose_all_in_one.features.domain_search.IDomainSearchRepository
 import com.example.jetpack_compose_all_in_one.features.news_sample.repository.INewsRepository
 import com.example.jetpack_compose_all_in_one.features.news_sample.repository.NewsRepository
+import com.example.jetpack_compose_all_in_one.features.random_dog_api.model.IRandomDogRepository
+import com.example.jetpack_compose_all_in_one.features.random_dog_api.model.RandomDogRepository
 import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.repository.IMovieRepository
 import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.repository.MovieRepository
 import dagger.Binds
@@ -30,7 +32,12 @@ abstract class RepositoryModules {
     @Binds
     @Singleton
     @DogAPI
-    abstract fun bindDogRepository(impl:DogRepository): IDogRepository
+    abstract fun bindDogRepository(impl: DogRepository): IDogRepository
+
+    @Binds
+    @Singleton
+    @RandomDogAPI
+    abstract fun bindRandomDogRepository(impl: RandomDogRepository): IRandomDogRepository
 
     @Binds
     @Singleton

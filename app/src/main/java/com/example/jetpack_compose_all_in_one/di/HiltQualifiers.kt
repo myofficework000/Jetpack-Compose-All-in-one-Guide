@@ -17,3 +17,7 @@ annotation class NewsAPI
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
 annotation class DogAPI
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class RandomDogAPI

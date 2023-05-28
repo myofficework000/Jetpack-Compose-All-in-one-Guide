@@ -72,6 +72,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object DogApi : NavDes(NavigationDrawerData("dogApi", "Dog API"))
 
+    object RandomDogApi : NavDes(NavigationDrawerData("RandomDogApi", "Random Dog API"))
+
     object Maps : NavDes(NavigationDrawerData("maps", "Play with Maps"))
 
     /*object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
@@ -88,7 +90,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     // These are for the categories
     object CategoryApis : NavDes(
         NavigationCategoryData(
-            listOf(Tmdb, Quotes, NewsSample, WeatherSample, DomainSearch, DogApi, Maps),
+            listOf(Tmdb, Quotes, NewsSample, WeatherSample, DomainSearch, DogApi,RandomDogApi, Maps),
             "API implementations"
         )
     )

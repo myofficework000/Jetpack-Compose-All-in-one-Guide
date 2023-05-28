@@ -7,11 +7,13 @@ import com.example.jetpack_compose_all_in_one.features.news_sample.data.remote.N
 import com.example.jetpack_compose_all_in_one.features.news_sample.data.remote.NewsService
 import com.example.jetpack_compose_all_in_one.features.quotes_using_rx_java.QuoteAPI.APIService
 import com.example.jetpack_compose_all_in_one.features.quotes_using_rx_java.QuoteAPI.repository.RemoteRepository
+import com.example.jetpack_compose_all_in_one.features.random_dog_api.model.RandomDogApiService
 import com.example.jetpack_compose_all_in_one.features.swipe_cards.ApiQuotes
 import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.APIMovies
 import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.TmdbApiInterceptor
 import com.example.jetpack_compose_all_in_one.utils.Constants
 import com.example.jetpack_compose_all_in_one.utils.Constants.QUOTES_BASE_URL
+import com.example.jetpack_compose_all_in_one.utils.Constants.RANDOM_DOG_BASE_URL
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import dagger.Module
@@ -115,6 +117,16 @@ object NetworkModules {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create(DogApiService::class.java)
+
+    @Provides
+    @Singleton
+    @RandomDogAPI
+    fun provideRandomDogApi() = Retrofit.Builder()
+        .baseUrl(RANDOM_DOG_BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .build()
+        .create(RandomDogApiService::class.java)
 
     @Provides
     @Singleton

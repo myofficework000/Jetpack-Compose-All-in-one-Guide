@@ -10,7 +10,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpack_compose_all_in_one.ui.theme.JetpackComposeAllInOneTheme
-import com.example.jetpack_compose_all_in_one.view.Quote
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

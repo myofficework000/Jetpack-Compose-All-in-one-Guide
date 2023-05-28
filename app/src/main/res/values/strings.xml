@@ -75,4 +75,8 @@
     <string name="rate_icon">star icon\t\t</string>
     <string name="rate_app_comment">Tell us your comments</string>
     <string name="rate_app_submit_toast">Thank you for your comments. Have a great day!</string>
+    <string name="next_random_dog_rx">Rx Java</string>
+    <string name="next_random_dog_coroutines">Coroutines</string>
+    <string name="next_random_dog_flows">Flow</string>
+
 </resources>

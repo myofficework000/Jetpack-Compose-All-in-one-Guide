@@ -31,7 +31,7 @@ import com.example.jetpack_compose_all_in_one.features.login_style_2.LoginScreen
 import com.example.jetpack_compose_all_in_one.features.play_with_maps.ComposeDemoApp
 import com.example.jetpack_compose_all_in_one.features.provideimages.ShowImages
 import com.example.jetpack_compose_all_in_one.features.qrcodescanner.PreviewViewComposable
-import com.example.jetpack_compose_all_in_one.features.qrcodescanner.QrCodeScanner
+import com.example.jetpack_compose_all_in_one.features.random_dog_api.view.NextRandomDog
 import com.example.jetpack_compose_all_in_one.features.weather_sample.view.WeatherSample
 import com.example.jetpack_compose_all_in_one.lessons.lesson_1.Lesson_1_Display
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_2_Screen
@@ -53,7 +53,7 @@ import com.example.jetpack_compose_all_in_one.ui.views.news_ui.list.LatestNewsPa
 import com.example.jetpack_compose_all_in_one.ui.views.quote_swipe.QuoteSwipe
 import com.example.jetpack_compose_all_in_one.ui.views.tmdbapi.PopularMoviesPage
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavDes
-import com.example.jetpack_compose_all_in_one.view.Quote
+import com.example.jetpack_compose_all_in_one.ui.views.quotes_ui.Quote
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -285,6 +285,10 @@ fun MainContainerOfApp(
 
                 composable(NavDes.DogApi.route()) {
                     RandomDogUI(hiltViewModel())
+                }
+
+                composable(NavDes.RandomDogApi.route()) {
+                    NextRandomDog()
                 }
 
                 composable(NavDes.Maps.route()) {

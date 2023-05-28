@@ -9,7 +9,6 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,16 +27,12 @@ import com.example.jetpack_compose_all_in_one.ui.components.GradientTextField
 import com.example.jetpack_compose_all_in_one.ui.components.LabeledSwitch
 import com.example.jetpack_compose_all_in_one.ui.components.SimpleIconButton
 import com.example.jetpack_compose_all_in_one.ui.theme.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 @Composable
 fun WeatherSample() {
-    //Luan will add UI and data for this
     val weatherViewModel: WeatherViewModel = initViewModel()
     val weatherData = weatherViewModel.weatherData.observeAsState()
     var inputValue by remember { mutableStateOf(TextFieldValue("")) }
-    val scope = rememberCoroutineScope()
 
     LaunchedEffect(weatherData) {
         weatherViewModel.getWeather(city = "California")
@@ -76,28 +71,6 @@ fun WeatherSample() {
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            /*TextField(
-                modifier = Modifier.fillMaxHeight(),
-                value = inputValue,
-                onValueChange = { newValue ->
-                    inputValue = newValue
-                },
-                placeholder = { Text(text = "Search city") }
-            )
-            Button(
-                modifier = Modifier
-                    .wrapContentWidth()
-                    .height(IntrinsicSize.Max),
-                shape = RectangleShape,
-                onClick = {
-                    scope.launch(Dispatchers.IO) {
-                        weatherViewModel.getWeather(city = inputValue.text)
-                    }
-                }
-            ) {
-                Text(text = "Search")
-            }*/
-
             Row(
                 Modifier.padding(dp_10),
                 verticalAlignment = Alignment.CenterVertically

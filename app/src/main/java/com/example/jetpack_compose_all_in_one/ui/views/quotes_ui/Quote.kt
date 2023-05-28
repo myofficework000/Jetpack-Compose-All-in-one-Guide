@@ -1,4 +1,4 @@
-package com.example.jetpack_compose_all_in_one.view
+package com.example.jetpack_compose_all_in_one.ui.views.quotes_ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,8 +16,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.jetpack_compose_all_in_one.features.quotes_using_rx_java.QuoteAPI.QuoteResponse
-import com.example.jetpack_compose_all_in_one.ui.views.quotes_ui.QuoteCard
-import com.example.jetpack_compose_all_in_one.ui.views.quotes_ui.QuoteViewModel
 
 @Composable
 fun Quote(viewModel: QuoteViewModel = hiltViewModel()) {
