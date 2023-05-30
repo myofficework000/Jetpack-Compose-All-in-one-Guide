@@ -7,4 +7,5 @@ object Constants {
     const val IMG_URL = "https://openweathermap.org/img/wn"
     const val TEMP_CONVERTER1 = 1.8
     const val TEMP_CONVERT2 = 32
+    const val END_POINT_5DAY_3HOUR = "data/2.5/forecast"
 }

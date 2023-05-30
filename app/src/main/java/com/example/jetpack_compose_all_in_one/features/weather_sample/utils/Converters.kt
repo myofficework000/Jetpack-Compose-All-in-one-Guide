@@ -15,4 +15,8 @@ object Converters {
         val date = Date(dt * 1000L)
         return SimpleDateFormat("E, MMM dd h:mm a").format(date)
     }
+
+    fun dayConverter(dt: Int) = SimpleDateFormat("E, h a").format(dt * 1000L )
+
+
 }
