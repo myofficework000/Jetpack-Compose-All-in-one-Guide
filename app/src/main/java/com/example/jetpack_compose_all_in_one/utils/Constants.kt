@@ -20,6 +20,7 @@ object Constants {
     const val tmdb_image_base_url = "https://image.tmdb.org/t/p/original"
 
     const val RANDOM_DOG_BASE_URL = "https://dog.ceo/api/breeds/image/"
+    const val RANDOM_FOX_BASE_URL = "https://randomfox.ca/"
 
     const val ALARM_REQUEST_CODE = 100
     const val ROOMDB_DBNAME = "allInOne"

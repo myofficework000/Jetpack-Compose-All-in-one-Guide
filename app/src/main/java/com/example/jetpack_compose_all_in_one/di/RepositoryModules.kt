@@ -8,6 +8,8 @@ import com.example.jetpack_compose_all_in_one.features.news_sample.repository.IN
 import com.example.jetpack_compose_all_in_one.features.news_sample.repository.NewsRepository
 import com.example.jetpack_compose_all_in_one.features.random_dog_api.model.IRandomDogRepository
 import com.example.jetpack_compose_all_in_one.features.random_dog_api.model.RandomDogRepository
+import com.example.jetpack_compose_all_in_one.features.random_fox.model.IRandomFoxRepository
+import com.example.jetpack_compose_all_in_one.features.random_fox.model.RandomFoxImpl
 import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.repository.IMovieRepository
 import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.repository.MovieRepository
 import dagger.Binds
@@ -42,4 +44,9 @@ abstract class RepositoryModules {
     @Binds
     @Singleton
     abstract fun bindDomainSearchRepository(impl: DomainSearchRepository): IDomainSearchRepository
+
+    @Binds
+    @Singleton
+    @RandomFoxAPI
+    abstract fun bindRandomFoxRepository(impl: RandomFoxImpl): IRandomFoxRepository
 }
