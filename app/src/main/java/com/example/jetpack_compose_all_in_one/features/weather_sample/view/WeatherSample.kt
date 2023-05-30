@@ -2,6 +2,8 @@ package com.example.jetpack_compose_all_in_one.features.weather_sample.view
 
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -17,6 +19,7 @@ import androidx.compose.ui.unit.sp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.example.jetpack_compose_all_in_one.R
+import com.example.jetpack_compose_all_in_one.features.weather_sample.model.forecast_dto.Forecast
 import com.example.jetpack_compose_all_in_one.features.weather_sample.model.remote.ApiWeatherService
 import com.example.jetpack_compose_all_in_one.features.weather_sample.model.remote.RetrofitBuilder
 import com.example.jetpack_compose_all_in_one.features.weather_sample.model.repository.RemoteWeatherRepository
@@ -33,6 +36,7 @@ fun WeatherSample() {
     val weatherViewModel: WeatherViewModel = initViewModel()
     val weatherData = weatherViewModel.weatherData.observeAsState()
     var inputValue by remember { mutableStateOf(TextFieldValue("")) }
+    val forecastData = weatherViewModel.fiveDaysData.observeAsState()
 
     LaunchedEffect(weatherData) {
         weatherViewModel.getWeather(city = "California")
@@ -82,7 +86,10 @@ fun WeatherSample() {
                 ) { inputValue = TextFieldValue(it) }
 
                 SimpleIconButton(iconResourceInt = R.drawable.baseline_search_24) {
-                    weatherViewModel.getWeather(city = inputValue.text)
+                    with(weatherViewModel) {
+                        getWeather(city = inputValue.text)
+                        getFiveDaysWeather(city = inputValue.text)
+                    }
                 }
             }
         }
@@ -100,6 +107,8 @@ fun WeatherSample() {
             pressure = pressure?.toDouble(),
             isFahrenheit = weatherViewModel.isFahrenheit
         )
+
+        forecastData.value?.let { FiveDaysForecast(it, viewModel = weatherViewModel) }
     }
 }
 
@@ -287,6 +296,74 @@ fun WeatherCard(
             }
         }
     }
+}
+
+
+@Composable
+fun FiveDaysForecast(list: List<Forecast>, viewModel: WeatherViewModel) {
+    LazyRow(
+        modifier = Modifier.wrapContentHeight()
+    ) {
+        items(list) { item ->
+            Forecast(
+
+            description = item.weather[0].description,
+                weatherIcon = item.weather[0].icon,
+                date = Converters.dayConverter(item.dt),
+                maxTemp = item.main.temp_max ,
+                minTemp = item.main.temp_min,
+                isFahrenheit = viewModel.isFahrenheit
+            )
+        }
+    }
+}
+
+@OptIn(ExperimentalGlideComposeApi::class)
+@Composable
+fun Forecast(
+    modifier: Modifier = Modifier,
+    description: String,
+    weatherIcon: String?,
+    date: String,
+    maxTemp: Double?,
+    minTemp: Double?,
+    isFahrenheit: MutableState<Boolean>,
+    cardPadding: PaddingValues = PaddingValues(dp_20)
+){
+    Card(
+        modifier = modifier.then(Modifier
+            .padding(dp_15)),
+        shape = RoundedCornerShape(dp_15),
+        elevation = CardDefaults.cardElevation(dp_15),) {
+        Column (
+            modifier = Modifier
+            .fillMaxWidth()
+            .padding(cardPadding)
+                .weight(1f),
+            verticalArrangement = Arrangement.SpaceBetween,
+            horizontalAlignment = Alignment.Start){
+            Text(text = date)
+
+            Row(horizontalArrangement = Arrangement.Start) {
+                GlideImage(
+                    model = "${IMG_URL}/${weatherIcon}.png",
+                    contentDescription = "",
+                    modifier = Modifier.size(50.dp)
+                )
+            }
+
+            Text(text = description)
+            Text(
+                "${maxTemp?.toReadable(isFahrenheit.value)}", fontSize = 17.sp
+            )
+
+            Spacer(modifier = Modifier.height(5.dp))
+            Text(
+                "${minTemp?.toReadable(isFahrenheit.value)}", fontSize = 17.sp
+            )
+        }
+    }
+
 }
 
 private fun Double.toReadable(isFahrenheit: Boolean) =
