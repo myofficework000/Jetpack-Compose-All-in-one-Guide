@@ -26,6 +26,7 @@ val LightBlue = Color(0xFF8FA2DD)
 val WhiteToBlue20 = Brush.horizontalGradient(listOf(Color.White, Blue20))
 val Blue10ToBlue20 = Brush.horizontalGradient(listOf(Blue10, Blue20))
 val LightBlueToBlue30 = Brush.linearGradient(listOf(LightBlue, Blue30))
+val Pink10ToPink80 = Brush.linearGradient(listOf(Pink10, Pink80))
 
 //For Chatting feature
 val ShadowColor = Color(0xffA1A1A1)

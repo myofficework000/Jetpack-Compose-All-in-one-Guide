@@ -81,7 +81,7 @@ fun WeatherSample() {
             ) {
                 GradientTextField(
                     value = inputValue.text,
-                    gradient = WhiteToBlue20,
+                    gradient = Pink10ToPink80,
                     modifier = Modifier.weight(1f)
                 ) { inputValue = TextFieldValue(it) }
 
