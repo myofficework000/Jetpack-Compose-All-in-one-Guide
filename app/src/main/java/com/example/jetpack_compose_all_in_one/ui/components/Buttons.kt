@@ -103,9 +103,14 @@ fun TextButton(buttonMessage: String) {
 }
 
 @Composable
-fun SimpleIconButton(iconResourceInt: Int, modifier: Modifier = Modifier, onClick: () -> Unit) {
-    IconButton(onClick = { onClick() }) {
-        Icon(painterResource(id = iconResourceInt), "", modifier)
+fun SimpleIconButton(
+    iconResourceInt: Int,
+    modifier: Modifier = Modifier,
+    iconModifier: Modifier = Modifier,
+    tint: Color = Color.Unspecified,
+    onClick: () -> Unit) {
+    IconButton(onClick = { onClick() }, modifier) {
+        Icon(painterResource(id = iconResourceInt), "", iconModifier, tint)
     }
 }
 
