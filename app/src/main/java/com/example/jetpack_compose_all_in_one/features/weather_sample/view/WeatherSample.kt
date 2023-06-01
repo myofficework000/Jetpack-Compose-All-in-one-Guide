@@ -5,20 +5,18 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Text
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
-import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.features.weather_sample.model.forecast_dto.Forecast
 import com.example.jetpack_compose_all_in_one.features.weather_sample.model.remote.ApiWeatherService
 import com.example.jetpack_compose_all_in_one.features.weather_sample.model.remote.RetrofitBuilder
@@ -26,90 +24,128 @@ import com.example.jetpack_compose_all_in_one.features.weather_sample.model.repo
 import com.example.jetpack_compose_all_in_one.features.weather_sample.utils.Constants.IMG_URL
 import com.example.jetpack_compose_all_in_one.features.weather_sample.utils.Converters
 import com.example.jetpack_compose_all_in_one.features.weather_sample.viewmodel.WeatherViewModel
-import com.example.jetpack_compose_all_in_one.ui.components.GradientTextField
 import com.example.jetpack_compose_all_in_one.ui.components.LabeledSwitch
-import com.example.jetpack_compose_all_in_one.ui.components.SimpleIconButton
 import com.example.jetpack_compose_all_in_one.ui.theme.*
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Composable
 fun WeatherSample() {
-    val weatherViewModel: WeatherViewModel = initViewModel()
-    val weatherData = weatherViewModel.weatherData.observeAsState()
-    var inputValue by remember { mutableStateOf(TextFieldValue("")) }
-    val forecastData = weatherViewModel.fiveDaysData.observeAsState()
+    var isButtonClicked by remember { mutableStateOf(false) }
+    var time by remember { mutableStateOf(0) }
+    var job: Job? by remember { mutableStateOf(null) }
 
-    LaunchedEffect(weatherData) {
-        weatherViewModel.getWeather(city = "California")
-    }
-
-    val city = weatherData.value?.name.toString()
-//    val temp = weatherData.value?.main?.temp?.let{ Converters.tempConverter(it)}.toString()
-//    val feelLikeTemp = weatherData.value?.main?.feels_like?.let{ Converters.tempConverter(it)}.toString()
-    val description = weatherData.value?.weather?.get(0)?.description.toString()
-//    val humidity = weatherData.value?.main?.humidity.toString()
-//    val visibility = weatherData.value?.visibility?.div(1000).toString()
-//    val pressure = weatherData.value?.main?.pressure.toString()
-//    val maxTemp = weatherData.value?.main?.temp_max?.let{ Converters.tempConverter(it)}.toString()
-//    val minTemp = weatherData.value?.main?.temp_min?.let{ Converters.tempConverter(it)}.toString()
-    val weatherIcon = weatherData.value?.weather?.get(0)?.icon.toString()
-    val date = weatherData.value?.dt?.let { Converters.dateConverter(it) }.toString()
-
-    val temp = weatherData.value?.main?.temp
-    val feelLikeTemp = weatherData.value?.main?.feels_like
-    val maxTemp = weatherData.value?.main?.temp_max
-    val minTemp = weatherData.value?.main?.temp_min
-    val humidity = weatherData.value?.main?.humidity
-    val visibility = weatherData.value?.visibility
-    val pressure = weatherData.value?.main?.pressure
+    val coroutineScope = rememberCoroutineScope()
 
     Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight()
-            .padding(dp_10),
-        verticalArrangement = Arrangement.spacedBy(dp_4),
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.padding(16.dp)
     ) {
-        Row(
+        if (!isButtonClicked) {
+            androidx.compose.material.TextButton(
+                onClick = { isButtonClicked = true },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("Click Me")
+            }
+        } else {
+            Text("Timer: $time seconds")
+        }
+    }
+
+    LaunchedEffect(isButtonClicked) {
+        if (isButtonClicked) {
+            job = coroutineScope.launch {
+                while (isButtonClicked) {
+                    delay(1000)
+                    time++
+                }
+            }
+        } else {
+            job?.cancel()
+            time = 0
+        }
+    }
+
+    /*
+        val weatherViewModel: WeatherViewModel = initViewModel()
+        val weatherData = weatherViewModel.weatherData.observeAsState()
+        var inputValue by remember { mutableStateOf(TextFieldValue("")) }
+        val forecastData = weatherViewModel.fiveDaysData.observeAsState()
+
+        LaunchedEffect(weatherData) {
+            weatherViewModel.getWeather(city = "California")
+        }
+
+        val city = weatherData.value?.name.toString()
+    //    val temp = weatherData.value?.main?.temp?.let{ Converters.tempConverter(it)}.toString()
+    //    val feelLikeTemp = weatherData.value?.main?.feels_like?.let{ Converters.tempConverter(it)}.toString()
+        val description = weatherData.value?.weather?.get(0)?.description.toString()
+    //    val humidity = weatherData.value?.main?.humidity.toString()
+    //    val visibility = weatherData.value?.visibility?.div(1000).toString()
+    //    val pressure = weatherData.value?.main?.pressure.toString()
+    //    val maxTemp = weatherData.value?.main?.temp_max?.let{ Converters.tempConverter(it)}.toString()
+    //    val minTemp = weatherData.value?.main?.temp_min?.let{ Converters.tempConverter(it)}.toString()
+        val weatherIcon = weatherData.value?.weather?.get(0)?.icon.toString()
+        val date = weatherData.value?.dt?.let { Converters.dateConverter(it) }.toString()
+
+        val temp = weatherData.value?.main?.temp
+        val feelLikeTemp = weatherData.value?.main?.feels_like
+        val maxTemp = weatherData.value?.main?.temp_max
+        val minTemp = weatherData.value?.main?.temp_min
+        val humidity = weatherData.value?.main?.humidity
+        val visibility = weatherData.value?.visibility
+        val pressure = weatherData.value?.main?.pressure
+
+        Column(
             modifier = Modifier
-                .fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly
+                .fillMaxWidth()
+                .fillMaxHeight()
+                .padding(dp_10),
+            verticalArrangement = Arrangement.spacedBy(dp_4),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Row(
-                Modifier.padding(dp_10),
-                verticalAlignment = Alignment.CenterVertically
+                modifier = Modifier
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                GradientTextField(
-                    value = inputValue.text,
-                    gradient = Pink10ToPink80,
-                    modifier = Modifier.weight(1f)
-                ) { inputValue = TextFieldValue(it) }
+                Row(
+                    Modifier.padding(dp_10),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    GradientTextField(
+                        value = inputValue.text,
+                        gradient = Pink10ToPink80,
+                        modifier = Modifier.weight(1f)
+                    ) { inputValue = TextFieldValue(it) }
 
-                SimpleIconButton(iconResourceInt = R.drawable.baseline_search_24) {
-                    with(weatherViewModel) {
-                        getWeather(city = inputValue.text)
-                        getFiveDaysWeather(city = inputValue.text)
+                    SimpleIconButton(iconResourceInt = R.drawable.baseline_search_24) {
+                        with(weatherViewModel) {
+                            getWeather(city = inputValue.text)
+                            getFiveDaysWeather(city = inputValue.text)
+                        }
                     }
                 }
             }
-        }
-        WeatherCard(
-            city = city,
-            description = description,
-            weatherIcon = weatherIcon,
-            date = date,
-            temp = temp,
-            feelLikeTemp = feelLikeTemp,
-            maxTemp = maxTemp,
-            minTemp = minTemp,
-            humidity = humidity?.toDouble(),
-            visibility = visibility?.toDouble(),
-            pressure = pressure?.toDouble(),
-            isFahrenheit = weatherViewModel.isFahrenheit
-        )
+            WeatherCard(
+                city = city,
+                description = description,
+                weatherIcon = weatherIcon,
+                date = date,
+                temp = temp,
+                feelLikeTemp = feelLikeTemp,
+                maxTemp = maxTemp,
+                minTemp = minTemp,
+                humidity = humidity?.toDouble(),
+                visibility = visibility?.toDouble(),
+                pressure = pressure?.toDouble(),
+                isFahrenheit = weatherViewModel.isFahrenheit
+            )
 
-        forecastData.value?.let { FiveDaysForecast(it, viewModel = weatherViewModel) }
-    }
+            forecastData.value?.let { FiveDaysForecast(it, viewModel = weatherViewModel) }
+        }*/
 }
 
 @OptIn(ExperimentalGlideComposeApi::class)
@@ -307,10 +343,10 @@ fun FiveDaysForecast(list: List<Forecast>, viewModel: WeatherViewModel) {
         items(list) { item ->
             Forecast(
 
-            description = item.weather[0].description,
+                description = item.weather[0].description,
                 weatherIcon = item.weather[0].icon,
                 date = Converters.dayConverter(item.dt),
-                maxTemp = item.main.temp_max ,
+                maxTemp = item.main.temp_max,
                 minTemp = item.main.temp_min,
                 isFahrenheit = viewModel.isFahrenheit
             )
@@ -329,19 +365,23 @@ fun Forecast(
     minTemp: Double?,
     isFahrenheit: MutableState<Boolean>,
     cardPadding: PaddingValues = PaddingValues(dp_20)
-){
+) {
     Card(
-        modifier = modifier.then(Modifier
-            .padding(dp_15)),
+        modifier = modifier.then(
+            Modifier
+                .padding(dp_15)
+        ),
         shape = RoundedCornerShape(dp_15),
-        elevation = CardDefaults.cardElevation(dp_15),) {
-        Column (
+        elevation = CardDefaults.cardElevation(dp_15),
+    ) {
+        Column(
             modifier = Modifier
-            .fillMaxWidth()
-            .padding(cardPadding)
+                .fillMaxWidth()
+                .padding(cardPadding)
                 .weight(1f),
             verticalArrangement = Arrangement.SpaceBetween,
-            horizontalAlignment = Alignment.Start){
+            horizontalAlignment = Alignment.Start
+        ) {
             Text(text = date)
 
             Row(horizontalArrangement = Arrangement.Start) {

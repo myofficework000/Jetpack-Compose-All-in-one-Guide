@@ -47,6 +47,7 @@ import com.example.jetpack_compose_all_in_one.lessons.lesson_5.Lesson_5_Chapter_
 import com.example.jetpack_compose_all_in_one.lessons.lesson_5.Lesson_5_Chapter_3_CurrentLocation_On_Map
 import com.example.jetpack_compose_all_in_one.lessons.lesson_5.Lesson_5_Chapter_4_Map_Search
 import com.example.jetpack_compose_all_in_one.lessons.lesson_5.Lesson_5_Chapter_Map_Basic
+import com.example.jetpack_compose_all_in_one.lessons.lesson_7.Lesson_7_Chapter_ConstraintLayout
 import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat2
 import com.example.jetpack_compose_all_in_one.ui.views.domain_search.DomainSearch
 import com.example.jetpack_compose_all_in_one.ui.views.internet.InternetDemo
@@ -264,6 +265,11 @@ fun MainContainerOfApp(
 
                 composable(NavDes.L3Chapter1.route()) {
                     Lesson_3_Chapter_ListTypes()
+                }
+
+
+                composable(NavDes.L7Chapter1.route()) {
+                    Lesson_7_Chapter_ConstraintLayout()
                 }
 
                 composable(NavDes.L4Chapter1.route()) {
