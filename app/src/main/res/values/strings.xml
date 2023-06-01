@@ -51,6 +51,13 @@
         <item>Expandable Animated List</item>
     </string-array>
 
+    <string-array name="lesson_7_header_text">
+        <item>Constraint Layout Demo 1</item>
+        <item>Constraint Layout Demo 2</item>
+        <item>Constraint Layout Demo 3</item>
+        <item>Constraint Layout Demo 4</item>
+    </string-array>
+
     <string-array name="l2c5_header_text">
         <item>Simple Progress</item>
         <item>Custom Progress</item>

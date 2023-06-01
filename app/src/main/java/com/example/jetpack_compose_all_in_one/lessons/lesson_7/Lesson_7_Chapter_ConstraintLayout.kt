@@ -37,7 +37,7 @@ private fun LessonContent() {
                 .padding(it)
         ) {
             LessonHeader(
-                stringArrayResource(R.array.lesson_3_header_text)[currentPage.value],
+                stringArrayResource(R.array.lesson_7_header_text)[currentPage.value],
                 Modifier
                     .fillMaxWidth()
                     .padding(dp_15),
