@@ -140,6 +140,9 @@ dependencies {
     implementation "androidx.camera:camera-lifecycle:${camerax_version}"
     implementation "androidx.camera:camera-view:${camerax_version}"
     implementation 'com.google.mlkit:barcode-scanning:17.1.0'
+
+    // Compose Constraint Layout
+    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
 }
 
 // Remember to add this to local.properties
