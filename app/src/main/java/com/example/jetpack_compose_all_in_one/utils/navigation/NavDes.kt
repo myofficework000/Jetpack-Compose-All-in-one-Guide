@@ -137,7 +137,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 L2Components,
                 L3List,
                 L4Dialogs,
-                L5Maps
+                L5Maps,
+                L7Chapter1
             ), "Lessons"
         )
     )
