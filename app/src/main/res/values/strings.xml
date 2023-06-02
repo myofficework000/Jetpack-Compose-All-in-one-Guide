@@ -92,5 +92,6 @@
     <string name="rating_lable">Ratings</string>
     <string name="grade_now">Grade now</string>
     <string name="story_line">StoryLine\n</string>
+    <string name="not_required_for_accessiblity">Not Require for accessiblity</string>
 
 </resources>
