@@ -152,3 +152,10 @@ fun GetMusicUI() {
 //Alex
 }
 
+
+//Luan
+@Composable
+fun GetMovieScreenScreen() {
+
+}
+

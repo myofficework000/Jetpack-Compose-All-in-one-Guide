@@ -22,16 +22,19 @@ import com.example.jetpack_compose_all_in_one.ui.theme.dp_24
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_50
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_8
 import com.example.jetpack_compose_all_in_one.ui.theme.sp_32
-import kotlin.random.Random
 
 
 @Preview
 @Composable
 fun PlayWithBarriers() {
-    val userName ="Abhishek"
+    val userName = "Abhishek"
     val greetingMessageWithUser = "Welcome! \n$userName"
 
-    ConstraintLayout(modifier = Modifier.fillMaxSize().background(color = Color.White)) {
+    ConstraintLayout(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = Color.White)
+    ) {
         val (greetingMessage, askingMessage, profile, doctorImage) = createRefs()
         val greetingsBarrier = createEndBarrier(
             greetingMessage, askingMessage
@@ -77,22 +80,10 @@ fun PlayWithBarriers() {
                 .clip(CircleShape)
                 .fillMaxSize()
         )
+    }
+}
 
-    /*
-        Image(
-            painterResource(id = R.drawable.profile),
-            contentDescription = stringResource(id = R.string.not_required_for_accessiblity),
-            contentScale = ContentScale.FillBounds,
-            modifier = Modifier
-                .constrainAs(profile) {
-                    top.linkTo(profile.bottom, margin = dp_8)
-                    start.linkTo(greetingsBarrier)
-                    bottom.linkTo(parent.bottom)
-                    end.linkTo(parent.end)
-                    width = Dimension.fillToConstraints
-                    height = Dimension.fillToConstraints
-                }
-                .clip(CircleShape)
-        )
-   */ }
+@Composable
+fun PlayWithBarrierExample2() {
+    //Joshua
 }
