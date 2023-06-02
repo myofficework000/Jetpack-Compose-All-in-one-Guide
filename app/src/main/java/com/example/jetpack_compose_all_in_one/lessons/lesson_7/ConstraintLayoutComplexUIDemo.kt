@@ -226,3 +226,10 @@ fun GetMusicUI() {
 private fun GetAPIWeatherUIPreview() {
     GetAPIWeatherUI(4)
 }
+
+//Luan
+@Composable
+fun GetMovieScreenScreen() {
+
+}
+

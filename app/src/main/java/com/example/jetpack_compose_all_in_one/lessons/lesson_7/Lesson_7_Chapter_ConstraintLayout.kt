@@ -94,8 +94,9 @@ fun CardWithDetailsInside() {
     ElevatedCard(
         Modifier
             .fillMaxSize()
-            .padding(32.dp)) {
-        ConstraintLayout(Modifier.fillMaxSize()){
+            .padding(32.dp)
+    ) {
+        ConstraintLayout(Modifier.fillMaxSize()) {
             val leftGuide = createGuidelineFromStart(0.2f)
             val rightGuide = createGuidelineFromEnd(0.2f)
             val topGuide = createGuidelineFromTop(0.3f)
@@ -200,24 +201,24 @@ fun RegistrationScreen() {
 
 }
 
-//Alex
 @Preview
 @Composable
 fun LoginScreen() {
-    ConstraintLayout( modifier = Modifier
-        .fillMaxSize()
+    ConstraintLayout(
+        modifier = Modifier
+            .fillMaxSize()
 
     ) {
         val (title, emailTf, passTf, enterBtn, subText, facebookBtn) = createRefs()
-        val email = remember { mutableStateOf("")}
-        val password = remember { mutableStateOf("")}
+        val email = remember { mutableStateOf("") }
+        val password = remember { mutableStateOf("") }
 
         Text(
             text = "SIGN IN",
             modifier = Modifier
                 .constrainAs(title)
                 {
-                top.linkTo(parent.top, margin = dp_20)
+                    top.linkTo(parent.top, margin = dp_20)
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                 },
@@ -227,7 +228,7 @@ fun LoginScreen() {
         )
 
         TextField(
-            value = email.value ,
+            value = email.value,
             modifier = Modifier
                 .constrainAs(emailTf)
                 {
@@ -235,14 +236,14 @@ fun LoginScreen() {
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                 },
-            onValueChange = {email.value = it},
-            label = { Text(text = "email address")},
-            placeholder = { Text(text = "Type your email")},
+            onValueChange = { email.value = it },
+            label = { Text(text = "email address") },
+            placeholder = { Text(text = "Type your email") },
             shape = RoundedCornerShape(20.dp),
         )
 
         TextField(
-            value = password.value ,
+            value = password.value,
             modifier = Modifier
                 .constrainAs(passTf)
                 {
@@ -250,8 +251,8 @@ fun LoginScreen() {
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                 },
-            onValueChange = {password.value = it},
-            label = { Text(text = "password")},
+            onValueChange = { password.value = it },
+            label = { Text(text = "password") },
             shape = RoundedCornerShape(20.dp)
         )
 
@@ -280,7 +281,7 @@ fun LoginScreen() {
         Text(
             text = "Or Sign In With",
             modifier = Modifier
-                .constrainAs(subText){
+                .constrainAs(subText) {
                     top.linkTo(enterBtn.bottom, margin = dp_20)
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
@@ -289,11 +290,11 @@ fun LoginScreen() {
             fontWeight = FontWeight.Normal,
             textAlign = TextAlign.Center,
 
-        )
+            )
 
         Button(
             onClick = { /*TODO*/ },
-            modifier = Modifier.constrainAs(facebookBtn){
+            modifier = Modifier.constrainAs(facebookBtn) {
                 top.linkTo(subText.bottom, margin = dp_20)
                 start.linkTo(parent.start)
                 end.linkTo(parent.end)
@@ -318,7 +319,6 @@ fun LoginScreen() {
     }
 }
 
-//Honjia
 @Composable
 fun PlayWithBox() {
     ConstraintLayout(
