@@ -7,7 +7,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpack_compose_all_in_one.ui.theme.JetpackComposeAllInOneTheme
 
-@Preview()
+@Preview
 @Composable
 fun Lesson_6_ThemeChange() {
     ChangeAppTheme()
