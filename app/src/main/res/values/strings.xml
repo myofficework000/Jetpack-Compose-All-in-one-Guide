@@ -85,11 +85,17 @@
     <string name="next_random_dog_rx">Rx Java</string>
     <string name="next_random_dog_coroutines">Coroutines</string>
     <string name="next_random_dog_flows">Flow</string>
-    <string name="movie_bg_image">Movie bakground image</string>
-    <string name="movie_name">Movie Name\n</string>
-    <string name="rating_value">8.0\n</string>
-    <string name="rating_lable">Ratings</string>
+    <string name="movie_bg_image">Movie background image</string>
+    <string name="movie_name">Dark Knight</string>
+    <string name="rating_value">8.0</string>
+    <string name="rating_label">Ratings</string>
     <string name="grade_now">Grade now</string>
-    <string name="story_line">StoryLine\n</string>
+    <string name="story_line">StoryLine</string>
+    <string name="movie_poster_image">Movie Poster Image</string>
+    <string name="story_line_description">With the help of allies Lt. Jim Gordon and DA Harvey Dent, Batman has been able to keep a tight lid on crime in Gotham City. But when a vile young criminal calling himself the Joker suddenly throws the town into chaos, the caped Crusader begins to tread a fine line between heroism and vigilantism.</string>
+    <string name="movie_type1">Action</string>
+    <string name="movie_type2">SuperHero</string>
+    <string name="photos">Photos</string>
+    <string name="actors">Actors</string>
 
 </resources>
