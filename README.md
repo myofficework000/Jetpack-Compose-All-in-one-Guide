@@ -32,8 +32,13 @@ Features are
 
 | Lesson                                                                                                                                                                                                                     | Preview                                               |
 |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------ |
-| <h3><b>Lesson 1:</b> Column, Row, Box, Modifiers</h3><br/>Create Row that adds elements in horizontal order, and Column that adds elements in vertical order.<br><br> • Column<br>• Row<br>• Box<br>• Modifier<br>              | <video src ='https://github.com/myofficework000/Jetpack-Compose-All-In-One-Guide/assets/51234843/03fbcede-3637-4db6-8cc4-5944d5aa427e' width=200/> |
+| <h3><b>Lesson 1:</b> Column, Row, Box, Modifiers</h3><br/>Create Row that adds elements in horizontal order, and Column that adds elements in vertical order.<br><br> • Column<br>• Row<br>• Box<br>• Modifier<br>              | <video src ='https://github.com/myofficework000/Jetpack-Compose-All-In-One-Guide/assets/51234843/03fbcede-3637-4db6-8cc4-5944d5aa427e' width=200/>
+| <h3><b>Lesson 2:</b> Material Design- Shapes </h3><br/> This lesson shows various examples to make shapes using material design <br> • Clickable shapes <br>• Surface examples<br>              | <video src ='https://github.com/myofficework000/Jetpack-Compose-All-In-One-Guide/assets/51234843/1cdd1285-c8e1-476a-918f-896bea3b66fc' width=200/> |
                                                                                                                
+
+
+
+
 
 
 
