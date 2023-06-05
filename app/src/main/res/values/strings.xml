@@ -56,6 +56,10 @@
         <item>Constraint Layout Demo 2</item>
         <item>Constraint Layout Demo 3</item>
         <item>Constraint Layout Demo 4</item>
+        <item>Constraint Layout Demo 5</item>
+        <item>Constraint Layout Demo 6</item>
+        <item>Constraint Layout Demo 7</item>
+        <item>Constraint Layout Demo 8</item>
     </string-array>
 
     <string-array name="l2c5_header_text">
@@ -97,5 +101,6 @@
     <string name="movie_type2">SuperHero</string>
     <string name="photos">Photos</string>
     <string name="actors">Actors</string>
+    <string name="not_required_for_accessibility">Not Require for accessibility</string>
 
 </resources>
