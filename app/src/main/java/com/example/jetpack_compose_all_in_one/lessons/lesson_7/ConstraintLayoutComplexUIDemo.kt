@@ -18,8 +18,6 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.LinearProgressIndicator
@@ -583,7 +581,7 @@ fun GetMusicUI() {
                 }
         )
 
-        Button(
+        IconButton(
             onClick = { /*TODO*/ },
             modifier = Modifier
                 .constrainAs(profileIcon) {
@@ -591,20 +589,21 @@ fun GetMusicUI() {
                     top.linkTo(topGuideLine10Percent)
                     end.linkTo(parent.end)
                 },
-            colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent)
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.profile),
-                modifier = Modifier
-                    .size(32.dp)
-                    .clip(CircleShape),
-                contentDescription = "Profile"
-            )
-            Icon(
-                imageVector = Icons.Default.ChevronRight,
-                contentDescription = "Profile",
-                tint = Color.LightGray
-            )
+            Row() {
+                Image(
+                    painter = painterResource(id = R.drawable.profile),
+                    modifier = Modifier
+                        .size(32.dp)
+                        .clip(CircleShape),
+                    contentDescription = "Profile"
+                )
+                Icon(
+                    imageVector = Icons.Default.ChevronRight,
+                    contentDescription = "Profile",
+                    tint = Color.LightGray
+                )
+            }
         }
 
         createHorizontalChain(
@@ -620,8 +619,8 @@ fun GetMusicUI() {
                 .clip(CircleShape)
                 .constrainAs(songImg) {
                     start.linkTo(parent.start)
-                    top.linkTo(parent.top)
-                    bottom.linkTo(pauseBtn.top)
+                    top.linkTo(songTitle.bottom)
+                    bottom.linkTo(favIcon.top)
                     end.linkTo(parent.end)
                 }
         )
