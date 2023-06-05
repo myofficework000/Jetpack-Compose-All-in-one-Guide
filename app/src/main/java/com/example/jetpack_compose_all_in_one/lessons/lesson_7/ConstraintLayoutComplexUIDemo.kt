@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -298,7 +299,7 @@ fun GetMusicUI() {
                 }
         )
 
-        Button(
+        IconButton(
             onClick = { /*TODO*/ },
             modifier = Modifier
                 .constrainAs(profileIcon) {
@@ -306,21 +307,23 @@ fun GetMusicUI() {
                     top.linkTo(topGuideLine10Percent)
                     end.linkTo(parent.end)
                 },
-            colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent)
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.profile),
-                modifier = Modifier
-                    .size(32.dp)
-                    .clip(CircleShape)
-                ,
-                contentDescription = "Profile"
-            )
-            Icon(
-                imageVector =  Icons.Default.ChevronRight,
-                contentDescription = "Profile",
-                tint = Color.LightGray
-            )
+            Row() {
+                Image(
+                    painter = painterResource(id = R.drawable.profile),
+                    modifier = Modifier
+                        .size(32.dp)
+                        .clip(CircleShape)
+                    ,
+                    contentDescription = "Profile"
+                )
+                Icon(
+                    imageVector =  Icons.Default.ChevronRight,
+                    contentDescription = "Profile",
+                    tint = Color.LightGray
+                )
+            }
+
         }
 
         createHorizontalChain(songTitle, profileIcon,
@@ -334,8 +337,8 @@ fun GetMusicUI() {
                 .clip(CircleShape)
                 .constrainAs(songImg) {
                     start.linkTo(parent.start)
-                    top.linkTo(parent.top)
-                    bottom.linkTo(pauseBtn.top)
+                    top.linkTo(songTitle.bottom)
+                    bottom.linkTo(favIcon.top)
                     end.linkTo(parent.end)
                 }
         )
@@ -494,7 +497,7 @@ fun GetMusicUI() {
         IconButton(
             onClick = { /*TODO*/ },
             modifier = Modifier
-                .constrainAs(lyricsBtn){
+                .constrainAs(lyricsBtn) {
                     bottom.linkTo(parent.bottom)
                 }
                 .padding(5.dp)
