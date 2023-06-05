@@ -42,7 +42,7 @@ fun PlayWithBarriers() {
 
         Image(
             painterResource(id = R.drawable.profile),
-            contentDescription = stringResource(id = R.string.not_required_for_accessiblity),
+            contentDescription = stringResource(id = R.string.not_required_for_accessibility),
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .constrainAs(profile) {
@@ -66,7 +66,7 @@ fun PlayWithBarriers() {
 
         Image(
             painterResource(id = R.drawable.doctor_image_bg),
-            contentDescription = stringResource(id = R.string.not_required_for_accessiblity),
+            contentDescription = stringResource(id = R.string.not_required_for_accessibility),
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .constrainAs(doctorImage) {
