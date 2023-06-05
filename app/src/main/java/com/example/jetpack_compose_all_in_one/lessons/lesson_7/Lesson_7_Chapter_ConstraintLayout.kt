@@ -40,6 +40,7 @@ import androidx.constraintlayout.compose.Dimension
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.ui.components.LessonHeader
 import com.example.jetpack_compose_all_in_one.ui.components.SimpleIconButton
+import com.example.jetpack_compose_all_in_one.ui.components.SimpleTextButton
 import com.example.jetpack_compose_all_in_one.ui.theme.LightBlue
 import com.example.jetpack_compose_all_in_one.ui.theme.VioletA100
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_15
@@ -61,7 +62,7 @@ private fun LessonContent() {
     val currentPage = rememberSaveable { mutableStateOf(0) }
 
     LogicPager(
-        pageCount = 4,
+        pageCount = 5,
         currentPage = currentPage
     ) {
         Column(
@@ -82,6 +83,7 @@ private fun LessonContent() {
                 1 -> LoginScreen()
                 2 -> RegistrationScreen()
                 3 -> CardWithDetailsInside()
+                4 -> PlayWithBarrier()
             }
         }
     }
@@ -526,4 +528,34 @@ fun PlayWithBox() {
 @Composable
 private fun CardWithDetailsInsidePreview() {
     CardWithDetailsInside()
+}
+
+@Preview
+@Composable
+private fun PlayWithBarrier() {
+    Box(Modifier.fillMaxSize()) {
+        ConstraintLayout(Modifier.fillMaxSize()) {
+            val (leftText, rightText, btn) = createRefs()
+            val textBarrier = createBottomBarrier(leftText, rightText)
+            val textGuide = createGuidelineFromStart(0.5f)
+
+            Text("ABCDEFGHIJKLMNOPQRSTUVWXYZ", Modifier.constrainAs(leftText) {
+                start.linkTo(parent.start)
+                end.linkTo(textGuide)
+                top.linkTo(parent.top)
+                width = Dimension.fillToConstraints
+            })
+            Text("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZbcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", Modifier.constrainAs(rightText) {
+                end.linkTo(parent.end)
+                start.linkTo(textGuide)
+                top.linkTo(parent.top)
+                width = Dimension.fillToConstraints
+            })
+            SimpleTextButton(buttonMessage = "Button", Modifier.constrainAs(btn) {
+                centerHorizontallyTo(parent)
+                top.linkTo(textBarrier)
+            }) {}
+        }
+    }
+
 }

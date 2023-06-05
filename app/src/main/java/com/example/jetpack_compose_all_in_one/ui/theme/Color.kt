@@ -56,5 +56,16 @@ val SkyA100 = Color(0xFF84FFFF)
 val MintA100 = Color(0xFFA7FFEB)
 val GreenA100 = Color(0xFFCCFF90)
 val YellowA100 = Color(0xFFFFE57F)
-val BlueA100 = Color(0xFFFF9E80)
+val OrangeA100 = Color(0xFFFF9E80)
 
+// For air quality bar
+val AqiGradient = Brush.horizontalGradient(
+    0.0f to Color(0xFF9AF878),
+    0.1f to Color(0xFFFFF522),
+    0.2f to Color(0xFFB2D806),
+    0.3f to Color(0xFFCA2314),
+    0.4f to Color(0xFF3565DF),
+    0.5f to Color(0xFF0030C0),
+    0.6f to Color(0xFF7C09FF),
+    0.7f to Color(0xFF520600)
+)
