@@ -96,9 +96,9 @@ fun OutlinedButton(
 }
 
 @Composable
-fun TextButton(buttonMessage: String) {
-    TextButton(onClick = { }) {
-        Text(text = buttonMessage)
+fun TextButton(text: String, modifier: Modifier = Modifier, onClick: () -> Unit) {
+    TextButton(onClick = onClick, modifier = modifier) {
+        Text(text = text)
     }
 }
 
