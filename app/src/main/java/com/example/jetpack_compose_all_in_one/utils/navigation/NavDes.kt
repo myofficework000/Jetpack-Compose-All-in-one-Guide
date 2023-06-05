@@ -2,6 +2,12 @@ package com.example.jetpack_compose_all_in_one.utils.navigation
 
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.utils.Constants.HOME
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_3_LIST
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_3_LIST_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_6_THEME_CHANGE
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_6_THEME_CHANGE_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_7_Constraint_LAYOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_7_Constraint_LAYOUT_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_8_ANIMATIONS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_8_ANIMATIONS_ABOUT
 
@@ -52,7 +58,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object L2Chapter6 : NavDes(NavigationDrawerData("l2_c6", "Chapter 6: Floating Action button"))
 
-    object L3Chapter1 : NavDes(NavigationDrawerData("l3_c1", "Chapter 1: List Types"))
+    object L3LIST : NavDes(NavigationDrawerData(LESSON_3_LIST, LESSON_3_LIST_ABOUT))
 
     object L4Chapter1 : NavDes(NavigationDrawerData("l4_c1", "Chapter 1: Dialogs"))
 
@@ -64,9 +70,9 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object L5Chapter4 : NavDes(NavigationDrawerData("l5_c4", "Chapter 4: Search on Map"))
 
-    object L6Chapter1 : NavDes(NavigationDrawerData("l6_c1", "Theme change"))
+    object L6Chapter1 : NavDes(NavigationDrawerData(LESSON_6_THEME_CHANGE, LESSON_6_THEME_CHANGE_ABOUT))
 
-    object L7Chapter1 : NavDes(NavigationDrawerData("l7_c1", "Constraint Layout Examples"))
+    object L7Chapter1 : NavDes(NavigationDrawerData(LESSON_7_Constraint_LAYOUT, LESSON_7_Constraint_LAYOUT_ABOUT))
     object Lesson8Animation : NavDes(NavigationDrawerData(LESSON_8_ANIMATIONS, LESSON_8_ANIMATIONS_ABOUT))
 
 
@@ -122,12 +128,6 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
         )
     )
 
-    object L3List : NavDes(
-        NavigationCategoryData(
-            listOf(L3Chapter1), "Lesson 3: List"
-        )
-    )
-
     object L4Dialogs : NavDes(
         NavigationCategoryData(
             listOf(L4Chapter1), "Lesson 4: Dialogs"
@@ -151,7 +151,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
             listOf(
                 L1Layouts,
                 L2Components,
-                L3List,
+                L3LIST,
                 L4Dialogs,
                 L5Maps,
                 L6Chapter1,

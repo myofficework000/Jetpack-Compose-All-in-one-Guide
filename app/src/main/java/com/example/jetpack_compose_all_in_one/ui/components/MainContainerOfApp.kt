@@ -265,7 +265,7 @@ fun MainContainerOfApp(
                     Lesson_2_Chapter_6_FloatingActionButton()
                 }
 
-                composable(NavDes.L3Chapter1.route()) {
+                composable(NavDes.L3LIST.route()) {
                     Lesson_3_Chapter_ListTypes()
                 }
 
