@@ -144,6 +144,9 @@ dependencies {
 
     // Compose Constraint Layout
     implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
+
+    testImplementation 'androidx.arch.core:core-testing:2.2.0'
+
 }
 
 // Remember to add this to local.properties
