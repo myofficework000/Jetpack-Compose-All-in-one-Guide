@@ -21,6 +21,8 @@ val sp_14 = 14.sp
 val sp_16 = 16.sp
 val sp_32 = 32.sp
 val sp_36 = 36.sp
+val sp_25 = 25.sp
+val sp_20 = 20.sp
 
 
 val dp_0: Dp = 0.dp
@@ -37,6 +39,7 @@ val dp_20: Dp = 20.dp
 val dp_24: Dp = 24.dp
 val dp_30: Dp = 30.dp
 val dp_50: Dp = 50.dp
+val dp_60: Dp = 60.dp
 val dp_80: Dp = 80.dp
 val dp_100: Dp = 100.dp
 val dp_150: Dp = 150.dp
