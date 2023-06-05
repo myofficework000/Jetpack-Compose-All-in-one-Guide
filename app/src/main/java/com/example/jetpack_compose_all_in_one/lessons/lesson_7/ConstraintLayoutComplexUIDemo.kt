@@ -529,294 +529,296 @@ fun GetAPIWeatherUI(aqi: Int) {
 @Preview
 @Composable
 fun GetMusicUI() {
-    ConstraintLayout(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(10.dp)
-            .background(
-                Brush.verticalGradient(
-                    listOf(
-                        PAGER_BACKGROUND,
-                        Blue20,
-                        VioletA100,
-                        OrangeA100
+    ScrollableColumn {
+        ConstraintLayout(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(10.dp)
+                .background(
+                    Brush.verticalGradient(
+                        listOf(
+                            PAGER_BACKGROUND,
+                            Blue20,
+                            VioletA100,
+                            OrangeA100
+                        )
                     )
                 )
+
+        ) {
+            val (collapseBtn, profileIcon, songTitle, songImg) = createRefs()
+            val (favIcon, moreIcon) = createRefs()
+            val (progressbar, startTime, endTime) = createRefs()
+            val (shuffleBtn, prevBtn, pauseBtn, nextBtn, repeatBtn) = createRefs()
+            val (speakerBtn, lyricsBtn, shareBtn) = createRefs()
+
+            val topGuideLine10Percent = createGuidelineFromTop(0.1f)
+
+            IconButton(
+                onClick = { /*TODO*/ },
+                modifier = Modifier
+                    .constrainAs(collapseBtn) {
+                        top.linkTo(parent.top)
+                        start.linkTo(parent.start)
+                        bottom.linkTo(songTitle.top)
+                    }
+            ) {
+                Icon(imageVector = Icons.Default.ExpandMore, contentDescription = "Expand")
+            }
+
+            Text(
+                text = "ROCKSTAR.(feat roddy ricch)",
+                color = Color.White,
+                fontWeight = FontWeight.SemiBold,
+                style = TextStyle(
+                    fontSize = 16.sp,
+                ),
+                modifier = Modifier
+                    .padding(10.dp)
+                    .constrainAs(songTitle) {
+                        start.linkTo(parent.start)
+                        top.linkTo(collapseBtn.bottom)
+                        top.linkTo(topGuideLine10Percent)
+                    }
             )
 
-    ) {
-        val (collapseBtn, profileIcon, songTitle, songImg) = createRefs()
-        val (favIcon, moreIcon) = createRefs()
-        val (progressbar, startTime, endTime) = createRefs()
-        val (shuffleBtn, prevBtn, pauseBtn, nextBtn, repeatBtn) = createRefs()
-        val (speakerBtn, lyricsBtn, shareBtn) = createRefs()
-
-        val topGuideLine10Percent = createGuidelineFromTop(0.1f)
-
-        IconButton(
-            onClick = { /*TODO*/ },
-            modifier = Modifier
-                .constrainAs(collapseBtn) {
-                    top.linkTo(parent.top)
-                    start.linkTo(parent.start)
-                    bottom.linkTo(songTitle.top)
+            IconButton(
+                onClick = { /*TODO*/ },
+                modifier = Modifier
+                    .constrainAs(profileIcon) {
+                        top.linkTo(collapseBtn.bottom)
+                        top.linkTo(topGuideLine10Percent)
+                        end.linkTo(parent.end)
+                    },
+            ) {
+                Row() {
+                    Image(
+                        painter = painterResource(id = R.drawable.profile),
+                        modifier = Modifier
+                            .size(32.dp)
+                            .clip(CircleShape),
+                        contentDescription = "Profile"
+                    )
+                    Icon(
+                        imageVector = Icons.Default.ChevronRight,
+                        contentDescription = "Profile",
+                        tint = Color.LightGray
+                    )
                 }
-        ) {
-            Icon(imageVector = Icons.Default.ExpandMore, contentDescription = "Expand")
-        }
+            }
 
-        Text(
-            text = "ROCKSTAR.(feat roddy ricch)",
-            color = Color.White,
-            fontWeight = FontWeight.SemiBold,
-            style = TextStyle(
-                fontSize = 16.sp,
-            ),
-            modifier = Modifier
-                .padding(10.dp)
-                .constrainAs(songTitle) {
-                    start.linkTo(parent.start)
-                    top.linkTo(collapseBtn.bottom)
-                    top.linkTo(topGuideLine10Percent)
-                }
-        )
+            createHorizontalChain(
+                songTitle, profileIcon,
+                chainStyle = ChainStyle.SpreadInside
+            )
 
-        IconButton(
-            onClick = { /*TODO*/ },
-            modifier = Modifier
-                .constrainAs(profileIcon) {
-                    top.linkTo(collapseBtn.bottom)
-                    top.linkTo(topGuideLine10Percent)
-                    end.linkTo(parent.end)
-                },
-        ) {
-            Row() {
-                Image(
-                    painter = painterResource(id = R.drawable.profile),
-                    modifier = Modifier
-                        .size(32.dp)
-                        .clip(CircleShape),
-                    contentDescription = "Profile"
-                )
+            Image(
+                painter = painterResource(id = R.drawable.rockstar),
+                contentDescription = "",
+                modifier = Modifier
+                    .size(220.dp)
+                    .clip(CircleShape)
+                    .constrainAs(songImg) {
+                        start.linkTo(parent.start)
+                        top.linkTo(songTitle.bottom)
+                        bottom.linkTo(favIcon.top)
+                        end.linkTo(parent.end)
+                    }
+            )
+
+            IconButton(
+                onClick = { /*TODO*/ },
+                modifier = Modifier
+                    .clip(CircleShape)
+                    .constrainAs(favIcon) {
+                        start.linkTo(parent.start)
+                        bottom.linkTo(progressbar.top)
+                        end.linkTo(moreIcon.start, 5.dp)
+                    }
+            ) {
                 Icon(
-                    imageVector = Icons.Default.ChevronRight,
-                    contentDescription = "Profile",
-                    tint = Color.LightGray
+                    imageVector = Icons.Default.Favorite,
+                    contentDescription = "Shuffle",
+                    tint = Color.White
                 )
             }
-        }
 
-        createHorizontalChain(
-            songTitle, profileIcon,
-            chainStyle = ChainStyle.SpreadInside
-        )
+            IconButton(
+                onClick = { /*TODO*/ },
+                modifier = Modifier
+                    .clip(CircleShape)
+                    .constrainAs(moreIcon) {
+                        start.linkTo(favIcon.end, 5.dp)
+                        bottom.linkTo(progressbar.top)
+                        end.linkTo(parent.end)
+                    },
+            ) {
+                Icon(
+                    imageVector = Icons.Default.MoreHoriz,
+                    contentDescription = "More",
+                    tint = Color.White
+                )
+            }
 
-        Image(
-            painter = painterResource(id = R.drawable.rockstar),
-            contentDescription = "",
-            modifier = Modifier
-                .size(250.dp)
-                .clip(CircleShape)
-                .constrainAs(songImg) {
-                    start.linkTo(parent.start)
-                    top.linkTo(songTitle.bottom)
-                    bottom.linkTo(favIcon.top)
-                    end.linkTo(parent.end)
-                }
-        )
-
-        IconButton(
-            onClick = { /*TODO*/ },
-            modifier = Modifier
-                .clip(CircleShape)
-                .constrainAs(favIcon) {
-                    start.linkTo(parent.start)
-                    bottom.linkTo(progressbar.top)
-                    end.linkTo(moreIcon.start, 5.dp)
-                }
-        ) {
-            Icon(
-                imageVector = Icons.Default.Favorite,
-                contentDescription = "Shuffle",
-                tint = Color.White
+            createHorizontalChain(
+                favIcon, moreIcon,
+                chainStyle = ChainStyle.Packed(0.95f)
             )
-        }
 
-        IconButton(
-            onClick = { /*TODO*/ },
-            modifier = Modifier
-                .clip(CircleShape)
-                .constrainAs(moreIcon) {
-                    start.linkTo(favIcon.end, 5.dp)
-                    bottom.linkTo(progressbar.top)
-                    end.linkTo(parent.end)
-                },
-        ) {
-            Icon(
-                imageVector = Icons.Default.MoreHoriz,
-                contentDescription = "More",
-                tint = Color.White
+
+            LinearProgressIndicator(
+                progress = 0.4f,
+                modifier = Modifier
+                    .constrainAs(progressbar) {
+                        start.linkTo(parent.start)
+                        end.linkTo(parent.end)
+                        bottom.linkTo(startTime.top)
+                        bottom.linkTo(endTime.top)
+                    }
+                    .padding(10.dp)
+                    .fillMaxWidth(0.9f)
+                    .height(8.dp),
+                backgroundColor = Color.LightGray,
+                strokeCap = StrokeCap.Round,
+                color = OceanA100 //progress color
             )
-        }
 
-        createHorizontalChain(
-            favIcon, moreIcon,
-            chainStyle = ChainStyle.Packed(0.95f)
-        )
-
-
-        LinearProgressIndicator(
-            progress = 0.4f,
-            modifier = Modifier
-                .constrainAs(progressbar) {
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                    bottom.linkTo(startTime.top)
-                    bottom.linkTo(endTime.top)
-                }
-                .padding(10.dp)
-                .fillMaxWidth(0.9f)
-                .height(8.dp),
-            backgroundColor = Color.LightGray,
-            strokeCap = StrokeCap.Round,
-            color = OceanA100 //progress color
-        )
-
-        Text(
-            text = "1:28",
-            modifier = Modifier
-                .constrainAs(startTime) {
-                    start.linkTo(progressbar.start)
-                    top.linkTo(progressbar.top)
-                    bottom.linkTo(shuffleBtn.top)
-                }
-        )
-
-        Text(
-            text = "-0:12",
-            modifier = Modifier
-                .constrainAs(endTime) {
-                    end.linkTo(progressbar.end)
-                    top.linkTo(progressbar.top)
-                    bottom.linkTo(repeatBtn.top)
-                }
-        )
-
-        IconButton(
-            onClick = { /*TODO*/ },
-            modifier = Modifier
-                .constrainAs(shuffleBtn) {
-                    start.linkTo(parent.start)
-                    bottom.linkTo(speakerBtn.top)
-                    end.linkTo(prevBtn.start)
-                }
-        ) {
-            Icon(imageVector = Icons.Default.Shuffle, contentDescription = "Shuffle")
-        }
-
-        IconButton(
-            onClick = { /*TODO*/ },
-            modifier = Modifier
-                .constrainAs(prevBtn) {
-                    start.linkTo(shuffleBtn.end)
-                    bottom.linkTo(speakerBtn.top)
-                }
-        ) {
-            Icon(imageVector = Icons.Default.SkipPrevious, contentDescription = "Previous")
-
-
-        }
-
-        IconButton(
-            onClick = { /*TODO*/ },
-            modifier = Modifier
-                .constrainAs(pauseBtn) {
-                    start.linkTo(prevBtn.end)
-                    bottom.linkTo(speakerBtn.top)
-                }
-        ) {
-            Icon(imageVector = Icons.Default.Pause, contentDescription = "Pause")
-        }
-
-        IconButton(
-            onClick = { /*TODO*/ },
-            modifier = Modifier
-                .constrainAs(nextBtn) {
-                    start.linkTo(pauseBtn.end)
-                    bottom.linkTo(speakerBtn.top)
-                }
-        ) {
-            Icon(imageVector = Icons.Default.SkipNext, contentDescription = "Next")
-        }
-
-        IconButton(
-            onClick = { /*TODO*/ },
-            modifier = Modifier
-                .constrainAs(repeatBtn) {
-                    start.linkTo(nextBtn.end)
-                    end.linkTo(parent.end)
-                    bottom.linkTo(shareBtn.top)
-
-                }
-        ) {
-            Icon(imageVector = Icons.Default.Repeat, contentDescription = "Repeat")
-        }
-
-        createHorizontalChain(
-            shuffleBtn, prevBtn, pauseBtn, nextBtn, repeatBtn,
-            chainStyle = ChainStyle.SpreadInside
-        )
-
-
-        IconButton(
-            onClick = { /*TODO*/ },
-            modifier = Modifier
-                .constrainAs(speakerBtn) {
-                    bottom.linkTo(parent.bottom)
-                }
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.baseline_speaker_24),
-                contentDescription = "Speaker"
+            Text(
+                text = "1:28",
+                modifier = Modifier
+                    .constrainAs(startTime) {
+                        start.linkTo(progressbar.start)
+                        top.linkTo(progressbar.top)
+                        bottom.linkTo(shuffleBtn.top)
+                    }
             )
-        }
 
-        IconButton(
-            onClick = { /*TODO*/ },
-            modifier = Modifier
-                .constrainAs(lyricsBtn) {
-                    bottom.linkTo(parent.bottom)
-                }
-                .padding(5.dp)
-        ) {
-            Column(
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
+            Text(
+                text = "-0:12",
+                modifier = Modifier
+                    .constrainAs(endTime) {
+                        end.linkTo(progressbar.end)
+                        top.linkTo(progressbar.top)
+                        bottom.linkTo(repeatBtn.top)
+                    }
+            )
+
+            IconButton(
+                onClick = { /*TODO*/ },
+                modifier = Modifier
+                    .constrainAs(shuffleBtn) {
+                        start.linkTo(parent.start)
+                        bottom.linkTo(speakerBtn.top)
+                        end.linkTo(prevBtn.start)
+                    }
+            ) {
+                Icon(imageVector = Icons.Default.Shuffle, contentDescription = "Shuffle")
+            }
+
+            IconButton(
+                onClick = { /*TODO*/ },
+                modifier = Modifier
+                    .constrainAs(prevBtn) {
+                        start.linkTo(shuffleBtn.end)
+                        bottom.linkTo(speakerBtn.top)
+                    }
+            ) {
+                Icon(imageVector = Icons.Default.SkipPrevious, contentDescription = "Previous")
+
+
+            }
+
+            IconButton(
+                onClick = { /*TODO*/ },
+                modifier = Modifier
+                    .constrainAs(pauseBtn) {
+                        start.linkTo(prevBtn.end)
+                        bottom.linkTo(speakerBtn.top)
+                    }
+            ) {
+                Icon(imageVector = Icons.Default.Pause, contentDescription = "Pause")
+            }
+
+            IconButton(
+                onClick = { /*TODO*/ },
+                modifier = Modifier
+                    .constrainAs(nextBtn) {
+                        start.linkTo(pauseBtn.end)
+                        bottom.linkTo(speakerBtn.top)
+                    }
+            ) {
+                Icon(imageVector = Icons.Default.SkipNext, contentDescription = "Next")
+            }
+
+            IconButton(
+                onClick = { /*TODO*/ },
+                modifier = Modifier
+                    .constrainAs(repeatBtn) {
+                        start.linkTo(nextBtn.end)
+                        end.linkTo(parent.end)
+                        bottom.linkTo(shareBtn.top)
+
+                    }
+            ) {
+                Icon(imageVector = Icons.Default.Repeat, contentDescription = "Repeat")
+            }
+
+            createHorizontalChain(
+                shuffleBtn, prevBtn, pauseBtn, nextBtn, repeatBtn,
+                chainStyle = ChainStyle.SpreadInside
+            )
+
+
+            IconButton(
+                onClick = { /*TODO*/ },
+                modifier = Modifier
+                    .constrainAs(speakerBtn) {
+                        bottom.linkTo(parent.bottom)
+                    }
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.baseline_keyboard_arrow_up_24),
-                    contentDescription = "Lyrics"
+                    painter = painterResource(id = R.drawable.baseline_speaker_24),
+                    contentDescription = "Speaker"
                 )
-                Text(text = "Lyrics")
             }
-        }
 
-        IconButton(
-            onClick = { /*TODO*/ },
-            modifier = Modifier
-                .constrainAs(shareBtn) {
-                    bottom.linkTo(parent.bottom)
+            IconButton(
+                onClick = { /*TODO*/ },
+                modifier = Modifier
+                    .constrainAs(lyricsBtn) {
+                        bottom.linkTo(parent.bottom)
+                    }
+                    .padding(5.dp)
+            ) {
+                Column(
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.baseline_keyboard_arrow_up_24),
+                        contentDescription = "Lyrics"
+                    )
+                    Text(text = "Lyrics")
                 }
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.baseline_ios_share_24),
-                contentDescription = "Share"
+            }
+
+            IconButton(
+                onClick = { /*TODO*/ },
+                modifier = Modifier
+                    .constrainAs(shareBtn) {
+                        bottom.linkTo(parent.bottom)
+                    }
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.baseline_ios_share_24),
+                    contentDescription = "Share"
+                )
+            }
+            createHorizontalChain(
+                speakerBtn, lyricsBtn, shareBtn,
+                chainStyle = ChainStyle.SpreadInside
             )
         }
-        createHorizontalChain(
-            speakerBtn, lyricsBtn, shareBtn,
-            chainStyle = ChainStyle.SpreadInside
-        )
     }
 }
 
