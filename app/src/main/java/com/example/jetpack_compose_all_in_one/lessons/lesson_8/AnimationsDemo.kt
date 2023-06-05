@@ -1,5 +1,6 @@
 package com.example.jetpack_compose_all_in_one.lessons.lesson_8
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.infiniteRepeatable
@@ -111,6 +112,25 @@ fun RotationAnimationWithDelayExample() {
                     }
                 }
             }
+    )
+}
+
+@Composable
+fun ColorAnimationExample() {
+    var animate by remember { mutableStateOf(false) }
+
+    val targetColor = if (animate) Color.Red else Color.Blue
+
+    val color by animateColorAsState(
+        targetValue = targetColor,
+        animationSpec = tween(durationMillis = 500)
+    )
+
+    Box(
+        modifier = Modifier
+            .size(100.dp)
+            .background(color)
+            .clickable { animate = !animate }
     )
 }
 
