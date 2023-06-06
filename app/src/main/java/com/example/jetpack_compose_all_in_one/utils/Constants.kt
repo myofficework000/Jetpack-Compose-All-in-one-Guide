@@ -3,6 +3,12 @@ package com.example.jetpack_compose_all_in_one.utils
 import com.google.android.gms.maps.model.LatLng
 
 object Constants {
+    const val SUCCESS_RESULT_WITH_DATA = """
+            {
+    "message": "https://images.dog.ceo/breeds/sharpei/noel.jpg",
+    "status": "success"
+}
+        """
     const val BASE_URL_OLD = "https://api.quotable.io/"
     const val RANDOM_ENDPOINT = "random"
     const val QUOTES_BASE_URL = "https://api.quotable.io/"
