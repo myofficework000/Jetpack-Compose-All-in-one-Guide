@@ -4,6 +4,8 @@ import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.utils.Constants.HOME
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_8_ANIMATIONS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_8_ANIMATIONS_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_9_UI_TESTING
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_9_UI_TESTING_ABOUT
 
 /*
     How to add an item in Navigation Drawer:
@@ -67,9 +69,11 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     object L6Chapter1 : NavDes(NavigationDrawerData("l6_c1", "Theme change"))
 
     object L7Chapter1 : NavDes(NavigationDrawerData("l7_c1", "Constraint Layout Examples"))
-    object Lesson8Animation : NavDes(NavigationDrawerData(LESSON_8_ANIMATIONS, LESSON_8_ANIMATIONS_ABOUT))
+    object Lesson8Animation :
+        NavDes(NavigationDrawerData(LESSON_8_ANIMATIONS, LESSON_8_ANIMATIONS_ABOUT))
 
-    object Lesson9ComposeTesting : NavDes(NavigationDrawerData(LESSON_8_ANIMATIONS, LESSON_8_ANIMATIONS_ABOUT))
+    object Lesson9ComposeTesting :
+        NavDes(NavigationDrawerData(LESSON_9_UI_TESTING, LESSON_9_UI_TESTING_ABOUT))
 
 
     object QuoteSwipe : NavDes(NavigationDrawerData("quote2", "Swipe Quotes"))
@@ -158,7 +162,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 L5Maps,
                 L6Chapter1,
                 L7Chapter1,
-                Lesson8Animation
+                Lesson8Animation,
+                Lesson9ComposeTesting
             ), "Lessons"
         )
     )

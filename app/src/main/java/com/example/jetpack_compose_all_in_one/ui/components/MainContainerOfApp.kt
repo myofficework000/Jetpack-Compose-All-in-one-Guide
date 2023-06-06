@@ -50,6 +50,7 @@ import com.example.jetpack_compose_all_in_one.lessons.lesson_5.Lesson_5_Chapter_
 import com.example.jetpack_compose_all_in_one.lessons.lesson_6.Lesson_6_ThemeChange
 import com.example.jetpack_compose_all_in_one.lessons.lesson_7.Lesson_7_Chapter_ConstraintLayout
 import com.example.jetpack_compose_all_in_one.lessons.lesson_8.Lesson_8_Animations
+import com.example.jetpack_compose_all_in_one.lessons.lesson_9.Lesson_9
 import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat2
 import com.example.jetpack_compose_all_in_one.ui.views.domain_search.DomainSearch
 import com.example.jetpack_compose_all_in_one.ui.views.internet.InternetDemo
@@ -274,6 +275,10 @@ fun MainContainerOfApp(
                 }
                 composable(NavDes.Lesson8Animation.route()) {
                     Lesson_8_Animations()
+                }
+
+                composable(NavDes.Lesson9ComposeTesting.route()) {
+                    Lesson_9()
                 }
 
                 composable(NavDes.L6Chapter1.route()) {

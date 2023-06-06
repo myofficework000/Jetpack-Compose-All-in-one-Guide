@@ -71,6 +71,11 @@
         <item>Animation Demo 6</item>
        </string-array>
 
+    <string-array name="lesson_9_ui_test">
+        <item>UI TEST Demo 1</item>
+        <item>UI TEST Demo 2</item>
+      </string-array>
+
     <string-array name="l2c5_header_text">
         <item>Simple Progress</item>
         <item>Custom Progress</item>
