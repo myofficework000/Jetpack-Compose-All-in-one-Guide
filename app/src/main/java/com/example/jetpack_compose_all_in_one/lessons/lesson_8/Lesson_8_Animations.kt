@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
@@ -25,10 +26,10 @@ fun Lesson_8_Animations() {
 
 @Composable
 private fun LessonContent() {
-    val currentPage = rememberSaveable { mutableStateOf(0) }
+    val currentPage = rememberSaveable { mutableIntStateOf(0) }
 
     LogicPager(
-        pageCount = 4,
+        pageCount = 6,
         currentPage = currentPage
     ) {
         Column(
@@ -49,6 +50,8 @@ private fun LessonContent() {
                 1 -> ScalingAnimationExample()
                 2 -> FadeAnimationExample()
                 3 -> RotationAnimationWithDelayExample()
+                4 -> {}
+                5 -> FloatAnimationExample()
             }
         }
     }

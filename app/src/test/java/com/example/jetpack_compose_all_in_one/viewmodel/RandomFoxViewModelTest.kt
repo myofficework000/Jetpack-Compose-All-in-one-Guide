@@ -9,14 +9,23 @@ import com.example.jetpack_compose_all_in_one.features.random_fox.viewmodel.Rand
 import com.example.jetpack_compose_all_in_one.utils.ResultState
 import io.mockk.clearAllMocks
 import io.mockk.coEvery
+import io.mockk.coVerify
+import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
+import io.reactivex.Scheduler
+import io.reactivex.Single
+import io.reactivex.android.plugins.RxAndroidPlugins
+import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import java.util.concurrent.Callable
+
 
 @ExperimentalCoroutinesApi
 class RandomFoxViewModelTest {
@@ -33,6 +42,14 @@ class RandomFoxViewModelTest {
     @Before
     fun setup() {
         repository = mockk()
+
+        // Since view model runs all 3 fetches on init{}, a default result needs to be mocked here.
+        val result = ResultState.Success( RandomFoxResponse("") )
+        coEvery { repository.getRandomFoxCoroutines() } returns result
+        coEvery { repository.getRandomFoxFlow() } returns flow { emit( result ) }
+        RxAndroidPlugins.setInitMainThreadSchedulerHandler { Schedulers.trampoline() }
+        every { repository.getRandomFoxRxJava() } returns Single.just(RandomFoxResponse(""))
+
         viewModel = RandomFoxViewModel(repository)
     }
 
@@ -105,6 +122,34 @@ class RandomFoxViewModelTest {
 
         // Verify that loadingState was updated with the expected value
         verify { loadingStateObserver.onChanged(false) }
+    }
+
+    @Test
+    fun `fetchRandomFoxUsingFlow updates foxStateFlow on success`() = runTest {
+        coEvery { repository.getRandomFoxFlow() } returns flow {
+            emit(
+                ResultState.Success(
+                    RandomFoxResponse("https://randomfox.ca/?i=69")
+                )
+            )
+        }
+
+        viewModel.fetchRandomFoxUsingFlow()
+
+        coVerify { repository.getRandomFoxFlow() }
+        assert(viewModel.foxStateFlow.value.image == "https://randomfox.ca/?i=69")
+    }
+
+    @Test
+    fun `fetchRandomFoxUsingRxJava updates foxStateRxJava on success`() = runTest {
+        coEvery { repository.getRandomFoxRxJava() } returns Single.just(
+            RandomFoxResponse("https://randomfox.ca/?i=69")
+        )
+
+        viewModel.fetchRandomFoxUsingRxJava()
+
+        verify { repository.getRandomFoxRxJava() }
+        assert(viewModel.foxStateRxJava.value?.image == "https://randomfox.ca/?i=69")
     }
 }
 

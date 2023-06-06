@@ -11,7 +11,10 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -21,14 +24,18 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.example.jetpack_compose_all_in_one.ui.components.SimpleTextButton
+import com.example.jetpack_compose_all_in_one.ui.theme.LightBlueToBlue30
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -126,7 +133,6 @@ fun RotationAnimationWithDelayExample() {
 fun RoundAnimationExample() {
     var animate by remember { mutableStateOf(false) }
 
-
     val border by animateIntAsState(
         targetValue = if(animate) 100 else 0,
         animationSpec = tween(durationMillis = 500)
@@ -142,4 +148,32 @@ fun RoundAnimationExample() {
 
 
 
+}
+
+@Composable
+fun FloatAnimationExample() {
+    var isVisible by remember { mutableStateOf(false) }
+
+    val animateValue by animateFloatAsState(
+        targetValue = if (isVisible) 0f else 1f,
+        animationSpec = tween(durationMillis = 500)
+    )
+
+    Column(
+        Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Box(
+            modifier = Modifier.size(100.dp)
+                .graphicsLayer {
+                    translationX = animateValue * 100 * if (isVisible) -1 else 1
+                    alpha = 1 - animateValue
+                }
+                .background(LightBlueToBlue30)
+        )
+        SimpleTextButton(if (isVisible) "Float out" else "Float in") {
+            isVisible = !isVisible
+        }
+    }
 }
