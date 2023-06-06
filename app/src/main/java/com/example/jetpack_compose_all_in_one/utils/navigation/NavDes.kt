@@ -69,6 +69,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     object L7Chapter1 : NavDes(NavigationDrawerData("l7_c1", "Constraint Layout Examples"))
     object Lesson8Animation : NavDes(NavigationDrawerData(LESSON_8_ANIMATIONS, LESSON_8_ANIMATIONS_ABOUT))
 
+    object Lesson9ComposeTesting : NavDes(NavigationDrawerData(LESSON_8_ANIMATIONS, LESSON_8_ANIMATIONS_ABOUT))
+
 
     object QuoteSwipe : NavDes(NavigationDrawerData("quote2", "Swipe Quotes"))
 
