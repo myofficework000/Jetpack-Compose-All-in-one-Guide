@@ -73,6 +73,7 @@ dependencies {
     implementation 'com.google.accompanist:accompanist-permissions:0.31.1-alpha'
     implementation 'com.google.firebase:firebase-auth-ktx:21.3.0'
     implementation 'com.google.android.libraries.places:places:3.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
 
     testImplementation 'junit:junit:4.13.2'
@@ -143,6 +144,9 @@ dependencies {
 
     // Compose Constraint Layout
     implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
+
+    testImplementation 'androidx.arch.core:core-testing:2.2.0'
+
 }
 
 // Remember to add this to local.properties

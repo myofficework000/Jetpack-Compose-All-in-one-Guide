@@ -62,6 +62,15 @@
         <item>Constraint Layout Demo 8</item>
     </string-array>
 
+    <string-array name="lesson_8_animation">
+        <item>Animation Demo 1</item>
+        <item>Animation Demo 2</item>
+        <item>Animation Demo 3</item>
+        <item>Animation Demo 4</item>
+        <item>Animation Demo 5</item>
+        <item>Animation Demo 6</item>
+       </string-array>
+
     <string-array name="l2c5_header_text">
         <item>Simple Progress</item>
         <item>Custom Progress</item>

@@ -14,23 +14,37 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.outlined.Visibility
+import androidx.compose.material.icons.outlined.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Text
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -42,13 +56,17 @@ import com.example.jetpack_compose_all_in_one.ui.components.LessonHeader
 import com.example.jetpack_compose_all_in_one.ui.components.SimpleIconButton
 import com.example.jetpack_compose_all_in_one.ui.components.SimpleTextButton
 import com.example.jetpack_compose_all_in_one.ui.theme.LightBlue
+import com.example.jetpack_compose_all_in_one.ui.theme.OrangeA100
 import com.example.jetpack_compose_all_in_one.ui.theme.VioletA100
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_15
+import com.example.jetpack_compose_all_in_one.ui.theme.dp_24
+import com.example.jetpack_compose_all_in_one.ui.theme.dp_8
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_20
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_5
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_50
 import com.example.jetpack_compose_all_in_one.ui.theme.sp_16
 import com.example.jetpack_compose_all_in_one.ui.theme.sp_32
+import com.example.jetpack_compose_all_in_one.ui.views.chat.textBackgroundColor
 import com.example.jetpack_compose_all_in_one.utils.LogicPager
 
 @Preview
@@ -198,9 +216,114 @@ fun CardWithDetailsInside() {
     }
 }
 
+@Preview
+@Composable
+fun PreviewRegistrationScreen() {
+    RegistrationScreen()
+}
 //Luan
 @Composable
 fun RegistrationScreen() {
+    var username by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
+
+    Box(modifier = Modifier
+        .fillMaxSize()
+        .padding(dp_8)
+        .background(Color.White)){
+        ConstraintLayout(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(dp_24)
+        ) {
+            val (card) = createRefs()
+            
+            Card(
+                modifier = Modifier
+                    .constrainAs(card){
+                        top.linkTo(parent.top)
+                        start.linkTo(parent.start)
+                        end.linkTo(parent.end)
+                        bottom.linkTo(parent.bottom)
+            }, elevation = CardDefaults.cardElevation(
+                defaultElevation = dp_15
+            ),
+                shape = RoundedCornerShape(dp_15)
+            ) {
+                ConstraintLayout(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(dp_15)
+                ){
+                    val (signUpText,usernameTextField, passwordTextField, emailTextField, registerButton) = createRefs()
+                    Text(
+                        modifier = Modifier
+                        .constrainAs(signUpText) {
+                            top.linkTo(parent.top, margin = dp_15)
+                            start.linkTo(parent.start, margin = dp_15)
+                            end.linkTo(parent.end, margin = dp_15)
+                        }
+                        .fillMaxWidth(),
+                        text = "Sign Up",
+                        textAlign = TextAlign.Center
+                    )
+                    TextField(
+                        value = username,
+                        onValueChange = { username = it },
+                        label = { Text("Username") },
+                        modifier = Modifier
+                            .constrainAs(usernameTextField) {
+                                top.linkTo(signUpText.bottom, margin = dp_15)
+                                start.linkTo(parent.start, margin = dp_15)
+                                end.linkTo(parent.end, margin = dp_15)
+                            }
+                            .fillMaxWidth()
+                    )
+
+                    TextField(
+                        value = password,
+                        onValueChange = { password = it },
+                        label = { Text("Password") },
+                        modifier = Modifier
+                            .constrainAs(passwordTextField) {
+                                top.linkTo(usernameTextField.bottom, margin = 16.dp)
+                                start.linkTo(parent.start, margin = dp_15)
+                                end.linkTo(parent.end, margin = dp_15)
+                            }
+                            .fillMaxWidth()
+                    )
+
+                    TextField(
+                        value = email,
+                        onValueChange = { email = it },
+                        label = { Text("Email") },
+                        modifier = Modifier
+                            .constrainAs(emailTextField) {
+                                top.linkTo(passwordTextField.bottom, margin = dp_15)
+                                start.linkTo(parent.start, margin = dp_15)
+                                end.linkTo(parent.end, margin = dp_15)
+                            }
+                            .fillMaxWidth()
+                    )
+
+                    Button(
+                        onClick = { /* Perform registration */ },
+                        modifier = Modifier
+                            .constrainAs(registerButton) {
+                                top.linkTo(emailTextField.bottom, margin = dp_24)
+                                start.linkTo(parent.start, margin = dp_15)
+                                end.linkTo(parent.end, margin = dp_15)
+                            }
+                            .fillMaxWidth()
+                    ) {
+                        Text("Register")
+                    }
+                }
+            }
+
+        }
+    }
 
 }
 
@@ -210,11 +333,15 @@ fun LoginScreen() {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
+            .background(OrangeA100)
 
     ) {
         val (title, emailTf, passTf, enterBtn, subText, facebookBtn) = createRefs()
         val email = remember { mutableStateOf("") }
         val password = remember { mutableStateOf("") }
+        var isEmailValid: MutableState<Boolean> = remember { mutableStateOf(false)}
+        var showPassword: Boolean by remember { mutableStateOf(false) }
+
 
         Text(
             text = "SIGN IN",
@@ -232,6 +359,7 @@ fun LoginScreen() {
 
         TextField(
             value = email.value,
+            leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = "Email") },
             modifier = Modifier
                 .constrainAs(emailTf)
                 {
@@ -239,14 +367,22 @@ fun LoginScreen() {
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                 },
+            isError = !android.util.Patterns.EMAIL_ADDRESS.matcher(email.value).matches(),
             onValueChange = { email.value = it },
-            label = { Text(text = "email address") },
+            label = { Text(text = "Email address") },
             placeholder = { Text(text = "Type your email") },
             shape = RoundedCornerShape(20.dp),
+            colors = androidx.compose.material3.TextFieldDefaults.colors(
+                disabledTextColor = Color.Transparent,
+                focusedIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent,
+                disabledIndicatorColor = Color.Transparent
+            )
         )
 
         TextField(
             value = password.value,
+            leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = "Lock") },
             modifier = Modifier
                 .constrainAs(passTf)
                 {
@@ -255,8 +391,24 @@ fun LoginScreen() {
                     end.linkTo(parent.end)
                 },
             onValueChange = { password.value = it },
-            label = { Text(text = "password") },
-            shape = RoundedCornerShape(20.dp)
+            label = { Text(text = "Password") },
+            shape = RoundedCornerShape(20.dp),
+            colors = androidx.compose.material3.TextFieldDefaults.colors(
+                disabledTextColor = Color.Transparent,
+                focusedIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent,
+                disabledIndicatorColor = Color.Transparent
+            ),
+            trailingIcon = {
+                IconButton(onClick = { showPassword = !showPassword }) {
+                    Icon(
+                        imageVector = if (showPassword) Icons.Outlined.VisibilityOff
+                        else Icons.Outlined.Visibility,
+                        contentDescription = ""
+                    )
+                }
+            },
+            visualTransformation = if (showPassword) VisualTransformation.None else PasswordVisualTransformation()
         )
 
         Button(
@@ -273,7 +425,7 @@ fun LoginScreen() {
             )
         ) {
             Text(
-                text = "ENTER",
+                text = "Sign in",
                 fontSize = sp_16,
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center,
@@ -301,7 +453,7 @@ fun LoginScreen() {
                 top.linkTo(subText.bottom, margin = dp_20)
                 start.linkTo(parent.start)
                 end.linkTo(parent.end)
-                bottom.linkTo(parent.bottom, margin = dp_50)
+                bottom.linkTo(parent.bottom)
             }
         ) {
             Text(
@@ -321,6 +473,7 @@ fun LoginScreen() {
 
     }
 }
+
 
 @Composable
 fun PlayWithBox() {
