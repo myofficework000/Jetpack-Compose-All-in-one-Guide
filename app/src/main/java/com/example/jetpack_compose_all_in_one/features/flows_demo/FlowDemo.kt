@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.jetpack_compose_all_in_one.ui.components.SimpleTextButton
+import com.example.jetpack_compose_all_in_one.ui.theme.dp_15
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_30
 
 @Composable
@@ -24,6 +25,7 @@ fun FlowDemo(
     vm: FlowsViewModel
 ) {
     val state1 by vm.stateFlow1.collectAsState()
+    val state2 by vm.sharedFlow1.collectAsState(0)
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -33,6 +35,14 @@ fun FlowDemo(
 
         Row {
             for (i in 0..9) Text(state1.addNCapped(i), color = Color.Black)
+        }
+
+        Spacer(Modifier.height(dp_15))
+
+        Text("Shared Flow", fontWeight = FontWeight.Bold, color = Color.Black)
+
+        Row {
+            for (i in 0..9) Text(state2.addNCapped(i), color = Color.Black)
         }
 
         Spacer(Modifier.height(dp_30))
