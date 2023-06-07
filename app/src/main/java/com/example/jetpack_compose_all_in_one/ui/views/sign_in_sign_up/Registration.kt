@@ -18,6 +18,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -26,8 +27,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.features.sign_in_sign_up.ValidateRegistration.isValidRegistrationInput
@@ -39,6 +42,13 @@ import com.example.jetpack_compose_all_in_one.ui.theme.spaceSmall
 import com.example.jetpack_compose_all_in_one.utils.showLongToast
 import com.example.jetpack_compose_all_in_one.utils.showToast
 
+@Preview
+@Composable
+fun RegistrationPreview(){
+    RegistrationForm {
+
+    }
+}
 @Composable
 fun RegistrationForm(
     modifier: Modifier = Modifier,
@@ -56,6 +66,7 @@ fun RegistrationForm(
         ) {
 
             Text(
+                modifier = Modifier.testTag("Register"),
                 text = "Register",
                 fontSize = sp_32,
                 color = Color.Blue,
@@ -88,7 +99,6 @@ fun RegistrationForm(
             SimpleTextButton("Register") {
                 onRegister
             }
-
         }
     }
 
@@ -98,12 +108,12 @@ fun RegistrationForm(
 fun buttonClick(context: Context) {
 
     if (isValidRegistrationInput(
-            username = username,
+            username = username.value,
             password = password,
             confirmPassword = confirmPassword
         )
     ) {
-        Log.d("TAG", username)
+        Log.d("TAG", username.value)
         Log.d("TAG", password)
         Log.d("TAG", confirmPassword)
         showToast(context = context, context.getString(R.string.registration_success))
@@ -131,9 +141,9 @@ fun RegisterButton() {
 @Composable
 fun UserTextField() {
     OutlinedTextField(
-        value = username,
+        value = username.value,
         leadingIcon = { Icon(imageVector = Icons.Default.Person, contentDescription = "userIcon") },
-        onValueChange = { username = it },
+        onValueChange = { username.value = it },
         label = { Text(text = "Username") }
     )
 }
@@ -143,9 +153,12 @@ fun UserTextField() {
 fun EmailTextField() {
 
     OutlinedTextField(
-        value = email,
+        value = email.value,
         leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = "emailIcon") },
-        onValueChange = { email = it },
+        onValueChange = {
+            email.value = it
+            validateEmail(email = it) },
+        isError =isEmailValid.value ,
         label = { Text(text = "Email") }
     )
 }
@@ -174,8 +187,28 @@ private fun PasswordTextField() {
     )
 }
 
+fun validateEmail(email : String) {
+    if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        isEmailValid.value = true
+        emailErrMsg.value = "Input proper email id"
+    } else {
+        isEmailValid.value = false
+        emailErrMsg.value = ""
+    }
+}
 
-var email: String by mutableStateOf("")
-var username: String by mutableStateOf("")
+var regUser: RegisterUser = RegisterUser()
+var username: MutableState<String> = mutableStateOf(regUser.name)
 var password: String by mutableStateOf("")
 var confirmPassword: String by mutableStateOf("")
+var email: MutableState<String> = mutableStateOf(regUser.email)
+var isEmailValid: MutableState<Boolean> = mutableStateOf(false)
+var emailErrMsg: MutableState<String> = mutableStateOf("")
+
+data class RegisterUser(
+    var name: String = "",
+    var email: String = "",
+    var password: String = "",
+    var confirmPassword: String = ""
+)
+
