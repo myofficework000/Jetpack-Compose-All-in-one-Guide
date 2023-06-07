@@ -1,11 +1,90 @@
 package com.example.jetpack_compose_all_in_one.utils.navigation
 
 import com.example.jetpack_compose_all_in_one.R
-import com.example.jetpack_compose_all_in_one.utils.Constants.HOME
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ALARM_MANAGER
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ALARM_MANAGER_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.API_IMPLEMENTATIONS
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BOUND_SERVICE
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BOUND_SERVICE_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CHAT_DEMO_UI
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CHAT_DEMO_UI_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOG_API
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOG_API_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOMAIN_SEARCH
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOMAIN_SEARCH_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOWNLOAD
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOWNLOAD_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.FEATURES
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.FOREGROUND_SERVICE
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.FOREGROUND_SERVICE_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.HOME
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.HOME_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.INTERNET
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.INTERNET_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSONS
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_1
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_1_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_1
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_1_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_2
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_2_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_3
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_3_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_4
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_4_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_5
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_5_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_6
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_6_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_DESC
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_3_CHAPTER_1
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_3_CHAPTER_1_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_3_DESC
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_4_CHAPTER_1
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_4_CHAPTER_1_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_4_DESC
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_5_CHAPTER_1
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_5_CHAPTER_1_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_5_CHAPTER_2
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_5_CHAPTER_2_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_5_CHAPTER_3
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_5_CHAPTER_3_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_5_CHAPTER_4
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_5_CHAPTER_4_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_5_DESC
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_6_CHAPTER_1
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_6_CHAPTER_1_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_7_CHAPTER_1
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_7_CHAPTER_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_8_ANIMATIONS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_8_ANIMATIONS_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_9_UI_TESTING
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_9_UI_TESTING_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LOGIN_1
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LOGIN_1_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LOGIN_2
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LOGIN_2_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.MAPS
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.MAPS_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NEWS_SAMPLE
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NEWS_SAMPLE_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.QRCODE_SCANNER
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.QRCODE_SCANNER_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.QUOTES
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.QUOTES_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.QUOTE_2
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.QUOTE_2_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.RANDOM_DOG_API
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.RANDOM_DOG_API_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.RANDOM_FOX_API
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.RANDOM_FOX_API_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SERVICE_IMPLEMENTATIONS
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SHOW_IMAGES
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SHOW_IMAGES_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.TMDB
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.TMDB_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.WEATHER_SAMPLE
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.WEATHER_SAMPLE_ABOUT
 
 /*
     How to add an item in Navigation Drawer:
@@ -19,56 +98,56 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESS
 sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: Int? = null) {
 
     // These are for individual items
-    object Home : NavDes(NavigationDrawerData(HOME, HOME), R.string.app_name)
-    object Internet : NavDes(NavigationDrawerData("internet", "Connectivity Manager"))
-    object ForegroundService : NavDes(NavigationDrawerData("fService", "Foreground Services"))
-    object BoundService : NavDes(NavigationDrawerData("bService", "Bound Services"))
-    object Download : NavDes(NavigationDrawerData("download", "Download Manager"))
-    object AlarmManager : NavDes(NavigationDrawerData("alarm", "Alarm Manager"))
+    object Home : NavDes(NavigationDrawerData(HOME, HOME_ABOUT), R.string.app_name)
+    object Internet : NavDes(NavigationDrawerData(INTERNET, INTERNET_ABOUT))
+    object ForegroundService : NavDes(NavigationDrawerData(FOREGROUND_SERVICE , FOREGROUND_SERVICE_ABOUT))
+    object BoundService : NavDes(NavigationDrawerData(BOUND_SERVICE, BOUND_SERVICE_ABOUT))
+    object Download : NavDes(NavigationDrawerData(DOWNLOAD, DOWNLOAD_ABOUT))
+    object AlarmManager : NavDes(NavigationDrawerData(ALARM_MANAGER, ALARM_MANAGER_ABOUT))
 
-    object Login1 : NavDes(NavigationDrawerData("login_style_1", "Login Page (Style 1)"))
+    object Login1 : NavDes(NavigationDrawerData(LOGIN_1, LOGIN_1_ABOUT))
 
-    object Login2 : NavDes(NavigationDrawerData("login_style_2", "Login Page (Style 2)"))
+    object Login2 : NavDes(NavigationDrawerData(LOGIN_2, LOGIN_2_ABOUT))
 
-    object QrCodeScanner : NavDes(NavigationDrawerData("qrcode_scanner", "QR Code Scanner"))
+    object QrCodeScanner : NavDes(NavigationDrawerData(QRCODE_SCANNER, QRCODE_SCANNER_ABOUT))
 
-    object Tmdb : NavDes(NavigationDrawerData("tmdb", "TMDB API"))
+    object Tmdb : NavDes(NavigationDrawerData(TMDB, TMDB_ABOUT))
 
-    object Quotes : NavDes(NavigationDrawerData("quotes", "Quotes API"))
+    object Quotes : NavDes(NavigationDrawerData(QUOTES, QUOTES_ABOUT))
 
-    object ChatDemoUI : NavDes(NavigationDrawerData("chatting_feature", "chatting feature"))
+    object ChatDemoUI : NavDes(NavigationDrawerData(CHAT_DEMO_UI, CHAT_DEMO_UI_ABOUT))
 
-    object ShowImages : NavDes(NavigationDrawerData("img_show", "Show Device Images"))
+    object ShowImages : NavDes(NavigationDrawerData(SHOW_IMAGES, SHOW_IMAGES_ABOUT))
 
-    object L1Layouts : NavDes(NavigationDrawerData("l1", "Lesson 1: Row, Column, Box"))
+    object L1Layouts : NavDes(NavigationDrawerData(LESSON_1, LESSON_1_ABOUT))
 
-    object L2Chapter1 : NavDes(NavigationDrawerData("l2_c1", "Chapter 1: Shapes"))
+    object L2Chapter1 : NavDes(NavigationDrawerData(LESSON_2_CHAPTER_1, LESSON_2_CHAPTER_1_ABOUT))
 
-    object L2Chapter2 : NavDes(NavigationDrawerData("l2_c2", "Chapter 2: Text"))
+    object L2Chapter2 : NavDes(NavigationDrawerData(LESSON_2_CHAPTER_2, LESSON_2_CHAPTER_2_ABOUT))
 
-    object L2Chapter3 : NavDes(NavigationDrawerData("l2_c3", "Chapter 3: Buttons"))
+    object L2Chapter3 : NavDes(NavigationDrawerData(LESSON_2_CHAPTER_3, LESSON_2_CHAPTER_3_ABOUT))
 
-    object L2Chapter4 : NavDes(NavigationDrawerData("l2_c4", "Chapter 4: Image"))
+    object L2Chapter4 : NavDes(NavigationDrawerData(LESSON_2_CHAPTER_4, LESSON_2_CHAPTER_4_ABOUT))
 
-    object L2Chapter5 : NavDes(NavigationDrawerData("l2_c5", "Chapter 5: Progressbar"))
+    object L2Chapter5 : NavDes(NavigationDrawerData(LESSON_2_CHAPTER_5, LESSON_2_CHAPTER_5_ABOUT))
 
-    object L2Chapter6 : NavDes(NavigationDrawerData("l2_c6", "Chapter 6: Floating Action button"))
+    object L2Chapter6 : NavDes(NavigationDrawerData(LESSON_2_CHAPTER_6, LESSON_2_CHAPTER_6_ABOUT))
 
-    object L3Chapter1 : NavDes(NavigationDrawerData("l3_c1", "Chapter 1: List Types"))
+    object L3Chapter1 : NavDes(NavigationDrawerData(LESSON_3_CHAPTER_1, LESSON_3_CHAPTER_1_ABOUT))
 
-    object L4Chapter1 : NavDes(NavigationDrawerData("l4_c1", "Chapter 1: Dialogs"))
+    object L4Chapter1 : NavDes(NavigationDrawerData(LESSON_4_CHAPTER_1, LESSON_4_CHAPTER_1_ABOUT))
 
-    object L5Chapter1 : NavDes(NavigationDrawerData("l5_c1", "Chapter 1: Map Basics"))
+    object L5Chapter1 : NavDes(NavigationDrawerData(LESSON_5_CHAPTER_1, LESSON_5_CHAPTER_1_ABOUT))
 
-    object L5Chapter2 : NavDes(NavigationDrawerData("l5_c2", "Chapter 2: Map Types"))
+    object L5Chapter2 : NavDes(NavigationDrawerData(LESSON_5_CHAPTER_2, LESSON_5_CHAPTER_2_ABOUT))
 
-    object L5Chapter3 : NavDes(NavigationDrawerData("l5_c3", "Chapter 3: Current Location on Map"))
+    object L5Chapter3 : NavDes(NavigationDrawerData(LESSON_5_CHAPTER_3, LESSON_5_CHAPTER_3_ABOUT))
 
-    object L5Chapter4 : NavDes(NavigationDrawerData("l5_c4", "Chapter 4: Search on Map"))
+    object L5Chapter4 : NavDes(NavigationDrawerData(LESSON_5_CHAPTER_4, LESSON_5_CHAPTER_4_ABOUT))
 
-    object L6Chapter1 : NavDes(NavigationDrawerData("l6_c1", "Theme change"))
+    object L6Chapter1 : NavDes(NavigationDrawerData(LESSON_6_CHAPTER_1, LESSON_6_CHAPTER_1_ABOUT))
 
-    object L7Chapter1 : NavDes(NavigationDrawerData("l7_c1", "Constraint Layout Examples"))
+    object L7Chapter1 : NavDes(NavigationDrawerData(LESSON_7_CHAPTER_1, LESSON_7_CHAPTER_ABOUT))
     object Lesson8Animation :
         NavDes(NavigationDrawerData(LESSON_8_ANIMATIONS, LESSON_8_ANIMATIONS_ABOUT))
 
@@ -76,21 +155,21 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
         NavDes(NavigationDrawerData(LESSON_9_UI_TESTING, LESSON_9_UI_TESTING_ABOUT))
 
 
-    object QuoteSwipe : NavDes(NavigationDrawerData("quote2", "Swipe Quotes"))
+    object QuoteSwipe : NavDes(NavigationDrawerData(QUOTE_2, QUOTE_2_ABOUT))
 
-    object NewsSample : NavDes(NavigationDrawerData("newsSample", "News Sample"))
+    object NewsSample : NavDes(NavigationDrawerData(NEWS_SAMPLE, NEWS_SAMPLE_ABOUT))
 
-    object WeatherSample : NavDes(NavigationDrawerData("weatherSample", "Weather Sample"))
+    object WeatherSample : NavDes(NavigationDrawerData(WEATHER_SAMPLE, WEATHER_SAMPLE_ABOUT))
 
-    object DomainSearch : NavDes(NavigationDrawerData("domainSearch", "Domain Name Search"))
+    object DomainSearch : NavDes(NavigationDrawerData(DOMAIN_SEARCH, DOMAIN_SEARCH_ABOUT))
 
-    object DogApi : NavDes(NavigationDrawerData("dogApi", "Dog API"))
+    object DogApi : NavDes(NavigationDrawerData(DOG_API, DOG_API_ABOUT))
 
-    object RandomDogApi : NavDes(NavigationDrawerData("RandomDogApi", "Random Dog API"))
+    object RandomDogApi : NavDes(NavigationDrawerData(RANDOM_DOG_API, RANDOM_DOG_API_ABOUT))
 
-    object RandomFox : NavDes(NavigationDrawerData("RandomFoxApi", "Random Fox API"))
+    object RandomFox : NavDes(NavigationDrawerData(RANDOM_FOX_API, RANDOM_FOX_API_ABOUT))
 
-    object Maps : NavDes(NavigationDrawerData("maps", "Play with Maps"))
+    object Maps : NavDes(NavigationDrawerData(MAPS, MAPS_ABOUT))
 
     /*object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
         R.drawable.baseline_contacts_24
@@ -117,38 +196,38 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 RandomFox,
                 Maps
             ),
-            "API implementations"
+            API_IMPLEMENTATIONS
         )
     )
 
     object L2Components : NavDes(
         NavigationCategoryData(
             listOf(L2Chapter1, L2Chapter2, L2Chapter3, L2Chapter4, L2Chapter5, L2Chapter6),
-            "Lesson 2: Material Designs"
+            LESSON_2_DESC
         )
     )
 
     object L3List : NavDes(
         NavigationCategoryData(
-            listOf(L3Chapter1), "Lesson 3: List"
+            listOf(L3Chapter1), LESSON_3_DESC
         )
     )
 
     object L4Dialogs : NavDes(
         NavigationCategoryData(
-            listOf(L4Chapter1), "Lesson 4: Dialogs"
+            listOf(L4Chapter1), LESSON_4_DESC
         )
     )
 
     object L5Maps : NavDes(
         NavigationCategoryData(
-            listOf(L5Chapter1, L5Chapter2, L5Chapter3, L5Chapter4), "Lesson 5: Maps"
+            listOf(L5Chapter1, L5Chapter2, L5Chapter3, L5Chapter4), LESSON_5_DESC
         )
     )
 
     object CategoryServices : NavDes(
         NavigationCategoryData(
-            listOf(ForegroundService, BoundService, AlarmManager), "Service implementations"
+            listOf(ForegroundService, BoundService, AlarmManager), SERVICE_IMPLEMENTATIONS
         )
     )
 
@@ -164,7 +243,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 L7Chapter1,
                 Lesson8Animation,
                 Lesson9ComposeTesting
-            ), "Lessons"
+            ), LESSONS
         )
     )
 
@@ -181,7 +260,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 QrCodeScanner,
                 ChatDemoUI,
                 QuoteSwipe
-            ), "Features"
+            ), FEATURES
         )
     )
 
