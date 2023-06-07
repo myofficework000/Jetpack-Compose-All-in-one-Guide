@@ -69,12 +69,12 @@
         <item>Animation Demo 4</item>
         <item>Animation Demo 5</item>
         <item>Animation Demo 6</item>
-       </string-array>
+    </string-array>
 
     <string-array name="lesson_9_ui_test">
         <item>UI TEST Demo 1</item>
         <item>UI TEST Demo 2</item>
-      </string-array>
+    </string-array>
 
     <string-array name="l2c5_header_text">
         <item>Simple Progress</item>
@@ -90,6 +90,12 @@
         <item>Map type - Hybrid</item>
         <item>Map type - None</item>
     </string-array>
+
+    <string-array name="feature_flow_example">
+        <item>Flow Demo with multiple consumer</item>
+        <item>State flow vs Shared flow</item>
+    </string-array>
+
     <string name="l5c3_header_text">Your current location</string>
     <string name="read_full_article">Read Article</string>
     <string name="close">Close</string>

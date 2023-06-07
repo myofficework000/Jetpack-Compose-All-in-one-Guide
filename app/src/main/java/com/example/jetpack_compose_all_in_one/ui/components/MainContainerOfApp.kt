@@ -24,7 +24,7 @@ import com.example.jetpack_compose_all_in_one.features.alarm.AlarmMainUI
 import com.example.jetpack_compose_all_in_one.features.chatmodule.ChatViewModel
 import com.example.jetpack_compose_all_in_one.features.dog_api.view.RandomDogUI
 import com.example.jetpack_compose_all_in_one.features.download_manager.Download
-import com.example.jetpack_compose_all_in_one.features.flows_demo.FlowDemo
+import com.example.jetpack_compose_all_in_one.features.flows_demo.FeatureFlowContent
 import com.example.jetpack_compose_all_in_one.features.internet.InternetViewModel
 import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginPage
 import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginStyle1ViewModel
@@ -337,7 +337,7 @@ fun MainContainerOfApp(
                 }
 
                 composable(NavDes.FlowDemo.route()) {
-                    FlowDemo(hiltViewModel())
+                    FeatureFlowContent()
                 }
             }
         }
