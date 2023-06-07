@@ -15,6 +15,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOMA
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOWNLOAD
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOWNLOAD_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.FEATURES
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.FLOW_DEMO
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.FLOW_DEMO_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.FOREGROUND_SERVICE
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.FOREGROUND_SERVICE_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.HOME
@@ -171,6 +173,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object Maps : NavDes(NavigationDrawerData(MAPS, MAPS_ABOUT))
 
+    object FlowDemo: NavDes(NavigationDrawerData(FLOW_DEMO, FLOW_DEMO_ABOUT))
+
     /*object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
         R.drawable.baseline_contacts_24
     ) )
@@ -259,7 +263,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 Login2,
                 QrCodeScanner,
                 ChatDemoUI,
-                QuoteSwipe
+                QuoteSwipe,
+                FlowDemo
             ), FEATURES
         )
     )

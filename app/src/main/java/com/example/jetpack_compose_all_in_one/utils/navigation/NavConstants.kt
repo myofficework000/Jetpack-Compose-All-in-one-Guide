@@ -116,6 +116,9 @@ object NavConstants {
     const val MAPS = "maps"
     const val MAPS_ABOUT = "Play with Maps"
 
+    const val FLOW_DEMO = "flowDemo"
+    const val FLOW_DEMO_ABOUT = "Flow Demo"
+
     const val API_IMPLEMENTATIONS = "API implementations"
 
     const val LESSON_2_DESC = "Lesson 2: Material Designs"
