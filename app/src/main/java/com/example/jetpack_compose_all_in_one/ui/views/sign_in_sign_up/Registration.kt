@@ -44,11 +44,12 @@ import com.example.jetpack_compose_all_in_one.utils.showToast
 
 @Preview
 @Composable
-fun RegistrationPreview(){
+fun RegistrationPreview() {
     RegistrationForm {
 
     }
 }
+
 @Composable
 fun RegistrationForm(
     modifier: Modifier = Modifier,
@@ -157,8 +158,9 @@ fun EmailTextField() {
         leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = "emailIcon") },
         onValueChange = {
             email.value = it
-            validateEmail(email = it) },
-        isError =isEmailValid.value ,
+            validateEmail(email = it)
+        },
+        isError = isEmailValid.value,
         label = { Text(text = "Email") }
     )
 }
@@ -187,7 +189,7 @@ private fun PasswordTextField() {
     )
 }
 
-fun validateEmail(email : String) {
+fun validateEmail(email: String) {
     if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
         isEmailValid.value = true
         emailErrMsg.value = "Input proper email id"

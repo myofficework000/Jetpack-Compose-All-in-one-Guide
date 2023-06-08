@@ -51,14 +51,14 @@ fun FeatureFlowContent() {
 
             when (currentPage.value) {
                 0 -> FlowDemoWithMultipleConsumer()
-                1 -> FlowDemo()
+                1 -> StateFlowVsSharedFlow()
             }
         }
     }
 }
 
 @Composable
-private fun FlowDemo() {
+private fun StateFlowVsSharedFlow() {
     val vm: FlowsViewModel = hiltViewModel()
     val state1 by vm.stateFlow1.collectAsState()
     val state2 by vm.sharedFlow1.collectAsState(0)
