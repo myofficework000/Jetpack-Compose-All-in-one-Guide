@@ -1,50 +1,53 @@
-name: Android Build and Deployment Pipeline
+name: CI
 
 on:
   push:
-    branches:
-      - 'release_*'
-      - 'master'
-
-  workflow_dispatch:
-    inputs:
-      app_id:
-        description: 'The application Id of the current build'
-        required: true
-      branch:
-        description: 'The branch from which we have to build'
-        required: true
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
 
 jobs:
-  build:
-    name: Setup Environment and build
-    runs-on: self-hosted
-    steps:
-      - name: Checkout the code to specific branch
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.inputs.branch }}
-            
-      - name: Set up JDK
-        uses: actions/setup-java@v2
-        with:
-          distribution: 'zulu'
-          java-version: '11'
-                
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v2
-              
-      - uses: actions/cache@v2
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
-            
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
+  codesmell:
+    name: Code Smell (Detekt, CheckStyle, Lint)
+    uses: ./.github/workflows/launch_gradle_commands.yml
+    secrets:
+      GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES }}
+    with:
+      commands: lint detekt checkstyle
 
-      - name: Generate app bundle
-        run: ./gradlew app:bundleRelease --stacktrace
+  unitTest:
+    name: Unit Tests
+    uses: ./.github/workflows/launch_gradle_commands.yml
+    secrets:
+      GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES }}
+    with:
+      commands: testReleaseUnitTest
+
+  generateApks:
+    name: Generate APKs
+    uses: ./.github/workflows/launch_gradle_commands.yml
+    secrets:
+      GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES }}
+    with:
+      commands: assembleMockClientDebug assembleMockClientDebugAndroidTest
+      uploadArtifacts: true
+
+  uiTests:
+    name: UI Tests on Firebase Test Labs
+    needs: generateApks
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Download App Debug APK
+        id: app-debug-download
+        uses: actions/download-artifact@v2
+        with:
+          name: app-debug
+
+      - name: Download Android Test APK
+        id: android-test-download
+        uses: actions/download-artifact@v2
+        with:
+          name: android-test
