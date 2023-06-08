@@ -92,6 +92,10 @@ object NavConstants {
     const val LESSON_9_UI_TESTING = "Lesson_9_UI_TESTING"
     const val LESSON_9_UI_TESTING_ABOUT = "Lesson 9: Compose UI Testing"
 
+    const val LESSON_10_APP_BARS = "LESSON_10_APP_BARS"
+    const val LESSON_10_APP_BARS_ABOUT = "LESSON_10_APP_BARS_ABOUT"
+
+
     const val QUOTE_2 = "quote2"
     const val QUOTE_2_ABOUT = "Swipe Quotes"
 

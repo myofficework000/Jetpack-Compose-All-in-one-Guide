@@ -82,18 +82,15 @@ val tiktokRed = Color(0xFFEE1D52)
 val tiktokBlack = Color(0xFF010101)
 val blue = Color(0xFF5851DB)
 
-val green200 = Color(0xffa5d6a7)
-val green500 = Color(0xff4caf50)
-val green700 = Color(0xff388e3c)
-
 val purple200 = Color(0xFFB39DDB)
 val purple = Color(0xFF833AB4)
 val purple700 = Color(0xFF512DA8)
 
 val orange = Color(0xFFF56040)
 val yellow = Color(0xFFFCAF45)
+
 val graySurface = Color(0xFF2A2A2A)
-val gradientGreenColors = listOf(green200, green500, green700)
+val gradientGreenColors = listOf(Green100, Green700, GreenA100)
 val gradientRedColors = listOf(orange, tiktokRed)
 val gradientBluePurple = listOf(blue, purple)
 val instagramGradient = listOf(blue, purple, orange, yellow)

@@ -25,6 +25,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.INTE
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.INTERNET_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSONS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_1
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_10_APP_BARS
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_10_APP_BARS_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_1_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_1
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_1_ABOUT
@@ -156,6 +158,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     object Lesson9ComposeTesting :
         NavDes(NavigationDrawerData(LESSON_9_UI_TESTING, LESSON_9_UI_TESTING_ABOUT))
 
+    object Lesson10AppBars :
+        NavDes(NavigationDrawerData(LESSON_10_APP_BARS, LESSON_10_APP_BARS_ABOUT))
 
     object QuoteSwipe : NavDes(NavigationDrawerData(QUOTE_2, QUOTE_2_ABOUT))
 
@@ -246,7 +250,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 L6Chapter1,
                 L7Chapter1,
                 Lesson8Animation,
-                Lesson9ComposeTesting
+                Lesson9ComposeTesting,
+                Lesson10AppBars
             ), LESSONS
         )
     )
