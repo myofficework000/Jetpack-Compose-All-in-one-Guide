@@ -1,0 +1,53 @@
+name: Gradle Executable Environment
+
+on:
+  workflow_call:
+    inputs:
+      commands:
+        required: true
+        type: string
+      uploadArtifacts:
+        required: false
+        type: boolean
+    secrets:
+      GOOGLE_SERVICES:
+        description: 'google-services.json for building app'
+        required: true
+
+jobs:
+  launch_gradle_commands:
+    name: Gradle
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v2
+        with:
+          distribution: temurin
+          java-version: 11
+
+      - name: Write compile time google-services.json file
+        env:
+          GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES }}
+        run: echo $GOOGLE_SERVICES > app/google-services.json
+
+      - uses: gradle/gradle-build-action@v2
+        with:
+          gradle-version: current
+          arguments: ${{ inputs.commands }}
+
+      - name: Uploading App Debug Build
+        if: ${{ inputs.uploadArtifacts }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: app-debug
+          path: app/build/outputs/apk/mockClient/debug/app-mock-client-debug.apk
+          if-no-files-found: error
+
+      - name: Uploading Android Test Build
+        if: ${{ inputs.uploadArtifacts }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: android-test
+          path: app/build/outputs/apk/androidTest/mockClient/debug/app-mock-client-debug-androidTest.apk
+          if-no-files-found: error

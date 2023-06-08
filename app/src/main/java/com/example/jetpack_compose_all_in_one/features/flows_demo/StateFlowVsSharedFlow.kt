@@ -51,17 +51,17 @@ fun FeatureFlowContent() {
 
             when (currentPage.value) {
                 0 -> FlowDemoWithMultipleConsumer()
-                1 -> FlowDemo()
+                1 -> StateFlowVsSharedFlow()
             }
         }
     }
 }
 
 @Composable
-private fun FlowDemo() {
-    val vm: FlowsViewModel = hiltViewModel()
-    val state1 by vm.stateFlow1.collectAsState()
-    val state2 by vm.sharedFlow1.collectAsState(0)
+private fun StateFlowVsSharedFlow() {
+    val flowsViewModel: FlowsViewModel = hiltViewModel()
+    val state1 by flowsViewModel.stateFlow1.collectAsState()
+    val state2 by flowsViewModel.sharedFlow1.collectAsState(0)
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -87,8 +87,8 @@ private fun FlowDemo() {
             Modifier.fillMaxWidth(),
             Arrangement.SpaceEvenly
         ) {
-            SimpleTextButton("Start Flow") { vm.flowLikeRiver() }
-            SimpleTextButton("End Flow") { vm.stopTheRiver() }
+            SimpleTextButton("Start Flow") { flowsViewModel.flowLikeRiver() }
+            SimpleTextButton("End Flow") { flowsViewModel.stopTheRiver() }
         }
     }
 }
