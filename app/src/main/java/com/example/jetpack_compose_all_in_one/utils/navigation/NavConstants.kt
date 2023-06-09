@@ -60,7 +60,10 @@ object NavConstants {
     const val LESSON_2_CHAPTER_5_ABOUT = "Chapter 5: Progressbar"
 
     const val LESSON_2_CHAPTER_6 = "Lesson_2_Chapter_6"
-    const val LESSON_2_CHAPTER_6_ABOUT = "Chapter 6: Floating Action button"
+    const val LESSON_2_CHAPTER_6_ABOUT = "Chapter 6: Floating Action Button"
+
+    const val LESSON_2_CHAPTER_7 = "Lesson_2_Chapter_7"
+    const val LESSON_2_CHAPTER_7_ABOUT = "Chapter 7: Radio button, Checkbox"
 
     const val LESSON_3_CHAPTER_1 = "Lesson_3_Chapter_1"
     const val LESSON_3_CHAPTER_1_ABOUT = "Lesson 3: List"
@@ -122,6 +125,9 @@ object NavConstants {
 
     const val FLOW_DEMO = "flowDemo"
     const val FLOW_DEMO_ABOUT = "Flow Demo"
+
+    const val COLLAPSABLE = "Collapsable"
+    const val COLLAPSABLE_ABOUT = "Collapsable Profile"
 
     const val API_IMPLEMENTATIONS = "API implementations"
 
