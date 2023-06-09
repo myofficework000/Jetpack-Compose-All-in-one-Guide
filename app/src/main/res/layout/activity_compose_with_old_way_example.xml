@@ -12,8 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/black"
-        android:text="Trying compose into xml way"
+        android:text="@string/string_old_ui"
         android:textColor="@color/white"
+        android:textSize="22sp"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.compose.ui.platform.ComposeView
@@ -25,5 +26,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerUI" />
+        app:layout_constraintTop_toBottomOf="@+id/headerUI" >
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            />
+    </androidx.compose.ui.platform.ComposeView>
 </androidx.constraintlayout.widget.ConstraintLayout>

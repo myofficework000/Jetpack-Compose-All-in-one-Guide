@@ -131,4 +131,6 @@
     <string name="about_project">Learn step by step UI development using Jetpack compose [beginners to advance]</string>
     <string name="select_gender">Select your gender</string>
     <string name="select_your_language">Select your language</string>
+    <string name="string_old_ui">Trying compose into xml way</string>
+    <string name="compose_text">"Text using Jetpack Compose "</string>
 </resources>
