@@ -18,3 +18,11 @@ fun getNumbers() = listOf(
     "14",
     "15"
 )
+
+fun getLanguages() = listOf(
+    "Kotlin",
+    "Java",
+    "Python",
+    "C++",
+    "Dart"
+)

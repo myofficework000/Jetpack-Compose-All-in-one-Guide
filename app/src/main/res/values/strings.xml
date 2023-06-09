@@ -129,4 +129,6 @@
 
     <string name="about_me">I’m an Android Lead, passionate about building great apps. For me app development is not just about coding, it’s also about creating an awesome user experience.</string>
     <string name="about_project">Learn step by step UI development using Jetpack compose [beginners to advance]</string>
+    <string name="select_gender">Select your gender</string>
+    <string name="select_your_language">Select your language</string>
 </resources>
