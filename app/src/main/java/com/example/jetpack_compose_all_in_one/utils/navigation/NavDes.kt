@@ -137,9 +137,9 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object L2Chapter6 : NavDes(NavigationDrawerData(LESSON_2_CHAPTER_6, LESSON_2_CHAPTER_6_ABOUT))
 
-    object L3Chapter1 : NavDes(NavigationDrawerData(LESSON_3_CHAPTER_1, LESSON_3_CHAPTER_1_ABOUT))
+    object L3List : NavDes(NavigationDrawerData(LESSON_3_CHAPTER_1, LESSON_3_CHAPTER_1_ABOUT))
 
-    object L4Chapter1 : NavDes(NavigationDrawerData(LESSON_4_CHAPTER_1, LESSON_4_CHAPTER_1_ABOUT))
+    object L4Dialogs : NavDes(NavigationDrawerData(LESSON_4_CHAPTER_1, LESSON_4_CHAPTER_1_ABOUT))
 
     object L5Chapter1 : NavDes(NavigationDrawerData(LESSON_5_CHAPTER_1, LESSON_5_CHAPTER_1_ABOUT))
 
@@ -212,18 +212,6 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
         NavigationCategoryData(
             listOf(L2Chapter1, L2Chapter2, L2Chapter3, L2Chapter4, L2Chapter5, L2Chapter6),
             LESSON_2_DESC
-        )
-    )
-
-    object L3List : NavDes(
-        NavigationCategoryData(
-            listOf(L3Chapter1), LESSON_3_DESC
-        )
-    )
-
-    object L4Dialogs : NavDes(
-        NavigationCategoryData(
-            listOf(L4Chapter1), LESSON_4_DESC
         )
     )
 

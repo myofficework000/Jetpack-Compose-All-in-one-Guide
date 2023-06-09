@@ -268,7 +268,7 @@ fun MainContainerOfApp(
                     Lesson_2_Chapter_6_FloatingActionButton()
                 }
 
-                composable(NavDes.L3Chapter1.route()) {
+                composable(NavDes.L3List.route()) {
                     Lesson_3_Chapter_ListTypes()
                 }
 
@@ -291,7 +291,7 @@ fun MainContainerOfApp(
                     Lesson_6_ThemeChange()
                 }
 
-                composable(NavDes.L4Chapter1.route()) {
+                composable(NavDes.L4Dialogs.route()) {
                     Lesson_4_Chapter_Dialogs()
                 }
 

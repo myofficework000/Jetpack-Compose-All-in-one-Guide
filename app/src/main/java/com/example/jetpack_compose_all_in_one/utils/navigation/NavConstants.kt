@@ -63,10 +63,10 @@ object NavConstants {
     const val LESSON_2_CHAPTER_6_ABOUT = "Chapter 6: Floating Action button"
 
     const val LESSON_3_CHAPTER_1 = "Lesson_3_Chapter_1"
-    const val LESSON_3_CHAPTER_1_ABOUT = "Chapter 1: List Types"
+    const val LESSON_3_CHAPTER_1_ABOUT = "Lesson 3: List"
 
     const val LESSON_4_CHAPTER_1 = "Lesson_4_Chapter_1"
-    const val LESSON_4_CHAPTER_1_ABOUT = "Chapter 1: Dialogs"
+    const val LESSON_4_CHAPTER_1_ABOUT = "Lesson 4: Dialogs"
 
     const val LESSON_5_CHAPTER_1 = "Lesson_5_Chapter_1"
     const val LESSON_5_CHAPTER_1_ABOUT = "Chapter 1: Map Basics"
@@ -81,10 +81,10 @@ object NavConstants {
     const val LESSON_5_CHAPTER_4_ABOUT = "Chapter 4: Search on Map"
 
     const val LESSON_6_CHAPTER_1 = "Lesson_6_Chapter_1"
-    const val LESSON_6_CHAPTER_1_ABOUT = "Theme change"
+    const val LESSON_6_CHAPTER_1_ABOUT = "Lesson 6: Theme change"
 
     const val LESSON_7_CHAPTER_1 = "Lesson_7_Chapter_1"
-    const val LESSON_7_CHAPTER_ABOUT = "Constraint Layout Examples"
+    const val LESSON_7_CHAPTER_ABOUT = "Lesson 7:Constraint Layout"
 
     const val LESSON_8_ANIMATIONS = "Lesson_8_Animations"
     const val LESSON_8_ANIMATIONS_ABOUT = "Lesson 8: Animations"
@@ -93,7 +93,7 @@ object NavConstants {
     const val LESSON_9_UI_TESTING_ABOUT = "Lesson 9: Compose UI Testing"
 
     const val LESSON_10_APP_BARS = "LESSON_10_APP_BARS"
-    const val LESSON_10_APP_BARS_ABOUT = "LESSON_10_APP_BARS_ABOUT"
+    const val LESSON_10_APP_BARS_ABOUT = "Lesson 10: App bars"
 
 
     const val QUOTE_2 = "quote2"
