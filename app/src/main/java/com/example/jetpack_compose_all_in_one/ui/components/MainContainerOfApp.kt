@@ -30,6 +30,7 @@ import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginPage
 import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginStyle1ViewModel
 import com.example.jetpack_compose_all_in_one.features.login_style_2.LoginScreen2
 import com.example.jetpack_compose_all_in_one.features.play_with_maps.ComposeDemoApp
+import com.example.jetpack_compose_all_in_one.features.profile.ShowProfileScreen
 import com.example.jetpack_compose_all_in_one.features.provideimages.ShowImages
 import com.example.jetpack_compose_all_in_one.features.qrcodescanner.PreviewViewComposable
 import com.example.jetpack_compose_all_in_one.features.random_dog_api.view.NextRandomDog
@@ -118,7 +119,8 @@ fun MainContainerOfApp(
         ) {
             NavHost(navController, currentRoute.value.route(), Modifier.padding(it)) {
                 composable(NavDes.Home.route()) {
-                    Box {}
+                    //Box {}
+                    ShowProfileScreen()
                 }
                 composable(NavDes.Internet.route()) {
                     InternetDemo()

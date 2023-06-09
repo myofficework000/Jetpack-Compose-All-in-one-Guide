@@ -32,6 +32,8 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.jetpack_compose_all_in_one.R
+import com.example.jetpack_compose_all_in_one.utils.horizontalGradientBackground
 
 const val initialImageFloat = 170f
 const val name = "Abhishek Pathak"
@@ -89,7 +91,7 @@ fun TopAppBarView(scroll: Float) {
             },
             navigationIcon = {
                 Image(
-                    painter = painterResource(id = R.drawable.p1),
+                    painter = painterResource(id = R.drawable.profile),
                     contentDescription = null,
                     modifier = Modifier
                         .padding(vertical = 4.dp, horizontal = 8.dp)
