@@ -98,6 +98,8 @@ object NavConstants {
     const val LESSON_10_APP_BARS = "LESSON_10_APP_BARS"
     const val LESSON_10_APP_BARS_ABOUT = "Lesson 10: App bars"
 
+    const val LESSON_11_INTEROPERABILITY = "LESSON_11_INTEROPERABILITY "
+    const val LESSON_11_INTEROPERABILITY_ABOUT = "Lesson 11: Interoperability"
 
     const val QUOTE_2 = "quote2"
     const val QUOTE_2_ABOUT = "Swipe Quotes"

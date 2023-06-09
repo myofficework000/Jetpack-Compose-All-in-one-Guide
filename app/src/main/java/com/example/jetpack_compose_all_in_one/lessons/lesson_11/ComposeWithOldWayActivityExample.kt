@@ -1,4 +1,4 @@
-package com.example.jetpack_compose_all_in_one.ui.views
+package com.example.jetpack_compose_all_in_one.lessons.lesson_11
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

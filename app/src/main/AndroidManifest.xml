@@ -31,14 +31,8 @@
         android:theme="@style/Theme.JetpackComposeAllInOne"
         tools:targetApi="31">
         <activity
-            android:name=".ui.views.ComposeWithOldWayActivityExample"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:name=".lessons.lesson_11.ComposeWithOldWayActivityExample"
+            android:exported="false"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
