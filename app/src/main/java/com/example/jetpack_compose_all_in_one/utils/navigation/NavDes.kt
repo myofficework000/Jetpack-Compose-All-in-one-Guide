@@ -8,6 +8,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BOUN
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BOUND_SERVICE_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CHAT_DEMO_UI
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CHAT_DEMO_UI_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.COLLAPSABLE
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.COLLAPSABLE_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOG_API
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOG_API_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOMAIN_SEARCH
@@ -40,6 +42,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_5_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_6
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_6_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_7
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_7_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_DESC
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_3_CHAPTER_1
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_3_CHAPTER_1_ABOUT
@@ -137,6 +141,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object L2Chapter6 : NavDes(NavigationDrawerData(LESSON_2_CHAPTER_6, LESSON_2_CHAPTER_6_ABOUT))
 
+    object L2Chapter7 : NavDes(NavigationDrawerData(LESSON_2_CHAPTER_7, LESSON_2_CHAPTER_7_ABOUT))
+
     object L3List : NavDes(NavigationDrawerData(LESSON_3_CHAPTER_1, LESSON_3_CHAPTER_1_ABOUT))
 
     object L4Dialogs : NavDes(NavigationDrawerData(LESSON_4_CHAPTER_1, LESSON_4_CHAPTER_1_ABOUT))
@@ -179,6 +185,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object FlowDemo: NavDes(NavigationDrawerData(FLOW_DEMO, FLOW_DEMO_ABOUT))
 
+    object Collapsable: NavDes(NavigationDrawerData(COLLAPSABLE, COLLAPSABLE_ABOUT))
+
     /*object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
         R.drawable.baseline_contacts_24
     ) )
@@ -210,7 +218,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object L2Components : NavDes(
         NavigationCategoryData(
-            listOf(L2Chapter1, L2Chapter2, L2Chapter3, L2Chapter4, L2Chapter5, L2Chapter6),
+            listOf(L2Chapter1, L2Chapter2, L2Chapter3, L2Chapter4, L2Chapter5, L2Chapter6, L2Chapter7),
             LESSON_2_DESC
         )
     )
@@ -257,7 +265,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 QrCodeScanner,
                 ChatDemoUI,
                 QuoteSwipe,
-                FlowDemo
+                FlowDemo,
+                Collapsable
             ), FEATURES
         )
     )

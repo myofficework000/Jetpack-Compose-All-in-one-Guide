@@ -42,6 +42,7 @@ import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_4_Image
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_5_Progressbar
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_6_FloatingActionButton
+import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_7_RadioButton
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_Shape
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Screen
 import com.example.jetpack_compose_all_in_one.lessons.lesson_3.Lesson_3_Chapter_ListTypes
@@ -119,8 +120,8 @@ fun MainContainerOfApp(
         ) {
             NavHost(navController, currentRoute.value.route(), Modifier.padding(it)) {
                 composable(NavDes.Home.route()) {
-                    //Box {}
-                    ShowProfileScreen()
+                    Box {}
+                    //ShowProfileScreen()
                 }
                 composable(NavDes.Internet.route()) {
                     InternetDemo()
@@ -247,6 +248,10 @@ fun MainContainerOfApp(
                     QuoteSwipe(vm = hiltViewModel())
                 }
 
+                composable(NavDes.Collapsable.route()) {
+                    ShowProfileScreen()
+                }
+
                 composable(NavDes.L2Chapter1.route()) {
                     Lesson_2_Chapter_Shape()
                 }
@@ -268,6 +273,10 @@ fun MainContainerOfApp(
 
                 composable(NavDes.L2Chapter6.route()) {
                     Lesson_2_Chapter_6_FloatingActionButton()
+                }
+
+                composable(NavDes.L2Chapter7.route()) {
+                    Lesson_2_Chapter_7_RadioButton()
                 }
 
                 composable(NavDes.L3List.route()) {

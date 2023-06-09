@@ -31,7 +31,7 @@ import kotlinx.coroutines.selects.select
 
 @Preview
 @Composable
-fun Lesson_2_Chapter_7_Screen() {
+fun Lesson_2_Chapter_7_RadioButton() {
     LessonContent()
 }
 
