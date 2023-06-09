@@ -55,6 +55,9 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
+    buildFeatures{
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -75,6 +78,8 @@ dependencies {
     implementation 'com.google.android.libraries.places:places:3.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.test.ext:junit-ktx:1.1.5'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.5.0'
 
 
     testImplementation 'junit:junit:4.13.2'

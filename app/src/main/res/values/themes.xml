@@ -2,4 +2,6 @@
 <resources>
 
     <style name="Theme.JetpackComposeAllInOne" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="CustomTheme" parent="Theme.AppCompat.Light"/>
+
 </resources>
