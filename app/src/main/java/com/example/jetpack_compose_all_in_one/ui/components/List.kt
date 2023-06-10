@@ -44,6 +44,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import com.example.jetpack_compose_all_in_one.R
+import com.example.jetpack_compose_all_in_one.lessons.lesson_8.ShimmerCard
 import com.example.jetpack_compose_all_in_one.ui.theme.LightBlue
 import com.example.jetpack_compose_all_in_one.ui.theme.Pink80
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_10
@@ -205,10 +206,11 @@ fun ExpandableCard(item: Country) {
         }
     }
 }
+
 @Composable
-fun ExpandableAnimatedList(items: List<Country>){
-    LazyColumn{
-        items(items){ item ->
+fun ExpandableAnimatedList(items: List<Country>) {
+    LazyColumn {
+        items(items) { item ->
             AnimatedExpandableCard(item = item)
             Divider()
 
@@ -286,6 +288,15 @@ fun AnimatedExpandableCard(item: Country) {
     }
 }
 
+@Composable
+fun ShimmerAnimatedList() {
+    // Your screen content goes here
+    LazyColumn(Modifier.background(getRandomColor())) {
+        items(10) {
+            ShimmerCard()
+        }
+    }
+}
 
 data class Country(val name: String)
 

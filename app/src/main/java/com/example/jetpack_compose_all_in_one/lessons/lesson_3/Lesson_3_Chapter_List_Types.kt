@@ -17,6 +17,7 @@ import com.example.jetpack_compose_all_in_one.ui.components.ExpandableAnimatedLi
 import com.example.jetpack_compose_all_in_one.ui.components.ExpandableCardList
 import com.example.jetpack_compose_all_in_one.ui.components.HorizontalSimpleList
 import com.example.jetpack_compose_all_in_one.ui.components.LessonHeader
+import com.example.jetpack_compose_all_in_one.ui.components.ShimmerAnimatedList
 import com.example.jetpack_compose_all_in_one.ui.components.SimpleHorizontalGridList
 import com.example.jetpack_compose_all_in_one.ui.components.SimpleVerticalGridList
 import com.example.jetpack_compose_all_in_one.ui.components.VerticalSimpleList
@@ -36,7 +37,7 @@ private fun LessonContent() {
     val currentPage = rememberSaveable { mutableStateOf(0) }
 
     LogicPager(
-        pageCount = 7,
+        pageCount = 8,
         currentPage = currentPage
     ) {
         Column(
@@ -60,6 +61,7 @@ private fun LessonContent() {
                 4 -> SimpleHorizontalGridList(list = getNumbers(), numOfRows = 2)
                 5 -> ExpandableCardList(getCountries())
                 6 -> ExpandableAnimatedList(getCountries())
+                7 -> ShimmerAnimatedList()
             }
         }
     }

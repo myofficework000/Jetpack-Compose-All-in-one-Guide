@@ -49,6 +49,7 @@
         <item>Horizontal Grid List</item>
         <item>Expandable List</item>
         <item>Expandable Animated List</item>
+        <item>Shimmer Animated List</item>
     </string-array>
 
     <string-array name="lesson_7_header_text">
