@@ -16,10 +16,25 @@ interface ApiWeatherService {
         @Query("units") units: String = "metric"
     ): Response<WeatherResponse>
 
+    @GET(Constants.END_POINT_WEATHER)
+    suspend fun getWeatherUsingLatLng(
+        @Query("lat") lat: String,
+        @Query("lon") lon: String,
+        @Query("units") units: String = "metric"
+    ): Response<WeatherResponse>
+
 
     @GET(Constants.END_POINT_5DAY_3HOUR)
     suspend fun get5Days3HoursWeather(
         @Query("q") city: String,
+        @Query("appid") apiKey: String,
+        @Query("units") units: String = "metric"
+    ): Response<ForecastResponse>
+
+    @GET(Constants.END_POINT_5DAY_3HOUR)
+    suspend fun get5Days3HoursWeatherUsingLatLng(
+        @Query("lat") lat: String,
+        @Query("lon") lon: String,
         @Query("appid") apiKey: String,
         @Query("units") units: String = "metric"
     ): Response<ForecastResponse>

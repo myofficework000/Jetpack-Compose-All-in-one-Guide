@@ -318,7 +318,7 @@ fun MainContainerOfApp(
                     )
                 }
                 composable(NavDes.WeatherSample.route()) {
-                    WeatherSample()
+                    WeatherSample(getCurrentLocationFunc)
                 }
 
                 composable(NavDes.DomainSearch.route()) {

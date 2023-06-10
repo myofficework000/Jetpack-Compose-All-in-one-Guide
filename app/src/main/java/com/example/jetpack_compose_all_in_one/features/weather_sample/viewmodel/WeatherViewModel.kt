@@ -1,5 +1,6 @@
 package com.example.jetpack_compose_all_in_one.features.weather_sample.viewmodel
 
+import android.location.Location
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,21 +14,18 @@ import java.io.IOException
 
 class WeatherViewModel(
     private val repository: RemoteWeatherRepository
-): ViewModel(){
+) : ViewModel() {
     var weatherData = MutableLiveData<WeatherResponse>()
     val isFahrenheit = mutableStateOf(false)
+    var fiveDaysData = MutableLiveData<List<Forecast>>()
 
-    var fiveDaysData  = MutableLiveData<List<Forecast>>()
-
-
-
-    fun getWeather(city: String) = viewModelScope.launch(Dispatchers.IO){
+    fun getWeather(city: String) = viewModelScope.launch(Dispatchers.IO) {
         try {
             val response = repository.getWeather(city)
-            if(response.isSuccessful){
+            if (response.isSuccessful) {
                 weatherData.postValue(response.body())
             }
-        }catch(networkError: IOException){
+        } catch (networkError: IOException) {
             networkError.printStackTrace()
         }
     }
@@ -35,12 +33,36 @@ class WeatherViewModel(
     fun getFiveDaysWeather(city: String) = viewModelScope.launch(Dispatchers.IO) {
         try {
             val response = repository.getFiveDays3HourWeather(city)
-            if(response.isSuccessful ){
+            if (response.isSuccessful) {
                 response.body()?.list?.isNotEmpty().let {
                     fiveDaysData.postValue(response.body()?.list)
                 }
             }
-        }catch (e : IOException){
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
+
+    fun getWeather(location: Location) = viewModelScope.launch(Dispatchers.IO) {
+        try {
+            val response = repository.getWeatherUsingLatLng(location)
+            if (response.isSuccessful) {
+                weatherData.postValue(response.body())
+            }
+        } catch (networkError: IOException) {
+            networkError.printStackTrace()
+        }
+    }
+
+    fun getFiveDaysWeather(location: Location) = viewModelScope.launch(Dispatchers.IO) {
+        try {
+            val response = repository.getFiveDays3HourWeatherUsingLatLng(location)
+            if (response.isSuccessful) {
+                response.body()?.list?.isNotEmpty().let {
+                    fiveDaysData.postValue(response.body()?.list)
+                }
+            }
+        } catch (e: IOException) {
             e.printStackTrace()
         }
     }

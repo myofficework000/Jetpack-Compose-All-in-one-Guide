@@ -113,3 +113,6 @@ fun Modifier.gradientBackground(
         drawContent()
     }
 }
+
+fun Double.toReadable(isFahrenheit: Boolean) =
+    if (isFahrenheit) "%.1f℉".format(this * 1.8 + 32) else "$this℃"
