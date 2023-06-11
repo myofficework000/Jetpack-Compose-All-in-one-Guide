@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringArrayResource
@@ -50,7 +49,7 @@ private fun LessonContent() {
                 1 -> ScalingAnimationExample()
                 2 -> FadeAnimationExample()
                 3 -> RotationAnimationWithDelayExample()
-                4 -> {}
+                4 -> ShimmerCard()
                 5 -> FloatAnimationExample()
             }
         }

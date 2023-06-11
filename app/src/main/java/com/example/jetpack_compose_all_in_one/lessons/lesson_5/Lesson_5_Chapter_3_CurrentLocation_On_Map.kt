@@ -16,7 +16,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.ui.components.LessonHeader
 import com.example.jetpack_compose_all_in_one.ui.theme.PAGER_BACKGROUND
@@ -86,7 +85,10 @@ private fun LessonContent(
         }
     }
 
-    Column( Modifier.fillMaxSize().background(PAGER_BACKGROUND) ) {
+    Column(
+        Modifier
+            .fillMaxSize()
+            .background(PAGER_BACKGROUND) ) {
         LessonHeader(
             stringResource(id = R.string.l5c3_header_text),
             Modifier

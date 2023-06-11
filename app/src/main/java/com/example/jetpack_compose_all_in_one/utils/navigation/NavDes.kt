@@ -89,6 +89,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.RAND
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SERVICE_IMPLEMENTATIONS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SHOW_IMAGES
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SHOW_IMAGES_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.TIMER_DEMO
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.TIMER_DEMO_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.TMDB
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.TMDB_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.WEATHER_SAMPLE
@@ -108,7 +110,9 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     // These are for individual items
     object Home : NavDes(NavigationDrawerData(HOME, HOME_ABOUT), R.string.app_name)
     object Internet : NavDes(NavigationDrawerData(INTERNET, INTERNET_ABOUT))
-    object ForegroundService : NavDes(NavigationDrawerData(FOREGROUND_SERVICE , FOREGROUND_SERVICE_ABOUT))
+    object ForegroundService :
+        NavDes(NavigationDrawerData(FOREGROUND_SERVICE, FOREGROUND_SERVICE_ABOUT))
+
     object BoundService : NavDes(NavigationDrawerData(BOUND_SERVICE, BOUND_SERVICE_ABOUT))
     object Download : NavDes(NavigationDrawerData(DOWNLOAD, DOWNLOAD_ABOUT))
     object AlarmManager : NavDes(NavigationDrawerData(ALARM_MANAGER, ALARM_MANAGER_ABOUT))
@@ -126,7 +130,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     object ChatDemoUI : NavDes(NavigationDrawerData(CHAT_DEMO_UI, CHAT_DEMO_UI_ABOUT))
 
     object ShowImages : NavDes(NavigationDrawerData(SHOW_IMAGES, SHOW_IMAGES_ABOUT))
-
+    object TimerDemo : NavDes(NavigationDrawerData(TIMER_DEMO, TIMER_DEMO_ABOUT))
     object L1Layouts : NavDes(NavigationDrawerData(LESSON_1, LESSON_1_ABOUT))
 
     object L2Chapter1 : NavDes(NavigationDrawerData(LESSON_2_CHAPTER_1, LESSON_2_CHAPTER_1_ABOUT))
@@ -186,9 +190,9 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object Maps : NavDes(NavigationDrawerData(MAPS, MAPS_ABOUT))
 
-    object FlowDemo: NavDes(NavigationDrawerData(FLOW_DEMO, FLOW_DEMO_ABOUT))
+    object FlowDemo : NavDes(NavigationDrawerData(FLOW_DEMO, FLOW_DEMO_ABOUT))
 
-    object Collapsable: NavDes(NavigationDrawerData(COLLAPSABLE, COLLAPSABLE_ABOUT))
+    object Collapsable : NavDes(NavigationDrawerData(COLLAPSABLE, COLLAPSABLE_ABOUT))
 
     /*object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
         R.drawable.baseline_contacts_24
@@ -221,7 +225,15 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object L2Components : NavDes(
         NavigationCategoryData(
-            listOf(L2Chapter1, L2Chapter2, L2Chapter3, L2Chapter4, L2Chapter5, L2Chapter6, L2Chapter7),
+            listOf(
+                L2Chapter1,
+                L2Chapter2,
+                L2Chapter3,
+                L2Chapter4,
+                L2Chapter5,
+                L2Chapter6,
+                L2Chapter7
+            ),
             LESSON_2_DESC
         )
     )
@@ -270,7 +282,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 ChatDemoUI,
                 QuoteSwipe,
                 FlowDemo,
-                Collapsable
+                Collapsable,
+                TimerDemo
             ), FEATURES
         )
     )

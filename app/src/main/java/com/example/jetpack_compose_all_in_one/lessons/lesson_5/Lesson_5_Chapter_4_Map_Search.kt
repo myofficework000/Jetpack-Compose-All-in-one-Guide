@@ -7,10 +7,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpack_compose_all_in_one.lessons.lesson_5.viewmodels.MapSearchViewModel
 import com.example.jetpack_compose_all_in_one.ui.components.AutoCompleteSearchBar
-import com.example.jetpack_compose_all_in_one.ui.components.SimpleSearchBar
 import com.example.jetpack_compose_all_in_one.ui.theme.PAGER_BACKGROUND
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_15
 import com.example.jetpack_compose_all_in_one.utils.Constants
@@ -46,7 +44,9 @@ private fun LessonContent(vm: MapSearchViewModel) {
         AutoCompleteSearchBar(
             text = vm.searchText,
             suggestions = vm.searchResults.map { it.text },
-            modifier = Modifier.fillMaxWidth().padding(dp_15),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(dp_15),
             onChange = { vm.searchText = it; vm.searchPlace(it) },
             onSuggestionClick = { vm.searchText = vm.searchResults[it].text }
         ) {}

@@ -41,6 +41,9 @@ object NavConstants {
     const val SHOW_IMAGES = "img_show"
     const val SHOW_IMAGES_ABOUT = "Show Device Images"
 
+    const val TIMER_DEMO = "TIMER_DEMO"
+    const val TIMER_DEMO_ABOUT = "Feature: Timer Demo"
+
     const val LESSON_1 = "Lesson_1"
     const val LESSON_1_ABOUT = "Lesson 1: Row, Column, Box"
 
@@ -105,7 +108,7 @@ object NavConstants {
     const val QUOTE_2_ABOUT = "Swipe Quotes"
 
     const val NEWS_SAMPLE = "newsSample"
-    const val NEWS_SAMPLE_ABOUT  = "News Sample"
+    const val NEWS_SAMPLE_ABOUT = "News Sample"
 
     const val WEATHER_SAMPLE = "weatherSample"
     const val WEATHER_SAMPLE_ABOUT = "Weather Sample"
