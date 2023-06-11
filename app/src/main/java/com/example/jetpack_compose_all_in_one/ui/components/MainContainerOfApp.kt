@@ -3,6 +3,7 @@ package com.example.jetpack_compose_all_in_one.ui.components
 import android.location.Location
 import android.media.RingtoneManager
 import android.net.Uri
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -35,6 +36,7 @@ import com.example.jetpack_compose_all_in_one.features.provideimages.ShowImages
 import com.example.jetpack_compose_all_in_one.features.qrcodescanner.PreviewViewComposable
 import com.example.jetpack_compose_all_in_one.features.random_dog_api.view.NextRandomDog
 import com.example.jetpack_compose_all_in_one.features.random_fox.view.RandomFoxUI
+import com.example.jetpack_compose_all_in_one.features.timer_demo.TimerDemo
 import com.example.jetpack_compose_all_in_one.features.weather_sample.view.WeatherSample
 import com.example.jetpack_compose_all_in_one.lessons.lesson_1.Lesson_1_Display
 import com.example.jetpack_compose_all_in_one.lessons.lesson_10.Lesson_10
@@ -67,6 +69,7 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavDes
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
+@ExperimentalAnimationApi
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainContainerOfApp(
@@ -319,6 +322,10 @@ fun MainContainerOfApp(
                 }
                 composable(NavDes.WeatherSample.route()) {
                     WeatherSample(getCurrentLocationFunc)
+                }
+
+                composable(NavDes.TimerDemo.route()) {
+                    TimerDemo()
                 }
 
                 composable(NavDes.DomainSearch.route()) {
