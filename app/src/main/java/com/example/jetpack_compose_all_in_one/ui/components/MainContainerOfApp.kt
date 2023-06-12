@@ -37,7 +37,11 @@ import com.example.jetpack_compose_all_in_one.features.qrcodescanner.PreviewView
 import com.example.jetpack_compose_all_in_one.features.random_dog_api.view.NextRandomDog
 import com.example.jetpack_compose_all_in_one.features.random_fox.view.RandomFoxUI
 import com.example.jetpack_compose_all_in_one.features.timer_demo.TimerDemo
+import com.example.jetpack_compose_all_in_one.features.weather_sample.model.remote.ApiWeatherService
+import com.example.jetpack_compose_all_in_one.features.weather_sample.model.remote.RetrofitBuilder
+import com.example.jetpack_compose_all_in_one.features.weather_sample.model.repository.RemoteWeatherRepository
 import com.example.jetpack_compose_all_in_one.features.weather_sample.view.WeatherSample
+import com.example.jetpack_compose_all_in_one.features.weather_sample.viewmodel.WeatherViewModel
 import com.example.jetpack_compose_all_in_one.lessons.lesson_1.Lesson_1_Display
 import com.example.jetpack_compose_all_in_one.lessons.lesson_10.Lesson_10
 import com.example.jetpack_compose_all_in_one.lessons.lesson_11.Lesson_11
@@ -100,6 +104,15 @@ fun MainContainerOfApp(
         derivedStateOf {
             NavDes.disableDrawerSwiping(currentRoute.value)
         }
+    }
+
+    val weatherViewModel = remember {
+        WeatherViewModel(
+            RemoteWeatherRepository(
+                RetrofitBuilder.getRetrofit().create(
+                    ApiWeatherService::class.java)
+            )
+        )
     }
 
     NavigationDrawerMain(navController, currentRoute, drawerState, noSwipeState,
@@ -321,7 +334,11 @@ fun MainContainerOfApp(
                     )
                 }
                 composable(NavDes.WeatherSample.route()) {
-                    WeatherSample(getCurrentLocationFunc)
+                    // Please change this to hilt later please =_=b
+                    WeatherSample(
+                        weatherViewModel = weatherViewModel,
+                        getCurrentLocationFunc
+                    )
                 }
 
                 composable(NavDes.TimerDemo.route()) {

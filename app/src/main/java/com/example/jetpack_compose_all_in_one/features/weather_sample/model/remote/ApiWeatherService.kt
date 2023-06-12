@@ -20,7 +20,8 @@ interface ApiWeatherService {
     suspend fun getWeatherUsingLatLng(
         @Query("lat") lat: String,
         @Query("lon") lon: String,
-        @Query("appid") apiKey: String
+        @Query("appid") apiKey: String,
+        @Query("units") units: String = "metric"
     ): Response<WeatherResponse>
 
     @GET(Constants.END_POINT_5DAY_3HOUR)

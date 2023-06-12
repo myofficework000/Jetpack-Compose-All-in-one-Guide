@@ -2,8 +2,22 @@ package com.example.jetpack_compose_all_in_one.features.weather_sample.view
 
 
 import android.location.Location
-import android.util.Log
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -36,118 +50,143 @@ import com.example.jetpack_compose_all_in_one.ui.theme.*
 import com.example.jetpack_compose_all_in_one.utils.requestAllLocation
 import com.example.jetpack_compose_all_in_one.utils.toReadable
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
+import kotlin.reflect.KFunction1
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
-fun WeatherSample(getCurrentLocationFunc: ((Location?) -> Unit) -> Unit) {
-    val weatherViewModel: WeatherViewModel = initViewModel()
-    val forecastData = weatherViewModel.fiveDaysData.observeAsState()
-    val weatherData = weatherViewModel.weatherData.observeAsState()
+fun WeatherSample(
+    weatherViewModel: WeatherViewModel,
+    getCurrentLocationFunc: ((Location?) -> Unit) -> Unit
+) {
+    val forecastData by weatherViewModel.fiveDaysData.observeAsState()
+    val weatherData by weatherViewModel.weatherData.observeAsState()
     var isLocationAvailable by remember { mutableStateOf(false) }
     val requestingLocation = requestAllLocation { isLocationAvailable = it }
- /*   val isReadyToSetUI: Boolean by remember {
-        derivedStateOf {
-            (((forecastData.value?.isNotEmpty() == true) &&
-                    (weatherData.value?.weather?.isNotEmpty() == true)
-                    )
-                    )
-        }
-    }*/
+
+    LaunchedEffect(Unit) {
+        requestingLocation.launchMultiplePermissionRequest()
+    }
 
     LaunchedEffect(isLocationAvailable) {
-        requestingLocation.launchMultiplePermissionRequest()
-        getCurrentLocationFunc {
-            it?.let { location ->
-                weatherViewModel.getWeather(location = location)
-                weatherViewModel.getFiveDaysWeather(location = location)
+        if (isLocationAvailable) {
+            getCurrentLocationFunc {
+                it?.let { location ->
+                    weatherViewModel.updateWeatherByLocation(location)
+                }
             }
         }
     }
 
-    Log.i("tag",forecastData.value?.isNotEmpty().toString())
-    Log.i("tag",forecastData.value?.get(0)?.dt.toString())
-    Log.i("tag",weatherData.value?.weather?.isNotEmpty().toString())
-
-    if (weatherData.value?.weather?.isNotEmpty() == true
-    ) {
-        InflateWeatherUI(weatherData, forecastData, weatherViewModel)
-    }
-}
-
-@Composable
-private fun InflateForeCastUI(
-    forecastData: State<List<Forecast>?>,
-    weatherViewModel: WeatherViewModel
-) {
-    forecastData.value?.let { FiveDaysForecast(it, viewModel = weatherViewModel) }
+    InflateWeatherUI(
+        weatherData,
+        forecastData,
+        weatherViewModel.isFahrenheit,
+        weatherViewModel::updateWeatherByCity
+    )
 }
 
 @Composable
 private fun InflateWeatherUI(
-    weatherData: State<WeatherResponse?>,
-    forecastData: State<List<Forecast>?>,
-    weatherViewModel: WeatherViewModel,
-) = with(weatherData) {
-    var inputValue by remember { mutableStateOf(TextFieldValue("")) }
-    val city = weatherData.value?.name.toString()
-    val description = weatherData.value?.weather?.get(0)?.description.toString()
-    val weatherIcon = weatherData.value?.weather?.get(0)?.icon.toString()
-    val date = weatherData.value?.dt?.let { Converters.dateConverter(it) }.toString()
-    val temp = weatherData.value?.main?.temp
-    val feelLikeTemp = weatherData.value?.main?.feels_like
-    val maxTemp = weatherData.value?.main?.temp_max
-    val minTemp = weatherData.value?.main?.temp_min
-    val humidity = weatherData.value?.main?.humidity
-    val visibility = weatherData.value?.visibility
-    val pressure = weatherData.value?.main?.pressure
-
+    weatherData: WeatherResponse?,
+    forecastData: List<Forecast>?,
+    isFahrenheit: MutableState<Boolean>,
+    updateWeatherByCityFunc: KFunction1<String, Unit>
+) {
     Column(
         modifier = Modifier
-            .fillMaxHeight()
-            .fillMaxWidth()
+            .fillMaxSize()
             .padding(dp_10),
         verticalArrangement = Arrangement.spacedBy(dp_4),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly
-        ) {
-            Row(
-                Modifier.padding(dp_10),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                GradientTextField(
-                    value = inputValue.text,
-                    gradient = Pink10ToPink80,
-                    modifier = Modifier.weight(1f)
-                ) { inputValue = TextFieldValue(it) }
+        InflateSearchBarUI(updateWeatherByCityFunc)
+        weatherData?.let { InflateCurrentWeatherUI(it, isFahrenheit) }
+        forecastData?.let { InflateForeCastUI(it, isFahrenheit) }
+    }
+}
 
-                SimpleIconButton(iconResourceInt = R.drawable.baseline_search_24) {
-                    with(weatherViewModel) {
-                        getWeather(city = inputValue.text)
-                        getFiveDaysWeather(city = inputValue.text)
-                    }
-                }
+@Composable
+private fun InflateSearchBarUI(
+    updateWeatherByCityFunc: KFunction1<String, Unit>
+) {
+    var inputValue by remember { mutableStateOf(TextFieldValue("")) }
+
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceEvenly
+    ) {
+        Row(
+            Modifier.padding(dp_10),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            GradientTextField(
+                value = inputValue.text,
+                gradient = Pink10ToPink80,
+                modifier = Modifier.weight(1f)
+            ) { inputValue = TextFieldValue(it) }
+
+            SimpleIconButton(R.drawable.baseline_search_24) {
+                updateWeatherByCityFunc(inputValue.text)
             }
         }
-        WeatherCard(
-            city = city,
-            description = description,
-            weatherIcon = weatherIcon,
-            date = date,
-            temp = temp,
-            feelLikeTemp = feelLikeTemp,
-            maxTemp = maxTemp,
-            minTemp = minTemp,
-            humidity = humidity?.toDouble(),
-            visibility = visibility?.toDouble(),
-            pressure = pressure?.toDouble(),
-            isFahrenheit = weatherViewModel.isFahrenheit
-        )
+    }
+}
 
-        InflateForeCastUI(forecastData, weatherViewModel)
+@Composable
+private fun InflateCurrentWeatherUI(
+    weatherData: WeatherResponse,
+    isFahrenheit: MutableState<Boolean>,
+    modifier: Modifier = Modifier
+) = with(weatherData) {
+    val city = name
+    val description = weather.firstOrNull()?.description.toString()
+    val weatherIcon = weather.firstOrNull()?.icon.toString()
+    val date = dt.let { Converters.dateConverter(it) }.toString()
+    val temp = main.temp
+    val feelLikeTemp = main.feels_like
+    val maxTemp = main.temp_max
+    val minTemp = main.temp_min
+    val humidity = main.humidity
+    val visibility = visibility
+    val pressure = main.pressure
+
+    WeatherCard(
+        modifier = modifier,
+        city = city,
+        description = description,
+        weatherIcon = weatherIcon,
+        date = date,
+        temp = temp,
+        feelLikeTemp = feelLikeTemp,
+        maxTemp = maxTemp,
+        minTemp = minTemp,
+        humidity = humidity.toDouble(),
+        visibility = visibility.toDouble(),
+        pressure = pressure.toDouble(),
+        isFahrenheit = isFahrenheit
+    )
+}
+
+@Composable
+private fun InflateForeCastUI(
+    forecastData: List<Forecast>,
+    isFahrenheit: MutableState<Boolean>,
+    modifier: Modifier = Modifier
+) {
+    LazyRow(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy(dp_4)
+    ) {
+        items(forecastData) { item ->
+            Forecast(
+                description = item.weather[0].description,
+                weatherIcon = item.weather[0].icon,
+                date = Converters.dayConverter(item.dt),
+                maxTemp = item.main.temp_max,
+                minTemp = item.main.temp_min,
+                isFahrenheit = isFahrenheit
+            )
+        }
     }
 }
 
@@ -185,9 +224,7 @@ fun WeatherCard(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(cardPadding),
-                verticalArrangement = Arrangement.SpaceBetween,
-                horizontalAlignment = Alignment.Start
+                    .padding(cardPadding)
             ) {
                 Text(text = date, fontSize = 15.sp, color = Color.Red, fontWeight = FontWeight.Bold)
                 Text(text = city, fontSize = 30.sp, fontWeight = FontWeight.Bold)
@@ -237,25 +274,6 @@ fun WeatherCard(
     }
 }
 
-
-@Composable
-fun FiveDaysForecast(list: List<Forecast>, viewModel: WeatherViewModel) {
-    LazyRow(
-        modifier = Modifier.wrapContentHeight()
-    ) {
-        items(list) { item ->
-            Forecast(
-                description = item.weather[0].description,
-                weatherIcon = item.weather[0].icon,
-                date = Converters.dayConverter(item.dt),
-                maxTemp = item.main.temp_max,
-                minTemp = item.main.temp_min,
-                isFahrenheit = viewModel.isFahrenheit
-            )
-        }
-    }
-}
-
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun Forecast(
@@ -269,41 +287,32 @@ fun Forecast(
     cardPadding: PaddingValues = PaddingValues(dp_20)
 ) {
     Card(
-        modifier = modifier.then(
-            Modifier
-                .padding(dp_15)
-        ),
+        modifier = modifier,
         shape = RoundedCornerShape(dp_15),
         elevation = CardDefaults.cardElevation(dp_15),
     ) {
         Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(cardPadding)
-                .weight(1f),
-            verticalArrangement = Arrangement.SpaceBetween,
-            horizontalAlignment = Alignment.Start
+            modifier = Modifier.padding(cardPadding)
         ) {
             Text(text = date)
 
-            Row(horizontalArrangement = Arrangement.Start) {
-                weatherIcon?.let {
-                    GlideImage(
-                        model = "${IMG_URL}/${weatherIcon}.png",
-                        contentDescription = "",
-                        modifier = Modifier.size(50.dp)
-                    )
-                }
+            weatherIcon?.let {
+                GlideImage(
+                    model = "${IMG_URL}/${weatherIcon}.png",
+                    contentDescription = "",
+                    modifier = Modifier.size(50.dp)
+                )
             }
 
             Text(text = description)
-            Text(
-                "${maxTemp?.toReadable(isFahrenheit.value)}", fontSize = 17.sp
-            )
 
-            Spacer(modifier = Modifier.height(5.dp))
             Text(
-                "${minTemp?.toReadable(isFahrenheit.value)}", fontSize = 17.sp
+                "Min: ${minTemp?.toReadable(isFahrenheit.value)}",
+                fontSize = 17.sp
+            )
+            Text(
+                "Max: ${maxTemp?.toReadable(isFahrenheit.value)}",
+                fontSize = 17.sp
             )
         }
     }
