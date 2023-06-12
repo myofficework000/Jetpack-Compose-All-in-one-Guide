@@ -2,6 +2,7 @@ package com.example.jetpack_compose_all_in_one.features.weather_sample.view
 
 
 import android.location.Location
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -44,6 +45,14 @@ fun WeatherSample(getCurrentLocationFunc: ((Location?) -> Unit) -> Unit) {
     val weatherData = weatherViewModel.weatherData.observeAsState()
     var isLocationAvailable by remember { mutableStateOf(false) }
     val requestingLocation = requestAllLocation { isLocationAvailable = it }
+ /*   val isReadyToSetUI: Boolean by remember {
+        derivedStateOf {
+            (((forecastData.value?.isNotEmpty() == true) &&
+                    (weatherData.value?.weather?.isNotEmpty() == true)
+                    )
+                    )
+        }
+    }*/
 
     LaunchedEffect(isLocationAvailable) {
         requestingLocation.launchMultiplePermissionRequest()
@@ -55,8 +64,14 @@ fun WeatherSample(getCurrentLocationFunc: ((Location?) -> Unit) -> Unit) {
         }
     }
 
-    InflateWeatherUI(weatherData, forecastData, weatherViewModel)
+    Log.i("tag",forecastData.value?.isNotEmpty().toString())
+    Log.i("tag",forecastData.value?.get(0)?.dt.toString())
+    Log.i("tag",weatherData.value?.weather?.isNotEmpty().toString())
 
+    if (weatherData.value?.weather?.isNotEmpty() == true
+    ) {
+        InflateWeatherUI(weatherData, forecastData, weatherViewModel)
+    }
 }
 
 @Composable
