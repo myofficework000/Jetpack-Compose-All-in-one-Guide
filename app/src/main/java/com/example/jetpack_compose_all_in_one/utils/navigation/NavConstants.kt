@@ -137,6 +137,9 @@ object NavConstants {
     const val NOTES_ROOM_DB = "Notes RoomDB"
     const val NOTES_ROOM_DB_ABOUT = "Notes RoomDB"
 
+    const val BROADCAST_RECEIVER = "Broadcast Receiver"
+    const val BROADCAST_RECEIVER_ABOUT = "Broadcast Receivers"
+
     const val API_IMPLEMENTATIONS = "API implementations"
 
     const val LESSON_2_DESC = "Lesson 2: Material Designs"
