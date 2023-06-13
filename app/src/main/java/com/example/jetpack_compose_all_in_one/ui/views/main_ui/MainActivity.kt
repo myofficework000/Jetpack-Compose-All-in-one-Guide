@@ -139,6 +139,7 @@ class MainActivity : ComponentActivity() {
                     */
 
                     MainContainerOfApp(
+                        applicationContext,
                         internetViewModel,
                         {
                             if (!isLocationAllowed(this)) it(null)

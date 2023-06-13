@@ -76,6 +76,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.MAPS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.MAPS_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NEWS_SAMPLE
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NEWS_SAMPLE_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NOTES_ROOM_DB
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NOTES_ROOM_DB_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.QRCODE_SCANNER
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.QRCODE_SCANNER_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.QUOTES
@@ -194,6 +196,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object Collapsable : NavDes(NavigationDrawerData(COLLAPSABLE, COLLAPSABLE_ABOUT))
 
+    object NoteRoomDemo : NavDes(NavigationDrawerData(NOTES_ROOM_DB, NOTES_ROOM_DB_ABOUT))
+
     /*object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
         R.drawable.baseline_contacts_24
     ) )
@@ -283,7 +287,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 QuoteSwipe,
                 FlowDemo,
                 Collapsable,
-                TimerDemo
+                TimerDemo,
+                NoteRoomDemo
             ), FEATURES
         )
     )

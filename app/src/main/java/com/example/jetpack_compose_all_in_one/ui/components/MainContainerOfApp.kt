@@ -1,5 +1,6 @@
 package com.example.jetpack_compose_all_in_one.ui.components
 
+import android.content.Context
 import android.location.Location
 import android.media.RingtoneManager
 import android.net.Uri
@@ -30,6 +31,7 @@ import com.example.jetpack_compose_all_in_one.features.internet.InternetViewMode
 import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginPage
 import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginStyle1ViewModel
 import com.example.jetpack_compose_all_in_one.features.login_style_2.LoginScreen2
+import com.example.jetpack_compose_all_in_one.features.notes.data.NoteUI
 import com.example.jetpack_compose_all_in_one.features.play_with_maps.ComposeDemoApp
 import com.example.jetpack_compose_all_in_one.features.profile.ShowProfileScreen
 import com.example.jetpack_compose_all_in_one.features.provideimages.ShowImages
@@ -70,6 +72,7 @@ import com.example.jetpack_compose_all_in_one.ui.views.quote_swipe.QuoteSwipe
 import com.example.jetpack_compose_all_in_one.ui.views.quotes_ui.Quote
 import com.example.jetpack_compose_all_in_one.ui.views.tmdbapi.PopularMoviesPage
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavDes
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -77,6 +80,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainContainerOfApp(
+    context: Context,
     internetViewModel: InternetViewModel,
     getCurrentLocationFunc: ((Location?) -> Unit) -> Unit,
     playMusicFuncForeground: (Uri) -> Unit,
@@ -383,6 +387,10 @@ fun MainContainerOfApp(
 
                 composable(NavDes.FlowDemo.route()) {
                     FeatureFlowContent()
+                }
+
+                composable(NavDes.NoteRoomDemo.route()) {
+                    NoteUI(context)
                 }
             }
         }
