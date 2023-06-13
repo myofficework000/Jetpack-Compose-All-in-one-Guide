@@ -44,18 +44,3 @@ jobs:
             
       - name: Make gradlew executable
         run: chmod +x ./gradlew
- 
-      - name: Generate AAR and APK files
-        if: always()
-        run: ./gradlew assembleDebug
-
-      - name: Upload AAR files
-        if: always()
-        uses: actions/upload-artifact@v2
-        with:
-          name: artifacts.zip
-          path: |
-            app/build/outputs/apk/debug/app-debug.apk
-            dog_network/build/outputs/aar
-          
-          
