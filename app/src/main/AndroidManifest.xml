@@ -67,6 +67,16 @@
 
         <receiver android:name=".features.alarm.AlarmBroadcastReceiver" />
 
+        <receiver
+            android:name=".features.broadcastreceiver.airplanemode.AirplaneModeReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
+        <receiver android:name=".features.broadcastreceiver.bluetooth.BluetoothReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
+
         <service
             android:name=".utils.FcmRegisterService"
             android:exported="false">

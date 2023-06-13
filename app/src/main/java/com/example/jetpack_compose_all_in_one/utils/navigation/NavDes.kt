@@ -6,6 +6,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ALAR
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.API_IMPLEMENTATIONS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BOUND_SERVICE
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BOUND_SERVICE_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BROADCAST_RECEIVER
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BROADCAST_RECEIVER_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CHAT_DEMO_UI
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CHAT_DEMO_UI_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.COLLAPSABLE
@@ -198,6 +200,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object NoteRoomDemo : NavDes(NavigationDrawerData(NOTES_ROOM_DB, NOTES_ROOM_DB_ABOUT))
 
+    object AirplaneMode : NavDes(NavigationDrawerData(BROADCAST_RECEIVER, BROADCAST_RECEIVER_ABOUT))
+
     /*object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
         R.drawable.baseline_contacts_24
     ) )
@@ -288,7 +292,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 FlowDemo,
                 Collapsable,
                 TimerDemo,
-                NoteRoomDemo
+                NoteRoomDemo,
+                AirplaneMode
             ), FEATURES
         )
     )
