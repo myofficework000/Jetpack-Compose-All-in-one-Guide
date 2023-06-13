@@ -44,13 +44,13 @@ jobs:
             
       - name: Make gradlew executable
         run: chmod +x ./gradlew
-      
-      - name: Build Release APK
-         run:./gradlew assembleRelease 
-      - name: Releasing using Hub
-         uses: kyze8439690/action-release-releaseapk@master
-      env:
-       GITHUB_TOKEN: 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
-       APP_FOLDER: app
-          
-          
+        
+        
+      - name: Build with Gradle
+        run: ./gradlew assembleRelease
+
+      - name: Publish APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: MyApp
+          path: app/build/outputs/apk/release/app-release.apk
