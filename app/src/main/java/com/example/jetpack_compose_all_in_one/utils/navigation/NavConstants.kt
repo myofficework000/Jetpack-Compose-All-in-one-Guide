@@ -134,6 +134,9 @@ object NavConstants {
     const val COLLAPSABLE = "Collapsable"
     const val COLLAPSABLE_ABOUT = "Collapsable Profile"
 
+    const val NOTES_ROOM_DB = "Notes RoomDB"
+    const val NOTES_ROOM_DB_ABOUT = "Notes RoomDB"
+
     const val API_IMPLEMENTATIONS = "API implementations"
 
     const val LESSON_2_DESC = "Lesson 2: Material Designs"
