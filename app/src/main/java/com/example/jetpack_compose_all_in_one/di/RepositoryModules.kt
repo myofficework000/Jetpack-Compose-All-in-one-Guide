@@ -6,6 +6,8 @@ import com.example.jetpack_compose_all_in_one.features.domain_search.DomainSearc
 import com.example.jetpack_compose_all_in_one.features.domain_search.IDomainSearchRepository
 import com.example.jetpack_compose_all_in_one.features.news_sample.repository.INewsRepository
 import com.example.jetpack_compose_all_in_one.features.news_sample.repository.NewsRepository
+import com.example.jetpack_compose_all_in_one.features.newsapi.repository.INewsApiRepository
+import com.example.jetpack_compose_all_in_one.features.newsapi.repository.NewsApiRepositoryImpl
 import com.example.jetpack_compose_all_in_one.features.random_dog_api.model.IRandomDogRepository
 import com.example.jetpack_compose_all_in_one.features.random_dog_api.model.RandomDogRepository
 import com.example.jetpack_compose_all_in_one.features.random_fox.model.IRandomFoxRepository
@@ -30,6 +32,11 @@ abstract class RepositoryModules {
     @Singleton
     @NewsAPI
     abstract fun bindNewsRepository(impl: NewsRepository): INewsRepository
+
+    @Binds
+    @Singleton
+    @NewsOrgAPI
+    abstract fun bindNewsOrgApiRepository(impl: NewsApiRepositoryImpl) : INewsApiRepository
 
     @Binds
     @Singleton

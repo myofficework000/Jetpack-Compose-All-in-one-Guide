@@ -76,6 +76,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LOGI
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LOGIN_2_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.MAPS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.MAPS_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NEWS_API_HEADLINE
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NEWS_API_HEADLINE_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NEWS_SAMPLE
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NEWS_SAMPLE_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NOTES_ROOM_DB
@@ -182,6 +184,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object NewsSample : NavDes(NavigationDrawerData(NEWS_SAMPLE, NEWS_SAMPLE_ABOUT))
 
+    object NewsApiHeadline : NavDes(NavigationDrawerData(NEWS_API_HEADLINE, NEWS_API_HEADLINE_ABOUT))
+
     object WeatherSample : NavDes(NavigationDrawerData(WEATHER_SAMPLE, WEATHER_SAMPLE_ABOUT))
 
     object DomainSearch : NavDes(NavigationDrawerData(DOMAIN_SEARCH, DOMAIN_SEARCH_ABOUT))
@@ -220,6 +224,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 Tmdb,
                 Quotes,
                 NewsSample,
+                NewsApiHeadline,
                 WeatherSample,
                 DomainSearch,
                 DogApi,

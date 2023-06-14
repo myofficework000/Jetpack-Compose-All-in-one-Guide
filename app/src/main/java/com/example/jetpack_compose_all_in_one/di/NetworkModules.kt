@@ -5,6 +5,7 @@ import com.example.jetpack_compose_all_in_one.features.domain_search.ApiDomainSe
 import com.example.jetpack_compose_all_in_one.features.login_style_1.ApiLoginService
 import com.example.jetpack_compose_all_in_one.features.news_sample.data.remote.NewsApiInterceptor
 import com.example.jetpack_compose_all_in_one.features.news_sample.data.remote.NewsService
+import com.example.jetpack_compose_all_in_one.features.newsapi.data.remote.NewsApiService
 import com.example.jetpack_compose_all_in_one.features.quotes_using_rx_java.QuoteAPI.APIService
 import com.example.jetpack_compose_all_in_one.features.quotes_using_rx_java.QuoteAPI.repository.RemoteRepository
 import com.example.jetpack_compose_all_in_one.features.random_dog_api.model.RandomDogApiService
@@ -91,6 +92,16 @@ object NetworkModules {
             .client(OkHttpClient.Builder().addInterceptor(NewsApiInterceptor()).build())
             .build()
             .create<NewsService>()
+
+    @Provides
+    @Singleton
+    @NewsOrgAPI
+    fun provideNewsOrgApiService() =
+        Retrofit.Builder()
+            .baseUrl(Constants.NEWS_API_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(NewsApiService::class.java)
 
     @Provides
     @Singleton
