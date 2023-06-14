@@ -32,6 +32,7 @@ import com.example.jetpack_compose_all_in_one.features.internet.InternetViewMode
 import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginPage
 import com.example.jetpack_compose_all_in_one.features.login_style_1.LoginStyle1ViewModel
 import com.example.jetpack_compose_all_in_one.features.login_style_2.LoginScreen2
+import com.example.jetpack_compose_all_in_one.features.newsapi.ui.NewsUI
 import com.example.jetpack_compose_all_in_one.features.notes.data.NoteUI
 import com.example.jetpack_compose_all_in_one.features.play_with_maps.ComposeDemoApp
 import com.example.jetpack_compose_all_in_one.features.profile.ShowProfileScreen
@@ -336,6 +337,9 @@ fun MainContainerOfApp(
                         searchViewModel = hiltViewModel(),
                         viewModel = hiltViewModel()
                     )
+                }
+                composable(NavDes.NewsApiHeadline.route()) {
+                    NewsUI(hiltViewModel())
                 }
                 composable(NavDes.WeatherSample.route()) {
                     // Please change this to hilt later please =_=b
