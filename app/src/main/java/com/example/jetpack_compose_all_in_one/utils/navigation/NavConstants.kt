@@ -110,6 +110,9 @@ object NavConstants {
     const val NEWS_SAMPLE = "newsSample"
     const val NEWS_SAMPLE_ABOUT = "News Sample"
 
+    const val NEWS_API_HEADLINE = "newsHeadline"
+    const val NEWS_API_HEADLINE_ABOUT = "News Headlines"
+
     const val WEATHER_SAMPLE = "weatherSample"
     const val WEATHER_SAMPLE_ABOUT = "Weather Sample"
 
