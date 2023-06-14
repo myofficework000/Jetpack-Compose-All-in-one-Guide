@@ -134,4 +134,8 @@
     <string name="select_your_language">Select your language</string>
     <string name="string_old_ui">Traditional xml way - Text</string>
     <string name="compose_text">"Jetpack Compose - Text"</string>
+    <string name="nameText">Full Name</string>
+    <string name="emailText">Email</string>
+    <string name="aboutText">About</string>
+    <string name="save">Save</string>
 </resources>
