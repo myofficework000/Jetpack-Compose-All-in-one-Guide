@@ -44,13 +44,3 @@ jobs:
             
       - name: Make gradlew executable
         run: chmod +x ./gradlew
-        
-        
-      - name: Build with Gradle
-        run: ./gradlew assembleRelease
-
-      - name: Publish APK
-        uses: actions/upload-artifact@v2
-        with:
-          name: MyApp
-          path: app/build/outputs/apk/release/app-release.apk
