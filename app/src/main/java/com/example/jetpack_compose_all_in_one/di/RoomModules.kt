@@ -27,4 +27,8 @@ class RoomModules {
     @Provides
     @Singleton
     fun provideAlarmDao(db: AppDatabase) = db.getAlarmDao()
+
+    @Provides
+    @Singleton
+    fun provideProfileDao(db: AppDatabase) = db.getProfileDao()
 }
