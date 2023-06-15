@@ -15,6 +15,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -23,6 +24,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -36,16 +38,21 @@ import com.example.jetpack_compose_all_in_one.ui.theme.dp_100
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_20
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_24
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_30
+import com.example.jetpack_compose_all_in_one.ui.theme.dp_4
+import com.example.jetpack_compose_all_in_one.ui.theme.dp_40
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_5
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_50
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_80
 import com.example.jetpack_compose_all_in_one.ui.theme.sp_14
 import com.example.jetpack_compose_all_in_one.ui.theme.sp_16
+import com.example.jetpack_compose_all_in_one.ui.theme.sp_20
 import com.example.jetpack_compose_all_in_one.ui.theme.sp_25
+import com.example.jetpack_compose_all_in_one.ui.theme.sp_28
 import com.example.jetpack_compose_all_in_one.ui.theme.sp_32
+import dagger.hilt.android.lifecycle.HiltViewModel
 
 @Composable
-fun CreateProfileUI() {
+fun CreateProfileUI(viewModel: ProfileViewModel) {
     ScrollableColumn {
         ConstraintLayout(
             modifier = Modifier
@@ -53,7 +60,6 @@ fun CreateProfileUI() {
                 .padding(dp_10)
                 .background(Color.White)
         ) {
-            val viewModel: ProfileViewModel = hiltViewModel()
             val (image, nameText, name, emailText, email, aboutText, about, button) = createRefs()
 
             Image(
@@ -172,7 +178,7 @@ fun CreateProfileUI() {
                     viewModel.addProfile(data)
                 },
                 modifier = Modifier
-                    .padding(start = dp_30, top = dp_50, end = dp_30)
+                    .padding(start = dp_30, top = dp_30, end = dp_30)
                     .fillMaxWidth()
                     .constrainAs(button) {
                         top.linkTo(about.bottom)
@@ -189,9 +195,8 @@ fun CreateProfileUI() {
 }
 
 
-@Preview
 @Composable
-fun UserInfoUI() {
+fun UserInfoUI(viewModel: ProfileViewModel) {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
@@ -225,32 +230,38 @@ fun UserInfoUI() {
                 }
         )
 
-        Text(
-            text = stringResource(id = R.string.nameText),
-            modifier = Modifier
-                .padding(top = dp_30, bottom = dp_5)
-                .constrainAs(nameText) {
-                    top.linkTo(image.bottom)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                },
-            fontSize = sp_25
-        )
+        viewModel.profileData.value?.let {
+            Text(
+                text = it.name,
+                modifier = Modifier
+                    .padding(top = dp_30, bottom = dp_5)
+                    .constrainAs(nameText) {
+                        top.linkTo(image.bottom)
+                        start.linkTo(parent.start)
+                        end.linkTo(parent.end)
+                    },
+                fontSize = sp_25
+            )
+        }
 
-        Text(
-            text = stringResource(id = R.string.emailText),
-            modifier = Modifier
-                .padding(bottom = dp_5)
-                .constrainAs(emailText) {
-                    top.linkTo(nameText.bottom)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                },
-            fontSize = sp_16
-        )
+        viewModel.profileData.value?.let {
+            Text(
+                text = it.email,
+                modifier = Modifier
+                    .padding(bottom = dp_5)
+                    .constrainAs(emailText) {
+                        top.linkTo(nameText.bottom)
+                        start.linkTo(parent.start)
+                        end.linkTo(parent.end)
+                    },
+                fontSize = sp_16
+            )
+        }
 
         Button(
-            onClick = { /*TODO*/ },
+            onClick = {
+
+            },
             modifier = Modifier
                 .padding(start = dp_30, top = dp_20, end = dp_30)
                 .constrainAs(button) {
@@ -274,5 +285,103 @@ fun UserInfoUI() {
                 },
             fontSize = sp_25
         )
+
+        Text(
+            text = stringResource(id = R.string.ratingText),
+            modifier = Modifier
+                .padding(start = dp_40, top = dp_5)
+                .constrainAs(ratingText) {
+                    top.linkTo(ratingNum.bottom)
+                    start.linkTo(parent.start)
+
+                },
+            fontSize = sp_20
+        )
+
+        Text(
+            text = stringResource(id = R.string.followingNum),
+            modifier = Modifier
+                .padding(top = dp_30)
+                .constrainAs(followingNum) {
+                    top.linkTo(button.bottom)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                },
+            fontSize = sp_25
+        )
+
+        Text(
+            text = stringResource(id = R.string.followingText),
+            modifier = Modifier
+                .padding(top = dp_5)
+                .constrainAs(followingText) {
+                    top.linkTo(ratingNum.bottom)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                },
+            fontSize = sp_20
+        )
+
+        Text(
+            text = stringResource(id = R.string.follerNum),
+            modifier = Modifier
+                .padding(top = dp_30, end = dp_50)
+                .constrainAs(followerNum) {
+                    top.linkTo(button.bottom)
+                    end.linkTo(parent.end)
+                },
+            fontSize = sp_25
+        )
+
+        Text(
+            text = stringResource(id = R.string.follerText),
+            modifier = Modifier
+                .padding(top = dp_5, end = dp_40)
+                .constrainAs(followerText) {
+                    top.linkTo(ratingNum.bottom)
+                    end.linkTo(parent.end)
+                    start.linkTo(followerNum.start)
+                },
+            fontSize = sp_20
+        )
+
+        Text(
+            text = stringResource(id = R.string.aboutText),
+            modifier = Modifier
+                .padding(start = dp_40, top = dp_30)
+                .constrainAs(aboutText) {
+                    top.linkTo(ratingText.bottom)
+                    start.linkTo(parent.start)
+
+                },
+            fontSize = sp_28,
+            fontWeight = FontWeight.Bold
+        )
+
+        viewModel.profileData.value?.let {
+            Text(
+                text = it.about,
+                modifier = Modifier
+                    .padding(start = dp_40, top = dp_10)
+                    .constrainAs(about) {
+                        top.linkTo(aboutText.bottom)
+                        start.linkTo(parent.start)
+
+                    },
+                fontSize = sp_20,
+            )
+        }
+    }
+}
+
+@Composable
+fun InflateProfileUI(){
+    val viewModel:ProfileViewModel = hiltViewModel()
+    val profileData = viewModel.profileData.observeAsState()
+    viewModel.getProfileData()
+    if (profileData.value?.name?.isNotEmpty() == true){
+        UserInfoUI(viewModel)
+    }else{
+        CreateProfileUI(viewModel)
     }
 }

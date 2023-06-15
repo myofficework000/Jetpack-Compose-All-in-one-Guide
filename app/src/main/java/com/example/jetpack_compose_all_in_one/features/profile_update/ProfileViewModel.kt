@@ -32,6 +32,6 @@ class ProfileViewModel @Inject constructor(
      fun getProfileData() {
         val profileInfo = profileDao.getProfileData()
         profileData.value = profileInfo
-
     }
+
 }
