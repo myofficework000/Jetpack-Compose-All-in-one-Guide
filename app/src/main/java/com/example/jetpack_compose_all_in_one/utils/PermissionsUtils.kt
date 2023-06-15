@@ -60,3 +60,9 @@ fun isLocationAllowed(context: Context) =
 fun requestCamera(isGranted: (Boolean) -> Unit) = rememberPermissionState(
     Manifest.permission.CAMERA
 ) { isGranted(it) }
+
+@OptIn(ExperimentalPermissionsApi::class)
+@Composable
+fun requestReadContacts(isGranted: (Boolean) -> Unit) = rememberPermissionState(
+    Manifest.permission.READ_CONTACTS
+) { isGranted(it) }

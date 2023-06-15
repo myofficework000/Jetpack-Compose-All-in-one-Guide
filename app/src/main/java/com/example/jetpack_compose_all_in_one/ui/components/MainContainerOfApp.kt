@@ -25,6 +25,7 @@ import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.features.alarm.AlarmMainUI
 import com.example.jetpack_compose_all_in_one.features.broadcastreceiver.BroadcastReceiverScreen
 import com.example.jetpack_compose_all_in_one.features.chatmodule.ChatViewModel
+import com.example.jetpack_compose_all_in_one.features.content_provider.ContactList
 import com.example.jetpack_compose_all_in_one.features.dog_api.view.RandomDogUI
 import com.example.jetpack_compose_all_in_one.features.download_manager.Download
 import com.example.jetpack_compose_all_in_one.features.flows_demo.FeatureFlowContent
@@ -262,6 +263,9 @@ fun MainContainerOfApp(
 
                 composable(NavDes.ShowImages.route()) {
                     ShowImages(7)
+                }
+                composable(NavDes.ShowContacts.route()) {
+                    ContactList()
                 }
 
                 composable(NavDes.L1Layouts.route()) {
