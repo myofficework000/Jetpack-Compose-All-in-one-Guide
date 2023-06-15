@@ -122,6 +122,10 @@ object NavConstants {
     const val DOG_API = "dogApi"
     const val DOG_API_ABOUT = "Dog API"
 
+
+    const val PROFILE_UPDATE = "PROFILE_UPDATE"
+    const val PROFILE_UPDATE_ABOUT = "Profile Update"
+
     const val RANDOM_DOG_API = "RandomDogApi"
     const val RANDOM_DOG_API_ABOUT = "Random Dog API"
 
@@ -158,4 +162,18 @@ object NavConstants {
     const val LESSONS = "Lessons"
 
     const val FEATURES = "Features"
+
+   const val APPLICATION_COMPONENTS = "Application components"
+
+    const val CONTENT_PROVIDER = "CONTENT_PROVIDER"
+    const val CONTENT_PROVIDER_ABOUT = "Content Provider"
+
+    const val SERVICES = "SERVICES"
+    const val SERVICES_ABOUT = "Content Provider"
+
+    const val BROADCAST_RECEIVERS = "BROADCAST_RECEIVER"
+    const val BROADCAST_RECEIVERS_ABOUT = "Broadcast receiver"
+
+    const val ACTIVITY = "ACTIVITY"
+    const val ACTIVITY_ABOUT = "Activity"
 }
