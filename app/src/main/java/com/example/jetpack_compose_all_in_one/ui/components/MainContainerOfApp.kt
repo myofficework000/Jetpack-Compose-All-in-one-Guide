@@ -36,6 +36,7 @@ import com.example.jetpack_compose_all_in_one.features.newsapi.ui.NewsUI
 import com.example.jetpack_compose_all_in_one.features.notes.data.NoteUI
 import com.example.jetpack_compose_all_in_one.features.play_with_maps.ComposeDemoApp
 import com.example.jetpack_compose_all_in_one.features.profile.ShowProfileScreen
+import com.example.jetpack_compose_all_in_one.features.profile_update.CreateProfileUI
 import com.example.jetpack_compose_all_in_one.features.provideimages.ShowImages
 import com.example.jetpack_compose_all_in_one.features.qrcodescanner.PreviewViewComposable
 import com.example.jetpack_compose_all_in_one.features.random_dog_api.view.NextRandomDog
@@ -115,7 +116,8 @@ fun MainContainerOfApp(
         WeatherViewModel(
             RemoteWeatherRepository(
                 RetrofitBuilder.getRetrofit().create(
-                    ApiWeatherService::class.java)
+                    ApiWeatherService::class.java
+                )
             )
         )
     }
@@ -398,6 +400,9 @@ fun MainContainerOfApp(
                 }
                 composable(NavDes.AirplaneMode.route()) {
                     BroadcastReceiverScreen()
+                }
+                composable(NavDes.ProfileUpdate.route()) {
+                    CreateProfileUI()
                 }
             }
         }

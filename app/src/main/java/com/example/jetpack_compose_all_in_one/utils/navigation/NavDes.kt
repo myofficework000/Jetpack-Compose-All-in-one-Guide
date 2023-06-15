@@ -1,17 +1,24 @@
 package com.example.jetpack_compose_all_in_one.utils.navigation
 
 import com.example.jetpack_compose_all_in_one.R
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ACTIVITY
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ACTIVITY_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ALARM_MANAGER
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ALARM_MANAGER_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.API_IMPLEMENTATIONS
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.APPLICATION_COMPONENTS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BOUND_SERVICE
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BOUND_SERVICE_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BROADCAST_RECEIVER
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BROADCAST_RECEIVERS
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BROADCAST_RECEIVERS_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BROADCAST_RECEIVER_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CHAT_DEMO_UI
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CHAT_DEMO_UI_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.COLLAPSABLE
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.COLLAPSABLE_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CONTENT_PROVIDER
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CONTENT_PROVIDER_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOG_API
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOG_API_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOMAIN_SEARCH
@@ -82,6 +89,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NEWS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NEWS_SAMPLE_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NOTES_ROOM_DB
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NOTES_ROOM_DB_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.PROFILE_UPDATE
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.PROFILE_UPDATE_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.QRCODE_SCANNER
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.QRCODE_SCANNER_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.QUOTES
@@ -92,6 +101,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.RAND
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.RANDOM_DOG_API_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.RANDOM_FOX_API
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.RANDOM_FOX_API_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SERVICES
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SERVICES_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SERVICE_IMPLEMENTATIONS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SHOW_IMAGES
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SHOW_IMAGES_ABOUT
@@ -184,7 +195,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object NewsSample : NavDes(NavigationDrawerData(NEWS_SAMPLE, NEWS_SAMPLE_ABOUT))
 
-    object NewsApiHeadline : NavDes(NavigationDrawerData(NEWS_API_HEADLINE, NEWS_API_HEADLINE_ABOUT))
+    object NewsApiHeadline :
+        NavDes(NavigationDrawerData(NEWS_API_HEADLINE, NEWS_API_HEADLINE_ABOUT))
 
     object WeatherSample : NavDes(NavigationDrawerData(WEATHER_SAMPLE, WEATHER_SAMPLE_ABOUT))
 
@@ -206,6 +218,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object AirplaneMode : NavDes(NavigationDrawerData(BROADCAST_RECEIVER, BROADCAST_RECEIVER_ABOUT))
 
+    object ProfileUpdate : NavDes(NavigationDrawerData(PROFILE_UPDATE, PROFILE_UPDATE_ABOUT))
+
     /*object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
         R.drawable.baseline_contacts_24
     ) )
@@ -215,7 +229,6 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     object Settings: NavDes( NavigationDrawerData("settings","Settings",
         R.drawable.baseline_settings_24
     ) )*/
-
 
     // These are for the categories
     object CategoryApis : NavDes(
@@ -263,6 +276,24 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
         )
     )
 
+    object ContentProvider : NavDes(NavigationDrawerData(CONTENT_PROVIDER, CONTENT_PROVIDER_ABOUT))
+    object BroadCastReceiver :
+        NavDes(NavigationDrawerData(BROADCAST_RECEIVERS, BROADCAST_RECEIVERS_ABOUT))
+
+    object Service : NavDes(NavigationDrawerData(SERVICES, SERVICES_ABOUT))
+    object Activity : NavDes(NavigationDrawerData(ACTIVITY, ACTIVITY_ABOUT))
+
+    object ApplicationComponents : NavDes(
+        NavigationCategoryData(
+            listOf(
+                Activity,
+                BroadCastReceiver,
+                Service,
+                ContentProvider
+            ), APPLICATION_COMPONENTS
+        )
+    )
+
     object CategoryLessons : NavDes(
         NavigationCategoryData(
             listOf(
@@ -298,7 +329,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 Collapsable,
                 TimerDemo,
                 NoteRoomDemo,
-                AirplaneMode
+                AirplaneMode,
+                ProfileUpdate
             ), FEATURES
         )
     )
@@ -313,6 +345,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
         val drawerList = listOf(
             Home,
             CategoryLessons,
+            ApplicationComponents,
             CategoryFeatures
         )
 
