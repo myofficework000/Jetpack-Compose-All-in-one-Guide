@@ -138,4 +138,6 @@
     <string name="emailText">Email</string>
     <string name="aboutText">About</string>
     <string name="save">Save</string>
+    <string name="updateProfile">Update Profile</string>
+    <string name="ratingNum">4.8</string>
 </resources>

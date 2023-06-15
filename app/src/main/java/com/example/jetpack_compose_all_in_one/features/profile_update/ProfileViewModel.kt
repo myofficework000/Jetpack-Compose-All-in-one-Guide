@@ -14,7 +14,7 @@ import javax.inject.Inject
 class ProfileViewModel @Inject constructor(
     private val profileDao: ProfileDao
 ) : ViewModel() {
-    var profileData: MutableLiveData<List<Profile>> = MutableLiveData()
+    var profileData: MutableLiveData<Profile> = MutableLiveData()
 
     init {
         profileDao.getProfileData()
