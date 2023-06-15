@@ -23,6 +23,7 @@ class ProfileViewModel @Inject constructor(
 
     fun addProfile(profile: Profile) {
         profileDao.insertProfileData(profile)
+
     }
 
     fun updateProfile(profile: Profile) {

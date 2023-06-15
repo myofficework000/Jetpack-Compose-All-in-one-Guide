@@ -176,6 +176,7 @@ fun CreateProfileUI(viewModel: ProfileViewModel) {
                         about = aboutUser.text
                     )
                     viewModel.addProfile(data)
+                    viewModel.getProfileData()
                 },
                 modifier = Modifier
                     .padding(start = dp_30, top = dp_30, end = dp_30)
