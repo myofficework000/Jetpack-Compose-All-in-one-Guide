@@ -41,6 +41,9 @@ object NavConstants {
     const val SHOW_IMAGES = "img_show"
     const val SHOW_IMAGES_ABOUT = "Show Device Images"
 
+    const val SHOW_CONTACTS = "contact_show"
+    const val SHOW_CONTACTS_ABOUT = "Contact Lists"
+
     const val TIMER_DEMO = "TIMER_DEMO"
     const val TIMER_DEMO_ABOUT = "Feature: Timer Demo"
 

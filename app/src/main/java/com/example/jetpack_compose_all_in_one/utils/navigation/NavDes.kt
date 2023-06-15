@@ -104,6 +104,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.RAND
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SERVICES
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SERVICES_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SERVICE_IMPLEMENTATIONS
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SHOW_CONTACTS
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SHOW_CONTACTS_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SHOW_IMAGES
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SHOW_IMAGES_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.TIMER_DEMO
@@ -147,7 +149,11 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     object ChatDemoUI : NavDes(NavigationDrawerData(CHAT_DEMO_UI, CHAT_DEMO_UI_ABOUT))
 
     object ShowImages : NavDes(NavigationDrawerData(SHOW_IMAGES, SHOW_IMAGES_ABOUT))
+
+    object ShowContacts : NavDes(NavigationDrawerData(SHOW_CONTACTS, SHOW_CONTACTS_ABOUT))
+
     object TimerDemo : NavDes(NavigationDrawerData(TIMER_DEMO, TIMER_DEMO_ABOUT))
+
     object L1Layouts : NavDes(NavigationDrawerData(LESSON_1, LESSON_1_ABOUT))
 
     object L2Chapter1 : NavDes(NavigationDrawerData(LESSON_2_CHAPTER_1, LESSON_2_CHAPTER_1_ABOUT))
@@ -316,6 +322,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
         NavigationCategoryData(
             listOf(
                 ShowImages,
+                ShowContacts,
                 CategoryServices,
                 CategoryApis,
                 Internet,
