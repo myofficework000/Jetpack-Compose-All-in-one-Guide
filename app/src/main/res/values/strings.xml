@@ -97,6 +97,12 @@
         <item>State flow vs Shared flow</item>
     </string-array>
 
+
+    <string-array name="activity_demo_header">
+        <item>When Activity started</item>
+        <item>When Activity closed</item>
+    </string-array>
+
     <string name="l5c3_header_text">Your current location</string>
     <string name="read_full_article">Read Article</string>
     <string name="close">Close</string>

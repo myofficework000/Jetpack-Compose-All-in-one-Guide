@@ -1,8 +1,6 @@
 package com.example.jetpack_compose_all_in_one.lessons.lesson_12
 
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.view.ViewGroup
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -21,7 +19,7 @@ fun Lesson_12() {
 }
 
 @Composable
-fun LessonContent(context: Context){
+fun LessonContent(context: Context) {
 
     Column {
         Text(text = "Web View Demo")
