@@ -9,11 +9,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
@@ -21,14 +24,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.jetpack_compose_all_in_one.R
@@ -38,21 +43,49 @@ import com.example.jetpack_compose_all_in_one.ui.theme.dp_100
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_20
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_24
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_30
-import com.example.jetpack_compose_all_in_one.ui.theme.dp_4
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_40
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_5
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_50
+import com.example.jetpack_compose_all_in_one.ui.theme.dp_60
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_80
-import com.example.jetpack_compose_all_in_one.ui.theme.sp_14
 import com.example.jetpack_compose_all_in_one.ui.theme.sp_16
 import com.example.jetpack_compose_all_in_one.ui.theme.sp_20
 import com.example.jetpack_compose_all_in_one.ui.theme.sp_25
 import com.example.jetpack_compose_all_in_one.ui.theme.sp_28
-import com.example.jetpack_compose_all_in_one.ui.theme.sp_32
-import dagger.hilt.android.lifecycle.HiltViewModel
 
 @Composable
-fun CreateProfileUI(viewModel: ProfileViewModel) {
+fun InflateProfileUI() {
+    val viewModel: ProfileViewModel = hiltViewModel()
+    val profileData = viewModel.profileData.observeAsState()
+
+    viewModel.getProfileData()
+
+
+    var displayMode by remember { mutableStateOf("UserInfoUI") }
+
+    LaunchedEffect(key1 = false) {
+        displayMode = if (profileData.value?.name?.isNotEmpty() == true) {
+            "UserInfoUI"
+        } else {
+            "CreateProfileUI"
+        }
+    }
+
+    when (displayMode) {
+        "UserInfoUI" -> UserInfoUI(viewModel = viewModel) { displayMode = "CreateProfileUI" }
+        "CreateProfileUI" -> CreateProfileUI(
+            viewModel = viewModel,
+        ) {
+            displayMode = "UserInfoUI"
+        }
+    }
+}
+
+@Composable
+fun CreateProfileUI(
+    viewModel: ProfileViewModel,
+    onUpdateButtonClicked: () -> Unit
+) {
     ScrollableColumn {
         ConstraintLayout(
             modifier = Modifier
@@ -61,12 +94,13 @@ fun CreateProfileUI(viewModel: ProfileViewModel) {
                 .background(Color.White)
         ) {
             val (image, nameText, name, emailText, email, aboutText, about, button) = createRefs()
-
+            val  isAddedData = !viewModel.profileData.value?.name.isNullOrEmpty()
+            val focusManager = LocalFocusManager.current
             Image(
                 painter = painterResource(id = R.drawable.actor1),
                 contentDescription = null,
                 modifier = Modifier
-                    .padding(top = dp_80)
+                    .padding(top = dp_60)
                     .clip(CircleShape)
                     .size(dp_100)
                     .constrainAs(image) {
@@ -85,7 +119,9 @@ fun CreateProfileUI(viewModel: ProfileViewModel) {
                     }
             )
 
-            var username by remember { mutableStateOf(TextFieldValue()) }
+            var username by remember {
+                mutableStateOf(TextFieldValue(viewModel.profileData.value?.name ?: ""))
+            }
 
             TextField(
                 value = username,
@@ -100,7 +136,16 @@ fun CreateProfileUI(viewModel: ProfileViewModel) {
                     .constrainAs(name) {
                         top.linkTo(nameText.bottom)
                         start.linkTo(parent.start)
+                    },
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Text,
+                    imeAction = ImeAction.Next
+                ),
+                keyboardActions = KeyboardActions(
+                    onNext = {
+                        focusManager.moveFocus(FocusDirection.Down)
                     }
+                )
             )
 
             Text(
@@ -113,7 +158,10 @@ fun CreateProfileUI(viewModel: ProfileViewModel) {
                     }
             )
 
-            var userEmail by remember { mutableStateOf(TextFieldValue()) }
+
+            var userEmail by remember {
+                mutableStateOf(TextFieldValue(viewModel.profileData.value?.email ?: ""))
+            }
 
             TextField(
                 value = userEmail,
@@ -128,7 +176,16 @@ fun CreateProfileUI(viewModel: ProfileViewModel) {
                     .constrainAs(email) {
                         top.linkTo(emailText.bottom)
                         start.linkTo(parent.start)
+                    },
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Text,
+                    imeAction = ImeAction.Next
+                ),
+                keyboardActions = KeyboardActions(
+                    onNext = {
+                        focusManager.moveFocus(FocusDirection.Down)
                     }
+                )
             )
 
             Text(
@@ -140,16 +197,9 @@ fun CreateProfileUI(viewModel: ProfileViewModel) {
                     }
             )
 
-            var aboutUser by remember { mutableStateOf(TextFieldValue()) }
-
-//        val screenWidth = with(LocalDensity.current) {
-//            LocalContext.current.resources.displayMetrics.widthPixels.dp
-//        }
-//        val oneThirdHeight: Dp = screenWidth / 3
-//
-//        val aspectRatioModifier = Modifier
-//            .layoutId(aboutUser)
-//            .aspectRatio(3f/1f) // Set the aspect ratio to 1:3 (height:width)
+            var aboutUser by remember {
+                mutableStateOf(TextFieldValue(viewModel.profileData.value?.about ?: ""))
+            }
 
             TextField(
                 value = aboutUser,
@@ -164,19 +214,35 @@ fun CreateProfileUI(viewModel: ProfileViewModel) {
                     .constrainAs(about) {
                         top.linkTo(aboutText.bottom)
                         start.linkTo(parent.start)
+                    },
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Text,
+                    imeAction = ImeAction.Next
+                ),
+                keyboardActions = KeyboardActions(
+                    onNext = {
+                        defaultKeyboardAction(imeAction = ImeAction.Done)
                     }
+                )
             )
 
             Button(
                 onClick = {
                     val data = Profile(
-                        userId = 0,
+                        userId = if (isAddedData) viewModel.profileData.value!!.userId else 0,
                         name = username.text,
                         email = userEmail.text,
                         about = aboutUser.text
                     )
-                    viewModel.addProfile(data)
-                    viewModel.getProfileData()
+
+                    if (isAddedData) {
+                        viewModel.updateProfile(data)
+                        viewModel.getProfileData()
+                    } else {
+                        viewModel.addProfile(data)
+                        viewModel.getProfileData()
+                    }
+                    onUpdateButtonClicked.invoke()
                 },
                 modifier = Modifier
                     .padding(start = dp_30, top = dp_30, end = dp_30)
@@ -197,7 +263,7 @@ fun CreateProfileUI(viewModel: ProfileViewModel) {
 
 
 @Composable
-fun UserInfoUI(viewModel: ProfileViewModel) {
+fun UserInfoUI(viewModel: ProfileViewModel, onUpdateButtonClicked: () -> Unit) {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
@@ -261,7 +327,7 @@ fun UserInfoUI(viewModel: ProfileViewModel) {
 
         Button(
             onClick = {
-
+                onUpdateButtonClicked.invoke()
             },
             modifier = Modifier
                 .padding(start = dp_30, top = dp_20, end = dp_30)
@@ -375,14 +441,3 @@ fun UserInfoUI(viewModel: ProfileViewModel) {
     }
 }
 
-@Composable
-fun InflateProfileUI(){
-    val viewModel:ProfileViewModel = hiltViewModel()
-    val profileData = viewModel.profileData.observeAsState()
-    viewModel.getProfileData()
-    if (profileData.value?.name?.isNotEmpty() == true){
-        UserInfoUI(viewModel)
-    }else{
-        CreateProfileUI(viewModel)
-    }
-}

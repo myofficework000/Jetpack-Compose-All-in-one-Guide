@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
+import androidx.room.OnConflictStrategy.Companion.REPLACE
 import androidx.room.Query
 import androidx.room.Update
 
@@ -14,10 +15,10 @@ interface ProfileDao {
     @Query("Select * from profile")
     fun getProfileData() : Profile
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert
     fun insertProfileData(profile: Profile)
 
-    @Update
+    @Update(onConflict = REPLACE)
     fun updateProfileData(profile: Profile)
 
     @Delete
