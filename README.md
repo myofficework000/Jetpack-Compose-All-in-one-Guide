@@ -36,6 +36,11 @@ Features are
 | <h3><b>Lesson 2:</b> Material Design- Shapes </h3><br/> This lesson shows various examples how to use material design components in compose UI <br> • **Chapter 1:** Shape, Surface <br>• **Chapter 2:** Text examples<br> **• Chapter 3:** Button examples<br>• **Chapter 4:** Image examples<br> **• Chapter 5:** Progress Bar examples<br>  **• Chapter 6:** Floating action buttons<br>      | <video src ='https://github.com/myofficework000/Jetpack-Compose-All-In-One-Guide/assets/51234843/be92aef7-29c5-491a-954a-434d5f91b4cf' width=200/> 
 | <h3><b>Lesson 3:</b> Types of List </h3><br/> This lesson shows various examples List, Exampandable list, Animations with List compose UI <br> • **Chapter 1:** Simple List <br>• **Chapter 2:** Custom Vertical List<br> **• Chapter 3:** Simple Horizontal List <br>• **Chapter 4:** Vertical Grid List<br> **• Chapter 5:** Horizontal Grid List <br>  **• Chapter 6:** Expandable List <br>  **• Chapter 7:** Expandable Animated List <br>  **• Chapter 8:** Shimmer Animated List <br>      | <video src ='https://github.com/myofficework000/Jetpack-Compose-All-In-One-Guide/assets/51234843/8408016d-e2e9-4f15-bafc-20c67fe18f69' width=200/> |
  | <h3><b>Lesson 4:</b> Types of Dialog </h3><br/> This lesson shows various examples of dialogs<br> • **Chapter 1:** Alert dialog <br>• **Chapter 2:** BottomSheet Dailog<br> **• Chapter 3:** App Rating dialog <br>• **Chapter 4:** Logout dialog <br> | <video src ='https://github.com/myofficework000/Jetpack-Compose-All-In-One-Guide/assets/51234843/65388bbe-ee12-4859-9168-5efdcc666bf5' width=200/> |
+ | <h3><b>Lesson 5:</b> Maps </h3><br/> This lesson shows various examples of maps<br> • **Chapter 1:** Map Basics  <br>   - Simple Map<br> - Inflate Marker on Map<br> • **Chapter 2:** Map types<br> **• Chapter 3:** Current Location on map <br>• **Chapter 4:** Search on map <br> | <video src ='https://github.com/myofficework000/Jetpack-Compose-All-In-One-Guide/assets/51234843/be49a0d3-f563-4532-8634-ee5d3223f16d' width=200/> |
+
+
+
+https://github.com/myofficework000/Jetpack-Compose-All-In-One-Guide/assets/51234843/
 
 
 ## License
