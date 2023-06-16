@@ -107,6 +107,9 @@ object NavConstants {
     const val LESSON_11_INTEROPERABILITY = "LESSON_11_INTEROPERABILITY "
     const val LESSON_11_INTEROPERABILITY_ABOUT = "Lesson 11: Interoperability"
 
+    const val LESSON_12_WEBVIEW = "LESSON_12_WEB_VIEW "
+    const val LESSON_12_WEBVIEW_ABOUT = "Lesson 12: Web View"
+
     const val QUOTE_2 = "quote2"
     const val QUOTE_2_ABOUT = "Swipe Quotes"
 
