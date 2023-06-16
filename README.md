@@ -1,33 +1,12 @@
 # Jetpack-Compose-All-In-One-Guide
 Learn step by step UI development using Jetpack compose [beginners to advance]
 
-This collection of lessons & features is designed to help you understand the basics of Jetpack Compose step by step. 
-Lesson are - 
-1. Rows, Column, Box
-2. Material Components 
-   - Text
-   - Button
-   - Input Field
-3. Android List types
-4. 
-5. Maps
-...
+This comprehensive collection of lessons and features is specifically designed to guide you through the step-by-step process of understanding Jetpack Compose and Android development.
 
-
-
-
-Features are
-1. Android Activity life cycle scenario's visualization - Not yet implemented
-2. Fragment Lifecycle scenario's visualization - Not yet implemented
-3. Broadcast receiver Demo
-4. Content Provider Demo
-5. Android services
-   - Foreground Service Demo
-   - Bound Service Demo
-   - Alarm app using room database with add, cancel alarm features 
-6. Quotes Demo - Implemented API using RxJava with Retrofit using MVVM architecture
-7. TMDB Demo - Implemented Kotlin Flows using Retrofit using MVVM + Paging 3 for pagination features
-8. Animations Demo
+- [x] Lessons 
+- [x] Application component
+- [x] Features
+- [ ] Jetpack components
 
 
 | Lesson                                                                                                                                                                                                                     | Preview                                               |
@@ -37,11 +16,6 @@ Features are
 | <h3><b>Lesson 3:</b> Types of List </h3><br/> This lesson shows various examples List, Exampandable list, Animations with List compose UI <br> • **Chapter 1:** Simple List <br>• **Chapter 2:** Custom Vertical List<br> **• Chapter 3:** Simple Horizontal List <br>• **Chapter 4:** Vertical Grid List<br> **• Chapter 5:** Horizontal Grid List <br>  **• Chapter 6:** Expandable List <br>  **• Chapter 7:** Expandable Animated List <br>  **• Chapter 8:** Shimmer Animated List <br>      | <video src ='https://github.com/myofficework000/Jetpack-Compose-All-In-One-Guide/assets/51234843/8408016d-e2e9-4f15-bafc-20c67fe18f69' width=200/> |
  | <h3><b>Lesson 4:</b> Types of Dialog </h3><br/> This lesson shows various examples of dialogs<br> • **Chapter 1:** Alert dialog <br>• **Chapter 2:** BottomSheet Dailog<br> **• Chapter 3:** App Rating dialog <br>• **Chapter 4:** Logout dialog <br> | <video src ='https://github.com/myofficework000/Jetpack-Compose-All-In-One-Guide/assets/51234843/65388bbe-ee12-4859-9168-5efdcc666bf5' width=200/> |
  | <h3><b>Lesson 5:</b> Maps </h3><br/> This lesson shows various examples of maps<br> • **Chapter 1:** Map Basics  <br>   - Simple Map<br> - Inflate Marker on Map<br> • **Chapter 2:** Map types<br> **• Chapter 3:** Current Location on map <br>• **Chapter 4:** Search on map <br> | <video src ='https://github.com/myofficework000/Jetpack-Compose-All-In-One-Guide/assets/51234843/be49a0d3-f563-4532-8634-ee5d3223f16d' width=200/> |
-
-
-
-https://github.com/myofficework000/Jetpack-Compose-All-In-One-Guide/assets/51234843/
-
 
 ## License
 
