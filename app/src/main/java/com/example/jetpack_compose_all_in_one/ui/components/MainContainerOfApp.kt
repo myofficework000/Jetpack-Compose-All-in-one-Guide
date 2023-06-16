@@ -51,6 +51,7 @@ import com.example.jetpack_compose_all_in_one.features.weather_sample.viewmodel.
 import com.example.jetpack_compose_all_in_one.lessons.lesson_1.Lesson_1_Display
 import com.example.jetpack_compose_all_in_one.lessons.lesson_10.Lesson_10
 import com.example.jetpack_compose_all_in_one.lessons.lesson_11.Lesson_11
+import com.example.jetpack_compose_all_in_one.lessons.lesson_12.Lesson_12
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_2_Screen
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_4_Image
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_5_Progressbar
@@ -328,6 +329,10 @@ fun MainContainerOfApp(
 
                 composable(NavDes.Lesson11Interoperability.route()) {
                     Lesson_11()
+                }
+
+                composable(NavDes.Lesson12WebView.route()) {
+                    Lesson_12()
                 }
 
                 composable(NavDes.L6Chapter1.route()) {
