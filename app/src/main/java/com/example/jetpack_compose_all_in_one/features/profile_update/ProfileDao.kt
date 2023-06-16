@@ -12,7 +12,7 @@ import androidx.room.Update
 interface ProfileDao {
 
     @Query("Select * from profile")
-    fun getProfileData() : List<Profile>
+    fun getProfileData() : Profile
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertProfileData(profile: Profile)

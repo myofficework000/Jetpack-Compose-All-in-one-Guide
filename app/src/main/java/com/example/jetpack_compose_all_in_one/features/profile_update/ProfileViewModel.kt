@@ -14,7 +14,7 @@ import javax.inject.Inject
 class ProfileViewModel @Inject constructor(
     private val profileDao: ProfileDao
 ) : ViewModel() {
-    var profileData: MutableLiveData<List<Profile>> = MutableLiveData()
+    var profileData: MutableLiveData<Profile> = MutableLiveData()
 
     init {
         profileDao.getProfileData()
@@ -23,6 +23,7 @@ class ProfileViewModel @Inject constructor(
 
     fun addProfile(profile: Profile) {
         profileDao.insertProfileData(profile)
+
     }
 
     fun updateProfile(profile: Profile) {
@@ -32,6 +33,6 @@ class ProfileViewModel @Inject constructor(
      fun getProfileData() {
         val profileInfo = profileDao.getProfileData()
         profileData.value = profileInfo
-
     }
+
 }
