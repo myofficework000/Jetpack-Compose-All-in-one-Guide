@@ -22,6 +22,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.jetpack_compose_all_in_one.*
 import com.example.jetpack_compose_all_in_one.R
+import com.example.jetpack_compose_all_in_one.application_components.ActivityDemo
 import com.example.jetpack_compose_all_in_one.features.alarm.AlarmMainUI
 import com.example.jetpack_compose_all_in_one.features.broadcastreceiver.BroadcastReceiverScreen
 import com.example.jetpack_compose_all_in_one.features.chatmodule.ChatViewModel
@@ -37,7 +38,6 @@ import com.example.jetpack_compose_all_in_one.features.newsapi.ui.NewsUI
 import com.example.jetpack_compose_all_in_one.features.notes.data.NoteUI
 import com.example.jetpack_compose_all_in_one.features.play_with_maps.ComposeDemoApp
 import com.example.jetpack_compose_all_in_one.features.profile.ShowProfileScreen
-import com.example.jetpack_compose_all_in_one.features.profile_update.CreateProfileUI
 import com.example.jetpack_compose_all_in_one.features.profile_update.InflateProfileUI
 import com.example.jetpack_compose_all_in_one.features.provideimages.ShowImages
 import com.example.jetpack_compose_all_in_one.features.qrcodescanner.PreviewViewComposable
@@ -414,6 +414,21 @@ fun MainContainerOfApp(
                 composable(NavDes.ProfileUpdate.route()) {
                     InflateProfileUI()
                 }
+
+                composable(NavDes.Activity.route()) {
+                    ActivityDemo()
+                }
+
+                composable(NavDes.BroadCastReceiver.route()) {
+                    InflateProfileUI()
+                }
+                composable(NavDes.ContentProvider.route()) {
+                    InflateProfileUI()
+                }
+                composable(NavDes.Service.route()) {
+                    InflateProfileUI()
+                }
+
             }
         }
     }
