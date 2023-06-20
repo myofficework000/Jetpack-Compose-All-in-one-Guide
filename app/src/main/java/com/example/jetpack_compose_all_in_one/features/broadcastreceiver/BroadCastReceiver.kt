@@ -3,6 +3,7 @@ package com.example.jetpack_compose_all_in_one.features.broadcastreceiver
 import android.bluetooth.BluetoothAdapter
 import android.content.Intent
 import android.content.IntentFilter
+import android.net.wifi.WifiManager
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -10,6 +11,7 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.platform.LocalContext
 import com.example.jetpack_compose_all_in_one.features.broadcastreceiver.airplanemode.AirplaneModeReceiver
 import com.example.jetpack_compose_all_in_one.features.broadcastreceiver.bluetooth.BluetoothReceiver
+import com.example.jetpack_compose_all_in_one.features.broadcastreceiver.wifi.WifiReceiver
 
 @Composable
 fun BroadcastReceiverScreen() {
@@ -18,8 +20,23 @@ fun BroadcastReceiverScreen() {
         Text("Broadcast Receiver Screen")
         BluetoothComponent()
         AirplaneModeComponent()
+        WifiComponent()
     }
 
+}
+
+@Composable
+fun WifiComponent(){
+    val context = LocalContext.current
+    DisposableEffect(Unit){
+        val wifiReceiver = WifiReceiver()
+        val intentFilter = IntentFilter(WifiManager.NETWORK_STATE_CHANGED_ACTION)
+        context.registerReceiver(wifiReceiver, intentFilter)
+
+        onDispose {
+            context.unregisterReceiver(wifiReceiver)
+        }
+    }
 }
 
 @Composable
