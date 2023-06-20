@@ -1,4 +1,4 @@
-package com.example.jetpack_compose_all_in_one.features.service_examples.counter
+package com.example.jetpack_compose_all_in_one.application_components.services.counter
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize

@@ -1,4 +1,4 @@
-package com.example.jetpack_compose_all_in_one.features.content_provider
+package com.example.jetpack_compose_all_in_one.application_components.content_provider.demo_contacts
 
 import android.content.Context
 import android.content.Intent

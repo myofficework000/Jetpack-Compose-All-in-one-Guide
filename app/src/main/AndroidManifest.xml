@@ -56,13 +56,13 @@
             android:theme="@style/Theme.JetpackComposeAllInOne" />
 
         <service
-            android:name=".features.service_examples.counter.CounterAppService"
+            android:name=".application_components.services.counter.CounterAppService"
             android:exported="false" />
         <service
-            android:name=".features.service_examples.music.MusicForegroundService"
+            android:name=".application_components.services.music_example.MusicForegroundService"
             android:exported="false" />
         <service
-            android:name=".features.service_examples.music.MusicBoundService"
+            android:name=".application_components.services.music_example.MusicBoundService"
             android:exported="false" />
 
         <receiver android:name=".features.alarm.AlarmBroadcastReceiver" />

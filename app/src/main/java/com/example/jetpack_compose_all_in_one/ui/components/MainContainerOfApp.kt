@@ -22,11 +22,12 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.jetpack_compose_all_in_one.*
 import com.example.jetpack_compose_all_in_one.R
-import com.example.jetpack_compose_all_in_one.application_components.ActivityDemo
+import com.example.jetpack_compose_all_in_one.application_components.activity.ActivityDemo
 import com.example.jetpack_compose_all_in_one.application_components.broadcastreceiver.BroadcastReceiverScreen
+import com.example.jetpack_compose_all_in_one.application_components.content_provider.ContentProviderScreen
 import com.example.jetpack_compose_all_in_one.features.alarm.AlarmMainUI
 import com.example.jetpack_compose_all_in_one.features.chatmodule.ChatViewModel
-import com.example.jetpack_compose_all_in_one.features.content_provider.ContactList
+import com.example.jetpack_compose_all_in_one.application_components.content_provider.demo_contacts.ContactList
 import com.example.jetpack_compose_all_in_one.features.dog_api.view.RandomDogUI
 import com.example.jetpack_compose_all_in_one.features.download_manager.Download
 import com.example.jetpack_compose_all_in_one.features.flows_demo.FeatureFlowContent
@@ -39,7 +40,7 @@ import com.example.jetpack_compose_all_in_one.features.notes.data.NoteUI
 import com.example.jetpack_compose_all_in_one.features.play_with_maps.ComposeDemoApp
 import com.example.jetpack_compose_all_in_one.features.profile.ShowProfileScreen
 import com.example.jetpack_compose_all_in_one.features.profile_update.InflateProfileUI
-import com.example.jetpack_compose_all_in_one.features.provideimages.ShowImages
+import com.example.jetpack_compose_all_in_one.application_components.content_provider.demo_images.ShowImages
 import com.example.jetpack_compose_all_in_one.features.qrcodescanner.PreviewViewComposable
 import com.example.jetpack_compose_all_in_one.features.random_dog_api.view.NextRandomDog
 import com.example.jetpack_compose_all_in_one.features.random_fox.view.RandomFoxUI
@@ -420,7 +421,7 @@ fun MainContainerOfApp(
                 }
 
                 composable(NavDes.ContentProvider.route()) {
-                    InflateProfileUI()
+                    ContentProviderScreen()
                 }
                 composable(NavDes.Service.route()) {
                     InflateProfileUI()

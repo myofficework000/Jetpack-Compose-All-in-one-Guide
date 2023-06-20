@@ -21,8 +21,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpack_compose_all_in_one.features.download_manager.Download
 import com.example.jetpack_compose_all_in_one.features.internet.InternetViewModel
 import com.example.jetpack_compose_all_in_one.features.internet.NetworkState
-import com.example.jetpack_compose_all_in_one.features.service_examples.music.MusicBoundService
-import com.example.jetpack_compose_all_in_one.features.service_examples.music.MusicForegroundService
+import com.example.jetpack_compose_all_in_one.application_components.services.music_example.MusicBoundService
+import com.example.jetpack_compose_all_in_one.application_components.services.music_example.MusicForegroundService
 import com.example.jetpack_compose_all_in_one.ui.components.InputFields
 import com.example.jetpack_compose_all_in_one.ui.components.MainContainerOfApp
 import com.example.jetpack_compose_all_in_one.ui.theme.JetpackComposeAllInOneTheme

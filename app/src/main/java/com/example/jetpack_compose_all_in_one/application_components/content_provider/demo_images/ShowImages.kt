@@ -1,4 +1,4 @@
-package com.example.jetpack_compose_all_in_one.features.provideimages
+package com.example.jetpack_compose_all_in_one.application_components.content_provider.demo_images
 
 import android.os.Build
 import android.provider.MediaStore
