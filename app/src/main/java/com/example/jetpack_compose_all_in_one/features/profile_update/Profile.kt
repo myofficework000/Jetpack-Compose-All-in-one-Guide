@@ -17,5 +17,8 @@ data class Profile(
     var email: String,
 
     @ColumnInfo(name = "about")
-    var about: String
+    var about: String,
+
+    @ColumnInfo(name = "imageuri")
+    var imageUri: String
 )

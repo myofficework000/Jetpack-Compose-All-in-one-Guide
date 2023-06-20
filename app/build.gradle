@@ -55,7 +55,7 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
-    buildFeatures{
+    buildFeatures {
         viewBinding true
         dataBinding true
     }
@@ -139,7 +139,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
 
     // LiveData
-   // implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.0'
+    // implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1'
     implementation 'com.google.android.gms:play-services-location:21.0.1'
 
