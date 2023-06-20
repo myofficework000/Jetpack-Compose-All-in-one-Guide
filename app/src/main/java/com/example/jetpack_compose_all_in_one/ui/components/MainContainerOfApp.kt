@@ -423,10 +423,6 @@ fun MainContainerOfApp(
                 composable(NavDes.ContentProvider.route()) {
                     ContentProviderScreen()
                 }
-                composable(NavDes.Service.route()) {
-                    InflateProfileUI()
-                }
-
             }
         }
     }

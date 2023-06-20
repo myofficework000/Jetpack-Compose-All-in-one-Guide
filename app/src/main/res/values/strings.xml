@@ -161,4 +161,15 @@
         <item>Broadcast Wifi</item>
     </string-array>
 
+    <string-array name="content_provider_header_text">
+        <item>Contacts Fetched</item>
+        <item>Images Fetched</item>
+        <item>Custom Content Provider</item>
+    </string-array>
+
+    <string-array name="service_header_text">
+        <item>Counter Demo</item>
+        <item>Music Demo</item>
+    </string-array>
+
 </resources>

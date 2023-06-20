@@ -9,10 +9,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.API_
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.APPLICATION_COMPONENTS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BOUND_SERVICE
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BOUND_SERVICE_ABOUT
-import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BROADCAST_RECEIVER
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BROADCAST_RECEIVERS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BROADCAST_RECEIVERS_ABOUT
-import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BROADCAST_RECEIVER_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CHAT_DEMO_UI
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CHAT_DEMO_UI_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.COLLAPSABLE
@@ -103,8 +101,6 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.RAND
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.RANDOM_DOG_API_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.RANDOM_FOX_API
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.RANDOM_FOX_API_ABOUT
-import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SERVICES
-import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SERVICES_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SERVICE_IMPLEMENTATIONS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SHOW_CONTACTS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SHOW_CONTACTS_ABOUT
@@ -289,7 +285,6 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     object BroadCastReceiver :
         NavDes(NavigationDrawerData(BROADCAST_RECEIVERS, BROADCAST_RECEIVERS_ABOUT))
 
-    object Service : NavDes(NavigationDrawerData(SERVICES, SERVICES_ABOUT))
     object Activity : NavDes(NavigationDrawerData(ACTIVITY, ACTIVITY_ABOUT))
 
     object ApplicationComponents : NavDes(
@@ -297,8 +292,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
             listOf(
                 Activity,
                 BroadCastReceiver,
-                Service,
-                ContentProvider
+                ContentProvider,
+                CategoryServices
             ), APPLICATION_COMPONENTS
         )
     )
