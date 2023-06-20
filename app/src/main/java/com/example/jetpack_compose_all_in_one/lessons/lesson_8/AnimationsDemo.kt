@@ -1,14 +1,13 @@
 package com.example.jetpack_compose_all_in_one.lessons.lesson_8
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.animateIntAsState
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.slideInHorizontally
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -16,10 +15,12 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -30,12 +31,16 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.ui.components.SimpleTextButton
 import com.example.jetpack_compose_all_in_one.ui.theme.LightBlueToBlue30
+import com.example.jetpack_compose_all_in_one.ui.theme.dp_15
+import com.example.jetpack_compose_all_in_one.ui.theme.dp_50
+import com.example.jetpack_compose_all_in_one.ui.theme.dp_8
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -134,7 +139,7 @@ fun RoundAnimationExample() {
     var animate by remember { mutableStateOf(false) }
 
     val border by animateIntAsState(
-        targetValue = if(animate) 100 else 0,
+        targetValue = if (animate) 100 else 0,
         animationSpec = tween(durationMillis = 500)
     )
 
@@ -145,7 +150,6 @@ fun RoundAnimationExample() {
             .background(Color.Blue)
             .clickable { animate = !animate }
     )
-
 
 
 }
@@ -165,7 +169,8 @@ fun FloatAnimationExample() {
         verticalArrangement = Arrangement.Center
     ) {
         Box(
-            modifier = Modifier.size(100.dp)
+            modifier = Modifier
+                .size(100.dp)
                 .graphicsLayer {
                     translationX = animateValue * 100 * if (isVisible) -1 else 1
                     alpha = 1 - animateValue
@@ -175,5 +180,43 @@ fun FloatAnimationExample() {
         SimpleTextButton(if (isVisible) "Float out" else "Float in") {
             isVisible = !isVisible
         }
+    }
+}
+
+@Composable
+fun ShootArrow(modifier: Modifier, yOffset: Int, item: @Composable () -> Unit) {
+
+    Box(modifier) {
+        Box(
+            Modifier
+                .offset(y = yOffset.dp)
+                .align(Alignment.TopCenter)
+        ) {
+            item()
+        }
+    }
+}
+
+@Composable
+fun Arrow() {
+    Image(
+        painter = painterResource(id = R.drawable.baseline_arrow_downward_24),
+        contentDescription = null,
+        modifier = Modifier
+            .padding(top = dp_15)
+            .size(dp_50),
+    )
+}
+
+@Composable
+fun DownArrowAnimation() {
+    val yState by remember { mutableStateOf(0) }
+    val yOffset = animateIntAsState(
+        targetValue = yState,
+        animationSpec = tween(durationMillis = 4000, easing = LinearEasing)
+    )
+
+    ShootArrow(modifier = Modifier.fillMaxSize(fraction = .8f), yOffset = yOffset.value) {
+        Arrow()
     }
 }
