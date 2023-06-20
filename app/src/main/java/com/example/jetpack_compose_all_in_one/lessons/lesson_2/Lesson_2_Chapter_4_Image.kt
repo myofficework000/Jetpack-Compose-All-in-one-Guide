@@ -58,6 +58,7 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberAsyncImagePainter
+import coil.compose.rememberImagePainter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
@@ -795,5 +796,14 @@ private val triangleShape = GenericShape { size: Size, layoutDirection: LayoutDi
     addPath(path = path)
 }
 
+@Composable
+fun DisplayImageFromUri(imageUri: String) {
+    val painter: Painter = rememberAsyncImagePainter(imageUri)
 
+    Image(
+        painter = painter,
+        contentDescription = "Image",
+        // Add any other styling properties you want
+    )
+}
 

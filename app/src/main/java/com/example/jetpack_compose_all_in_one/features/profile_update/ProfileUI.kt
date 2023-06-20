@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
@@ -35,9 +34,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalFocusManager
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
@@ -117,7 +116,7 @@ fun CreateProfileUI(
             )
 
             val launcher =
-                rememberLauncherForActivityResult(contract = ActivityResultContracts.GetContent()) {uri: Uri? ->  
+                rememberLauncherForActivityResult(contract = ActivityResultContracts.GetContent()) {uri: Uri? ->
                     uri?.let {
                         imageUri.value = it .toString()
                     }
@@ -275,7 +274,8 @@ fun CreateProfileUI(
                         userId = if (isAddedData) viewModel.profileData.value!!.userId else 0,
                         name = username.text,
                         email = userEmail.text,
-                        about = aboutUser.text
+                        about = aboutUser.text,
+                        imageUri = imageUri.value
                     )
 
                     if (isAddedData) {
@@ -307,6 +307,8 @@ fun CreateProfileUI(
 
 @Composable
 fun UserInfoUI(viewModel: ProfileViewModel, onUpdateButtonClicked: () -> Unit) {
+
+    val painter: Painter = rememberAsyncImagePainter(Uri.parse(viewModel.profileData.value?.imageUri))
     ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
@@ -326,19 +328,23 @@ fun UserInfoUI(viewModel: ProfileViewModel, onUpdateButtonClicked: () -> Unit) {
             aboutText,
             about) = createRefs()
 
-        Image(
-            painter = painterResource(id = R.drawable.actor1),
-            contentDescription = null,
-            modifier = Modifier
-                .padding(top = dp_80)
-                .clip(CircleShape)
-                .size(dp_100)
-                .constrainAs(image) {
-                    top.linkTo(parent.top)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                }
-        )
+        viewModel.getProfileData()
+        viewModel.profileData.value?.let {
+            Image(
+                painter = painter,
+                contentDescription = null,
+                modifier = Modifier
+                    .padding(top = dp_80)
+                    .clip(CircleShape)
+                    .size(dp_100)
+                    .constrainAs(image) {
+                        top.linkTo(parent.top)
+                        start.linkTo(parent.start)
+                        end.linkTo(parent.end)
+                    }
+            )
+        }
+
 
         viewModel.profileData.value?.let {
             Text(
@@ -483,4 +489,22 @@ fun UserInfoUI(viewModel: ProfileViewModel, onUpdateButtonClicked: () -> Unit) {
         }
     }
 }
+
+//@Composable
+//fun LoadImageFromUri(uri: Uri) {
+//    val context = LocalContext.current
+//
+//    val imageBitmap: ImageBitmap? = loadImageResource(uri = uri) {
+//        scale(IntSize(300, 300))
+//    }.value?.asImageBitmap()
+//
+//    imageBitmap?.let {
+//        Image(
+//            bitmap = it,
+//            contentDescription = null,
+//            modifier = Modifier.fillMaxSize(),
+//            contentScale = ContentScale.FillBounds
+//        )
+//    }
+//}
 
