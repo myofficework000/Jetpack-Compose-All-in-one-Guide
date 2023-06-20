@@ -1,4 +1,4 @@
-package com.example.jetpack_compose_all_in_one.features.broadcastreceiver.bluetooth
+package com.example.jetpack_compose_all_in_one.application_components.broadcastreceiver.bluetooth
 
 import android.bluetooth.BluetoothAdapter
 import android.content.BroadcastReceiver

@@ -23,8 +23,8 @@ import androidx.navigation.compose.rememberNavController
 import com.example.jetpack_compose_all_in_one.*
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.application_components.ActivityDemo
+import com.example.jetpack_compose_all_in_one.application_components.broadcastreceiver.BroadcastReceiverScreen
 import com.example.jetpack_compose_all_in_one.features.alarm.AlarmMainUI
-import com.example.jetpack_compose_all_in_one.features.broadcastreceiver.BroadcastReceiverScreen
 import com.example.jetpack_compose_all_in_one.features.chatmodule.ChatViewModel
 import com.example.jetpack_compose_all_in_one.features.content_provider.ContactList
 import com.example.jetpack_compose_all_in_one.features.dog_api.view.RandomDogUI
@@ -408,7 +408,7 @@ fun MainContainerOfApp(
                 composable(NavDes.NoteRoomDemo.route()) {
                     NoteUI(context)
                 }
-                composable(NavDes.AirplaneMode.route()) {
+                composable(NavDes.BroadCastReceiver.route()) {
                     BroadcastReceiverScreen()
                 }
                 composable(NavDes.ProfileUpdate.route()) {
@@ -419,9 +419,6 @@ fun MainContainerOfApp(
                     ActivityDemo()
                 }
 
-                composable(NavDes.BroadCastReceiver.route()) {
-                    InflateProfileUI()
-                }
                 composable(NavDes.ContentProvider.route()) {
                     InflateProfileUI()
                 }

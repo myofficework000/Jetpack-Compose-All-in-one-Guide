@@ -1,4 +1,4 @@
-package com.example.jetpack_compose_all_in_one.features.broadcastreceiver.airplanemode
+package com.example.jetpack_compose_all_in_one.application_components.broadcastreceiver.airplanemode
 
 import android.content.BroadcastReceiver
 import android.content.Context

@@ -227,8 +227,6 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object NoteRoomDemo : NavDes(NavigationDrawerData(NOTES_ROOM_DB, NOTES_ROOM_DB_ABOUT))
 
-    object AirplaneMode : NavDes(NavigationDrawerData(BROADCAST_RECEIVER, BROADCAST_RECEIVER_ABOUT))
-
     object ProfileUpdate : NavDes(NavigationDrawerData(PROFILE_UPDATE, PROFILE_UPDATE_ABOUT))
 
     /*object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
@@ -342,7 +340,6 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 Collapsable,
                 TimerDemo,
                 NoteRoomDemo,
-                AirplaneMode,
                 ProfileUpdate
             ), FEATURES
         )

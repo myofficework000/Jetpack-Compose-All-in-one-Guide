@@ -68,13 +68,19 @@
         <receiver android:name=".features.alarm.AlarmBroadcastReceiver" />
 
         <receiver
-            android:name=".features.broadcastreceiver.airplanemode.AirplaneModeReceiver"
+            android:name=".application_components.broadcastreceiver.airplanemode.AirplaneModeReceiver"
             android:enabled="true"
             android:exported="true" />
 
-        <receiver android:name=".features.broadcastreceiver.bluetooth.BluetoothReceiver"
+        <receiver android:name=".application_components.broadcastreceiver.bluetooth.BluetoothReceiver"
             android:enabled="true"
             android:exported="true" />
+
+        <receiver android:name=".application_components.broadcastreceiver.wifi.WifiReceiver"
+
+            android:enabled="true"
+            android:exported="true" />
+
 
 
         <service
