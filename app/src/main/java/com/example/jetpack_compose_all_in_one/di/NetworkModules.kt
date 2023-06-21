@@ -1,6 +1,6 @@
 package com.example.jetpack_compose_all_in_one.di
 
-import com.example.jetpack_compose_all_in_one.features.dog_api.model.DogApiService
+import com.example.jetpack_compose_all_in_one.android_architectures.mvvm.model.DogApiService
 import com.example.jetpack_compose_all_in_one.features.domain_search.ApiDomainSearch
 import com.example.jetpack_compose_all_in_one.features.login_style_1.ApiLoginService
 import com.example.jetpack_compose_all_in_one.features.news_sample.data.remote.NewsApiInterceptor

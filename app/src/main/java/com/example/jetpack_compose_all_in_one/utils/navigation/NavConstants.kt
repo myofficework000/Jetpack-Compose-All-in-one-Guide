@@ -169,7 +169,18 @@ object NavConstants {
 
     const val FEATURES = "Features"
 
-   const val APPLICATION_COMPONENTS = "Application components"
+    const val APPLICATION_COMPONENTS = "Application components"
+
+    const val ANDROID_ARCHITECTURES = "Android Architectures"
+
+    const val MVP = "MVP"
+    const val MVP_ABOUT = "MVP"
+    const val MVVM = "MVVM"
+    const val MVVM_ABOUT = "MVVM"
+    const val MVI = "MVI"
+    const val MVI_ABOUT = "MVI"
+    const val CLEAN_CODE = "CLEAN_CODE"
+    const val CLEAN_CODE_ABOUT = "Clean Code"
 
     const val CONTENT_PROVIDER = "CONTENT_PROVIDER"
     const val CONTENT_PROVIDER_ABOUT = "Content Provider"

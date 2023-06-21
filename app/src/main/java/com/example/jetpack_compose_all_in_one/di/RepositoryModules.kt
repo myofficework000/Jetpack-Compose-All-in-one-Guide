@@ -1,7 +1,7 @@
 package com.example.jetpack_compose_all_in_one.di
 
-import com.example.jetpack_compose_all_in_one.features.dog_api.model.DogRepository
-import com.example.jetpack_compose_all_in_one.features.dog_api.model.IDogRepository
+import com.example.jetpack_compose_all_in_one.android_architectures.mvvm.model.DogRepository
+import com.example.jetpack_compose_all_in_one.android_architectures.mvvm.model.IDogRepository
 import com.example.jetpack_compose_all_in_one.features.domain_search.DomainSearchRepository
 import com.example.jetpack_compose_all_in_one.features.domain_search.IDomainSearchRepository
 import com.example.jetpack_compose_all_in_one.features.news_sample.repository.INewsRepository

@@ -28,7 +28,7 @@ import com.example.jetpack_compose_all_in_one.application_components.content_pro
 import com.example.jetpack_compose_all_in_one.features.alarm.AlarmMainUI
 import com.example.jetpack_compose_all_in_one.features.chatmodule.ChatViewModel
 import com.example.jetpack_compose_all_in_one.application_components.content_provider.demo_contacts.ContactList
-import com.example.jetpack_compose_all_in_one.features.dog_api.view.RandomDogUI
+import com.example.jetpack_compose_all_in_one.android_architectures.mvvm.view.RandomDogUI
 import com.example.jetpack_compose_all_in_one.features.download_manager.Download
 import com.example.jetpack_compose_all_in_one.features.flows_demo.FeatureFlowContent
 import com.example.jetpack_compose_all_in_one.features.internet.InternetViewModel

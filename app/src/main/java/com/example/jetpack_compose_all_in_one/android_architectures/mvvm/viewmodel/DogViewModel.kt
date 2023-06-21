@@ -1,4 +1,4 @@
-package com.example.jetpack_compose_all_in_one.features.dog_api.viewmodel
+package com.example.jetpack_compose_all_in_one.android_architectures.mvvm.viewmodel
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -6,8 +6,8 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.jetpack_compose_all_in_one.features.dog_api.model.DogRepository
-import com.example.jetpack_compose_all_in_one.features.dog_api.model.data.DogResponse
+import com.example.jetpack_compose_all_in_one.android_architectures.mvvm.model.DogRepository
+import com.example.jetpack_compose_all_in_one.android_architectures.mvvm.model.data.DogResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

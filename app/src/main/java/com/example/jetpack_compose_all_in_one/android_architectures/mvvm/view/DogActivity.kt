@@ -1,4 +1,4 @@
-package com.example.jetpack_compose_all_in_one.features.dog_api.view
+package com.example.jetpack_compose_all_in_one.android_architectures.mvvm.view
 
 import android.os.Bundle
 import android.os.PersistableBundle
