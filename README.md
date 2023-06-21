@@ -3,8 +3,12 @@ Learn step by step UI development using Jetpack compose [beginners to advance]
 
 This comprehensive collection of lessons and features is specifically designed to guide you through the step-by-step process of understanding Jetpack Compose and Android development.
 
-- [x] Lessons 
+- [x] Jetpack Compose Lessons (1-12)
 - [x] Application component
+   - [ ] Activities
+   - [x] Services
+   - [x] Broadcast Receivers
+   - [x] Content Providers
 - [x] Android architectures
    - [ ] MVP (Model-View-Presenter)
    - [x] MVVM (Model-View-ViewModel)
@@ -21,7 +25,7 @@ This comprehensive collection of lessons and features is specifically designed t
    - [ ] ViewModel SavedState
    - [ ] Lifecycle
    - [ ] Security
-  - [x] Features
+- [x] Features 
 
 
 
