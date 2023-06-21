@@ -5,8 +5,24 @@ This comprehensive collection of lessons and features is specifically designed t
 
 - [x] Lessons 
 - [x] Application component
-- [x] Features
-- [ ] Jetpack components
+- [x] Android architectures
+   - [ ] MVP (Model-View-Presenter)
+   - [x] MVVM (Model-View-ViewModel)
+   - [ ] Clean Architecture
+   - [ ] MVI (Model-View-Intent)
+- [x] Jetpack components
+   - [x] Navigation
+   - [x] ViewModel
+   - [x] LiveData
+   - [x] Room Database
+   - [x] WorkManager
+   - [x] Paging
+   - [ ] Data Binding (not planned yet)
+   - [ ] ViewModel SavedState
+   - [ ] Lifecycle
+   - [ ] Security
+  - [x] Features
+
 
 
 | Lesson                                                                                                                                                                                                                     | Preview                                               |
@@ -16,9 +32,7 @@ This comprehensive collection of lessons and features is specifically designed t
 | <h3><b>Lesson 3:</b> Types of List </h3><br/> This lesson shows various examples List, Exampandable list, Animations with List compose UI <br> • **Chapter 1:** Simple List <br>• **Chapter 2:** Custom Vertical List<br> **• Chapter 3:** Simple Horizontal List <br>• **Chapter 4:** Vertical Grid List<br> **• Chapter 5:** Horizontal Grid List <br>  **• Chapter 6:** Expandable List <br>  **• Chapter 7:** Expandable Animated List <br>  **• Chapter 8:** Shimmer Animated List <br> | <img src="https://github.com/myofficework000/Jetpack-Compose-All-In-One-Guide/blob/master/demo/lesson-3.gif" width="170" height="300" alt="Alt Text"> |
  | <h3><b>Lesson 4:</b> Types of Dialog </h3><br/> This lesson shows various examples of dialogs<br> • **Chapter 1:** Alert dialog <br>• **Chapter 2:** BottomSheet Dailog<br> **• Chapter 3:** App Rating dialog <br>• **Chapter 4:** Logout dialog <br> | <img src="https://github.com/myofficework000/Jetpack-Compose-All-In-One-Guide/blob/master/demo/lesson-4.gif" width="170" height="300" alt="Alt Text"> |
  | <h3><b>Lesson 5:</b> Maps </h3><br/> This lesson shows various examples of maps<br> • **Chapter 1:** Map Basics  <br>   - Simple Map<br> - Inflate Marker on Map<br> • **Chapter 2:** Map types<br> **• Chapter 3:** Current Location on map <br>• **Chapter 4:** Search on map <br> | <img src="https://github.com/myofficework000/Jetpack-Compose-All-In-One-Guide/blob/master/demo/lesson-5.gif" width="170" height="300" alt="Alt Text"> |
-
-
-
+ | <h3><b>Lesson 6:</b> Theme Change </h3><br/> This lesson shows dark and light mode theme change <br> | <img src="https://github.com/myofficework000/Jetpack-Compose-All-In-One-Guide/blob/master/demo/lesson-6.gif" width="170" height="300" alt="Alt Text"> |
 
 ## License
 
