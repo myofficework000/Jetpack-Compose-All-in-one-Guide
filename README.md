@@ -11,9 +11,9 @@ Learn step by step UI development using Jetpack Compose [beginners to advance]. 
    - [x] Broadcast Receivers
    - [x] Content Providers
 - [x] Android architectures
-   - [ ] MVP (Model-View-Presenter)
+   - [x] MVP (Model-View-Presenter)
    - [x] MVVM (Model-View-ViewModel)
-   - [ ] Clean Architecture
+   - [x] Clean Architecture
    - [ ] MVI (Model-View-Intent)
 - [x] Jetpack components
    - [x] Navigation
@@ -21,7 +21,7 @@ Learn step by step UI development using Jetpack Compose [beginners to advance]. 
    - [x] LiveData
    - [x] Room Database
    - [x] WorkManager
-   - [x] Paging
+   - [x] Paging 
    - [ ] Data Binding (not planned yet)
    - [ ] ViewModel SavedState
    - [ ] Lifecycle
