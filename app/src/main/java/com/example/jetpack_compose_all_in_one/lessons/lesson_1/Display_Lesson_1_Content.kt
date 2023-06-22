@@ -15,6 +15,7 @@ import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.ui.components.LessonHeader
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_15
 import com.example.jetpack_compose_all_in_one.utils.LogicPager
+import com.example.jetpack_compose_all_in_one.utils.PagedLessonHeader
 
 @Preview
 @Composable
@@ -30,12 +31,15 @@ fun Lesson_1_Display() {
                 .fillMaxSize()
                 .padding(it)
         ) {
-            LessonHeader(
-                stringArrayResource(R.array.lesson_1_header_text)[currentPage.value],
-                Modifier
-                    .fillMaxWidth()
-                    .padding(dp_15),
-                TextAlign.Center
+            PagedLessonHeader(
+                modifier = Modifier.fillMaxWidth().padding(dp_15),
+                currentPage = currentPage.value,
+                headers = stringArrayResource(R.array.lesson_1_header_text).toList(),
+                infoContent = listOf(
+                    "Dis a row",
+                    "That's a column",
+                    "https://developer.android.com/jetpack/compose/layouts/basics"
+                )
             )
 
             when (currentPage.value) {
