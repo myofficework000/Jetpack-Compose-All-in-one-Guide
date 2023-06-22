@@ -430,6 +430,10 @@ fun MainContainerOfApp(
                     ContentProviderScreen()
                 }
 
+                composable(NavDes.Mvvm.route()) {
+                    RandomDogUI(vm = hiltViewModel())
+                }
+
                 composable(NavDes.CleanCode.route()) {
                     DogApiMainPage()
                 }

@@ -48,7 +48,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".android_architectures.mvvm.view.DogActivity" />
         <activity
             android:name=".ui.views.quotes_ui.QuoteActivity"
             android:exported="false"
