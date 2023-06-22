@@ -42,6 +42,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_11_INTEROPERABILITY_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_12_WEBVIEW
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_12_WEBVIEW_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_13_LOCALIAZATION
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_13_LOCALIAZATION_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_1_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_1
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_1_ABOUT
@@ -206,6 +208,9 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     object Lesson12WebView :
         NavDes(NavigationDrawerData(LESSON_12_WEBVIEW, LESSON_12_WEBVIEW_ABOUT))
 
+    object Lesson13Localization :
+        NavDes(NavigationDrawerData(LESSON_13_LOCALIAZATION , LESSON_13_LOCALIAZATION_ABOUT))
+
     object QuoteSwipe : NavDes(NavigationDrawerData(QUOTE_2, QUOTE_2_ABOUT))
 
     object NewsSample : NavDes(NavigationDrawerData(NEWS_SAMPLE, NEWS_SAMPLE_ABOUT))
@@ -337,7 +342,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 Lesson9ComposeTesting,
                 Lesson10AppBars,
                 Lesson11Interoperability,
-                Lesson12WebView
+                Lesson12WebView,
+                Lesson13Localization
             ), LESSONS
         )
     )
