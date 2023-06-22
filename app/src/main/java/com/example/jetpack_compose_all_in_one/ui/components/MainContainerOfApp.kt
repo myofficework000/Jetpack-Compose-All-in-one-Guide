@@ -22,6 +22,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.jetpack_compose_all_in_one.*
 import com.example.jetpack_compose_all_in_one.R
+import com.example.jetpack_compose_all_in_one.android_architectures.clean_code.presentation.ui.DogApiMainPage
 import com.example.jetpack_compose_all_in_one.application_components.activity.ActivityDemo
 import com.example.jetpack_compose_all_in_one.application_components.broadcastreceiver.BroadcastReceiverScreen
 import com.example.jetpack_compose_all_in_one.application_components.content_provider.ContentProviderScreen
@@ -422,6 +423,10 @@ fun MainContainerOfApp(
 
                 composable(NavDes.ContentProvider.route()) {
                     ContentProviderScreen()
+                }
+
+                composable(NavDes.CleanCode.route()) {
+                    DogApiMainPage()
                 }
             }
         }
