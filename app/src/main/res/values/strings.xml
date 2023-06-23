@@ -1,4 +1,11 @@
 <resources>
+    <string name="welcome_message">Welcome to my app!</string>
+
+    <plurals name="item_count">
+        <item quantity="one">%d item</item>
+        <item quantity="other">%d items</item>
+    </plurals>
+
     <string name="app_name">Jetpack-Compose-All-In-One</string>
     <string name="close_desc">close</string>
     <string name="dialog_title">Alert</string>
