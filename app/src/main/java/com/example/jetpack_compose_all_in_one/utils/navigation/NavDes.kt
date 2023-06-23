@@ -5,6 +5,7 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ACTI
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ACTIVITY_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ALARM_MANAGER
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ALARM_MANAGER_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ANDROID_ARCHITECTURES
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.API_IMPLEMENTATIONS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.APPLICATION_COMPONENTS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BOUND_SERVICE
@@ -319,7 +320,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 Mvvm,
                 Mvi,
                 CleanCode
-            ), APPLICATION_COMPONENTS
+            ), ANDROID_ARCHITECTURES
         )
     )
 
