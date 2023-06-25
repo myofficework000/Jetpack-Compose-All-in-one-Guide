@@ -32,13 +32,16 @@ fun ChatModule(
 ) {
     val chatMessageState = rememberSaveable { mutableStateOf("") }
 
-    Column(Modifier.fillMaxSize().background(LightBlueToBlue30)) {
+    Column(
+        Modifier
+            .fillMaxSize()
+            .background(LightBlueToBlue30)) {
         LazyColumn(
             Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 8.dp)
                 .weight(1f)
-        ){
+        ) {
             items(chatHistory) {
                 ChatBox(data = it)
             }

@@ -161,6 +161,7 @@
     <string name="follerNum">50</string>
     <string name="aboutUserText">About user info here</string>
     <string name="changeImage">Change Profile Image</string>
+    <string name="not_required_for_accessiblity">Not required for accessiblity</string>
 
     <string-array name="broadcast_header_text">
         <item>Broadcast Bluetooth</item>
