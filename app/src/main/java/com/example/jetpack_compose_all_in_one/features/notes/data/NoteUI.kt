@@ -29,11 +29,11 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun NoteUI(context: Context){
-    val noteViewModel : NoteViewModel = remember { initViewModel(context) }
+fun NoteUI(context: Context) {
+    val noteViewModel: NoteViewModel = remember { initViewModel(context) }
     val showAddNoteUI = remember { mutableStateOf(false) }
     val showNoteList = remember { mutableStateOf(false) }
-    Column( modifier = Modifier.fillMaxSize()) {
+    Column(modifier = Modifier.fillMaxSize()) {
         Button(onClick = { showAddNoteUI.value = true }) {
             Text(text = "Add Note")
         }
@@ -42,24 +42,25 @@ fun NoteUI(context: Context){
             Text(text = "Show Notes")
         }
 
-        if(showAddNoteUI.value){
+        if (showAddNoteUI.value) {
             AddNoteUI(
                 noteViewModel = noteViewModel,
-                onNoteAdded = {showAddNoteUI.value = false}
+                onNoteAdded = { showAddNoteUI.value = false }
             )
         }
-        if(showNoteList.value){
+        if (showNoteList.value) {
             NoteList(noteViewModel = noteViewModel)
         }
     }
 }
 
 @Composable
-fun NoteItem(note: Note){
-    Card( modifier = Modifier
-        .fillMaxWidth()
+fun NoteItem(note: Note) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
     ) {
-        Column(modifier  = Modifier.padding(16.dp)) {
+        Column(modifier = Modifier.padding(16.dp)) {
             Text(text = note.title, style = MaterialTheme.typography.h6)
             Spacer(modifier = Modifier.height(8.dp))
             Text(text = note.body, style = MaterialTheme.typography.body1)
@@ -70,13 +71,13 @@ fun NoteItem(note: Note){
 @Composable
 fun NoteList(
     noteViewModel: NoteViewModel
-){
+) {
     val notes by noteViewModel.notes.observeAsState(emptyList())
 
-    Box( modifier =  Modifier.fillMaxSize()){
+    Box(modifier = Modifier.fillMaxSize()) {
 
-        LazyColumn(modifier = Modifier.wrapContentHeight()){
-            items(notes){ note ->
+        LazyColumn(modifier = Modifier.wrapContentHeight()) {
+            items(notes) { note ->
                 NoteItem(note = note)
             }
         }
@@ -84,23 +85,23 @@ fun NoteList(
 }
 
 @Composable
-fun AddNoteUI(noteViewModel: NoteViewModel, onNoteAdded: () -> Unit){
-    val noteTitle = remember { mutableStateOf(TextFieldValue())}
-    val noteBody = remember { mutableStateOf(TextFieldValue())}
-    Column( modifier = Modifier.fillMaxSize()) {
+fun AddNoteUI(noteViewModel: NoteViewModel, onNoteAdded: () -> Unit) {
+    val noteTitle = remember { mutableStateOf(TextFieldValue()) }
+    val noteBody = remember { mutableStateOf(TextFieldValue()) }
+    Column(modifier = Modifier.fillMaxSize()) {
 
         TextField(
-            label = { Text(text = "Title")},
-            value = noteTitle.value ,
-            onValueChange = {noteTitle.value = it },
+            label = { Text(text = "Title") },
+            value = noteTitle.value,
+            onValueChange = { noteTitle.value = it },
             maxLines = 5,
             modifier = Modifier.fillMaxWidth()
 
         )
         TextField(
-            label = { Text(text = "")},
-            value = noteBody.value ,
-            onValueChange = {noteBody.value = it },
+            label = { Text(text = "") },
+            value = noteBody.value,
+            onValueChange = { noteBody.value = it },
             modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight(0.8f)
@@ -108,7 +109,7 @@ fun AddNoteUI(noteViewModel: NoteViewModel, onNoteAdded: () -> Unit){
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Center
-        ){
+        ) {
             Button(
                 onClick = {
                     val note = Note(
@@ -120,7 +121,7 @@ fun AddNoteUI(noteViewModel: NoteViewModel, onNoteAdded: () -> Unit){
                     onNoteAdded.invoke()
                     noteTitle.value = TextFieldValue()
                     noteBody.value = TextFieldValue()
-                          },
+                },
             ) {
                 Text(text = "Done")
             }
@@ -128,7 +129,7 @@ fun AddNoteUI(noteViewModel: NoteViewModel, onNoteAdded: () -> Unit){
     }
 }
 
-private fun initViewModel(context: Context) : NoteViewModel{
+private fun initViewModel(context: Context): NoteViewModel {
     val database = NoteDatabase.getInstance(context)
     val noteDao = database.noteDao()
     val repository = NoteRepository(noteDao)

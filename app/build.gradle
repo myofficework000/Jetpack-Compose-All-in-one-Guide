@@ -156,6 +156,9 @@ dependencies {
 
     testImplementation 'androidx.arch.core:core-testing:2.2.0'
 
+    //Lottie
+    implementation "com.airbnb.android:lottie-compose:6.0.1"
+
 }
 
 // Remember to add this to local.properties

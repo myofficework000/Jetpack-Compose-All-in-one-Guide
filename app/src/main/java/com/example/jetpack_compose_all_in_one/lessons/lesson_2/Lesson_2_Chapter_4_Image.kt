@@ -52,13 +52,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberAsyncImagePainter
-import coil.compose.rememberImagePainter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
@@ -147,8 +147,11 @@ private fun TutorialContent() {
 @Composable
 private fun ImageFromPainterExample() {
     LessonText2(text = "Image from painterResource")
-    val painter: Painter = painterResource(id = R.drawable.profile)
-    Image(painter, contentDescription = null)
+    val painter = painterResource(id = R.drawable.actor5)
+    Image(
+        painter,
+        contentDescription = stringResource(id = R.string.not_required_for_accessiblity)
+    )
 }
 
 @Composable
@@ -292,7 +295,7 @@ private fun DrawOnImageBitmapExample() {
     // ImageBitmap that was sent as param. ImageBitmap that returned can be
     // be used to display on Image or can be saved to a physical file.
 
-    val canvas: androidx.compose.ui.graphics.Canvas = Canvas(imageBitmap)
+    val canvas: Canvas = Canvas(imageBitmap)
 
     val paint = remember {
         Paint().apply {
@@ -312,7 +315,6 @@ private fun DrawOnImageBitmapExample() {
     )
 
     Image(bitmap = imageBitmap, contentDescription = null)
-
 }
 
 @Composable
@@ -561,13 +563,6 @@ fun ImageDownloadWithGlideExample() {
             imageBitmap = bitmap.asImageBitmap()
         }
 
-        override fun onLoadFailed(errorDrawable: Drawable?) {
-            super.onLoadFailed(errorDrawable)
-        }
-
-        override fun onLoadStarted(placeholder: Drawable?) {
-            super.onLoadStarted(placeholder)
-        }
     }
 
     glide

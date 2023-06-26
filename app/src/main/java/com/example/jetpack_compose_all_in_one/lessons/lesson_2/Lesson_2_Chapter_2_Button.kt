@@ -101,7 +101,6 @@ private fun ButtonExample(modifier: Modifier) {
     }
 
     FullWidthRow {
-
         Button(
             onClick = {},
             modifier = modifier,
