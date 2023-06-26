@@ -71,7 +71,6 @@ fun InflateProfileUI() {
 
     viewModel.getProfileData()
 
-
     var displayMode by remember { mutableStateOf("UserInfoUI") }
 
     LaunchedEffect(key1 = false) {

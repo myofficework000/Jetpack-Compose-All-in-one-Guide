@@ -110,6 +110,9 @@ object NavConstants {
     const val LESSON_12_WEBVIEW = "LESSON_12_WEB_VIEW "
     const val LESSON_12_WEBVIEW_ABOUT = "Lesson 12: Web View"
 
+    const val LESSON_13_LOCALIAZATION = "LESSON_13_Localization"
+    const val LESSON_13_LOCALIAZATION_ABOUT = "Lesson 13: Localization"
+
     const val QUOTE_2 = "quote2"
     const val QUOTE_2_ABOUT = "Swipe Quotes"
 
