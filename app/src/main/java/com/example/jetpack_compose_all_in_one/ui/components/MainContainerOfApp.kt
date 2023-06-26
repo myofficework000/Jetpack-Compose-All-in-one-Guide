@@ -23,6 +23,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.jetpack_compose_all_in_one.*
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.android_architectures.clean_code.presentation.ui.DogApiMainPage
+import com.example.jetpack_compose_all_in_one.android_architectures.mvi.view.RandomDogView
 import com.example.jetpack_compose_all_in_one.android_architectures.mvp.view.DogMvpUI
 import com.example.jetpack_compose_all_in_one.application_components.activity.ActivityDemo
 import com.example.jetpack_compose_all_in_one.application_components.broadcastreceiver.BroadcastReceiverScreen
@@ -389,6 +390,9 @@ fun MainContainerOfApp(
                     DogMvpUI()
                 }
 
+                composable(NavDes.Mvi.route()) {
+                    RandomDogView()
+                }
                 composable(NavDes.RandomFox.route()) {
                     RandomFoxUI()
                 }
