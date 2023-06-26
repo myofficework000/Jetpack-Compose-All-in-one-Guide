@@ -35,6 +35,11 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.LottieConstants
+import com.airbnb.lottie.compose.animateLottieCompositionAsState
+import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.ui.components.SimpleTextButton
 import com.example.jetpack_compose_all_in_one.ui.theme.LightBlueToBlue30
@@ -219,4 +224,12 @@ fun DownArrowAnimation() {
     ShootArrow(modifier = Modifier.fillMaxSize(fraction = .8f), yOffset = yOffset.value) {
         Arrow()
     }
+}
+
+@Composable
+fun SpinLottieAnimation(){
+    val lottieComposition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(R.raw.loading_lottie))
+    val progress by animateLottieCompositionAsState(composition = lottieComposition, iterations = LottieConstants.IterateForever)
+
+    LottieAnimation(composition = lottieComposition, progress = { progress })
 }
