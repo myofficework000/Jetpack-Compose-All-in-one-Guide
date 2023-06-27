@@ -1,5 +1,6 @@
 package com.example.jetpack_compose_all_in_one.features.shared_pref
 
+import android.content.Context
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -20,9 +21,8 @@ import com.example.jetpack_compose_all_in_one.ui.theme.dp_15
 import com.example.jetpack_compose_all_in_one.utils.LogicPager
 import com.example.jetpack_compose_all_in_one.utils.PagedLessonHeader
 
-@Preview
 @Composable
-fun SharedPrefDemoScreen() {
+fun SharedPrefDemoScreen(context: Context) {
     val currentPage = rememberSaveable { mutableStateOf(0) }
 
     LogicPager(
@@ -37,16 +37,15 @@ fun SharedPrefDemoScreen() {
             PagedLessonHeader(
                 modifier = Modifier.fillMaxWidth().padding(dp_15),
                 currentPage = currentPage.value,
-                headers = stringArrayResource(R.array.lesson_1_header_text).toList(),
+                headers = stringArrayResource(R.array.shared_pref_demos).toList(),
                 infoContent = listOf(
-                    "Dis a row",
-                    "That's a column",
-                    "https://developer.android.com/jetpack/compose/layouts/basics"
+                    "Demo 1",
+                    "Demo 2"
                 )
             )
 
             when (currentPage.value) {
-                0 -> Demo1()
+                0 -> Demo1(context)
                 1 -> Demo2()
             }
         }

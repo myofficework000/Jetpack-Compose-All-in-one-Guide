@@ -159,6 +159,10 @@ dependencies {
     //Lottie
     implementation "com.airbnb.android:lottie-compose:6.0.1"
 
+    //Secured Shared Preference
+    implementation "androidx.security:security-crypto:1.1.0-alpha04"
+    implementation "androidx.security:security-identity-credential:1.0.0-alpha01"
+    implementation "androidx.security:security-crypto-ktx:1.1.0-alpha04"
 }
 
 // Remember to add this to local.properties

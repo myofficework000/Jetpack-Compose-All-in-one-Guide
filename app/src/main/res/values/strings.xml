@@ -111,6 +111,11 @@
         <item>When Activity closed</item>
     </string-array>
 
+    <string-array name="shared_pref_demos">
+        <item>Demo 1</item>
+        <item>Demo 2</item>
+    </string-array>
+
     <string name="l5c3_header_text">Your current location</string>
     <string name="read_full_article">Read Article</string>
     <string name="close">Close</string>
@@ -187,5 +192,9 @@
     </string-array>
 
     <string name="generic_error">Something went wrong</string>
+    <string name="email_field">Enter email</string>
+    <string name="passwordText">Password</string>
+    <string name="password_field">Enter password\n</string>
+    <string name="secure_save_pref">"Securely Save "</string>
 
 </resources>
