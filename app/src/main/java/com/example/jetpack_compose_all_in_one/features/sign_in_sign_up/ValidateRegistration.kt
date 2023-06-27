@@ -15,6 +15,4 @@ object ValidateRegistration {
         if (password.count { it.isDigit()} < 6) return false
         return true
     }
-
-
 }

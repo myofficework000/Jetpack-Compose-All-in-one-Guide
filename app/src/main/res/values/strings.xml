@@ -180,4 +180,10 @@
         <item>Music Demo</item>
     </string-array>
 
+    <string-array name="shared_pref_header">
+        <item>Shared Preferences</item>
+        <item>Secured Shared Preferences</item>
+        <item>Box Examples</item>
+    </string-array>
+
 </resources>

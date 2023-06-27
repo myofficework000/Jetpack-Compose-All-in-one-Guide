@@ -135,6 +135,9 @@ object NavConstants {
     const val PROFILE_UPDATE = "PROFILE_UPDATE"
     const val PROFILE_UPDATE_ABOUT = "Profile Update"
 
+    const val SHARED_PREF_DEMO = "SHARED_PREF_DEMO"
+    const val SHARED_PREF_DEMO_ABOUT = "Shared preferences"
+
     const val RANDOM_DOG_API = "RandomDogApi"
     const val RANDOM_DOG_API_ABOUT = "Random Dog API"
 

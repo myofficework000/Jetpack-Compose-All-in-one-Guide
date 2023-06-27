@@ -113,6 +113,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.RAND
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.RANDOM_FOX_API
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.RANDOM_FOX_API_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SERVICE_IMPLEMENTATIONS
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SHARED_PREF_DEMO
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SHARED_PREF_DEMO_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SHOW_CONTACTS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SHOW_CONTACTS_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SHOW_IMAGES
@@ -238,6 +240,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     object NoteRoomDemo : NavDes(NavigationDrawerData(NOTES_ROOM_DB, NOTES_ROOM_DB_ABOUT))
 
     object ProfileUpdate : NavDes(NavigationDrawerData(PROFILE_UPDATE, PROFILE_UPDATE_ABOUT))
+
+    object SharedPrefDemo : NavDes(NavigationDrawerData(SHARED_PREF_DEMO, SHARED_PREF_DEMO_ABOUT))
 
     /*object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
         R.drawable.baseline_contacts_24
@@ -367,7 +371,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 Collapsable,
                 TimerDemo,
                 NoteRoomDemo,
-                ProfileUpdate
+                ProfileUpdate,
+                SharedPrefDemo
             ), FEATURES
         )
     )
