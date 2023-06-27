@@ -20,5 +20,8 @@ data class Profile(
     var about: String,
 
     @ColumnInfo(name = "imageuri")
-    var imageUri: String
+    var imageUri: String,
+
+    @ColumnInfo(name = "age")
+    var age: Int
 )

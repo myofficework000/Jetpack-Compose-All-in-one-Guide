@@ -3,6 +3,7 @@ package com.example.jetpack_compose_all_in_one.di
 import android.content.Context
 import androidx.room.Room
 import com.example.jetpack_compose_all_in_one.features.alarm.database.AppDatabase
+import com.example.jetpack_compose_all_in_one.features.profile_update.migration1To2
 import com.example.jetpack_compose_all_in_one.utils.Constants
 import dagger.Module
 import dagger.Provides
@@ -22,6 +23,7 @@ class RoomModules {
         Constants.ROOMDB_DBNAME
     )
         .allowMainThreadQueries()
+        .addMigrations(migration1To2)
         .build()
 
     @Provides

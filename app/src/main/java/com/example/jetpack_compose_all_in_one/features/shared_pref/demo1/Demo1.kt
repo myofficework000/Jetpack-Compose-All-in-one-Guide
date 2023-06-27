@@ -32,6 +32,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.room.Database
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_10
 
@@ -115,4 +116,3 @@ private fun Demo1_Preview(){
     val context = LocalContext.current
     Demo1(context)
 }
-
