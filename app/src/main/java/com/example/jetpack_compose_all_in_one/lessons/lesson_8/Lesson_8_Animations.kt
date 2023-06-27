@@ -28,7 +28,7 @@ private fun LessonContent() {
     val currentPage = rememberSaveable { mutableIntStateOf(0) }
 
     LogicPager(
-        pageCount = 7,
+        pageCount = 8,
         currentPage = currentPage
     ) {
         Column(
@@ -52,6 +52,7 @@ private fun LessonContent() {
                 4 -> ShimmerCard()
                 5 -> FloatAnimationExample()
                 6 -> DownArrowAnimation()
+                7 -> SpinLottieAnimation()
             }
         }
     }
