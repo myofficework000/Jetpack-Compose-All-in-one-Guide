@@ -274,7 +274,8 @@ fun CreateProfileUI(
                         name = username.text,
                         email = userEmail.text,
                         about = aboutUser.text,
-                        imageUri = imageUri.value
+                        imageUri = imageUri.value,
+                        age = 0
                     )
 
                     if (isAddedData) {
@@ -307,7 +308,8 @@ fun CreateProfileUI(
 @Composable
 fun UserInfoUI(viewModel: ProfileViewModel, onUpdateButtonClicked: () -> Unit) {
 
-    val painter: Painter = rememberAsyncImagePainter(Uri.parse(viewModel.profileData.value?.imageUri))
+    //val painter: Painter = rememberAsyncImagePainter(Uri.parse(viewModel.profileData.value?.imageUri))
+    val painter: Painter = rememberAsyncImagePainter(Uri.parse(viewModel.profileData.value?.imageUri ?: "default_uri"))
     ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
@@ -328,7 +330,7 @@ fun UserInfoUI(viewModel: ProfileViewModel, onUpdateButtonClicked: () -> Unit) {
             about) = createRefs()
 
         viewModel.getProfileData()
-        viewModel.profileData.value?.let {
+        viewModel.profileData.value?.imageUri?.let {
             Image(
                 painter = painter,
                 contentDescription = null,
