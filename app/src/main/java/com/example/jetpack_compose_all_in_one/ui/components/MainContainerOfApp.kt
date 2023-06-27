@@ -47,6 +47,7 @@ import com.example.jetpack_compose_all_in_one.application_components.content_pro
 import com.example.jetpack_compose_all_in_one.features.qrcodescanner.PreviewViewComposable
 import com.example.jetpack_compose_all_in_one.features.random_dog_api.view.NextRandomDog
 import com.example.jetpack_compose_all_in_one.features.random_fox.view.RandomFoxUI
+import com.example.jetpack_compose_all_in_one.features.shared_pref.SharedPrefDemoScreen
 import com.example.jetpack_compose_all_in_one.features.timer_demo.TimerDemo
 import com.example.jetpack_compose_all_in_one.features.weather_sample.model.remote.ApiWeatherService
 import com.example.jetpack_compose_all_in_one.features.weather_sample.model.remote.RetrofitBuilder
@@ -445,6 +446,9 @@ fun MainContainerOfApp(
 
                 composable(NavDes.CleanCode.route()) {
                     DogApiMainPage()
+                }
+                composable(NavDes.SharedPrefDemo.route()){
+                    SharedPrefDemoScreen(context = context)
                 }
             }
         }
