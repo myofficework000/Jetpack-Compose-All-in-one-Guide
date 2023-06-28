@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -76,6 +77,9 @@ import com.example.jetpack_compose_all_in_one.lessons.lesson_6.Lesson_6_ThemeCha
 import com.example.jetpack_compose_all_in_one.lessons.lesson_7.Lesson_7_Chapter_ConstraintLayout
 import com.example.jetpack_compose_all_in_one.lessons.lesson_8.Lesson_8_Animations
 import com.example.jetpack_compose_all_in_one.lessons.lesson_9.Lesson_9
+import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.remote.repository.ChatGPTRemoteRepository
+import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.view.ChatUI
+import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.viewmodel.ChatGPTViewModel
 import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat2
 import com.example.jetpack_compose_all_in_one.ui.views.domain_search.DomainSearch
 import com.example.jetpack_compose_all_in_one.ui.views.internet.InternetDemo
@@ -93,6 +97,7 @@ import kotlinx.coroutines.launch
 fun MainContainerOfApp(
     context: Context,
     internetViewModel: InternetViewModel,
+    chatGPTViewModel: ChatGPTViewModel,
     getCurrentLocationFunc: ((Location?) -> Unit) -> Unit,
     playMusicFuncForeground: (Uri) -> Unit,
     stopMusicFuncForeground: () -> Unit,
@@ -365,10 +370,11 @@ fun MainContainerOfApp(
                 }
                 composable(NavDes.WeatherSample.route()) {
                     // Please change this to hilt later please =_=b
-                    WeatherSample(
+                    /*WeatherSample(
                         weatherViewModel = weatherViewModel,
                         getCurrentLocationFunc
-                    )
+                    )*/
+                    ChatUI(hiltViewModel())
                 }
 
                 composable(NavDes.TimerDemo.route()) {

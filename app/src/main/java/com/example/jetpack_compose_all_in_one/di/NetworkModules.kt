@@ -13,6 +13,10 @@ import com.example.jetpack_compose_all_in_one.features.random_fox.model.RandomFo
 import com.example.jetpack_compose_all_in_one.features.swipe_cards.ApiQuotes
 import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.APIMovies
 import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.TmdbApiInterceptor
+import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.remote.AuthInterceptor
+import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.remote.ChatGPTApiServices
+import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.remote.repository.ChatGPTRemoteRepository
+import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.utils.Constants.CHAT_GPT_BASE_URL
 import com.example.jetpack_compose_all_in_one.utils.Constants
 import com.example.jetpack_compose_all_in_one.utils.Constants.QUOTES_BASE_URL
 import com.example.jetpack_compose_all_in_one.utils.Constants.RANDOM_DOG_BASE_URL
@@ -31,6 +35,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -178,4 +183,31 @@ object NetworkModules {
             .baseUrl(RANDOM_FOX_BASE_URL)
             .build()
             .create(RandomFoxService::class.java)
+
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient() =
+        OkHttpClient.Builder()
+            .addInterceptor(AuthInterceptor())
+            .callTimeout(60, TimeUnit.SECONDS)
+            .build()
+
+    @Provides
+    @Singleton
+    fun provideChatGptAPI(
+        converter: Converter.Factory,
+        client: OkHttpClient
+    ) =
+        Retrofit.Builder()
+            .addConverterFactory(converter)
+            .baseUrl(CHAT_GPT_BASE_URL)
+            .client(client)
+            .build()
+            .create(ChatGPTApiServices::class.java)
+
+    @Provides
+    @Singleton
+    fun provideChatGPTRepository( chatGPTApiServices: ChatGPTApiServices) =
+        ChatGPTRemoteRepository( chatGPTApiServices )
 }
