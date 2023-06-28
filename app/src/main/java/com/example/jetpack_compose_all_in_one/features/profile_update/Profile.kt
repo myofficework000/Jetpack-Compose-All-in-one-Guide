@@ -1,6 +1,7 @@
 package com.example.jetpack_compose_all_in_one.features.profile_update
 
 import androidx.room.ColumnInfo
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -23,5 +24,8 @@ data class Profile(
     var imageUri: String,
 
     @ColumnInfo(name = "age")
-    var age: Int
+    var age: Int,
+
+   @Embedded
+   var address: Address?
 )

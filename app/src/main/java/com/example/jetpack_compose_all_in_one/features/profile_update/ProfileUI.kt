@@ -7,9 +7,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -103,7 +105,7 @@ fun CreateProfileUI(
                 .padding(dp_10)
                 .background(Color.White)
         ) {
-            val (image, nameText, name, emailText, email, aboutText, about, button) = createRefs()
+            val (image, nameText, name, emailText, email, aboutText, about, button, address) = createRefs()
             val isAddedData = !viewModel.profileData.value?.name.isNullOrEmpty()
             val focusManager = LocalFocusManager.current
 
@@ -234,7 +236,7 @@ fun CreateProfileUI(
                 modifier = Modifier
                     .padding(start = dp_30, top = dp_24, bottom = dp_5)
                     .constrainAs(aboutText) {
-                        top.linkTo(email.bottom)
+                        top.linkTo(address.bottom)
                     }
             )
 
@@ -267,15 +269,46 @@ fun CreateProfileUI(
                 )
             )
 
+            val street = rememberSaveable { mutableStateOf("") }
+            val city = rememberSaveable { mutableStateOf("") }
+            val state = rememberSaveable { mutableStateOf("") }
+            val postalCode = rememberSaveable { mutableStateOf("") }
+
+            AddressScreen(
+                modifier = Modifier
+                    .padding(dp_10)
+                    .constrainAs(address)
+                    {
+                        top.linkTo(email.bottom)
+                        start.linkTo(parent.start)
+                    },
+                street.value,
+                city.value,
+                state.value,
+                postalCode.value,
+                onStreetChange = { newStreet -> street.value = newStreet },
+                onCityChange = {newCity -> city.value = newCity},
+                onStateChange = { newState -> state.value = newState} ,
+                onPostalCodeChange = { newPostalCode -> postalCode.value = newPostalCode} ,
+            )
+
             Button(
                 onClick = {
+                    val location = Address(
+                        id = 0 ,
+                        street = street.value,
+                        city = city.value,
+                        state = state.value,
+                        postalCode = postalCode.value
+                    )
                     val data = Profile(
                         userId = if (isAddedData) viewModel.profileData.value!!.userId else 0,
                         name = username.text,
                         email = userEmail.text,
                         about = aboutUser.text,
                         imageUri = imageUri.value,
-                        age = 0
+                        age = 0,
+                        address = location
                     )
 
                     if (isAddedData) {
@@ -490,6 +523,69 @@ fun UserInfoUI(viewModel: ProfileViewModel, onUpdateButtonClicked: () -> Unit) {
         }
     }
 }
+
+@Composable
+fun AddressScreen(
+    modifier: Modifier,
+    street: String,
+    city: String,
+    state: String,
+    postalCode : String,
+    onStreetChange: (String) -> Unit,
+    onCityChange: (String) -> Unit,
+    onStateChange: (String) -> Unit,
+    onPostalCodeChange: (String) -> Unit) {
+
+    Column(
+        modifier = modifier
+    ) {
+        Text(text = "Address",
+            modifier = Modifier
+                .padding(start = dp_20, top = dp_24, bottom = dp_5)
+        )
+
+        TextField(
+            value = street,
+            onValueChange = onStreetChange,
+            label = { Text("Street") },
+            modifier = Modifier
+                .padding(start = dp_20, bottom = dp_10, end = dp_20)
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(dp_10))
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        TextField(
+            value = city,
+            onValueChange = onCityChange,
+            label = { Text("City") },
+            modifier = Modifier
+                .padding(start = dp_20, top = dp_10, bottom = dp_10, end = dp_20)
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(dp_10))
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        TextField(
+            value = state,
+            onValueChange = onStateChange,
+            label = { Text("State") },
+            modifier = Modifier
+                .padding(start = dp_20, top = dp_10, bottom = dp_10,end = dp_20)
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(dp_10))
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        TextField(
+            value = postalCode,
+            onValueChange = onPostalCodeChange,
+            label = { Text("Postal Code") },
+            modifier = Modifier
+                .padding(start = dp_20, top = dp_10, bottom = dp_10,end = dp_20)
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(dp_10))
+        )
+    }
+}
+
 
 //@Composable
 //fun LoadImageFromUri(uri: Uri) {
