@@ -23,6 +23,7 @@ import com.example.jetpack_compose_all_in_one.features.internet.InternetViewMode
 import com.example.jetpack_compose_all_in_one.features.internet.NetworkState
 import com.example.jetpack_compose_all_in_one.application_components.services.music_example.MusicBoundService
 import com.example.jetpack_compose_all_in_one.application_components.services.music_example.MusicForegroundService
+import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.viewmodel.ChatGPTViewModel
 import com.example.jetpack_compose_all_in_one.ui.components.InputFields
 import com.example.jetpack_compose_all_in_one.ui.components.MainContainerOfApp
 import com.example.jetpack_compose_all_in_one.ui.theme.JetpackComposeAllInOneTheme
@@ -55,6 +56,7 @@ class MainActivity : ComponentActivity() {
         getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     }
     private val internetViewModel by viewModels<InternetViewModel>()
+    private val chatGPTViewModel by viewModels<ChatGPTViewModel>()
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private val locationCancelToken by lazy{ CancellationTokenSource() }
@@ -141,6 +143,7 @@ class MainActivity : ComponentActivity() {
                     MainContainerOfApp(
                         applicationContext,
                         internetViewModel,
+                        chatGPTViewModel,
                         {
                             if (!isLocationAllowed(this)) it(null)
                             else fusedLocationClient
