@@ -12,6 +12,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BOUN
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BOUND_SERVICE_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BROADCAST_RECEIVERS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BROADCAST_RECEIVERS_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CHATGPT_DEMO
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CHATGPT_DEMO_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CHAT_DEMO_UI
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CHAT_DEMO_UI_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CLEAN_CODE
@@ -247,6 +249,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     object SharedPrefDemo : NavDes(NavigationDrawerData(SHARED_PREF_DEMO, SHARED_PREF_DEMO_ABOUT))
 
     object StripeDemo : NavDes(NavigationDrawerData(STRIPE_DEMO, STRIPE_DEMO_ABOUT))
+    object ChatGPTDemo : NavDes(NavigationDrawerData(CHATGPT_DEMO, CHATGPT_DEMO_ABOUT))
+
 
     /*object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
         R.drawable.baseline_contacts_24
@@ -385,7 +389,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     object CategoryThirdParty : NavDes(
         NavigationCategoryData(
             listOf(
-                StripeDemo
+                StripeDemo,
+                ChatGPTDemo
             ), THIRD_PARTY
         )
     )
