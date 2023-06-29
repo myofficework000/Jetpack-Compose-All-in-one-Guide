@@ -14,6 +14,8 @@ import com.example.jetpack_compose_all_in_one.features.random_fox.model.IRandomF
 import com.example.jetpack_compose_all_in_one.features.random_fox.model.RandomFoxImpl
 import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.repository.IMovieRepository
 import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.repository.MovieRepository
+import com.example.jetpack_compose_all_in_one.third_party_lib.stripe.StripeRepository
+import com.example.jetpack_compose_all_in_one.third_party_lib.stripe.StripeRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -56,4 +58,8 @@ abstract class RepositoryModules {
     @Singleton
     @RandomFoxAPI
     abstract fun bindRandomFoxRepository(impl: RandomFoxImpl): IRandomFoxRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindStripeRepository(impl: StripeRepositoryImpl): StripeRepository
 }

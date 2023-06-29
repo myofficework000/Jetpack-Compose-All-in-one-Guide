@@ -1,2 +1,2 @@
 GOOGLE_MAPS_API_KEY=PutYourOwnGoogleMapAPIKey
-STRIPE_API_KEY=PutYourOwnStripeAPIKey
+STRIPE_BACKEND_BASEURL=CheckTheApiServiceForInfo

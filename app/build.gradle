@@ -14,7 +14,7 @@ android {
     Properties properties = new Properties()
     properties.load(project.rootProject.file('local.properties').newDataInputStream())
     def mapApi = properties.getProperty("GOOGLE_MAPS_API_KEY")
-    def stripeApi = properties.getProperty("STRIPE_API_KEY")
+    def stripeUrl = properties.getProperty("STRIPE_BACKEND_BASEURL")
 
     defaultConfig {
         applicationId "com.example.jetpack_compose_all_in_one"
@@ -29,11 +29,11 @@ android {
         }
 
         resValue "string", "GOOGLE_MAPS_API_KEY", "\"$mapApi\""
-        resValue "string", "STRIPE_API_KEY", "\"$stripeApi\""
+        resValue "string", "STRIPE_BACKEND_BASEURL", "\"$stripeUrl\""
     }
 
-    buildTypes {
 
+    buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
