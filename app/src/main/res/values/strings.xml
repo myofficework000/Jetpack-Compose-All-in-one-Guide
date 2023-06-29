@@ -198,6 +198,5 @@
     <string name="secure_save_pref">"Securely Save "</string>
     <string name="sendBtn">Send</string>
     <string name="ask_me">Ask me anything</string>
-    <string name="loading">loading</string>
 
 </resources>
