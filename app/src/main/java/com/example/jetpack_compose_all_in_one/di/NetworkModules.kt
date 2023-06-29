@@ -1,5 +1,7 @@
 package com.example.jetpack_compose_all_in_one.di
 
+import android.content.Context
+import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.android_architectures.mvvm.model.DogApiService
 import com.example.jetpack_compose_all_in_one.features.domain_search.ApiDomainSearch
 import com.example.jetpack_compose_all_in_one.features.login_style_1.ApiLoginService
@@ -37,6 +39,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
+import com.example.jetpack_compose_all_in_one.third_party_lib.stripe.ApiStripe
+import dagger.hilt.android.qualifiers.ApplicationContext
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -210,4 +214,18 @@ object NetworkModules {
     @Singleton
     fun provideChatGPTRepository( chatGPTApiServices: ChatGPTApiServices) =
         ChatGPTRemoteRepository( chatGPTApiServices )
+
+    @Provides
+    @Singleton
+    fun provideApiStripe(
+        @ApplicationContext context: Context,
+        converter: Converter.Factory
+    ) = Retrofit.Builder()
+        .baseUrl(
+            context.resources.getString(R.string.STRIPE_BACKEND_BASEURL)
+                .takeIf { it.contains("http") } ?: "https://www.google.com"
+        )
+        .addConverterFactory(converter)
+        .build()
+        .create<ApiStripe>()
 }

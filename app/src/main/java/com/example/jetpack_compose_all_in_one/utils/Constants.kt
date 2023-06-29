@@ -39,4 +39,7 @@ object Constants {
     const val NEWS_API_COUNTRY = "us"
     const val NEWS_API_KEY = "c7be7d16a533454a814230157ca0b726"
     const val YOUTUBE_URL = "https://www.youtube.com"
+
+    // As the name suggests, it's perfectly safe to put the key here.
+    const val STRIPE_PUBLISHABLE_KEY = "pk_test_51NDWcxAuGpza3cNLRCDyClOLtcCw2dw7lEBsS9beNH8Dy83oO1Swwe6cXwXhvibkQ4DbhZkWbkXIszTX8RA8NZZy00eEaRFF1Z"
 }

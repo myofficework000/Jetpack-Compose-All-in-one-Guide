@@ -17,6 +17,7 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import com.example.jetpack_compose_all_in_one.features.alarm.database.AlarmInfo
+import com.stripe.android.paymentsheet.PaymentSheetResult
 import java.text.SimpleDateFormat
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
@@ -116,3 +117,41 @@ fun Modifier.gradientBackground(
 
 fun Double.toReadable(isFahrenheit: Boolean) =
     if (isFahrenheit) "%.1f℉".format(this * 1.8 + 32) else "$this℃"
+
+/*@Composable
+fun Modifier.showErrorSnackbar(
+    errorMessage: String,
+    duration: SnackbarDuration = SnackbarDuration.Short
+) {
+    val scope = rememberCoroutineScope()
+    val snackbarHostState = remember { SnackbarHostState() }
+
+    LaunchedEffect(snackbarHostState) {
+        snackbarHostState.showSnackbar(errorMessage, duration = duration)
+    }
+
+    SnackbarHost(
+        hostState = snackbarHostState,
+        snackbar = { snackbarData ->
+            Snackbar(
+                modifier = Modifier.padding(16.dp),
+                content = {
+                    Text(snackbarData.visuals.message)
+                },
+                action = {
+                    snackbarData.visuals.actionLabel?.let { actionLabel ->
+                        TextButton(onClick = { snackbarData.performAction() }) {
+                            Text(actionLabel)
+                        }
+                    }
+                }
+            )
+        }
+    )
+}*/
+
+fun PaymentSheetResult.toReadable() = when (this) {
+    PaymentSheetResult.Canceled -> "Payment cancelled"
+    PaymentSheetResult.Completed -> "Thank you for the purchase!"
+    is PaymentSheetResult.Failed -> "There's an error when paying"
+}

@@ -199,5 +199,6 @@
     <string name="sendBtn">Send</string>
     <string name="ask_me">Ask me anything</string>
     <string name="loading">loading</string>
+    <string name="stripe_no_url_error">You forgot to set the base URL for the backend. Stripe doesn\'t work without it.</string>
 
 </resources>

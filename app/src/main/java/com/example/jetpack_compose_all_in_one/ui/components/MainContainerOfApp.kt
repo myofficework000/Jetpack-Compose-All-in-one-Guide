@@ -17,7 +17,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -53,7 +52,6 @@ import com.example.jetpack_compose_all_in_one.features.timer_demo.TimerDemo
 import com.example.jetpack_compose_all_in_one.features.weather_sample.model.remote.ApiWeatherService
 import com.example.jetpack_compose_all_in_one.features.weather_sample.model.remote.RetrofitBuilder
 import com.example.jetpack_compose_all_in_one.features.weather_sample.model.repository.RemoteWeatherRepository
-import com.example.jetpack_compose_all_in_one.features.weather_sample.view.WeatherSample
 import com.example.jetpack_compose_all_in_one.features.weather_sample.viewmodel.WeatherViewModel
 import com.example.jetpack_compose_all_in_one.lessons.lesson_1.Lesson_1_Display
 import com.example.jetpack_compose_all_in_one.lessons.lesson_10.Lesson_10
@@ -77,7 +75,6 @@ import com.example.jetpack_compose_all_in_one.lessons.lesson_6.Lesson_6_ThemeCha
 import com.example.jetpack_compose_all_in_one.lessons.lesson_7.Lesson_7_Chapter_ConstraintLayout
 import com.example.jetpack_compose_all_in_one.lessons.lesson_8.Lesson_8_Animations
 import com.example.jetpack_compose_all_in_one.lessons.lesson_9.Lesson_9
-import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.remote.repository.ChatGPTRemoteRepository
 import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.view.ChatUI
 import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.viewmodel.ChatGPTViewModel
 import com.example.jetpack_compose_all_in_one.third_party_lib.stripe.IntegrateStripe
@@ -459,7 +456,7 @@ fun MainContainerOfApp(
                 }
 
                 composable(NavDes.StripeDemo.route()) {
-                    IntegrateStripe(vm = hiltViewModel())
+                    IntegrateStripe(vm = hiltViewModel(), snackbarHostState::showText)
                 }
             }
         }
