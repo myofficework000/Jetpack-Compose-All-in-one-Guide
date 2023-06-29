@@ -1,12 +1,10 @@
-package com.abanoub.weather.data.mappers
+package com.example.jetpack_compose_all_in_one.android_architectures.clean_code_with_mvi_mvvm.data.mappers
 
-import android.os.Build
-import androidx.annotation.RequiresApi
-import com.abanoub.weather.data.remote.WeatherDataDto
-import com.abanoub.weather.data.remote.WeatherDto
-import com.abanoub.weather.domain.weather.WeatherData
-import com.abanoub.weather.domain.weather.WeatherInfo
-import com.abanoub.weather.domain.weather.WeatherType
+import com.example.jetpack_compose_all_in_one.android_architectures.clean_code_with_mvi_mvvm.domain.weather.WeatherData
+import com.example.jetpack_compose_all_in_one.android_architectures.clean_code_with_mvi_mvvm.domain.weather.WeatherInfo
+import com.example.jetpack_compose_all_in_one.android_architectures.clean_code_with_mvi_mvvm.domain.weather.WeatherType
+import com.example.jetpack_compose_all_in_one.android_architectures.clean_code_with_mvi_mvvm.data.remote.WeatherDataDto
+import com.example.jetpack_compose_all_in_one.android_architectures.clean_code_with_mvi_mvvm.data.remote.WeatherDto
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -15,7 +13,6 @@ private data class IndexedWeatherData(
     val data: WeatherData
 )
 
-@RequiresApi(Build.VERSION_CODES.O)
 fun WeatherDataDto.toWeatherDataMap(): Map<Int, List<WeatherData>> {
     return time.mapIndexed { index, time ->
         val temperature = temperatures[index]
@@ -41,7 +38,6 @@ fun WeatherDataDto.toWeatherDataMap(): Map<Int, List<WeatherData>> {
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
 fun WeatherDto.toWeatherInfo(): WeatherInfo {
     val weatherDataMap = weatherData.toWeatherDataMap()
     val now = LocalDateTime.now()

@@ -18,6 +18,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CHAT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CHAT_DEMO_UI_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CLEAN_CODE
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CLEAN_CODE_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CLEAN_CODE_ABOUT_WITH_MVI
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CLEAN_CODE_WITH_MVI
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.COLLAPSABLE
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.COLLAPSABLE_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CONTENT_PROVIDER
@@ -217,7 +219,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
         NavDes(NavigationDrawerData(LESSON_12_WEBVIEW, LESSON_12_WEBVIEW_ABOUT))
 
     object Lesson13Localization :
-        NavDes(NavigationDrawerData(LESSON_13_LOCALIAZATION , LESSON_13_LOCALIAZATION_ABOUT))
+        NavDes(NavigationDrawerData(LESSON_13_LOCALIAZATION, LESSON_13_LOCALIAZATION_ABOUT))
 
     object QuoteSwipe : NavDes(NavigationDrawerData(QUOTE_2, QUOTE_2_ABOUT))
 
@@ -329,6 +331,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     object Mvvm : NavDes(NavigationDrawerData(MVVM, MVVM_ABOUT))
     object Mvi : NavDes(NavigationDrawerData(MVI, MVI_ABOUT))
     object CleanCode : NavDes(NavigationDrawerData(CLEAN_CODE, CLEAN_CODE_ABOUT))
+    object CleanCodeWithMVI :
+        NavDes(NavigationDrawerData(CLEAN_CODE_WITH_MVI, CLEAN_CODE_ABOUT_WITH_MVI))
 
 
     object AndroidArchitectures : NavDes(
@@ -337,7 +341,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 Mvp,
                 Mvvm,
                 Mvi,
-                CleanCode
+                CleanCode,
+                CleanCodeWithMVI
             ), ANDROID_ARCHITECTURES
         )
     )

@@ -1,14 +1,13 @@
-package com.abanoub.weather.presentation
+package com.example.jetpack_compose_all_in_one.android_architectures.clean_code_with_mvi_mvvm.presentation
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.abanoub.weather.domain.location.LocationTracker
-import com.abanoub.weather.domain.repository.WeatherRepository
-import com.abanoub.weather.domain.util.Resource
-import com.example.jetpack_compose_all_in_one.android_architectures.clean_code_with_mvi_mvvm.presentation.WeatherState
+import com.example.jetpack_compose_all_in_one.android_architectures.clean_code_with_mvi_mvvm.domain.location.LocationTracker
+import com.example.jetpack_compose_all_in_one.android_architectures.clean_code_with_mvi_mvvm.domain.repository.WeatherRepository
+import com.example.jetpack_compose_all_in_one.android_architectures.clean_code_with_mvi_mvvm.domain.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -39,6 +38,7 @@ class WeatherViewModel @Inject constructor(
                             error = null
                         )
                     }
+
                     is Resource.Error -> {
                         state = state.copy(
                             weatherInfo = null,
@@ -55,5 +55,4 @@ class WeatherViewModel @Inject constructor(
             }
         }
     }
-
 }

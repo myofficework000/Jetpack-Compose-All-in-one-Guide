@@ -1,18 +1,19 @@
-package com.abanoub.weather.presentation
+package com.example.jetpack_compose_all_in_one.android_architectures.clean_code_with_mvi_mvvm.presentation
 
-import android.os.Build
-import androidx.annotation.RequiresApi
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.material.Text
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.jetpack_compose_all_in_one.android_architectures.clean_code_with_mvi_mvvm.presentation.WeatherState
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun WeatherForecast(
     state: WeatherState,

@@ -1,4 +1,4 @@
-package com.abanoub.weather.presentation
+package com.example.jetpack_compose_all_in_one.android_architectures.clean_code_with_mvi_mvvm.presentation
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer

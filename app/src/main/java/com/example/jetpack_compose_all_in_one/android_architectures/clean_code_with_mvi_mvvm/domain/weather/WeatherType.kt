@@ -1,7 +1,7 @@
-package com.abanoub.weather.domain.weather
+package com.example.jetpack_compose_all_in_one.android_architectures.clean_code_with_mvi_mvvm.domain.weather
 
 import androidx.annotation.DrawableRes
-import com.abanoub.weather.R
+import com.example.jetpack_compose_all_in_one.R
 
 sealed class WeatherType(
     val weatherDesc: String,

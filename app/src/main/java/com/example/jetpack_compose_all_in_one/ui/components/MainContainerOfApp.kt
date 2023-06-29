@@ -449,6 +449,11 @@ fun MainContainerOfApp(
                 composable(NavDes.CleanCode.route()) {
                     DogApiMainPage()
                 }
+
+                composable(NavDes.CleanCodeWithMVI.route()) {
+                    DogApiMainPage()
+                }
+
                 composable(NavDes.SharedPrefDemo.route()){
                     SharedPrefDemoScreen(context = context)
                 }

@@ -190,6 +190,10 @@ object NavConstants {
     const val CLEAN_CODE = "CLEAN_CODE"
     const val CLEAN_CODE_ABOUT = "Clean Code"
 
+
+    const val CLEAN_CODE_WITH_MVI = "CLEAN_CODE_MVI"
+    const val CLEAN_CODE_ABOUT_WITH_MVI = "Clean Code + MVI + MVVM"
+
     const val CONTENT_PROVIDER = "CONTENT_PROVIDER"
     const val CONTENT_PROVIDER_ABOUT = "Content Provider"
 

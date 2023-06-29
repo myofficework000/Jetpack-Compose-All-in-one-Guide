@@ -1,4 +1,4 @@
-package com.abanoub.weather.data.location
+package com.example.jetpack_compose_all_in_one.android_architectures.clean_code_with_mvi_mvvm.data.location
 
 import android.Manifest
 import android.app.Application
@@ -7,14 +7,12 @@ import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
 import androidx.core.content.ContextCompat
-import com.abanoub.weather.domain.location.LocationTracker
+import com.example.jetpack_compose_all_in_one.android_architectures.clean_code_with_mvi_mvvm.domain.location.LocationTracker
 import com.google.android.gms.location.FusedLocationProviderClient
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.suspendCancellableCoroutine
 import javax.inject.Inject
 import kotlin.coroutines.resume
 
-@OptIn(ExperimentalCoroutinesApi::class)
 class DefaultLocationTracker @Inject constructor(
     private val locationClient: FusedLocationProviderClient,
     private val application: Application
