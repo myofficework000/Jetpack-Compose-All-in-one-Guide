@@ -65,6 +65,7 @@ import com.example.jetpack_compose_all_in_one.ui.theme.sp_16
 import com.example.jetpack_compose_all_in_one.ui.theme.sp_20
 import com.example.jetpack_compose_all_in_one.ui.theme.sp_25
 import com.example.jetpack_compose_all_in_one.ui.theme.sp_28
+import java.time.format.DateTimeFormatter
 
 @Composable
 fun InflateProfileUI() {
@@ -117,9 +118,9 @@ fun CreateProfileUI(
             )
 
             val launcher =
-                rememberLauncherForActivityResult(contract = ActivityResultContracts.GetContent()) {uri: Uri? ->
+                rememberLauncherForActivityResult(contract = ActivityResultContracts.GetContent()) { uri: Uri? ->
                     uri?.let {
-                        imageUri.value = it .toString()
+                        imageUri.value = it.toString()
                     }
                 }
             Column(
@@ -287,15 +288,15 @@ fun CreateProfileUI(
                 state.value,
                 postalCode.value,
                 onStreetChange = { newStreet -> street.value = newStreet },
-                onCityChange = {newCity -> city.value = newCity},
-                onStateChange = { newState -> state.value = newState} ,
-                onPostalCodeChange = { newPostalCode -> postalCode.value = newPostalCode} ,
+                onCityChange = { newCity -> city.value = newCity },
+                onStateChange = { newState -> state.value = newState },
+                onPostalCodeChange = { newPostalCode -> postalCode.value = newPostalCode },
             )
 
             Button(
                 onClick = {
                     val location = Address(
-                        id = 0 ,
+                        id = 0,
                         street = street.value,
                         city = city.value,
                         state = state.value,
@@ -342,7 +343,8 @@ fun CreateProfileUI(
 fun UserInfoUI(viewModel: ProfileViewModel, onUpdateButtonClicked: () -> Unit) {
 
     //val painter: Painter = rememberAsyncImagePainter(Uri.parse(viewModel.profileData.value?.imageUri))
-    val painter: Painter = rememberAsyncImagePainter(Uri.parse(viewModel.profileData.value?.imageUri ?: "default_uri"))
+    val painter: Painter =
+        rememberAsyncImagePainter(Uri.parse(viewModel.profileData.value?.imageUri ?: "default_uri"))
     ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
@@ -360,7 +362,8 @@ fun UserInfoUI(viewModel: ProfileViewModel, onUpdateButtonClicked: () -> Unit) {
             followerNum,
             followerText,
             aboutText,
-            about) = createRefs()
+            about,
+            time) = createRefs()
 
         viewModel.getProfileData()
         viewModel.profileData.value?.imageUri?.let {
@@ -510,6 +513,20 @@ fun UserInfoUI(viewModel: ProfileViewModel, onUpdateButtonClicked: () -> Unit) {
 
         viewModel.profileData.value?.let {
             Text(
+                text = it.date.format(DateTimeFormatter.ofPattern("yyyy/MM/dd")),
+                modifier = Modifier
+                    .padding(start = dp_40, top = dp_30)
+                    .constrainAs(time) {
+                        top.linkTo(ratingText.bottom)
+                        start.linkTo(aboutText.end)
+                    },
+                fontSize = sp_28,
+                fontWeight = FontWeight.Bold
+            )
+        }
+
+        viewModel.profileData.value?.let {
+            Text(
                 text = it.about,
                 modifier = Modifier
                     .padding(start = dp_40, top = dp_10)
@@ -530,16 +547,18 @@ fun AddressScreen(
     street: String,
     city: String,
     state: String,
-    postalCode : String,
+    postalCode: String,
     onStreetChange: (String) -> Unit,
     onCityChange: (String) -> Unit,
     onStateChange: (String) -> Unit,
-    onPostalCodeChange: (String) -> Unit) {
-
+    onPostalCodeChange: (String) -> Unit
+) {
+    val focusManager = LocalFocusManager.current
     Column(
         modifier = modifier
     ) {
-        Text(text = "Address",
+        Text(
+            text = "Address",
             modifier = Modifier
                 .padding(start = dp_20, top = dp_24, bottom = dp_5)
         )
@@ -551,7 +570,16 @@ fun AddressScreen(
             modifier = Modifier
                 .padding(start = dp_20, bottom = dp_10, end = dp_20)
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(dp_10))
+                .clip(RoundedCornerShape(dp_10)),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Text,
+                imeAction = ImeAction.Next
+            ),
+            keyboardActions = KeyboardActions(
+                onNext = {
+                    focusManager.moveFocus(FocusDirection.Down)
+                }
+            )
         )
         Spacer(modifier = Modifier.height(16.dp))
         TextField(
@@ -561,7 +589,16 @@ fun AddressScreen(
             modifier = Modifier
                 .padding(start = dp_20, top = dp_10, bottom = dp_10, end = dp_20)
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(dp_10))
+                .clip(RoundedCornerShape(dp_10)),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Text,
+                imeAction = ImeAction.Next
+            ),
+            keyboardActions = KeyboardActions(
+                onNext = {
+                    focusManager.moveFocus(FocusDirection.Down)
+                }
+            )
         )
         Spacer(modifier = Modifier.height(16.dp))
         TextField(
@@ -569,9 +606,18 @@ fun AddressScreen(
             onValueChange = onStateChange,
             label = { Text("State") },
             modifier = Modifier
-                .padding(start = dp_20, top = dp_10, bottom = dp_10,end = dp_20)
+                .padding(start = dp_20, top = dp_10, bottom = dp_10, end = dp_20)
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(dp_10))
+                .clip(RoundedCornerShape(dp_10)),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Text,
+                imeAction = ImeAction.Next
+            ),
+            keyboardActions = KeyboardActions(
+                onNext = {
+                    focusManager.moveFocus(FocusDirection.Down)
+                }
+            )
         )
         Spacer(modifier = Modifier.height(16.dp))
         TextField(
@@ -579,9 +625,18 @@ fun AddressScreen(
             onValueChange = onPostalCodeChange,
             label = { Text("Postal Code") },
             modifier = Modifier
-                .padding(start = dp_20, top = dp_10, bottom = dp_10,end = dp_20)
+                .padding(start = dp_20, top = dp_10, bottom = dp_10, end = dp_20)
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(dp_10))
+                .clip(RoundedCornerShape(dp_10)),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Number,
+                imeAction = ImeAction.Next
+            ),
+            keyboardActions = KeyboardActions(
+                onNext = {
+                    focusManager.moveFocus(FocusDirection.Down)
+                }
+            )
         )
     }
 }
