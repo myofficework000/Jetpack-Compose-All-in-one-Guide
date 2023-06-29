@@ -175,6 +175,8 @@ object NavConstants {
 
     const val FEATURES = "Features"
 
+    const val THIRD_PARTY = "Third Party Libraries"
+
     const val APPLICATION_COMPONENTS = "Application components"
 
     const val ANDROID_ARCHITECTURES = "Android Architectures"
@@ -199,4 +201,10 @@ object NavConstants {
 
     const val ACTIVITY = "ACTIVITY"
     const val ACTIVITY_ABOUT = "Activity"
+
+    const val STRIPE_DEMO = "STRIPE"
+    const val STRIPE_DEMO_ABOUT = "Stripe Demo"
+
+    const val CHATGPT_DEMO = "CHAT GPT"
+    const val CHATGPT_DEMO_ABOUT = "ChatGPT Demo"
 }

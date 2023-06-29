@@ -14,6 +14,7 @@ android {
     Properties properties = new Properties()
     properties.load(project.rootProject.file('local.properties').newDataInputStream())
     def mapApi = properties.getProperty("GOOGLE_MAPS_API_KEY")
+    def stripeApi = properties.getProperty("STRIPE_API_KEY")
 
     defaultConfig {
         applicationId "com.example.jetpack_compose_all_in_one"
@@ -28,6 +29,7 @@ android {
         }
 
         resValue "string", "GOOGLE_MAPS_API_KEY", "\"$mapApi\""
+        resValue "string", "STRIPE_API_KEY", "\"$stripeApi\""
     }
 
     buildTypes {
@@ -163,6 +165,9 @@ dependencies {
     implementation "androidx.security:security-crypto:1.1.0-alpha04"
     implementation "androidx.security:security-identity-credential:1.0.0-alpha01"
     implementation "androidx.security:security-crypto-ktx:1.1.0-alpha04"
+
+    // Stripe
+    implementation "com.stripe:stripe-android:20.17.0"
 }
 
 // Remember to add this to local.properties

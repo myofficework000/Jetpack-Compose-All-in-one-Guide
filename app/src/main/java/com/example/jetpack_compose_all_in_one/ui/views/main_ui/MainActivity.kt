@@ -143,7 +143,6 @@ class MainActivity : ComponentActivity() {
                     MainContainerOfApp(
                         applicationContext,
                         internetViewModel,
-                        chatGPTViewModel,
                         {
                             if (!isLocationAllowed(this)) it(null)
                             else fusedLocationClient
