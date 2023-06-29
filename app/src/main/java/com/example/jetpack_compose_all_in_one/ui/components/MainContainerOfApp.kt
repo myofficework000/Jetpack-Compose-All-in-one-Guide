@@ -23,6 +23,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.jetpack_compose_all_in_one.*
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.android_architectures.clean_code.presentation.ui.DogApiMainPage
+import com.example.jetpack_compose_all_in_one.android_architectures.clean_code_with_mvi_mvvm.presentation.WeatherScreen
 import com.example.jetpack_compose_all_in_one.android_architectures.mvi.view.RandomDogView
 import com.example.jetpack_compose_all_in_one.android_architectures.mvp.view.DogMvpUI
 import com.example.jetpack_compose_all_in_one.application_components.activity.ActivityDemo
@@ -52,6 +53,7 @@ import com.example.jetpack_compose_all_in_one.features.timer_demo.TimerDemo
 import com.example.jetpack_compose_all_in_one.features.weather_sample.model.remote.ApiWeatherService
 import com.example.jetpack_compose_all_in_one.features.weather_sample.model.remote.RetrofitBuilder
 import com.example.jetpack_compose_all_in_one.features.weather_sample.model.repository.RemoteWeatherRepository
+import com.example.jetpack_compose_all_in_one.features.weather_sample.view.WeatherSample
 import com.example.jetpack_compose_all_in_one.features.weather_sample.viewmodel.WeatherViewModel
 import com.example.jetpack_compose_all_in_one.lessons.lesson_1.Lesson_1_Display
 import com.example.jetpack_compose_all_in_one.lessons.lesson_10.Lesson_10
@@ -76,7 +78,6 @@ import com.example.jetpack_compose_all_in_one.lessons.lesson_7.Lesson_7_Chapter_
 import com.example.jetpack_compose_all_in_one.lessons.lesson_8.Lesson_8_Animations
 import com.example.jetpack_compose_all_in_one.lessons.lesson_9.Lesson_9
 import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.view.ChatUI
-import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.viewmodel.ChatGPTViewModel
 import com.example.jetpack_compose_all_in_one.third_party_lib.stripe.IntegrateStripe
 import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat2
 import com.example.jetpack_compose_all_in_one.ui.views.domain_search.DomainSearch
@@ -451,7 +452,7 @@ fun MainContainerOfApp(
                 }
 
                 composable(NavDes.CleanCodeWithMVI.route()) {
-                    DogApiMainPage()
+                    WeatherScreen(viewModel = hiltViewModel())
                 }
 
                 composable(NavDes.SharedPrefDemo.route()){
