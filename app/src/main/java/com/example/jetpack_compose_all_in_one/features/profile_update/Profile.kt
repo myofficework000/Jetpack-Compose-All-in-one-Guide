@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.time.LocalDateTime
 
 @Entity(tableName = "profile")
 data class Profile(
@@ -26,6 +27,9 @@ data class Profile(
     @ColumnInfo(name = "age")
     var age: Int,
 
-   @Embedded
+    @ColumnInfo(name = "date")
+    val date: LocalDateTime = LocalDateTime.now(),
+
+    @Embedded
    var address: Address?
 )
