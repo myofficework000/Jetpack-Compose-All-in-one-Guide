@@ -98,7 +98,6 @@ import kotlinx.coroutines.launch
 fun MainContainerOfApp(
     context: Context,
     internetViewModel: InternetViewModel,
-    chatGPTViewModel: ChatGPTViewModel,
     getCurrentLocationFunc: ((Location?) -> Unit) -> Unit,
     playMusicFuncForeground: (Uri) -> Unit,
     stopMusicFuncForeground: () -> Unit,
@@ -371,11 +370,10 @@ fun MainContainerOfApp(
                 }
                 composable(NavDes.WeatherSample.route()) {
                     // Please change this to hilt later please =_=b
-                    /*WeatherSample(
+                    WeatherSample(
                         weatherViewModel = weatherViewModel,
                         getCurrentLocationFunc
-                    )*/
-                    ChatUI(hiltViewModel())
+                    )
                 }
 
                 composable(NavDes.TimerDemo.route()) {
@@ -460,6 +458,9 @@ fun MainContainerOfApp(
 
                 composable(NavDes.StripeDemo.route()) {
                     IntegrateStripe(vm = hiltViewModel())
+                }
+                composable(NavDes.ChatGPTDemo.route()){
+                    ChatUI(hiltViewModel())
                 }
             }
         }

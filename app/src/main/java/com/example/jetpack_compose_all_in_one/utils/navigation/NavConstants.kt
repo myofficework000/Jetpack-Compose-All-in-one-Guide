@@ -204,4 +204,7 @@ object NavConstants {
 
     const val STRIPE_DEMO = "STRIPE"
     const val STRIPE_DEMO_ABOUT = "Stripe Demo"
+
+    const val CHATGPT_DEMO = "CHAT GPT"
+    const val CHATGPT_DEMO_ABOUT = "ChatGPT Demo"
 }
