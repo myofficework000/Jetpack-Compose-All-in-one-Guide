@@ -513,15 +513,17 @@ fun UserInfoUI(viewModel: ProfileViewModel, onUpdateButtonClicked: () -> Unit) {
 
         viewModel.profileData.value?.let {
             Text(
-                text = it.date.format(DateTimeFormatter.ofPattern("yyyy/MM/dd")),
+                text = it.date.format(DateTimeFormatter.ofPattern("E, MMM dd h:mm a")),
                 modifier = Modifier
                     .padding(start = dp_40, top = dp_30)
                     .constrainAs(time) {
                         top.linkTo(ratingText.bottom)
                         start.linkTo(aboutText.end)
+                        bottom.linkTo(aboutText.bottom)
                     },
-                fontSize = sp_28,
-                fontWeight = FontWeight.Bold
+                fontSize = sp_16,
+                fontWeight = FontWeight.SemiBold,
+                color = Color.Red
             )
         }
 
@@ -533,7 +535,6 @@ fun UserInfoUI(viewModel: ProfileViewModel, onUpdateButtonClicked: () -> Unit) {
                     .constrainAs(about) {
                         top.linkTo(aboutText.bottom)
                         start.linkTo(parent.start)
-
                     },
                 fontSize = sp_20,
             )
