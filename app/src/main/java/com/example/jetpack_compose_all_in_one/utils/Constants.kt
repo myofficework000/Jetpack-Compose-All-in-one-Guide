@@ -30,6 +30,8 @@ object Constants {
 
     const val ROOMDB_DBNAME = "allInOne"
 
+    const val SHARED_PREF_NAME = "settings"
+
     val MAP_POS_BIGBEN = LatLng(51.5007761, -0.124546)
     const val MAP_DEFAULT_ZOOM_1 = 17.54f
     const val LOCATION_UPDATE_INTERVAL = 10000L
