@@ -2,6 +2,7 @@ package com.example.jetpack_compose_all_in_one.features.weather_sample.view
 
 
 import android.location.Location
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -31,9 +32,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.example.jetpack_compose_all_in_one.R
+import com.example.jetpack_compose_all_in_one.features.profile_update.ProfileViewModel
 import com.example.jetpack_compose_all_in_one.features.weather_sample.model.data.WeatherResponse
 import com.example.jetpack_compose_all_in_one.features.weather_sample.model.forecast_dto.Forecast
 import com.example.jetpack_compose_all_in_one.features.weather_sample.model.remote.ApiWeatherService
@@ -54,13 +58,16 @@ import kotlin.reflect.KFunction1
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
 fun WeatherSample(
-    weatherViewModel: WeatherViewModel,
+    weatherViewModel: WeatherViewModel = viewModel(),
     getCurrentLocationFunc: ((Location?) -> Unit) -> Unit
 ) {
     val forecastData by weatherViewModel.fiveDaysData.observeAsState()
     val weatherData by weatherViewModel.weatherData.observeAsState()
     var isLocationAvailable by remember { mutableStateOf(false) }
     val requestingLocation = requestAllLocation { isLocationAvailable = it }
+    var displayMode by remember { mutableStateOf("sample") }
+
+
 
     LaunchedEffect(Unit) {
         requestingLocation.launchMultiplePermissionRequest()
@@ -76,12 +83,17 @@ fun WeatherSample(
         }
     }
 
-    InflateWeatherUI(
-        weatherData,
-        forecastData,
-        weatherViewModel.isFahrenheit,
-        weatherViewModel::updateWeatherByCity
-    )
+    when (displayMode) {
+        "sample" -> InflateWeatherUI(
+            weatherData,
+            forecastData,
+            weatherViewModel.isFahrenheit,
+            weatherViewModel::updateWeatherByCity,
+            onCardClicked = { displayMode = "detail" }
+        )
+
+        "detail" -> WeatherDetails(viewModel = weatherViewModel)
+    }
 }
 
 @Composable
@@ -89,7 +101,8 @@ private fun InflateWeatherUI(
     weatherData: WeatherResponse?,
     forecastData: List<Forecast>?,
     isFahrenheit: MutableState<Boolean>,
-    updateWeatherByCityFunc: KFunction1<String, Unit>
+    updateWeatherByCityFunc: KFunction1<String, Unit>,
+    onCardClicked: () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -99,7 +112,13 @@ private fun InflateWeatherUI(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         InflateSearchBarUI(updateWeatherByCityFunc)
-        weatherData?.let { InflateCurrentWeatherUI(it, isFahrenheit) }
+        weatherData?.let {
+            InflateCurrentWeatherUI(
+                it,
+                isFahrenheit,
+                onCardClicked = onCardClicked
+            )
+        }
         forecastData?.let { InflateForeCastUI(it, isFahrenheit) }
     }
 }
@@ -135,7 +154,8 @@ private fun InflateSearchBarUI(
 private fun InflateCurrentWeatherUI(
     weatherData: WeatherResponse,
     isFahrenheit: MutableState<Boolean>,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onCardClicked: () -> Unit
 ) = with(weatherData) {
     val city = name
     val description = weather.firstOrNull()?.description.toString()
@@ -162,7 +182,9 @@ private fun InflateCurrentWeatherUI(
         humidity = humidity.toDouble(),
         visibility = visibility.toDouble(),
         pressure = pressure.toDouble(),
-        isFahrenheit = isFahrenheit
+        isFahrenheit = isFahrenheit,
+        onCardClicked = onCardClicked
+
     )
 }
 
@@ -205,10 +227,13 @@ fun WeatherCard(
     visibility: Double?,
     pressure: Double?,
     isFahrenheit: MutableState<Boolean>,
-    cardPadding: PaddingValues = PaddingValues(dp_20)
+    cardPadding: PaddingValues = PaddingValues(dp_20),
+    onCardClicked: () -> Unit
 ) {
     Card(
-        modifier = modifier.then(Modifier.padding(dp_15)),
+        modifier = modifier
+            .then(Modifier.padding(dp_15))
+            .clickable(onClick = onCardClicked),
         shape = RoundedCornerShape(dp_15),
         elevation = CardDefaults.cardElevation(dp_15),
     ) {
