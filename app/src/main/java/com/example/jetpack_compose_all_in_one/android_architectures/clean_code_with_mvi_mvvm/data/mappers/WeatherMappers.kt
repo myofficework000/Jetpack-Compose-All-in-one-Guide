@@ -1,10 +1,9 @@
 package com.example.jetpack_compose_all_in_one.android_architectures.clean_code_with_mvi_mvvm.data.mappers
 
+import com.example.jetpack_compose_all_in_one.android_architectures.clean_code_with_mvi_mvvm.data.remote.WeatherResponse
 import com.example.jetpack_compose_all_in_one.android_architectures.clean_code_with_mvi_mvvm.domain.weather.WeatherData
 import com.example.jetpack_compose_all_in_one.android_architectures.clean_code_with_mvi_mvvm.domain.weather.WeatherInfo
 import com.example.jetpack_compose_all_in_one.android_architectures.clean_code_with_mvi_mvvm.domain.weather.WeatherType
-import com.example.jetpack_compose_all_in_one.android_architectures.clean_code_with_mvi_mvvm.data.remote.WeatherDataDto
-import com.example.jetpack_compose_all_in_one.android_architectures.clean_code_with_mvi_mvvm.data.remote.WeatherDto
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -13,13 +12,14 @@ private data class IndexedWeatherData(
     val data: WeatherData
 )
 
-fun WeatherDataDto.toWeatherDataMap(): Map<Int, List<WeatherData>> {
-    return time.mapIndexed { index, time ->
-        val temperature = temperatures[index]
-        val weatherCode = weatherCodes[index]
-        val windSpeed = windSpeeds[index]
-        val pressure = pressures[index]
-        val humidity = humidities[index]
+fun WeatherResponse.toWeatherDataMap(): Map<Int, List<WeatherData>> = hourly.run {
+    time.mapIndexed { index, time ->
+        val temperature = temperature2m[index]
+        val weatherCode = weathercode[index]
+        val windSpeed = windspeed10m[index]
+        val pressure = pressureMsl[index]
+        val humidity = relativehumidity2m[index]
+
         IndexedWeatherData(
             index = index,
             data = WeatherData(
@@ -27,24 +27,27 @@ fun WeatherDataDto.toWeatherDataMap(): Map<Int, List<WeatherData>> {
                 temperatureCelsius = temperature,
                 pressure = pressure,
                 windSpeed = windSpeed,
-                humidity = humidity,
+                humidity = humidity.toDouble(),
                 weatherType = WeatherType.fromWMO(weatherCode)
             )
         )
     }.groupBy {
         it.index / 24
     }.mapValues {
-        it.value.map { it.data }
+        it.value.map { x -> x.data }
     }
 }
 
-fun WeatherDto.toWeatherInfo(): WeatherInfo {
-    val weatherDataMap = weatherData.toWeatherDataMap()
+fun WeatherResponse.toWeatherInfo(): WeatherInfo {
+    val weatherDataMap = this.toWeatherDataMap()
     val now = LocalDateTime.now()
+
+    // This is basically rounding the current time to nearest hour
     val currentWeatherData = weatherDataMap[0]?.find {
         val hour = if (now.minute < 30) now.hour else now.hour + 1
         it.time.hour == hour
     }
+
     return WeatherInfo(
         weatherDataPerDay = weatherDataMap,
         currentWeatherData = currentWeatherData
