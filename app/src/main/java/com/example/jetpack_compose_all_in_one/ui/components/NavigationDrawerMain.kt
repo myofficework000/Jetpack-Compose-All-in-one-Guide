@@ -1,7 +1,9 @@
 package com.example.jetpack_compose_all_in_one.ui.components
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DrawerState
@@ -43,7 +45,6 @@ fun NavigationDrawerMain(
         drawerContent = {
             ModalDrawerSheet {
                 DrawerHeader()
-                ThemeSettingsRow(vm = themeViewModel, Modifier.padding(horizontal = 16.dp))
                 ScrollableColumn {
                     NavDes.drawerList.forEach {
                         DrawerCategoryAndItem(it) { des ->
@@ -54,6 +55,9 @@ fun NavigationDrawerMain(
                         }
                     }
                 }
+                Spacer(Modifier.weight(1f))
+                ThemeSettingsRow(vm = themeViewModel, Modifier.padding(horizontal = 16.dp))
+                Spacer(Modifier.height(32.dp)) // Acts as padding
             }
         },
         gesturesEnabled = if (noSwiping.value) drawerState.isOpen else true
