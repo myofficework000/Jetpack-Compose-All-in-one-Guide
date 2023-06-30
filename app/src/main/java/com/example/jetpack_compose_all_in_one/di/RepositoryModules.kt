@@ -16,6 +16,8 @@ import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.
 import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.repository.MovieRepository
 import com.example.jetpack_compose_all_in_one.third_party_lib.stripe.StripeRepository
 import com.example.jetpack_compose_all_in_one.third_party_lib.stripe.StripeRepositoryImpl
+import com.example.jetpack_compose_all_in_one.utils.preferences.PreferenceRepository
+import com.example.jetpack_compose_all_in_one.utils.preferences.PreferenceRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -62,4 +64,8 @@ abstract class RepositoryModules {
     @Binds
     @Singleton
     abstract fun bindStripeRepository(impl: StripeRepositoryImpl): StripeRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindPreferenceRepository(impl: PreferenceRepositoryImpl): PreferenceRepository
 }

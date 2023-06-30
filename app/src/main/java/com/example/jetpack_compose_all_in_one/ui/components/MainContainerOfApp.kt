@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -85,6 +86,8 @@ import com.example.jetpack_compose_all_in_one.ui.views.internet.InternetDemo
 import com.example.jetpack_compose_all_in_one.ui.views.news_ui.list.LatestNewsPage
 import com.example.jetpack_compose_all_in_one.ui.views.quote_swipe.QuoteSwipe
 import com.example.jetpack_compose_all_in_one.ui.views.quotes_ui.Quote
+import com.example.jetpack_compose_all_in_one.ui.views.theming.ThemeSettingsDialog
+import com.example.jetpack_compose_all_in_one.ui.views.theming.ThemeViewModel
 import com.example.jetpack_compose_all_in_one.ui.views.tmdbapi.PopularMoviesPage
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavDes
 import kotlinx.coroutines.CoroutineScope
@@ -96,6 +99,7 @@ import kotlinx.coroutines.launch
 fun MainContainerOfApp(
     context: Context,
     internetViewModel: InternetViewModel,
+    themeViewModel: ThemeViewModel,
     getCurrentLocationFunc: ((Location?) -> Unit) -> Unit,
     playMusicFuncForeground: (Uri) -> Unit,
     stopMusicFuncForeground: () -> Unit,
@@ -134,7 +138,17 @@ fun MainContainerOfApp(
         )
     }
 
-    NavigationDrawerMain(navController, currentRoute, drawerState, noSwipeState,
+    var themeDialogOpened by remember{ mutableStateOf(false) }
+
+    with (themeViewModel.openDialog) {
+        LaunchedEffect(this) { if (this@with) {
+            themeDialogOpened = true
+            themeViewModel.dialogOpened()
+        } }
+    }
+
+
+    NavigationDrawerMain(navController, currentRoute, drawerState, noSwipeState, themeViewModel,
         { scope.launch { drawerState.close() } }
     ) {
         Scaffold(
@@ -465,6 +479,10 @@ fun MainContainerOfApp(
                 composable(NavDes.ChatGPTDemo.route()){
                     ChatUI(hiltViewModel())
                 }
+            }
+
+            if (themeDialogOpened) {
+                ThemeSettingsDialog(vm = themeViewModel) { themeDialogOpened = false }
             }
         }
     }

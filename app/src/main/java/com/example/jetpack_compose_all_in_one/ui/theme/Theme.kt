@@ -2,7 +2,11 @@ package com.example.jetpack_compose_all_in_one.ui.theme
 
 import android.app.Activity
 import android.os.Build
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.AnimationSpec
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
@@ -66,8 +70,36 @@ fun JetpackComposeAllInOneTheme(
     }
 
     MaterialTheme(
-        colorScheme = colorScheme,
+        colorScheme = colorScheme.switchable(),
         typography = Typography,
         content = content
+    )
+}
+
+@Composable
+private fun ColorScheme.switchable(): ColorScheme {
+    @Composable
+    fun anim(targetValue: Color) =
+        animateColorAsState(
+            targetValue = targetValue,
+            animationSpec = tween(durationMillis = 1500)
+        ).value
+
+    return copy(
+        primary = anim(primary),
+        onPrimary = anim(onPrimary),
+        primaryContainer = anim(primaryContainer),
+        onPrimaryContainer = anim(onPrimaryContainer),
+        secondary = anim(secondary),
+        onSecondary = anim(onSecondary),
+        secondaryContainer = anim(secondaryContainer),
+        onSecondaryContainer = anim(onSecondaryContainer),
+        background = anim(background),
+        onBackground = anim(onBackground),
+        surface = anim(surface),
+        onSurface = anim(onSurface),
+        error = anim(error),
+        onError = anim(onError),
+        errorContainer = anim(errorContainer)
     )
 }

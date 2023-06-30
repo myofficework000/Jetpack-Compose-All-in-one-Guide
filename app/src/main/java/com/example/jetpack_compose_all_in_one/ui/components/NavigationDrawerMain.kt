@@ -1,7 +1,9 @@
 package com.example.jetpack_compose_all_in_one.ui.components
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DrawerState
@@ -17,9 +19,12 @@ import androidx.compose.runtime.State
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.jetpack_compose_all_in_one.ui.theme.sp_32
 import com.example.jetpack_compose_all_in_one.ui.theme.spaceLarge
+import com.example.jetpack_compose_all_in_one.ui.views.theming.ThemeSettingsRow
+import com.example.jetpack_compose_all_in_one.ui.views.theming.ThemeViewModel
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavDes
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavigationCategoryData
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavigationDrawerData
@@ -31,6 +36,7 @@ fun NavigationDrawerMain(
     currentRoute: MutableState<NavDes>,
     drawerState: DrawerState,
     noSwiping: State<Boolean>,
+    themeViewModel: ThemeViewModel,
     closeDrawerFunc: () -> Unit,
     content: @Composable () -> Unit
 ) {
@@ -49,6 +55,9 @@ fun NavigationDrawerMain(
                         }
                     }
                 }
+                Spacer(Modifier.weight(1f))
+                ThemeSettingsRow(vm = themeViewModel, Modifier.padding(horizontal = 16.dp))
+                Spacer(Modifier.height(32.dp)) // Acts as padding
             }
         },
         gesturesEnabled = if (noSwiping.value) drawerState.isOpen else true
