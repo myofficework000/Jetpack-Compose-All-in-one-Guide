@@ -5,6 +5,8 @@ import com.example.jetpack_compose_all_in_one.android_architectures.clean_code_w
 import com.example.jetpack_compose_all_in_one.android_architectures.clean_code_with_mvi_mvvm.data.remote.WeatherApi
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,7 +25,11 @@ object AppModule {
     fun provideWeatherApi(): WeatherApi {
         return Retrofit.Builder()
             .baseUrl(BASE_URL_WEATHER_API)
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create(
+                Moshi.Builder()
+                    .add(KotlinJsonAdapterFactory())
+                    .build()
+            ))
             .build()
             .create()
     }

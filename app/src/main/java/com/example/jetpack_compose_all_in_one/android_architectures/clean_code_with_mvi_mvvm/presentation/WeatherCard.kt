@@ -38,6 +38,7 @@ fun WeatherCard(
         Card(
             modifier = modifier.then(Modifier.padding(dp_15)),
             shape = RoundedCornerShape(dp_15),
+            colors = CardDefaults.cardColors(containerColor = backgroundColor),
             elevation = CardDefaults.cardElevation(dp_15),
         ) {
             Column(
