@@ -12,6 +12,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -27,6 +28,8 @@ import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.viewmodel
 import com.example.jetpack_compose_all_in_one.ui.components.InputFields
 import com.example.jetpack_compose_all_in_one.ui.components.MainContainerOfApp
 import com.example.jetpack_compose_all_in_one.ui.theme.JetpackComposeAllInOneTheme
+import com.example.jetpack_compose_all_in_one.ui.views.theming.ThemeViewModel
+import com.example.jetpack_compose_all_in_one.ui.views.theming.Themes
 import com.example.jetpack_compose_all_in_one.utils.isLocationAllowed
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -57,6 +60,7 @@ class MainActivity : ComponentActivity() {
     }
     private val internetViewModel by viewModels<InternetViewModel>()
     private val chatGPTViewModel by viewModels<ChatGPTViewModel>()
+    private val themeViewModel by viewModels<ThemeViewModel>()
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private val locationCancelToken by lazy{ CancellationTokenSource() }
@@ -70,7 +74,13 @@ class MainActivity : ComponentActivity() {
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         setContent {
-            JetpackComposeAllInOneTheme {
+            JetpackComposeAllInOneTheme(
+                darkTheme = when (themeViewModel.themeMode) {
+                    Themes.DEFAULT -> isSystemInDarkTheme()
+                    Themes.LIGHT -> false
+                    Themes.DARK -> true
+                }
+            ) {
                 // A surface container using the 'background' color from the theme
 
                 Surface(
@@ -143,6 +153,7 @@ class MainActivity : ComponentActivity() {
                     MainContainerOfApp(
                         applicationContext,
                         internetViewModel,
+                        themeViewModel,
                         {
                             if (!isLocationAllowed(this)) it(null)
                             else fusedLocationClient

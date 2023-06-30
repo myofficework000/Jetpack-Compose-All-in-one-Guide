@@ -2,11 +2,17 @@ package com.example.jetpack_compose_all_in_one.ui.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.RadioButton
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
@@ -28,6 +34,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -262,5 +269,59 @@ fun LabeledSwitch(
             modifier = textModifier,
             color = textColor
         )
+    }
+}
+
+// textTemplate is the all-in-one place to define text color, style and the rest.
+//      Main reason is that modifiers don't really define the common attributes
+//      of Text(), and it might not look neat for RadioButtons to copy all
+//      the parameters of Text().
+@Composable
+fun RadioButtons(
+    options: List<String>,
+    currentOption: String, // This does a string match with the options
+    modifier: Modifier = Modifier,
+    textTemplate: @Composable (String) -> Unit = {
+        Text(it, color = MaterialTheme.colorScheme.onSurface)
+    },
+    onSelect: (Int) -> Unit // This outputs the index chosen
+) {
+    @Composable
+    fun RadioItem(
+        option: Pair<Int, String>,
+        isSelected: Boolean,
+        textTemplate: @Composable (String) -> Unit,
+        onSelect: (Int) -> Unit
+    ) {
+        Button(
+            { onSelect(option.first) },
+            shape = RectangleShape,
+            colors = ButtonDefaults.textButtonColors()
+        ) {
+            Row(
+                Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                RadioButton(selected = isSelected, onClick = { onSelect(option.first) })
+                textTemplate(option.second)
+            }
+        }
+    }
+
+    Column(
+        Modifier
+            .width(IntrinsicSize.Max)
+            .background(androidx.compose.material.MaterialTheme.colors.surface)
+            .then(modifier)
+    ) {
+        options.forEachIndexed { i,v ->
+            RadioItem(
+                Pair(i, v),
+                currentOption == v,
+                textTemplate,
+                onSelect
+            )
+        }
     }
 }
