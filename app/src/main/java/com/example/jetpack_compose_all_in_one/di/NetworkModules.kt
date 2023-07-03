@@ -19,7 +19,7 @@ import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.remote.Au
 import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.remote.ChatGPTApiServices
 import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.remote.repository.ChatGPTRemoteRepository
 import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.utils.Constants.CHAT_GPT_BASE_URL
-import com.example.jetpack_compose_all_in_one.third_party_lib.paging3.data.retmote.GitHubService
+import com.example.jetpack_compose_all_in_one.third_party_lib.paging3.data.remote.GitHubService
 import com.example.jetpack_compose_all_in_one.utils.Constants
 import com.example.jetpack_compose_all_in_one.utils.Constants.QUOTES_BASE_URL
 import com.example.jetpack_compose_all_in_one.utils.Constants.RANDOM_DOG_BASE_URL

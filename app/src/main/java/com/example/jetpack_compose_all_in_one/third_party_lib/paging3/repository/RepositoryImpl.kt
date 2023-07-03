@@ -5,7 +5,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.jetpack_compose_all_in_one.di.GithubAPI
 import com.example.jetpack_compose_all_in_one.third_party_lib.paging3.data.DataResponseItem
-import com.example.jetpack_compose_all_in_one.third_party_lib.paging3.data.retmote.GitHubService
+import com.example.jetpack_compose_all_in_one.third_party_lib.paging3.data.remote.GitHubService
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

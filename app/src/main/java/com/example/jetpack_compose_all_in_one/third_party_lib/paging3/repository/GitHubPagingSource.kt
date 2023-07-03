@@ -3,7 +3,7 @@ package com.example.jetpack_compose_all_in_one.third_party_lib.paging3.repositor
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.jetpack_compose_all_in_one.third_party_lib.paging3.data.DataResponseItem
-import com.example.jetpack_compose_all_in_one.third_party_lib.paging3.data.retmote.GitHubService
+import com.example.jetpack_compose_all_in_one.third_party_lib.paging3.data.remote.GitHubService
 
 class GitHubPagingSource(private val apiService: GitHubService) : PagingSource<Int, DataResponseItem>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, DataResponseItem> {
