@@ -79,6 +79,7 @@ import com.example.jetpack_compose_all_in_one.lessons.lesson_7.Lesson_7_Chapter_
 import com.example.jetpack_compose_all_in_one.lessons.lesson_8.Lesson_8_Animations
 import com.example.jetpack_compose_all_in_one.lessons.lesson_9.Lesson_9
 import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.view.ChatUI
+import com.example.jetpack_compose_all_in_one.third_party_lib.paging3.repo_ui.RepositoryList
 import com.example.jetpack_compose_all_in_one.third_party_lib.stripe.IntegrateStripe
 import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat2
 import com.example.jetpack_compose_all_in_one.ui.views.domain_search.DomainSearch
@@ -478,6 +479,9 @@ fun MainContainerOfApp(
                 }
                 composable(NavDes.ChatGPTDemo.route()){
                     ChatUI(hiltViewModel())
+                }
+                composable(NavDes.GithubPagingDemo.route()){
+                    RepositoryList(hiltViewModel())
                 }
             }
 

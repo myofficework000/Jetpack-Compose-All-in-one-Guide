@@ -35,6 +35,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.FLOW
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.FLOW_DEMO_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.FOREGROUND_SERVICE
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.FOREGROUND_SERVICE_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.GITHUB_PAGING_DEMO
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.GITHUB_PAGING_DEMO_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.HOME
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.HOME_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.INTERNET
@@ -251,7 +253,10 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     object SharedPrefDemo : NavDes(NavigationDrawerData(SHARED_PREF_DEMO, SHARED_PREF_DEMO_ABOUT))
 
     object StripeDemo : NavDes(NavigationDrawerData(STRIPE_DEMO, STRIPE_DEMO_ABOUT))
+
     object ChatGPTDemo : NavDes(NavigationDrawerData(CHATGPT_DEMO, CHATGPT_DEMO_ABOUT))
+
+    object GithubPagingDemo : NavDes(NavigationDrawerData(GITHUB_PAGING_DEMO, GITHUB_PAGING_DEMO_ABOUT))
 
 
     /*object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
@@ -395,7 +400,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
         NavigationCategoryData(
             listOf(
                 StripeDemo,
-                ChatGPTDemo
+                ChatGPTDemo,
+                GithubPagingDemo
             ), THIRD_PARTY
         )
     )

@@ -171,6 +171,27 @@ dependencies {
 
     // Stripe
     implementation "com.stripe:stripe-android:20.17.0"
+
+    // paging
+    def paging_version = "3.0.0"
+
+    implementation "androidx.paging:paging-runtime:$paging_version"
+
+    // alternatively - without Android dependencies for tests
+    testImplementation "androidx.paging:paging-common:$paging_version"
+
+    // optional - RxJava2 support
+    implementation "androidx.paging:paging-rxjava2:$paging_version"
+
+    // optional - RxJava3 support
+    implementation "androidx.paging:paging-rxjava3:$paging_version"
+
+    // optional - Guava ListenableFuture support
+    implementation "androidx.paging:paging-guava:$paging_version"
+
+    // Jetpack Compose Integration
+    implementation "androidx.paging:paging-compose:3.2.0-rc01"
+
 }
 
 // Remember to add this to local.properties
