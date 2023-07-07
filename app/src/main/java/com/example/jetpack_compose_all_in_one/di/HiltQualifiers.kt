@@ -29,3 +29,7 @@ annotation class RandomDogAPI
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
 annotation class RandomFoxAPI
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class GithubAPI

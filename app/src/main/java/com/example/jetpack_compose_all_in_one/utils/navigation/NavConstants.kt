@@ -211,4 +211,7 @@ object NavConstants {
 
     const val CHATGPT_DEMO = "CHAT GPT"
     const val CHATGPT_DEMO_ABOUT = "ChatGPT Demo"
+
+    const val GITHUB_PAGING_DEMO = "Github Repositories"
+    const val GITHUB_PAGING_DEMO_ABOUT = "Github Repositories Paging Demo"
 }
