@@ -81,6 +81,7 @@ import com.example.jetpack_compose_all_in_one.lessons.lesson_9.Lesson_9
 import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.view.ChatUI
 import com.example.jetpack_compose_all_in_one.third_party_lib.paging3.repo_ui.RepositoryList
 import com.example.jetpack_compose_all_in_one.third_party_lib.stripe.IntegrateStripe
+import com.example.jetpack_compose_all_in_one.third_party_lib.yelp_api.YelpUIScreen
 import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat2
 import com.example.jetpack_compose_all_in_one.ui.views.domain_search.DomainSearch
 import com.example.jetpack_compose_all_in_one.ui.views.internet.InternetDemo
@@ -403,6 +404,10 @@ fun MainContainerOfApp(
 
                 composable(NavDes.RandomDogApi.route()) {
                     NextRandomDog()
+                }
+
+                composable(NavDes.YelpApi.route()) {
+                    YelpUIScreen()
                 }
 
                 composable(NavDes.Mvp.route()) {

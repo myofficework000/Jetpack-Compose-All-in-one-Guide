@@ -41,6 +41,7 @@ import retrofit2.create
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 import com.example.jetpack_compose_all_in_one.third_party_lib.stripe.ApiStripe
+import com.example.jetpack_compose_all_in_one.third_party_lib.yelp_api.api.YelpAPI
 import dagger.hilt.android.qualifiers.ApplicationContext
 
 @Module
@@ -238,4 +239,13 @@ object NetworkModules {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create<GitHubService>()
+
+    @Provides
+    @Singleton
+    @YelpAPIAnnotation
+    fun provideYelpApi() = Retrofit.Builder()
+        .baseUrl(Constants.YELP_BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+        .create<YelpAPI>()
 }

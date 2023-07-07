@@ -45,4 +45,7 @@ object Constants {
     const val GITHUB_BASE_URL = "https://api.github.com/"
     // As the name suggests, it's perfectly safe to put the key here.
     const val STRIPE_PUBLISHABLE_KEY = "pk_test_51NDWcxAuGpza3cNLRCDyClOLtcCw2dw7lEBsS9beNH8Dy83oO1Swwe6cXwXhvibkQ4DbhZkWbkXIszTX8RA8NZZy00eEaRFF1Z"
+
+    const val YELP_BASE_URL = "https://api.yelp.com/v3/"
+
 }
