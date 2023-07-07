@@ -24,6 +24,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.COLL
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.COLLAPSABLE_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CONTENT_PROVIDER
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CONTENT_PROVIDER_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CURRENCY_EXCHANGE_API
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CURRENCY_EXCHANGE_API_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOG_API
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOG_API_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOMAIN_SEARCH
@@ -242,6 +244,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object YelpApi : NavDes(NavigationDrawerData(YELP_API, YELP_API_ABOUT))
 
+    object CurrencyExchangeApi : NavDes(NavigationDrawerData(CURRENCY_EXCHANGE_API, CURRENCY_EXCHANGE_API_ABOUT))
+
     object RandomFox : NavDes(NavigationDrawerData(RANDOM_FOX_API, RANDOM_FOX_API_ABOUT))
 
     object Maps : NavDes(NavigationDrawerData(MAPS, MAPS_ABOUT))
@@ -406,7 +410,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 StripeDemo,
                 ChatGPTDemo,
                 GithubPagingDemo,
-                YelpApi
+                YelpApi,
+                CurrencyExchangeApi
             ), THIRD_PARTY
         )
     )
