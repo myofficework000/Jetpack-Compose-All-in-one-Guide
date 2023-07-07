@@ -14,6 +14,15 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * ViewModel class responsible for managing the integration with the Stripe payment system.
+ *
+ * @property repo The repository used for interacting with the Stripe API.
+ * @property stripeClientSecret The secret received from the backend for launching the payment window.
+ * @property stripePaymentState The state of the payment result for UI processing.
+ * @property isOnCooldown Flag indicating if the payment window launch is on cooldown.
+ * @property isPaying Flag indicating if a payment is currently in progress.
+ */
 @HiltViewModel
 class StripeViewModel @Inject constructor(
     private val repo: StripeRepositoryImpl
