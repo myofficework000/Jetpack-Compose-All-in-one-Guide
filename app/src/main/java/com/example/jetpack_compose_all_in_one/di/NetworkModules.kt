@@ -15,6 +15,8 @@ import com.example.jetpack_compose_all_in_one.features.random_fox.model.RandomFo
 import com.example.jetpack_compose_all_in_one.features.swipe_cards.ApiQuotes
 import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.APIMovies
 import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.TmdbApiInterceptor
+import com.example.jetpack_compose_all_in_one.third_party_lib.airtel_api.Constants.AIRTEL_BASE_URL
+import com.example.jetpack_compose_all_in_one.third_party_lib.airtel_api.repo.AirtelApiService
 import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.remote.AuthInterceptor
 import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.remote.ChatGPTApiServices
 import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.remote.repository.ChatGPTRemoteRepository
@@ -270,5 +272,25 @@ object NetworkModules {
             .baseUrl(CurrencyExchangeConstants.BASE_UEL)
             .build()
             .create<ApiServiceCurrencyExchange>()
+    }
+
+    @Provides
+    @Singleton
+    @AirtelAPI
+    fun provideAirtel(): AirtelApiService{
+        val loggingInterceptor = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
+
+        val client = OkHttpClient.Builder()
+            .addInterceptor(loggingInterceptor)
+            .build()
+
+        return Retrofit.Builder()
+            .baseUrl(AIRTEL_BASE_URL)
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create<AirtelApiService>()
     }
 }
