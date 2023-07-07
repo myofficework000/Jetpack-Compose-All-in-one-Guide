@@ -141,6 +141,10 @@ object NavConstants {
     const val RANDOM_DOG_API = "RandomDogApi"
     const val RANDOM_DOG_API_ABOUT = "Random Dog API"
 
+    const val YELP_API = "YelpAPi"
+    const val YELP_API_ABOUT = "Yelp Api"
+
+
     const val RANDOM_FOX_API = "RandomFoxApi"
     const val RANDOM_FOX_API_ABOUT = "Random Fox API"
 

@@ -134,6 +134,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.TMDB
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.TMDB_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.WEATHER_SAMPLE
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.WEATHER_SAMPLE_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.YELP_API
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.YELP_API_ABOUT
 
 /*
     How to add an item in Navigation Drawer:
@@ -237,6 +239,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     object DogApi : NavDes(NavigationDrawerData(DOG_API, DOG_API_ABOUT))
 
     object RandomDogApi : NavDes(NavigationDrawerData(RANDOM_DOG_API, RANDOM_DOG_API_ABOUT))
+
+    object YelpApi : NavDes(NavigationDrawerData(YELP_API, YELP_API_ABOUT))
 
     object RandomFox : NavDes(NavigationDrawerData(RANDOM_FOX_API, RANDOM_FOX_API_ABOUT))
 
@@ -401,7 +405,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
             listOf(
                 StripeDemo,
                 ChatGPTDemo,
-                GithubPagingDemo
+                GithubPagingDemo,
+                YelpApi
             ), THIRD_PARTY
         )
     )
