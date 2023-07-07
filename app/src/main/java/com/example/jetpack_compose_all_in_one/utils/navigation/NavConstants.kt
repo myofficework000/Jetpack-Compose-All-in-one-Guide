@@ -144,6 +144,8 @@ object NavConstants {
     const val YELP_API = "YelpAPi"
     const val YELP_API_ABOUT = "Yelp Api"
 
+    const val CURRENCY_EXCHANGE_API = "CurrencyApi"
+    const val CURRENCY_EXCHANGE_API_ABOUT = "Currency Api"
 
     const val RANDOM_FOX_API = "RandomFoxApi"
     const val RANDOM_FOX_API_ABOUT = "Random Fox API"
