@@ -3,6 +3,8 @@ package com.example.jetpack_compose_all_in_one.utils.navigation
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ACTIVITY
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ACTIVITY_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.AIRTEL_DEMO
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.AIRTEL_DEMO_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ALARM_MANAGER
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ALARM_MANAGER_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ANDROID_ARCHITECTURES
@@ -266,6 +268,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object GithubPagingDemo : NavDes(NavigationDrawerData(GITHUB_PAGING_DEMO, GITHUB_PAGING_DEMO_ABOUT))
 
+    object AirtelDemo: NavDes(NavigationDrawerData(AIRTEL_DEMO, AIRTEL_DEMO_ABOUT))
+
 
     /*object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
         R.drawable.baseline_contacts_24
@@ -411,7 +415,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 ChatGPTDemo,
                 GithubPagingDemo,
                 YelpApi,
-                CurrencyExchangeApi
+                CurrencyExchangeApi,
+                AirtelDemo
             ), THIRD_PARTY
         )
     )

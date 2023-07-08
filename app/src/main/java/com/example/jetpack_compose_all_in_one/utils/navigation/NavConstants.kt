@@ -220,4 +220,7 @@ object NavConstants {
 
     const val GITHUB_PAGING_DEMO = "Github Repositories"
     const val GITHUB_PAGING_DEMO_ABOUT = "Github Repositories Paging Demo"
+
+    const val AIRTEL_DEMO = "AIRTEL"
+    const val AIRTEL_DEMO_ABOUT = "AIRTEL Demo"
 }

@@ -41,3 +41,7 @@ annotation class CurrencyExchange
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
 annotation class YelpAPIAnnotation
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class AirtelAPI
