@@ -51,10 +51,9 @@ Learn step by step UI development using Jetpack Compose [beginners to advance]. 
 | <h3><b>Lesson 11:</b> Localization </h3><br/> This lesson covers localization in Jetpack Compose<br> • **Chapter 1:** Adding Language Support <br> • **Chapter 2:** Formatting Dates and Numbers <br> **• Chapter 3:** RTL Support <br>• **Chapter 4:** String Plurals <br> | <img src="https://github.com/myofficework000/Jetpack-Compose-All-In-One-Guide/blob/master/demo/lesson-11.gif" alt="Lesson 11 Preview" width="170" height="300"> |
 | <h3><b>Lesson 12:</b> Web Views </h3><br/> This lesson demonstrates how to create web views in Jetpack Compose<br> | <img src="https://github.com/myofficework000/Jetpack-Compose-All-In-One-Guide/blob/master/demo/lesson-12.gif" alt="Lesson 12 Preview" width="170" height="300"> |
 
-## Contributing
 
+## Contributors [![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
 Contributions are welcome! If you have any ideas, suggestions, or improvements, please open an issue or submit a pull request.
 
 ## License
-
 This project is licensed under the [MIT License](LICENSE).
