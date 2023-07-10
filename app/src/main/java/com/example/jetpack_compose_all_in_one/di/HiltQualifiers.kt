@@ -33,3 +33,15 @@ annotation class RandomFoxAPI
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
 annotation class GithubAPI
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class CurrencyExchange
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class YelpAPIAnnotation
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class AirtelAPI

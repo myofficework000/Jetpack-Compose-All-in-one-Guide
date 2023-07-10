@@ -144,6 +144,12 @@ object NavConstants {
     const val RANDOM_DOG_API = "RandomDogApi"
     const val RANDOM_DOG_API_ABOUT = "Random Dog API"
 
+    const val YELP_API = "YelpAPi"
+    const val YELP_API_ABOUT = "Yelp Api"
+
+    const val CURRENCY_EXCHANGE_API = "CurrencyApi"
+    const val CURRENCY_EXCHANGE_API_ABOUT = "Currency Api"
+
     const val RANDOM_FOX_API = "RandomFoxApi"
     const val RANDOM_FOX_API_ABOUT = "Random Fox API"
 
@@ -217,4 +223,7 @@ object NavConstants {
 
     const val GITHUB_PAGING_DEMO = "Github Repositories"
     const val GITHUB_PAGING_DEMO_ABOUT = "Github Repositories Paging Demo"
+
+    const val AIRTEL_DEMO = "AIRTEL"
+    const val AIRTEL_DEMO_ABOUT = "AIRTEL Demo"
 }

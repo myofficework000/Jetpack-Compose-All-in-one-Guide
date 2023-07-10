@@ -15,10 +15,14 @@ import com.example.jetpack_compose_all_in_one.features.random_fox.model.RandomFo
 import com.example.jetpack_compose_all_in_one.features.swipe_cards.ApiQuotes
 import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.APIMovies
 import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.TmdbApiInterceptor
+import com.example.jetpack_compose_all_in_one.third_party_lib.airtel_api.Constants.AIRTEL_BASE_URL
+import com.example.jetpack_compose_all_in_one.third_party_lib.airtel_api.repo.AirtelApiService
 import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.remote.AuthInterceptor
 import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.remote.ChatGPTApiServices
 import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.remote.repository.ChatGPTRemoteRepository
 import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.utils.Constants.CHAT_GPT_BASE_URL
+import com.example.jetpack_compose_all_in_one.third_party_lib.currency_exchange.remote.ApiServiceCurrencyExchange
+import com.example.jetpack_compose_all_in_one.third_party_lib.currency_exchange.utils.CurrencyExchangeConstants
 import com.example.jetpack_compose_all_in_one.third_party_lib.paging3.data.remote.GitHubService
 import com.example.jetpack_compose_all_in_one.utils.Constants
 import com.example.jetpack_compose_all_in_one.utils.Constants.QUOTES_BASE_URL
@@ -41,7 +45,9 @@ import retrofit2.create
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 import com.example.jetpack_compose_all_in_one.third_party_lib.stripe.ApiStripe
+import com.example.jetpack_compose_all_in_one.third_party_lib.yelp_api.api.YelpAPI
 import dagger.hilt.android.qualifiers.ApplicationContext
+import okhttp3.logging.HttpLoggingInterceptor
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -238,4 +244,53 @@ object NetworkModules {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create<GitHubService>()
+
+    @Provides
+    @Singleton
+    @YelpAPIAnnotation
+    fun provideYelpApi() = Retrofit.Builder()
+        .baseUrl(Constants.YELP_BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+        .create<YelpAPI>()
+
+
+    @Provides
+    @Singleton
+    @CurrencyExchange
+    fun provideCurrency(): ApiServiceCurrencyExchange {
+        val loggingInterceptor = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
+
+        val client = OkHttpClient.Builder()
+            .addInterceptor(loggingInterceptor)
+            .build()
+        return Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .baseUrl(CurrencyExchangeConstants.BASE_UEL)
+            .build()
+            .create<ApiServiceCurrencyExchange>()
+    }
+
+    @Provides
+    @Singleton
+    @AirtelAPI
+    fun provideAirtel(): AirtelApiService{
+        val loggingInterceptor = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
+
+        val client = OkHttpClient.Builder()
+            .addInterceptor(loggingInterceptor)
+            .build()
+
+        return Retrofit.Builder()
+            .baseUrl(AIRTEL_BASE_URL)
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create<AirtelApiService>()
+    }
 }

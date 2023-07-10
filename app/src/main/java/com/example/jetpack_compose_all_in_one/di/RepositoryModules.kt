@@ -14,6 +14,10 @@ import com.example.jetpack_compose_all_in_one.features.random_fox.model.IRandomF
 import com.example.jetpack_compose_all_in_one.features.random_fox.model.RandomFoxImpl
 import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.repository.IMovieRepository
 import com.example.jetpack_compose_all_in_one.features.tmdb_using_flows_paging3.tmdbapi.repository.MovieRepository
+import com.example.jetpack_compose_all_in_one.third_party_lib.currency_exchange.remote.repository.CurrencyIRepository
+import com.example.jetpack_compose_all_in_one.third_party_lib.currency_exchange.remote.repository.CurrencyRepositoryImpl
+import com.example.jetpack_compose_all_in_one.third_party_lib.airtel_api.repo.AirtelRepository
+import com.example.jetpack_compose_all_in_one.third_party_lib.airtel_api.repo.AirtelRepositoryImpl
 import com.example.jetpack_compose_all_in_one.third_party_lib.paging3.repository.GitHubRepository
 import com.example.jetpack_compose_all_in_one.third_party_lib.paging3.repository.GitHubRepositoryImpl
 import com.example.jetpack_compose_all_in_one.third_party_lib.stripe.StripeRepository
@@ -75,4 +79,14 @@ abstract class RepositoryModules {
     @Singleton
     @GithubAPI
     abstract fun bindGithubRepository(impl: GitHubRepositoryImpl): GitHubRepository
+
+    @Binds
+    @Singleton
+    @CurrencyExchange
+    abstract fun bindCurrencyRepository(impl: CurrencyRepositoryImpl) : CurrencyIRepository
+
+    @Binds
+    @Singleton
+    @AirtelAPI
+    abstract fun bindAirtelRepository(impl: AirtelRepositoryImpl): AirtelRepository
 }

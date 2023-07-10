@@ -79,9 +79,12 @@ import com.example.jetpack_compose_all_in_one.lessons.lesson_6.Lesson_6_ThemeCha
 import com.example.jetpack_compose_all_in_one.lessons.lesson_7.Lesson_7_Chapter_ConstraintLayout
 import com.example.jetpack_compose_all_in_one.lessons.lesson_8.Lesson_8_Animations
 import com.example.jetpack_compose_all_in_one.lessons.lesson_9.Lesson_9
+import com.example.jetpack_compose_all_in_one.third_party_lib.airtel_api.view.AirtelAPIScreen
 import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.view.ChatUI
+import com.example.jetpack_compose_all_in_one.third_party_lib.currency_exchange.view.CurrencyExchangeScreen
 import com.example.jetpack_compose_all_in_one.third_party_lib.paging3.repo_ui.RepositoryList
 import com.example.jetpack_compose_all_in_one.third_party_lib.stripe.IntegrateStripe
+import com.example.jetpack_compose_all_in_one.third_party_lib.yelp_api.YelpUIScreen
 import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat2
 import com.example.jetpack_compose_all_in_one.ui.views.domain_search.DomainSearch
 import com.example.jetpack_compose_all_in_one.ui.views.internet.InternetDemo
@@ -410,6 +413,10 @@ fun MainContainerOfApp(
                     NextRandomDog()
                 }
 
+                composable(NavDes.YelpApi.route()) {
+                    YelpUIScreen()
+                }
+
                 composable(NavDes.Mvp.route()) {
                     DogMvpUI()
                 }
@@ -487,6 +494,12 @@ fun MainContainerOfApp(
                 }
                 composable(NavDes.GithubPagingDemo.route()){
                     RepositoryList(hiltViewModel())
+                }
+                composable(NavDes.CurrencyExchangeApi.route()) {
+                    CurrencyExchangeScreen()
+                }
+                composable(NavDes.AirtelDemo.route()){
+                    AirtelAPIScreen(hiltViewModel())
                 }
             }
 

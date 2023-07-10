@@ -3,6 +3,8 @@ package com.example.jetpack_compose_all_in_one.utils.navigation
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ACTIVITY
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ACTIVITY_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.AIRTEL_DEMO
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.AIRTEL_DEMO_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ALARM_MANAGER
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ALARM_MANAGER_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ANDROID_ARCHITECTURES
@@ -24,6 +26,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.COLL
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.COLLAPSABLE_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CONTENT_PROVIDER
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CONTENT_PROVIDER_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CURRENCY_EXCHANGE_API
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CURRENCY_EXCHANGE_API_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOG_API
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOG_API_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOMAIN_SEARCH
@@ -136,6 +140,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.TMDB
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.TMDB_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.WEATHER_SAMPLE
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.WEATHER_SAMPLE_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.YELP_API
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.YELP_API_ABOUT
 
 /*
     How to add an item in Navigation Drawer:
@@ -242,6 +248,10 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object RandomDogApi : NavDes(NavigationDrawerData(RANDOM_DOG_API, RANDOM_DOG_API_ABOUT))
 
+    object YelpApi : NavDes(NavigationDrawerData(YELP_API, YELP_API_ABOUT))
+
+    object CurrencyExchangeApi : NavDes(NavigationDrawerData(CURRENCY_EXCHANGE_API, CURRENCY_EXCHANGE_API_ABOUT))
+
     object RandomFox : NavDes(NavigationDrawerData(RANDOM_FOX_API, RANDOM_FOX_API_ABOUT))
 
     object Maps : NavDes(NavigationDrawerData(MAPS, MAPS_ABOUT))
@@ -261,6 +271,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     object ChatGPTDemo : NavDes(NavigationDrawerData(CHATGPT_DEMO, CHATGPT_DEMO_ABOUT))
 
     object GithubPagingDemo : NavDes(NavigationDrawerData(GITHUB_PAGING_DEMO, GITHUB_PAGING_DEMO_ABOUT))
+
+    object AirtelDemo: NavDes(NavigationDrawerData(AIRTEL_DEMO, AIRTEL_DEMO_ABOUT))
 
 
     /*object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
@@ -405,7 +417,10 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
             listOf(
                 StripeDemo,
                 ChatGPTDemo,
-                GithubPagingDemo
+                GithubPagingDemo,
+                YelpApi,
+                CurrencyExchangeApi,
+                AirtelDemo
             ), THIRD_PARTY
         )
     )
