@@ -4,20 +4,27 @@ import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.Chip
+import androidx.compose.material.ChipDefaults
 import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.FilterChip
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
+import androidx.compose.material3.AssistChip
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -27,6 +34,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.ui.components.LessonHeader
+import com.example.jetpack_compose_all_in_one.ui.theme.Red500
+import com.example.jetpack_compose_all_in_one.ui.theme.White
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_15
 import com.example.jetpack_compose_all_in_one.utils.LogicPager
 
@@ -66,9 +75,61 @@ private fun LessonContent() {
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class, ExperimentalMaterialApi::class)
 @Composable
 fun ChipDemo3() {
-    //Chi
+    val context = LocalContext.current
+    var selected by remember { mutableStateOf(false) }
+
+    FlowRow(modifier = Modifier.fillMaxWidth()) {
+        Chip(
+            modifier = Modifier.padding(end = 5.dp),
+            colors = ChipDefaults.chipColors(
+                backgroundColor = Color(0xFF102B4E),
+                contentColor = Color.White
+            ),
+            onClick = {
+                Toast.makeText(context, "Chip clicked", Toast.LENGTH_SHORT).show()
+            },
+            content = { Text("Chip 1") }
+        )
+
+        Chip(
+            modifier = Modifier.padding(end = 5.dp),
+            colors = ChipDefaults.chipColors(
+                backgroundColor = Color(0xFF102B4E),
+                contentColor = Color.White
+            ),
+            leadingIcon = { R.drawable.ic_drop },
+            onClick = {
+                Toast.makeText(context, "Chip with icon clicked", Toast.LENGTH_SHORT).show()
+            },
+            content = { Text("Chip 2") }
+        )
+
+        AssistChip(
+            label = { Text("Assist") },
+            onClick = {
+                Toast.makeText(context, "Assist Chip clicked", Toast.LENGTH_SHORT).show()
+            }
+        )
+
+        FilterChip(
+            modifier = Modifier.padding(end = 5.dp),
+            colors = ChipDefaults.filterChipColors(
+                backgroundColor = Color(0xFF102B4E),
+                contentColor = White,
+                selectedBackgroundColor = Red500
+            ),
+            selected = selected,
+            onClick = {
+                Toast.makeText(context, "Filter Chip clicked", Toast.LENGTH_SHORT).show()
+                selected = true
+            },
+            content = { Text("Filter") }
+        )
+    }
+
 }
 
 @Preview
