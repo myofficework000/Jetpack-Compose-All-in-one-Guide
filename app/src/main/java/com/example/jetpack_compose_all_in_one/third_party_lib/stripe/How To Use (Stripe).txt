@@ -1,0 +1,23 @@
+1. Use the following link to generate an API backend for the Stripe:
+    https://glitch.com/edit/#!/remix/stripe-mobile-payment-sheet-automatic
+
+2. Go to .env in the Glitch page and find the fields for secret_key and publishable_key
+
+3. Go to your Stripe account and enable Test mode
+
+4. Copy and paste the secret_key and publishable_key to the field
+
+5. Go to the Preview tab in the Glitch console and click "Preview in a new window"
+
+6. Copy the base URL of the backend
+
+7. Go to the Android project and open local.properties
+
+8. Replace (or add) the value STRIPE_BACKEND_BASEURL with the link you copied
+
+9. Run the app and test it out with the special cards provided by Stripe
+    DO NOT use your real card. Use one of these in the link:
+        https://stripe.com/docs/testing
+
+!IMPORTANT!
+These generated backend servers will expire after 5 days. Make sure to generate a new one when needed.
