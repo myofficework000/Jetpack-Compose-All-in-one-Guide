@@ -66,6 +66,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_6_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_7
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_7_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_8
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_8_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_DESC
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_3_CHAPTER_1
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_3_CHAPTER_1_ABOUT
@@ -189,6 +191,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     object L2Chapter6 : NavDes(NavigationDrawerData(LESSON_2_CHAPTER_6, LESSON_2_CHAPTER_6_ABOUT))
 
     object L2Chapter7 : NavDes(NavigationDrawerData(LESSON_2_CHAPTER_7, LESSON_2_CHAPTER_7_ABOUT))
+
+    object L2Chapter8 : NavDes(NavigationDrawerData(LESSON_2_CHAPTER_8, LESSON_2_CHAPTER_8_ABOUT))
 
     object L3List : NavDes(NavigationDrawerData(LESSON_3_CHAPTER_1, LESSON_3_CHAPTER_1_ABOUT))
 

@@ -92,6 +92,12 @@
         <item>Custom Linear Progress</item>
     </string-array>
 
+    <string-array name="l2c8_header_text">
+        <item>Chip Demo 1</item>
+        <item>Chip Demo 2</item>
+        <item>Chip Demo 3</item>
+    </string-array>
+
     <string-array name="l5c2_header_text">
         <item>Map type - Normal</item>
         <item>Map type - Terrain</item>

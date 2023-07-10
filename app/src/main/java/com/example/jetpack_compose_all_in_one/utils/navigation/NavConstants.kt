@@ -71,6 +71,9 @@ object NavConstants {
     const val LESSON_2_CHAPTER_7 = "Lesson_2_Chapter_7"
     const val LESSON_2_CHAPTER_7_ABOUT = "Chapter 7: Radio button, Checkbox"
 
+    const val LESSON_2_CHAPTER_8 = "Lesson_2_Chapter_8"
+    const val LESSON_2_CHAPTER_8_ABOUT = "Chapter 8: Chips"
+
     const val LESSON_3_CHAPTER_1 = "Lesson_3_Chapter_1"
     const val LESSON_3_CHAPTER_1_ABOUT = "Lesson 3: List"
 
