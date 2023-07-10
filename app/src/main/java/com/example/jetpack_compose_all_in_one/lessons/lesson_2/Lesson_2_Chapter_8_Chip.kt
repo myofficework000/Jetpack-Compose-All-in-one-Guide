@@ -104,10 +104,11 @@ fun ChipDemo3() {
             onClick = {
                 Toast.makeText(context, "Chip with icon clicked", Toast.LENGTH_SHORT).show()
             },
-            content = { Text("Chip 2") }
+            content = { Text("Chip with Icon") }
         )
 
         AssistChip(
+            modifier = Modifier.padding(end = 5.dp),
             label = { Text("Assist") },
             onClick = {
                 Toast.makeText(context, "Assist Chip clicked", Toast.LENGTH_SHORT).show()
