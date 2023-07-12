@@ -313,7 +313,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 L2Chapter4,
                 L2Chapter5,
                 L2Chapter6,
-                L2Chapter7
+                L2Chapter7,
+                L2Chapter8
             ),
             LESSON_2_DESC
         )
