@@ -8,12 +8,14 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.material.Chip
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
@@ -111,7 +113,40 @@ fun RandomCategoryChip(
 }
 
 
+enum class Chips(selected: Boolean){
+    None(false),
+    Work(false),
+    Class(false),
+    Casual(false),
+    Hobby(selected = false)
+}
+
+fun getListOfChips(): List<Chips> = listOf(Chips.None, Chips.Work, Chips.Class, Chips.Casual, Chips.Hobby)
+
+@Preview()
 @Composable
-fun ChipDemo1() {
-    //Naresh
+fun ChipDemo1(
+    name: String = "Dummy",
+    isSelected: Boolean = false,
+onChipSelected: () -> Unit = {}) {
+
+
+
+    val selectedChip by rememberSaveable {
+        mutableStateOf(Chips.None)
+    }
+
+    LazyRow{
+    }
+}
+
+@OptIn(ExperimentalMaterialApi::class)
+@Composable
+fun CustomChip(name: String = "Dummy",isSelected: Boolean = false,
+               onChipSelected: () -> Unit = {}){
+    Chip(onClick = { onChipSelected.invoke() },
+
+        ) {
+        Text(text = name, style = MaterialTheme.typography.bodyMedium)
+    }
 }
