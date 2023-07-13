@@ -1,6 +1,8 @@
 package com.example.jetpack_compose_all_in_one.lessons.lesson_10
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -24,21 +26,35 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SmallTopAppBar
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.ui.components.LessonHeader
 import com.example.jetpack_compose_all_in_one.ui.components.LessonText2
+import com.example.jetpack_compose_all_in_one.ui.theme.VioletA100
+import com.example.jetpack_compose_all_in_one.ui.theme.sp_20
 import com.example.jetpack_compose_all_in_one.ui.theme.twitterColor
+import com.example.jetpack_compose_all_in_one.utils.navigation.BottomBarNavDes
 
 
 @Preview
@@ -47,13 +63,24 @@ fun Lesson_10() {
     LessonContent()
 }
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun LessonContent() {
+    val navController  = rememberNavController()
+
     Text(text = "App Bars", modifier = Modifier.padding(8.dp))
 
     TopAppBarsDemo()
-    BottomAppBarDemo()
-    NavigationBarDemo()
+    Scaffold(
+        topBar = { TopAppBarsDemo() },
+        bottomBar = { BottomNavigationBar(navController = navController) },
+        content = { paddingUnit ->
+        NavigationGraph(
+            modifier = Modifier.padding(paddingUnit),
+            navController = navController)
+        }
+    )
+
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -128,6 +155,76 @@ fun TopAppBarsDemo() {
         }
     )
     Spacer(modifier = Modifier.height(8.dp))
+}
+
+@Composable
+fun BottomNavigationBar(navController: NavController){
+    val bottomNavItems = listOf(
+        BottomBarNavDes.Settings,
+        BottomBarNavDes.Search,
+        BottomBarNavDes.Account
+    )
+
+    BottomNavigation(
+        backgroundColor = VioletA100,
+        contentColor = Color.Black
+    ) {
+        val navBackStackEntry by navController.currentBackStackEntryAsState()
+        val currentRoute = navBackStackEntry?.destination?.route
+
+        bottomNavItems.forEach{ item ->
+            BottomNavigationItem(
+                icon = {Icon(item.data.icon, contentDescription = "")},
+                label = { Text(text = stringResource(id = item.data.name))},
+                selectedContentColor = Color.Black,
+                unselectedContentColor = Color.Black.copy(0.4f),
+                alwaysShowLabel = true,
+                selected = currentRoute == item.data.route,
+                onClick = {
+                    navController.navigate(item.data.route)
+                }
+            )
+        }
+    }
+}
+
+@Composable
+fun NavigationGraph(modifier: Modifier,navController: NavHostController){
+    NavHost(
+        modifier = modifier.fillMaxWidth(),
+        navController = navController, startDestination = BottomBarNavDes.Settings.data.route ){
+        composable(BottomBarNavDes.Settings.data.route){
+            SettingsScreen()
+        }
+        composable(BottomBarNavDes.Search.data.route){
+            SearchScreen2()
+        }
+        composable(BottomBarNavDes.Account.data.route){
+            AccountScreen()
+        }
+
+    }
+}
+
+@Composable
+fun SettingsScreen() {
+    Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+        Text(text = "Settings", fontWeight = FontWeight.Bold, fontSize = sp_20)
+    }
+}
+
+@Composable
+fun SearchScreen2() {
+    Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+        Text(text = "Search", fontWeight = FontWeight.Bold, fontSize = sp_20)
+    }
+}
+
+@Composable
+fun AccountScreen() {
+    Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+        Text(text = "Account", fontWeight = FontWeight.Bold, fontSize = sp_20)
+    }
 }
 
 @Composable

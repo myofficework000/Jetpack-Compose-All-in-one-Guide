@@ -226,4 +226,8 @@ object NavConstants {
 
     const val AIRTEL_DEMO = "AIRTEL"
     const val AIRTEL_DEMO_ABOUT = "AIRTEL Demo"
+
+    const val ACCOUNT = "Account"
+    const val SETTINGS = "Settings"
+    const val SEARCH = "Search"
 }

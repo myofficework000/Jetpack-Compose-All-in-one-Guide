@@ -149,7 +149,7 @@
     <string name="actors">Actors</string>
     <string name="not_required_for_accessibility">Not Require for accessibility</string>
     <string name="music">music\n</string>
-    <string name="search">search\n</string>
+    <string name="search">Search</string>
     <string name="home">Home\n</string>
     <string name="back">back\n</string>
 
@@ -206,5 +206,7 @@
     <string name="ask_me">Ask me anything</string>
     <string name="loading">loading</string>
     <string name="stripe_no_url_error">You forgot to set the base URL for the backend. Stripe doesn\'t work without it.</string>
+    <string name="settings">Settings</string>
+    <string name="account">Account</string>
 
 </resources>
