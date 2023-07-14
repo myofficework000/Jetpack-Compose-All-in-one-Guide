@@ -74,6 +74,9 @@ object NavConstants {
     const val LESSON_2_CHAPTER_8 = "Lesson_2_Chapter_8"
     const val LESSON_2_CHAPTER_8_ABOUT = "Chapter 8: Chips"
 
+    const val LESSON_2_CHAPTER_9 = "Lesson_2_Chapter_9"
+    const val LESSON_2_CHAPTER_9_ABOUT = "Chapter 9: Dropdown Menu"
+
     const val LESSON_3_CHAPTER_1 = "Lesson_3_Chapter_1"
     const val LESSON_3_CHAPTER_1_ABOUT = "Lesson 3: List"
 
@@ -115,6 +118,9 @@ object NavConstants {
 
     const val LESSON_13_LOCALIAZATION = "LESSON_13_Localization"
     const val LESSON_13_LOCALIAZATION_ABOUT = "Lesson 13: Localization"
+
+    const val LESSON_14_DROP_DOWN_MENU= "LESSON_14_Drop_down_menu"
+    const val LESSON_14_DROP_DOWN_MENU_ABOUT = "Lesson 14: Dropdown menu"
 
     const val QUOTE_2 = "quote2"
     const val QUOTE_2_ABOUT = "Swipe Quotes"

@@ -55,6 +55,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_12_WEBVIEW_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_13_LOCALIAZATION
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_13_LOCALIAZATION_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_14_DROP_DOWN_MENU
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_14_DROP_DOWN_MENU_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_1_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_1
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_1_ABOUT
@@ -72,6 +74,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_7_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_8
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_8_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_9
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_9_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_DESC
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_3_CHAPTER_1
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_3_CHAPTER_1_ABOUT
@@ -199,6 +203,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     object L2Chapter7 : NavDes(NavigationDrawerData(LESSON_2_CHAPTER_7, LESSON_2_CHAPTER_7_ABOUT))
 
     object L2Chapter8 : NavDes(NavigationDrawerData(LESSON_2_CHAPTER_8, LESSON_2_CHAPTER_8_ABOUT))
+    object L2Chapter9 : NavDes(NavigationDrawerData(LESSON_2_CHAPTER_9, LESSON_2_CHAPTER_9_ABOUT))
+
 
     object L3List : NavDes(NavigationDrawerData(LESSON_3_CHAPTER_1, LESSON_3_CHAPTER_1_ABOUT))
 
@@ -232,6 +238,9 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object Lesson13Localization :
         NavDes(NavigationDrawerData(LESSON_13_LOCALIAZATION, LESSON_13_LOCALIAZATION_ABOUT))
+
+    object Lesson14DropDownMenu :
+        NavDes(NavigationDrawerData(LESSON_14_DROP_DOWN_MENU, LESSON_14_DROP_DOWN_MENU_ABOUT))
 
     object QuoteSwipe : NavDes(NavigationDrawerData(QUOTE_2, QUOTE_2_ABOUT))
 
@@ -314,7 +323,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 L2Chapter5,
                 L2Chapter6,
                 L2Chapter7,
-                L2Chapter8
+                L2Chapter8,
+                L2Chapter9
             ),
             LESSON_2_DESC
         )
@@ -384,7 +394,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 Lesson10AppBars,
                 Lesson11Interoperability,
                 Lesson12WebView,
-                Lesson13Localization
+                Lesson13Localization,
+                Lesson14DropDownMenu
             ), LESSONS
         )
     )
