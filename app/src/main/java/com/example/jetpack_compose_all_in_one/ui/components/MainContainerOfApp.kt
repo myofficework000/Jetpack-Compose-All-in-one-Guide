@@ -20,6 +20,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.work.WorkManager
 import com.example.jetpack_compose_all_in_one.*
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.android_architectures.clean_code.presentation.ui.DogApiMainPage
@@ -103,7 +104,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainContainerOfApp(
-    context: Context,
+    appContext: Context,
     internetViewModel: InternetViewModel,
     themeViewModel: ThemeViewModel,
     getCurrentLocationFunc: ((Location?) -> Unit) -> Unit,
@@ -432,7 +433,7 @@ fun MainContainerOfApp(
                 }
 
                 composable(NavDes.WorkManagerDemo.route()) {
-                    WorkManagerDemoUI()
+                    WorkManagerDemoUI(WorkManager.getInstance(appContext))
                 }
 
                 composable(NavDes.RoomDatabaseDemo.route()) {
@@ -476,7 +477,7 @@ fun MainContainerOfApp(
                 }
 
                 composable(NavDes.NoteRoomDemo.route()) {
-                    NoteUI(context)
+                    NoteUI(appContext)
                 }
                 composable(NavDes.BroadCastReceiver.route()) {
                     BroadcastReceiverScreen()
@@ -506,7 +507,7 @@ fun MainContainerOfApp(
                 }
 
                 composable(NavDes.SharedPrefDemo.route()) {
-                    SharedPrefDemoScreen(context = context)
+                    SharedPrefDemoScreen(context = appContext)
                 }
 
                 composable(NavDes.StripeDemo.route()) {
