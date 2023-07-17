@@ -8,6 +8,7 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.AIRT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ALARM_MANAGER
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ALARM_MANAGER_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ANDROID_ARCHITECTURES
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ANDROID_JETPACK
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.API_IMPLEMENTATIONS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.APPLICATION_COMPONENTS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BOUND_SERVICE
@@ -98,6 +99,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_8_ANIMATIONS_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_9_UI_TESTING
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_9_UI_TESTING_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LIVE_DATA_AND_VIEW_MODEL
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LIVE_DATA_AND_VIEW_MODEL_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LOGIN_1
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LOGIN_1_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LOGIN_2
@@ -116,6 +119,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NEWS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NEWS_SAMPLE_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NOTES_ROOM_DB
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NOTES_ROOM_DB_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.PAGING_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.PAGING_DEMO
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.PROFILE_UPDATE
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.PROFILE_UPDATE_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.QRCODE_SCANNER
@@ -128,6 +133,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.RAND
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.RANDOM_DOG_API_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.RANDOM_FOX_API
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.RANDOM_FOX_API_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ROOM_DATABASE_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ROOM_DATABASE_DEMO
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SERVICE_IMPLEMENTATIONS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SHARED_PREF_DEMO
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SHARED_PREF_DEMO_ABOUT
@@ -144,6 +151,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.TMDB
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.TMDB_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.WEATHER_SAMPLE
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.WEATHER_SAMPLE_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.WORK_MANAGER_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.WORK_MANAGER_DEMO
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.YELP_API
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.YELP_API_ABOUT
 
@@ -259,7 +268,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object YelpApi : NavDes(NavigationDrawerData(YELP_API, YELP_API_ABOUT))
 
-    object CurrencyExchangeApi : NavDes(NavigationDrawerData(CURRENCY_EXCHANGE_API, CURRENCY_EXCHANGE_API_ABOUT))
+    object CurrencyExchangeApi :
+        NavDes(NavigationDrawerData(CURRENCY_EXCHANGE_API, CURRENCY_EXCHANGE_API_ABOUT))
 
     object RandomFox : NavDes(NavigationDrawerData(RANDOM_FOX_API, RANDOM_FOX_API_ABOUT))
 
@@ -279,9 +289,10 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object ChatGPTDemo : NavDes(NavigationDrawerData(CHATGPT_DEMO, CHATGPT_DEMO_ABOUT))
 
-    object GithubPagingDemo : NavDes(NavigationDrawerData(GITHUB_PAGING_DEMO, GITHUB_PAGING_DEMO_ABOUT))
+    object GithubPagingDemo :
+        NavDes(NavigationDrawerData(GITHUB_PAGING_DEMO, GITHUB_PAGING_DEMO_ABOUT))
 
-    object AirtelDemo: NavDes(NavigationDrawerData(AIRTEL_DEMO, AIRTEL_DEMO_ABOUT))
+    object AirtelDemo : NavDes(NavigationDrawerData(AIRTEL_DEMO, AIRTEL_DEMO_ABOUT))
 
 
     /*object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
@@ -379,6 +390,26 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
         )
     )
 
+    object WorkManagerDemo : NavDes(NavigationDrawerData(WORK_MANAGER_DEMO, WORK_MANAGER_ABOUT))
+
+    object LiveDataAndViewModel :
+        NavDes(NavigationDrawerData(LIVE_DATA_AND_VIEW_MODEL, LIVE_DATA_AND_VIEW_MODEL_ABOUT))
+
+    object RoomDatabaseDemo : NavDes(NavigationDrawerData(ROOM_DATABASE_DEMO, ROOM_DATABASE_ABOUT))
+
+    object Paging : NavDes(NavigationDrawerData(PAGING_DEMO, PAGING_ABOUT))
+
+    object AndroidJetpack : NavDes(
+        NavigationCategoryData(
+            listOf(
+                WorkManagerDemo,
+                LiveDataAndViewModel,
+                RoomDatabaseDemo,
+                Paging
+            ), ANDROID_JETPACK
+        )
+    )
+
     object CategoryLessons : NavDes(
         NavigationCategoryData(
             listOf(
@@ -449,6 +480,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
             CategoryLessons,
             ApplicationComponents,
             AndroidArchitectures,
+            AndroidJetpack,
             CategoryThirdParty,
             CategoryFeatures
         )

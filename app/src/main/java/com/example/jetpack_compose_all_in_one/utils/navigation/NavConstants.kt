@@ -119,7 +119,7 @@ object NavConstants {
     const val LESSON_13_LOCALIAZATION = "LESSON_13_Localization"
     const val LESSON_13_LOCALIAZATION_ABOUT = "Lesson 13: Localization"
 
-    const val LESSON_14_DROP_DOWN_MENU= "LESSON_14_Drop_down_menu"
+    const val LESSON_14_DROP_DOWN_MENU = "LESSON_14_Drop_down_menu"
     const val LESSON_14_DROP_DOWN_MENU_ABOUT = "Lesson 14: Dropdown menu"
 
     const val QUOTE_2 = "quote2"
@@ -165,6 +165,18 @@ object NavConstants {
     const val FLOW_DEMO = "flowDemo"
     const val FLOW_DEMO_ABOUT = "Flow Demo"
 
+    const val WORK_MANAGER_DEMO = "Work Manager"
+    const val WORK_MANAGER_ABOUT = "Work Manager"
+
+    const val ROOM_DATABASE_DEMO = "ROOM_DATABASE_DEMO"
+    const val ROOM_DATABASE_ABOUT = "Room Database"
+
+    const val LIVE_DATA_AND_VIEW_MODEL = "LiveDataAndViewModel"
+    const val LIVE_DATA_AND_VIEW_MODEL_ABOUT = "LiveData & ViewModel"
+
+    const val PAGING_DEMO = "PAGING_DEMO"
+    const val PAGING_ABOUT = "Paging"
+
     const val COLLAPSABLE = "Collapsable"
     const val COLLAPSABLE_ABOUT = "Collapsable Profile"
 
@@ -195,6 +207,8 @@ object NavConstants {
     const val APPLICATION_COMPONENTS = "Application components"
 
     const val ANDROID_ARCHITECTURES = "Android Architectures"
+
+    const val ANDROID_JETPACK = "Android Jetpack"
 
     const val MVP = "MVP"
     const val MVP_ABOUT = "MVP"

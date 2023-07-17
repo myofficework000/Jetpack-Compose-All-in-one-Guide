@@ -17,7 +17,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -27,13 +26,14 @@ import com.example.jetpack_compose_all_in_one.android_architectures.clean_code.p
 import com.example.jetpack_compose_all_in_one.android_architectures.clean_code_with_mvi_mvvm.presentation.WeatherScreen
 import com.example.jetpack_compose_all_in_one.android_architectures.mvi.view.RandomDogView
 import com.example.jetpack_compose_all_in_one.android_architectures.mvp.view.DogMvpUI
+import com.example.jetpack_compose_all_in_one.android_architectures.mvvm.view.RandomDogUI
 import com.example.jetpack_compose_all_in_one.application_components.activity.ActivityDemo
 import com.example.jetpack_compose_all_in_one.application_components.broadcastreceiver.BroadcastReceiverScreen
 import com.example.jetpack_compose_all_in_one.application_components.content_provider.ContentProviderScreen
+import com.example.jetpack_compose_all_in_one.application_components.content_provider.demo_contacts.ContactList
+import com.example.jetpack_compose_all_in_one.application_components.content_provider.demo_images.ShowImages
 import com.example.jetpack_compose_all_in_one.features.alarm.AlarmMainUI
 import com.example.jetpack_compose_all_in_one.features.chatmodule.ChatViewModel
-import com.example.jetpack_compose_all_in_one.application_components.content_provider.demo_contacts.ContactList
-import com.example.jetpack_compose_all_in_one.android_architectures.mvvm.view.RandomDogUI
 import com.example.jetpack_compose_all_in_one.features.download_manager.Download
 import com.example.jetpack_compose_all_in_one.features.flows_demo.FeatureFlowContent
 import com.example.jetpack_compose_all_in_one.features.internet.InternetViewModel
@@ -45,7 +45,6 @@ import com.example.jetpack_compose_all_in_one.features.notes.data.NoteUI
 import com.example.jetpack_compose_all_in_one.features.play_with_maps.ComposeDemoApp
 import com.example.jetpack_compose_all_in_one.features.profile.ShowProfileScreen
 import com.example.jetpack_compose_all_in_one.features.profile_update.InflateProfileUI
-import com.example.jetpack_compose_all_in_one.application_components.content_provider.demo_images.ShowImages
 import com.example.jetpack_compose_all_in_one.features.qrcodescanner.PreviewViewComposable
 import com.example.jetpack_compose_all_in_one.features.random_dog_api.view.NextRandomDog
 import com.example.jetpack_compose_all_in_one.features.random_fox.view.RandomFoxUI
@@ -144,13 +143,15 @@ fun MainContainerOfApp(
         )
     }
 
-    var themeDialogOpened by remember{ mutableStateOf(false) }
+    var themeDialogOpened by remember { mutableStateOf(false) }
 
-    with (themeViewModel.openDialog) {
-        LaunchedEffect(this) { if (this@with) {
-            themeDialogOpened = true
-            themeViewModel.dialogOpened()
-        } }
+    with(themeViewModel.openDialog) {
+        LaunchedEffect(this) {
+            if (this@with) {
+                themeDialogOpened = true
+                themeViewModel.dialogOpened()
+            }
+        }
     }
 
 
@@ -428,6 +429,23 @@ fun MainContainerOfApp(
                 composable(NavDes.Mvi.route()) {
                     RandomDogView()
                 }
+
+                composable(NavDes.WorkManagerDemo.route()) {
+                    RandomDogView()
+                }
+
+                composable(NavDes.RoomDatabaseDemo.route()) {
+                    RandomDogView()
+                }
+
+                composable(NavDes.LiveDataAndViewModel.route()) {
+                    RandomDogView()
+                }
+
+                composable(NavDes.Paging.route()) {
+                    RandomDogView()
+                }
+
                 composable(NavDes.RandomFox.route()) {
                     RandomFoxUI()
                 }
@@ -486,23 +504,23 @@ fun MainContainerOfApp(
                     WeatherScreen(viewModel = hiltViewModel())
                 }
 
-                composable(NavDes.SharedPrefDemo.route()){
+                composable(NavDes.SharedPrefDemo.route()) {
                     SharedPrefDemoScreen(context = context)
                 }
 
                 composable(NavDes.StripeDemo.route()) {
                     IntegrateStripe(vm = hiltViewModel(), snackbarHostState::showText)
                 }
-                composable(NavDes.ChatGPTDemo.route()){
+                composable(NavDes.ChatGPTDemo.route()) {
                     ChatUI(hiltViewModel())
                 }
-                composable(NavDes.GithubPagingDemo.route()){
+                composable(NavDes.GithubPagingDemo.route()) {
                     RepositoryList(hiltViewModel())
                 }
                 composable(NavDes.CurrencyExchangeApi.route()) {
                     CurrencyExchangeScreen()
                 }
-                composable(NavDes.AirtelDemo.route()){
+                composable(NavDes.AirtelDemo.route()) {
                     AirtelAPIScreen(hiltViewModel())
                 }
             }
