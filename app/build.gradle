@@ -5,6 +5,7 @@ plugins {
     id 'kotlin-kapt'
     id 'com.google.gms.google-services'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+    id 'com.apollographql.apollo3'
 }
 
 android {
@@ -60,6 +61,11 @@ android {
     buildFeatures {
         viewBinding true
         dataBinding true
+    }
+    apollo {
+        // instruct the compiler to generate Kotlin models
+        generateKotlinModels.set(true)
+        packageNamesFromFilePaths()
     }
 }
 
@@ -183,6 +189,8 @@ dependencies {
     // Jetpack Compose Integration
     implementation "androidx.paging:paging-compose:3.2.0-rc01"
 
+    //Graph QL
+    implementation 'com.apollographql.apollo3:apollo-runtime:3.2.1'
 }
 
 // Remember to add this to local.properties
