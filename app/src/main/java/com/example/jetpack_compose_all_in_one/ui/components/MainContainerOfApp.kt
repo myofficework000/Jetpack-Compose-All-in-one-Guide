@@ -55,6 +55,7 @@ import com.example.jetpack_compose_all_in_one.features.weather_sample.model.remo
 import com.example.jetpack_compose_all_in_one.features.weather_sample.model.repository.RemoteWeatherRepository
 import com.example.jetpack_compose_all_in_one.features.weather_sample.view.WeatherSample
 import com.example.jetpack_compose_all_in_one.features.weather_sample.viewmodel.WeatherViewModel
+import com.example.jetpack_compose_all_in_one.jetpack_components.work_manager.WorkManagerDemoUI
 import com.example.jetpack_compose_all_in_one.lessons.lesson_1.Lesson_1_Display
 import com.example.jetpack_compose_all_in_one.lessons.lesson_10.Lesson_10
 import com.example.jetpack_compose_all_in_one.lessons.lesson_11.Lesson_11
@@ -431,7 +432,7 @@ fun MainContainerOfApp(
                 }
 
                 composable(NavDes.WorkManagerDemo.route()) {
-                    RandomDogView()
+                    WorkManagerDemoUI()
                 }
 
                 composable(NavDes.RoomDatabaseDemo.route()) {
