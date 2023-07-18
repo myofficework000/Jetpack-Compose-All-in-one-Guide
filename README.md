@@ -29,9 +29,9 @@ Learn step by step UI development using Jetpack Compose [beginners to advance]. 
 - [x] Third Party Library 
    - [x] Stripe: Payement gateway integration
    - [x] Chat GPT: AI api implementation
-   - [x] Yelp API 
+   - [x] Yelp API
+   - [x] Barcode Scanner:  ML kit  library integration
    - [ ] MPchart: Charting library
-   - [ ] Barcode Scanner:  ML kit  library integration
    - [ ] Camera V2 API
 - [x] Features
 

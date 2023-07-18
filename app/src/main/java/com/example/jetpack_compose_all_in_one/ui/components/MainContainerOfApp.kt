@@ -20,19 +20,21 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.work.WorkManager
 import com.example.jetpack_compose_all_in_one.*
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.android_architectures.clean_code.presentation.ui.DogApiMainPage
 import com.example.jetpack_compose_all_in_one.android_architectures.clean_code_with_mvi_mvvm.presentation.WeatherScreen
 import com.example.jetpack_compose_all_in_one.android_architectures.mvi.view.RandomDogView
 import com.example.jetpack_compose_all_in_one.android_architectures.mvp.view.DogMvpUI
+import com.example.jetpack_compose_all_in_one.android_architectures.mvvm.view.RandomDogUI
 import com.example.jetpack_compose_all_in_one.application_components.activity.ActivityDemo
 import com.example.jetpack_compose_all_in_one.application_components.broadcastreceiver.BroadcastReceiverScreen
 import com.example.jetpack_compose_all_in_one.application_components.content_provider.ContentProviderScreen
+import com.example.jetpack_compose_all_in_one.application_components.content_provider.demo_contacts.ContactList
+import com.example.jetpack_compose_all_in_one.application_components.content_provider.demo_images.ShowImages
 import com.example.jetpack_compose_all_in_one.features.alarm.AlarmMainUI
 import com.example.jetpack_compose_all_in_one.features.chatmodule.ChatViewModel
-import com.example.jetpack_compose_all_in_one.application_components.content_provider.demo_contacts.ContactList
-import com.example.jetpack_compose_all_in_one.android_architectures.mvvm.view.RandomDogUI
 import com.example.jetpack_compose_all_in_one.features.download_manager.Download
 import com.example.jetpack_compose_all_in_one.features.flows_demo.FeatureFlowContent
 import com.example.jetpack_compose_all_in_one.features.internet.InternetViewModel
@@ -44,7 +46,6 @@ import com.example.jetpack_compose_all_in_one.features.notes.data.NoteUI
 import com.example.jetpack_compose_all_in_one.features.play_with_maps.ComposeDemoApp
 import com.example.jetpack_compose_all_in_one.features.profile.ShowProfileScreen
 import com.example.jetpack_compose_all_in_one.features.profile_update.InflateProfileUI
-import com.example.jetpack_compose_all_in_one.application_components.content_provider.demo_images.ShowImages
 import com.example.jetpack_compose_all_in_one.features.password_validation.PasswordUi
 import com.example.jetpack_compose_all_in_one.features.qrcodescanner.PreviewViewComposable
 import com.example.jetpack_compose_all_in_one.features.random_dog_api.view.NextRandomDog
@@ -56,11 +57,13 @@ import com.example.jetpack_compose_all_in_one.features.weather_sample.model.remo
 import com.example.jetpack_compose_all_in_one.features.weather_sample.model.repository.RemoteWeatherRepository
 import com.example.jetpack_compose_all_in_one.features.weather_sample.view.WeatherSample
 import com.example.jetpack_compose_all_in_one.features.weather_sample.viewmodel.WeatherViewModel
+import com.example.jetpack_compose_all_in_one.jetpack_components.work_manager.WorkManagerDemoUI
 import com.example.jetpack_compose_all_in_one.lessons.lesson_1.Lesson_1_Display
 import com.example.jetpack_compose_all_in_one.lessons.lesson_10.Lesson_10
 import com.example.jetpack_compose_all_in_one.lessons.lesson_11.Lesson_11
 import com.example.jetpack_compose_all_in_one.lessons.lesson_12.Lesson_12
 import com.example.jetpack_compose_all_in_one.lessons.lesson_13.Lesson_13
+import com.example.jetpack_compose_all_in_one.lessons.lesson_14.Lesson_14
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_2_Screen
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_4_Image
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_5_Progressbar
@@ -102,7 +105,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainContainerOfApp(
-    context: Context,
+    appContext: Context,
     internetViewModel: InternetViewModel,
     themeViewModel: ThemeViewModel,
     getCurrentLocationFunc: ((Location?) -> Unit) -> Unit,
@@ -143,13 +146,15 @@ fun MainContainerOfApp(
         )
     }
 
-    var themeDialogOpened by remember{ mutableStateOf(false) }
+    var themeDialogOpened by remember { mutableStateOf(false) }
 
-    with (themeViewModel.openDialog) {
-        LaunchedEffect(this) { if (this@with) {
-            themeDialogOpened = true
-            themeViewModel.dialogOpened()
-        } }
+    with(themeViewModel.openDialog) {
+        LaunchedEffect(this) {
+            if (this@with) {
+                themeDialogOpened = true
+                themeViewModel.dialogOpened()
+            }
+        }
     }
 
 
@@ -340,6 +345,9 @@ fun MainContainerOfApp(
                 composable(NavDes.L2Chapter8.route()) {
                     Lesson_2_Chapter_8_Chip()
                 }
+                composable(NavDes.L2Chapter9.route()) {
+                    Lesson_14()
+                }
 
                 composable(NavDes.L3List.route()) {
                     Lesson_3_Chapter_ListTypes()
@@ -424,6 +432,23 @@ fun MainContainerOfApp(
                 composable(NavDes.Mvi.route()) {
                     RandomDogView()
                 }
+
+                composable(NavDes.WorkManagerDemo.route()) {
+                    WorkManagerDemoUI(WorkManager.getInstance(appContext))
+                }
+
+                composable(NavDes.RoomDatabaseDemo.route()) {
+                    RandomDogView()
+                }
+
+                composable(NavDes.LiveDataAndViewModel.route()) {
+                    RandomDogView()
+                }
+
+                composable(NavDes.Paging.route()) {
+                    RandomDogView()
+                }
+
                 composable(NavDes.RandomFox.route()) {
                     RandomFoxUI()
                 }
@@ -453,7 +478,7 @@ fun MainContainerOfApp(
                 }
 
                 composable(NavDes.NoteRoomDemo.route()) {
-                    NoteUI(context)
+                    NoteUI(appContext)
                 }
                 composable(NavDes.BroadCastReceiver.route()) {
                     BroadcastReceiverScreen()
@@ -482,23 +507,23 @@ fun MainContainerOfApp(
                     WeatherScreen(viewModel = hiltViewModel())
                 }
 
-                composable(NavDes.SharedPrefDemo.route()){
-                    SharedPrefDemoScreen(context = context)
+                composable(NavDes.SharedPrefDemo.route()) {
+                    SharedPrefDemoScreen(context = appContext)
                 }
 
                 composable(NavDes.StripeDemo.route()) {
                     IntegrateStripe(vm = hiltViewModel(), snackbarHostState::showText)
                 }
-                composable(NavDes.ChatGPTDemo.route()){
+                composable(NavDes.ChatGPTDemo.route()) {
                     ChatUI(hiltViewModel())
                 }
-                composable(NavDes.GithubPagingDemo.route()){
+                composable(NavDes.GithubPagingDemo.route()) {
                     RepositoryList(hiltViewModel())
                 }
                 composable(NavDes.CurrencyExchangeApi.route()) {
                     CurrencyExchangeScreen()
                 }
-                composable(NavDes.AirtelDemo.route()){
+                composable(NavDes.AirtelDemo.route()) {
                     AirtelAPIScreen(hiltViewModel())
                 }
                 composable(NavDes.PasswordValidation.route()){
