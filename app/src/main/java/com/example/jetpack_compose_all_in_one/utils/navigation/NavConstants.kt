@@ -249,4 +249,8 @@ object NavConstants {
 
     const val SpaceXGraphQL_DEMO = "Space X"
     const val SpaceXGraphQL_DEMO_ABOUT = "SpaceX API with GraphQL"
+
+    const val PASSWORD_VALIDATION = "Password Validation"
+    const val PASSWORD_VALIDATION_ABOUT = "Password Validation Demo"
+
 }
