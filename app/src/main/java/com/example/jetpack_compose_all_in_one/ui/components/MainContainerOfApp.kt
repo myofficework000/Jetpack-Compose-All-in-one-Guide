@@ -544,7 +544,10 @@ fun DrawerButton(
     drawerState: DrawerState,
     coroutineScope: CoroutineScope
 ) {
-    SimpleIconButton(R.drawable.baseline_menu_24) {
+    SimpleIconButton(
+        R.drawable.baseline_menu_24,
+        tint = MaterialTheme.colorScheme.onBackground
+    ) {
         with(drawerState) {
             if (!isAnimationRunning) coroutineScope.launch { open() }
         }
