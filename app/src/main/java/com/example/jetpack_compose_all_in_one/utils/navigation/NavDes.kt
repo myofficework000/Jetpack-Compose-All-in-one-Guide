@@ -112,6 +112,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NEWS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NEWS_SAMPLE_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NOTES_ROOM_DB
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NOTES_ROOM_DB_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.PASSWORD_VALIDATION
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.PASSWORD_VALIDATION_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.PROFILE_UPDATE
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.PROFILE_UPDATE_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.QRCODE_SCANNER
@@ -274,6 +276,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object AirtelDemo: NavDes(NavigationDrawerData(AIRTEL_DEMO, AIRTEL_DEMO_ABOUT))
 
+    object PasswordValidation: NavDes(NavigationDrawerData(PASSWORD_VALIDATION, PASSWORD_VALIDATION_ABOUT))
+
 
     /*object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
         R.drawable.baseline_contacts_24
@@ -408,7 +412,9 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 TimerDemo,
                 NoteRoomDemo,
                 ProfileUpdate,
-                SharedPrefDemo
+                SharedPrefDemo,
+                PasswordValidation
+
             ), FEATURES
         )
     )
