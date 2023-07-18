@@ -246,4 +246,7 @@ object NavConstants {
 
     const val AIRTEL_DEMO = "AIRTEL"
     const val AIRTEL_DEMO_ABOUT = "AIRTEL Demo"
+
+    const val PASSWORD_VALIDATION = "Password Validation"
+    const val PASSWORD_VALIDATION_ABOUT = "Password Validation Demo"
 }

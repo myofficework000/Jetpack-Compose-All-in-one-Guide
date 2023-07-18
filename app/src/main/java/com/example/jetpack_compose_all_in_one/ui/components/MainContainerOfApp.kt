@@ -46,6 +46,7 @@ import com.example.jetpack_compose_all_in_one.features.notes.data.NoteUI
 import com.example.jetpack_compose_all_in_one.features.play_with_maps.ComposeDemoApp
 import com.example.jetpack_compose_all_in_one.features.profile.ShowProfileScreen
 import com.example.jetpack_compose_all_in_one.features.profile_update.InflateProfileUI
+import com.example.jetpack_compose_all_in_one.features.password_validation.PasswordUi
 import com.example.jetpack_compose_all_in_one.features.qrcodescanner.PreviewViewComposable
 import com.example.jetpack_compose_all_in_one.features.random_dog_api.view.NextRandomDog
 import com.example.jetpack_compose_all_in_one.features.random_fox.view.RandomFoxUI
@@ -481,7 +482,7 @@ fun MainContainerOfApp(
                 }
                 composable(NavDes.BroadCastReceiver.route()) {
                     BroadcastReceiverScreen()
-                }
+                }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
                 composable(NavDes.ProfileUpdate.route()) {
                     InflateProfileUI()
                 }
@@ -524,6 +525,9 @@ fun MainContainerOfApp(
                 }
                 composable(NavDes.AirtelDemo.route()) {
                     AirtelAPIScreen(hiltViewModel())
+                }
+                composable(NavDes.PasswordValidation.route()){
+                    PasswordUi()
                 }
             }
 
