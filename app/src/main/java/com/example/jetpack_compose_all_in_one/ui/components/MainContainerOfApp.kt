@@ -85,6 +85,7 @@ import com.example.jetpack_compose_all_in_one.third_party_lib.airtel_api.view.Ai
 import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.view.ChatUI
 import com.example.jetpack_compose_all_in_one.third_party_lib.currency_exchange.view.CurrencyExchangeScreen
 import com.example.jetpack_compose_all_in_one.third_party_lib.paging3.repo_ui.RepositoryList
+import com.example.jetpack_compose_all_in_one.third_party_lib.spacex_api_graphql.view.SpaceXLaunchesPage
 import com.example.jetpack_compose_all_in_one.third_party_lib.stripe.IntegrateStripe
 import com.example.jetpack_compose_all_in_one.third_party_lib.yelp_api.YelpUIScreen
 import com.example.jetpack_compose_all_in_one.ui.views.chat.DemoFullChat2
@@ -524,6 +525,9 @@ fun MainContainerOfApp(
                 }
                 composable(NavDes.AirtelDemo.route()) {
                     AirtelAPIScreen(hiltViewModel())
+                }
+                composable(NavDes.SpaceXGraphQLDemo.route()) {
+                    SpaceXLaunchesPage(vm = hiltViewModel())
                 }
             }
 

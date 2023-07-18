@@ -246,4 +246,7 @@ object NavConstants {
 
     const val AIRTEL_DEMO = "AIRTEL"
     const val AIRTEL_DEMO_ABOUT = "AIRTEL Demo"
+
+    const val SpaceXGraphQL_DEMO = "Space X"
+    const val SpaceXGraphQL_DEMO_ABOUT = "SpaceX API with GraphQL"
 }

@@ -144,6 +144,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SHOW
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SHOW_IMAGES_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.STRIPE_DEMO
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.STRIPE_DEMO_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SpaceXGraphQL_DEMO
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SpaceXGraphQL_DEMO_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.THIRD_PARTY
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.TIMER_DEMO
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.TIMER_DEMO_ABOUT
@@ -293,6 +295,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
         NavDes(NavigationDrawerData(GITHUB_PAGING_DEMO, GITHUB_PAGING_DEMO_ABOUT))
 
     object AirtelDemo : NavDes(NavigationDrawerData(AIRTEL_DEMO, AIRTEL_DEMO_ABOUT))
+
+    object SpaceXGraphQLDemo: NavDes(NavigationDrawerData(SpaceXGraphQL_DEMO, SpaceXGraphQL_DEMO_ABOUT))
 
 
     /*object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
@@ -463,7 +467,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 GithubPagingDemo,
                 YelpApi,
                 CurrencyExchangeApi,
-                AirtelDemo
+                AirtelDemo,
+                SpaceXGraphQLDemo
             ), THIRD_PARTY
         )
     )

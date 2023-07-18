@@ -45,3 +45,7 @@ annotation class YelpAPIAnnotation
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
 annotation class AirtelAPI
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class SpaceXAPI
