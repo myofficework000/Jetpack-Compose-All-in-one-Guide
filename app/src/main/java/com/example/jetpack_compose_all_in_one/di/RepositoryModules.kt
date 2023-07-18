@@ -20,6 +20,8 @@ import com.example.jetpack_compose_all_in_one.third_party_lib.airtel_api.repo.Ai
 import com.example.jetpack_compose_all_in_one.third_party_lib.airtel_api.repo.AirtelRepositoryImpl
 import com.example.jetpack_compose_all_in_one.third_party_lib.paging3.repository.GitHubRepository
 import com.example.jetpack_compose_all_in_one.third_party_lib.paging3.repository.GitHubRepositoryImpl
+import com.example.jetpack_compose_all_in_one.third_party_lib.spacex_api_graphql.remote.SpaceXLaunchesRepository
+import com.example.jetpack_compose_all_in_one.third_party_lib.spacex_api_graphql.remote.SpaceXLaunchesRepositoryImpl
 import com.example.jetpack_compose_all_in_one.third_party_lib.stripe.StripeRepository
 import com.example.jetpack_compose_all_in_one.third_party_lib.stripe.StripeRepositoryImpl
 import com.example.jetpack_compose_all_in_one.utils.preferences.PreferenceRepository
@@ -89,4 +91,9 @@ abstract class RepositoryModules {
     @Singleton
     @AirtelAPI
     abstract fun bindAirtelRepository(impl: AirtelRepositoryImpl): AirtelRepository
+
+    @Binds
+    @Singleton
+    @SpaceXAPI
+    abstract fun bindSpaceXLaunchesRepository(impl: SpaceXLaunchesRepositoryImpl): SpaceXLaunchesRepository
 }

@@ -19,8 +19,12 @@ import androidx.compose.ui.graphics.Color
 import com.example.jetpack_compose_all_in_one.features.alarm.database.AlarmInfo
 import com.stripe.android.paymentsheet.PaymentSheetResult
 import java.text.SimpleDateFormat
+import java.time.Instant
+import java.time.LocalDateTime
 import java.time.LocalTime
+import java.time.ZoneId
 import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 import java.util.concurrent.TimeUnit
 
 fun showToast(context: Context, message: String) =
@@ -155,3 +159,7 @@ fun PaymentSheetResult.toReadable() = when (this) {
     PaymentSheetResult.Completed -> "Thank you for the purchase!"
     is PaymentSheetResult.Failed -> "There's an error when paying"
 }
+
+fun String.isoDateToLocal(): String = LocalDateTime.ofInstant(
+    Instant.parse(this), ZoneId.systemDefault()
+).format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG))

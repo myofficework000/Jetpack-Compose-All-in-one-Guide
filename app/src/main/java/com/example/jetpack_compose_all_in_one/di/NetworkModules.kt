@@ -1,6 +1,8 @@
 package com.example.jetpack_compose_all_in_one.di
 
 import android.content.Context
+import com.apollographql.apollo3.ApolloClient
+import com.apollographql.apollo3.network.okHttpClient
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.android_architectures.mvvm.model.DogApiService
 import com.example.jetpack_compose_all_in_one.features.domain_search.ApiDomainSearch
@@ -293,4 +295,11 @@ object NetworkModules {
             .build()
             .create<AirtelApiService>()
     }
+
+    @Singleton
+    @Provides
+    @SpaceXAPI
+    fun provideSpaceXGraphQL(): ApolloClient = ApolloClient.Builder()
+        .serverUrl("https://spacex-production.up.railway.app/")
+        .build()
 }

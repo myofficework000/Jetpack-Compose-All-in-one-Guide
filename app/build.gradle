@@ -66,6 +66,10 @@ android {
         // instruct the compiler to generate Kotlin models
         generateKotlinModels.set(true)
         packageNamesFromFilePaths()
+
+        service("spacex") {
+            packageName.set("com.example.jetpack_compose_all_in_one")
+        }
     }
 }
 
