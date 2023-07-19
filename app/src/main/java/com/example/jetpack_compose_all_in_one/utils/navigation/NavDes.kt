@@ -137,6 +137,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.RAND
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.RANDOM_FOX_API_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ROOM_DATABASE_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.ROOM_DATABASE_DEMO
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.RXJAVA_DEMO
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.RXJAVA_DEMO_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SERVICE_IMPLEMENTATIONS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SHARED_PREF_DEMO
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.SHARED_PREF_DEMO_ABOUT
@@ -301,6 +303,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     object SpaceXGraphQLDemo: NavDes(NavigationDrawerData(SpaceXGraphQL_DEMO, SpaceXGraphQL_DEMO_ABOUT))
 
     object PasswordValidation: NavDes(NavigationDrawerData(PASSWORD_VALIDATION, PASSWORD_VALIDATION_ABOUT))
+
+    object RxJavaDemo: NavDes(NavigationDrawerData(RXJAVA_DEMO, RXJAVA_DEMO_ABOUT))
 
 
     /*object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
@@ -474,7 +478,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 YelpApi,
                 CurrencyExchangeApi,
                 AirtelDemo,
-                SpaceXGraphQLDemo
+                SpaceXGraphQLDemo,
+                RxJavaDemo
             ), THIRD_PARTY
         )
     )

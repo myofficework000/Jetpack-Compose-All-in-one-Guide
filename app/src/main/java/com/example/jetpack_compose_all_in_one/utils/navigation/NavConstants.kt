@@ -253,4 +253,6 @@ object NavConstants {
     const val PASSWORD_VALIDATION = "Password Validation"
     const val PASSWORD_VALIDATION_ABOUT = "Password Validation Demo"
 
+    const val RXJAVA_DEMO = "RxJava Demo 1"
+    const val RXJAVA_DEMO_ABOUT = "RxJava Demo (Observables)"
 }
