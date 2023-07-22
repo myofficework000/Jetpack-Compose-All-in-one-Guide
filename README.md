@@ -6,7 +6,7 @@ Learn step by step UI development using Jetpack Compose [beginners to advance]. 
 
 - [x] Jetpack Compose Lessons (1-12)
 - [x] Application component
-   - [ ] Activities
+   - [x] Activities
    - [x] Services
    - [x] Broadcast Receivers
    - [x] Content Providers
@@ -14,7 +14,7 @@ Learn step by step UI development using Jetpack Compose [beginners to advance]. 
    - [x] MVP (Model-View-Presenter)
    - [x] MVVM (Model-View-ViewModel)
    - [x] Clean Architecture
-   - [ ] MVI (Model-View-Intent)
+   - [x] MVI (Model-View-Intent)
 - [x] Jetpack components
    - [x] Navigation
    - [x] ViewModel
@@ -34,7 +34,14 @@ Learn step by step UI development using Jetpack Compose [beginners to advance]. 
    - [x] Barcode Scanner:  ML kit  library integration
    - [ ] MPchart: Charting library
    - [ ] Camera V2 API
-- [x] Features
+- [x] Demos (Planned in August 2023 release)
+   - [ ] Instagram Demo UI
+   - [ ] TikTok Demo UI
+   - [ ] Youtube Demo UI
+   - [ ] Facebook Demo UI
+   - [ ] Shopping App Demo UI
+   - [ ] Banking App Demo UI
+   - [ ] Whatsapp Demo UI
 
 ## Lessons
 
