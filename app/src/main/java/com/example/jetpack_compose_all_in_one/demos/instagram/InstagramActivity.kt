@@ -11,7 +11,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat
 import com.example.jetpack_compose_all_in_one.demos.DemoDataProvider
 import com.example.jetpack_compose_all_in_one.ui.theme.JetpackComposeAllInOneTheme
-import com.guru.composecookbook.instagram.components.InstagramHome
 
 class InstagramActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

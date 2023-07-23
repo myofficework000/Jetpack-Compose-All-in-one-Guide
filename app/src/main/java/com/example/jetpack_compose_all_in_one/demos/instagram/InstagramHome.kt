@@ -1,4 +1,4 @@
-package com.guru.composecookbook.instagram.components
+package com.example.jetpack_compose_all_in_one.demos.instagram
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
@@ -24,9 +24,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.data.DemoDataProvider
+import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.data.model.Tweet
-import com.guru.composecookbook.instagram.R
+import com.example.jetpack_compose_all_in_one.demos.DemoDataProvider
 import com.example.jetpack_compose_all_in_one.demos.instagram.posts.PostList
 import com.example.jetpack_compose_all_in_one.demos.instagram.stories.StoryList
 import com.example.jetpack_compose_all_in_one.demos.instagram.stories.StoryPopup
