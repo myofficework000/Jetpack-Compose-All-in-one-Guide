@@ -73,3 +73,5 @@ internal fun calculateChatWidthAndHeight(
         chatRowData.rowHeight = message.height
     }
 }
+
+
