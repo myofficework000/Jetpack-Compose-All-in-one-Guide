@@ -35,7 +35,7 @@ Learn step by step UI development using Jetpack Compose [beginners to advance]. 
    - [ ] MPchart: Charting library
    - [ ] Camera V2 API
 - [x] Demos (Planned in August 2023 release)
-   - [ ] Instagram Demo UI
+   - [x] Instagram Demo UI
    - [ ] TikTok Demo UI
    - [ ] Youtube Demo UI
    - [ ] Facebook Demo UI
