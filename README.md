@@ -36,7 +36,7 @@ Learn step by step UI development using Jetpack Compose [beginners to advance]. 
    - [ ] Camera V2 API
 - [x] Demos (Planned in August 2023 release)
    - [x] Instagram Demo UI
-   - [ ] TikTok Demo UI
+   - [x] TikTok Demo UI
    - [ ] Youtube Demo UI
    - [ ] Facebook Demo UI
    - [ ] Shopping App Demo UI
