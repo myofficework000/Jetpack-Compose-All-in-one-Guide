@@ -23,7 +23,7 @@ Learn step by step UI development using Jetpack Compose [beginners to advance]. 
    - [x] WorkManager
    - [x] Paging 
    - [ ] Data Binding (not planned yet)
-   - [ ] ViewModel SavedState
+   - [x] ViewModel SavedState
    - [ ] Lifecycle
    - [ ] Security
 - [x] Third Party Library 
