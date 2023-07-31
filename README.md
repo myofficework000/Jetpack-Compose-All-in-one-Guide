@@ -41,7 +41,7 @@ Learn step by step UI development using Jetpack Compose [beginners to advance]. 
    - [ ] Facebook Demo UI
    - [ ] Shopping App Demo UI
    - [ ] Banking App Demo UI
-   - [ ] Whatsapp Demo UI
+   - [x] Whatsapp Demo UI
 
 ## Lessons
 
