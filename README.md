@@ -22,7 +22,6 @@ Learn step by step UI development using Jetpack Compose [beginners to advance]. 
    - [x] Room Database
    - [x] WorkManager
    - [x] Paging 
-   - [ ] Data Binding (not planned yet)
    - [x] ViewModel SavedState
    - [ ] Lifecycle
    - [ ] Security
