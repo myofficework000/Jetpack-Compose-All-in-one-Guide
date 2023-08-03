@@ -41,7 +41,7 @@ fun InstagramHome(
     onProfileClicked: () -> Unit,
     onMessagingClicked: () -> Unit
 ) {
-    var showStory = remember { mutableStateOf(false) }
+    val showStory = remember { mutableStateOf(false) }
 
     Box(modifier = Modifier.fillMaxSize()) {
         Scaffold(

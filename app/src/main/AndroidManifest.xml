@@ -49,6 +49,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".demos.instagram.InstagramActivity"/>
         <activity
             android:name=".ui.views.quotes_ui.QuoteActivity"
             android:exported="false"
