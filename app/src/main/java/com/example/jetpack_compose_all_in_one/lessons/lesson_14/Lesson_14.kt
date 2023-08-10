@@ -33,7 +33,7 @@ fun Lesson_14(){
 
 @Composable
 fun LessonContent() {
-    val entry1 = Pair("Key1", "US")
+    val entry1 = Pair("Key1", "USA")
     val entry2 = Pair("Key2", "Canada")
     val entry3 = Pair("Key3", "UK")
     var showSelected by remember { mutableStateOf(false) }
