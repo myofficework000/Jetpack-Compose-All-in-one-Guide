@@ -36,6 +36,7 @@ fun LessonContent() {
     val entry1 = Pair("Key1", "USA")
     val entry2 = Pair("Key2", "Canada")
     val entry3 = Pair("Key3", "UK")
+    val entry4 = Pair("Key4", "India")
     var showSelected by remember { mutableStateOf(false) }
     var selectedEntry by remember { mutableStateOf(Pair("","")) }
 
@@ -45,7 +46,7 @@ fun LessonContent() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         SpinnerSample(
-            listOf(entry1, entry2, entry3),
+            listOf(entry1, entry2, entry3, entry4),
             preselected = entry2,
             onSelectionChanged = { selected ->
                 showSelected = true
