@@ -27,7 +27,7 @@ import com.example.jetpack_compose_all_in_one.ui.theme.dp_8
 import com.example.jetpack_compose_all_in_one.ui.theme.sp_16
 
 @Composable
-fun Lesson_14(){
+fun Lesson_14() {
     LessonContent()
 }
 
@@ -37,8 +37,10 @@ fun LessonContent() {
     val entry2 = Pair("Key2", "Canada")
     val entry3 = Pair("Key3", "UK")
     val entry4 = Pair("Key4", "India")
+    val entry5 = Pair("Key4", "Qatar")
+
     var showSelected by remember { mutableStateOf(false) }
-    var selectedEntry by remember { mutableStateOf(Pair("","")) }
+    var selectedEntry by remember { mutableStateOf(Pair("", "")) }
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -46,7 +48,7 @@ fun LessonContent() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         SpinnerSample(
-            listOf(entry1, entry2, entry3, entry4),
+            listOf(entry1, entry2, entry3, entry4, entry5),
             preselected = entry2,
             onSelectionChanged = { selected ->
                 showSelected = true
@@ -54,7 +56,7 @@ fun LessonContent() {
             }
         )
 
-        if(showSelected){
+        if (showSelected) {
             Text(
                 text = "Key: ${selectedEntry.first}\nValue: ${selectedEntry.second}",
                 fontSize = sp_16,
@@ -91,7 +93,8 @@ fun SpinnerSample(
 
             Text(
                 text = selected.second,
-                modifier = Modifier.weight(1f)
+                modifier = Modifier
+                    .weight(1f)
                     .padding(horizontal = dp_15, vertical = dp_8)
             )
             Icon(Icons.Outlined.ArrowDropDown, null, modifier = Modifier.padding(dp_8))

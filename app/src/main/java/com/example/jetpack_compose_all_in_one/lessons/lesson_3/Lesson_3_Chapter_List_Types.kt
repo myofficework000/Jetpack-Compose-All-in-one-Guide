@@ -1,6 +1,5 @@
 package com.example.jetpack_compose_all_in_one.lessons.lesson_3
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -9,16 +8,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringArrayResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.ui.components.CustomVerticalList
 import com.example.jetpack_compose_all_in_one.ui.components.ExpandableAnimatedList
 import com.example.jetpack_compose_all_in_one.ui.components.ExpandableCardList
 import com.example.jetpack_compose_all_in_one.ui.components.HorizontalSimpleList
-import com.example.jetpack_compose_all_in_one.ui.components.LessonHeader
 import com.example.jetpack_compose_all_in_one.ui.components.ShimmerAnimatedList
 import com.example.jetpack_compose_all_in_one.ui.components.SimpleHorizontalGridList
 import com.example.jetpack_compose_all_in_one.ui.components.SimpleVerticalGridList

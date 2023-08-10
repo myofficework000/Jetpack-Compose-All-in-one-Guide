@@ -31,7 +31,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.ui.components.GradientButton
-import com.example.jetpack_compose_all_in_one.ui.theme.ShadowColor
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_10
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_15
 import kotlinx.coroutines.delay
