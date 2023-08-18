@@ -29,6 +29,7 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CONT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CONTENT_PROVIDER_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CURRENCY_EXCHANGE_API
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CURRENCY_EXCHANGE_API_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DEMO_UI
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOG_API
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOG_API_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOMAIN_SEARCH
@@ -40,6 +41,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.FLOW
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.FLOW_DEMO_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.FOREGROUND_SERVICE
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.FOREGROUND_SERVICE_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.FacebookUI
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.FacebookUI_About
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.GITHUB_PAGING_DEMO
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.GITHUB_PAGING_DEMO_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.HOME
@@ -119,10 +122,10 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NEWS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NEWS_SAMPLE_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NOTES_ROOM_DB
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NOTES_ROOM_DB_ABOUT
-import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.PASSWORD_VALIDATION
-import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.PASSWORD_VALIDATION_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.PAGING_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.PAGING_DEMO
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.PASSWORD_VALIDATION
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.PASSWORD_VALIDATION_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.PROFILE_UPDATE
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.PROFILE_UPDATE_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.QRCODE_SCANNER
@@ -155,12 +158,16 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.TIME
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.TIMER_DEMO_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.TMDB
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.TMDB_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.TiKTokUI
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.TiKTokUI_About
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.WEATHER_SAMPLE
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.WEATHER_SAMPLE_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.WORK_MANAGER_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.WORK_MANAGER_DEMO
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.YELP_API
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.YELP_API_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.YoutubeUI
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.YoutubeUI_ABOUT
 
 /*
     How to add an item in Navigation Drawer:
@@ -300,11 +307,13 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object AirtelDemo : NavDes(NavigationDrawerData(AIRTEL_DEMO, AIRTEL_DEMO_ABOUT))
 
-    object SpaceXGraphQLDemo: NavDes(NavigationDrawerData(SpaceXGraphQL_DEMO, SpaceXGraphQL_DEMO_ABOUT))
+    object SpaceXGraphQLDemo :
+        NavDes(NavigationDrawerData(SpaceXGraphQL_DEMO, SpaceXGraphQL_DEMO_ABOUT))
 
-    object PasswordValidation: NavDes(NavigationDrawerData(PASSWORD_VALIDATION, PASSWORD_VALIDATION_ABOUT))
+    object PasswordValidation :
+        NavDes(NavigationDrawerData(PASSWORD_VALIDATION, PASSWORD_VALIDATION_ABOUT))
 
-    object RxJavaDemo: NavDes(NavigationDrawerData(RXJAVA_DEMO, RXJAVA_DEMO_ABOUT))
+    object RxJavaDemo : NavDes(NavigationDrawerData(RXJAVA_DEMO, RXJAVA_DEMO_ABOUT))
 
 
     /*object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
@@ -388,6 +397,10 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     object CleanCode : NavDes(NavigationDrawerData(CLEAN_CODE, CLEAN_CODE_ABOUT))
     object CleanCodeWithMVI :
         NavDes(NavigationDrawerData(CLEAN_CODE_WITH_MVI, CLEAN_CODE_ABOUT_WITH_MVI))
+
+    object tikTok : NavDes(NavigationDrawerData(TiKTokUI, TiKTokUI_About))
+    object youTube : NavDes(NavigationDrawerData(YoutubeUI, YoutubeUI_ABOUT))
+    object faceBook : NavDes(NavigationDrawerData(FacebookUI, FacebookUI_About))
 
 
     object AndroidArchitectures : NavDes(
@@ -484,6 +497,16 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
         )
     )
 
+    object DemoUI : NavDes(
+        NavigationCategoryData(
+            listOf(
+                youTube,
+                faceBook,
+                tikTok
+            ), DEMO_UI
+        )
+    )
+
     // Some utils
     fun route() = (data as NavigationDrawerData).route
     fun displayText() = (data as NavigationDrawerData).displayText
@@ -498,7 +521,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
             AndroidArchitectures,
             AndroidJetpack,
             CategoryThirdParty,
-            CategoryFeatures
+            CategoryFeatures,
+            DemoUI
         )
 
         val startDestination = Home

@@ -204,6 +204,8 @@ object NavConstants {
 
     const val THIRD_PARTY = "Third Party Libraries"
 
+    const val DEMO_UI = "Demo UI"
+
     const val APPLICATION_COMPONENTS = "Application components"
 
     const val ANDROID_ARCHITECTURES = "Android Architectures"
@@ -219,6 +221,14 @@ object NavConstants {
     const val CLEAN_CODE = "CLEAN_CODE"
     const val CLEAN_CODE_ABOUT = "Clean Code"
 
+    const val YoutubeUI = "YoutubeUI"
+    const val YoutubeUI_ABOUT = "Youtube"
+
+    const val FacebookUI = "FacebookUI"
+    const val FacebookUI_About = "Facebook"
+
+    const val TiKTokUI = "TiKTokUI"
+    const val TiKTokUI_About = "TiKTok"
 
     const val CLEAN_CODE_WITH_MVI = "CLEAN_CODE_MVI"
     const val CLEAN_CODE_ABOUT_WITH_MVI = "Clean Code + MVI + MVVM"
