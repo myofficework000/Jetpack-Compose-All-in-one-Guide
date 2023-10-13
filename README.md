@@ -1,4 +1,4 @@
-# Learn Android Jetpack Compose UI
+# Compose Guidebook: Learn Android Jetpack Compose 
 
 Learn step by step UI development using Jetpack Compose [beginners to advance]. This comprehensive collection of lessons and features is specifically designed to guide you through the step-by-step process of understanding Jetpack Compose and Android development.
 
