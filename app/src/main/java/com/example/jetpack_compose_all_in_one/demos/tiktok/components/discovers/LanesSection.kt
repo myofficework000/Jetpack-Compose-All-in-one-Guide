@@ -1,4 +1,4 @@
-package com.guru.composecookbook.tiktok.components.discovers
+package com.example.jetpack_compose_all_in_one.demos.tiktok.components.discovers
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -13,6 +13,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -20,8 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.guru.composecookbook.theme.typography
-import com.guru.composecookbook.tiktok.R
+import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.demos.tiktok.TiktokDemoDataProvider
 import com.example.jetpack_compose_all_in_one.demos.tiktok.TiktokDemoDataProvider.customGray
 
@@ -43,7 +43,7 @@ fun LaneSection(
     Column(modifier = modifier.padding(vertical = 8.dp)) {
         Row(modifier = Modifier.padding(8.dp)) {
             Icon(
-                painter = painterResource(id = R.drawable.ic_hashtag_solid),
+                painter = painterResource(id = R.drawable.ic_share_solid),
                 contentDescription = null,
                 modifier = Modifier
                     .size(32.dp)

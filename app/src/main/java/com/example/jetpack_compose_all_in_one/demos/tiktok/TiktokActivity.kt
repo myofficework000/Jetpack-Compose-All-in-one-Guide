@@ -1,4 +1,4 @@
-package com.guru.composecookbook.tiktok
+package com.example.jetpack_compose_all_in_one.demos.tiktok
 
 import android.content.Context
 import android.content.Intent
@@ -25,14 +25,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.jetpack_compose_all_in_one.demos.tiktok.TiktokDemoDataProvider
-import com.example.jetpack_compose_all_in_one.demos.tiktok.TiktokHomeInteractionEvents
-import com.guru.composecookbook.theme.ComposeCookBookTheme
-import com.guru.composecookbook.theme.tiktokBlack
-import com.guru.composecookbook.tiktok.components.discovers.DiscoverScreen
 import com.example.jetpack_compose_all_in_one.demos.tiktok.components.home.HomeScreen
 import com.example.jetpack_compose_all_in_one.demos.tiktok.components.home.TiktokCreateIcon
 import com.example.jetpack_compose_all_in_one.demos.tiktok.components.profile.ProfileScreen
+import com.example.jetpack_compose_all_in_one.ui.theme.JetpackComposeAllInOneTheme
+import com.example.jetpack_compose_all_in_one.ui.theme.tiktokBlack
+import com.example.jetpack_compose_all_in_one.demos.tiktok.components.discovers.DiscoverScreen
 
 class TiktokActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +39,7 @@ class TiktokActivity : ComponentActivity() {
         window.statusBarColor = ContextCompat.getColor(this, android.R.color.black)
 
         setContent {
-            ComposeCookBookTheme(darkTheme = true) {
+            JetpackComposeAllInOneTheme(darkTheme = true) {
                 TiktokAppContent()
             }
         }
@@ -137,8 +135,9 @@ fun handleInteractionEvent(
         is TiktokHomeInteractionEvents.OpenProfile -> {
             navController.navigate("${TikTokScreen.Profile.route}/${tiktokHomeInteractionEvents.album.id}")
         }
+
         else -> {
-            //TODO
+            //
         }
     }
 }

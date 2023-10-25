@@ -1,4 +1,4 @@
-package com.guru.composecookbook.tiktok.components.discovers
+package com.example.jetpack_compose_all_in_one.demos.tiktok.components.discovers
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
