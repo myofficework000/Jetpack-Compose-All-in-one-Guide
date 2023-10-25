@@ -24,9 +24,6 @@ class LoginStyle2ViewModel() : ViewModel() {
     val verifyEmailStatus: LiveData<String> = _verifyEmailStatus
 
     fun login() {
-        viewModelScope.launch {
-
-        }
         val firebaseAuth = FirebaseAuth.getInstance()
         if (firebaseAuth.currentUser != null) {
             firebaseUser = firebaseAuth.currentUser!!

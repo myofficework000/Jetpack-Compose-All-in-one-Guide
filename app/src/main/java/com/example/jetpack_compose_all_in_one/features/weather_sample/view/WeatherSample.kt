@@ -67,8 +67,6 @@ fun WeatherSample(
     val requestingLocation = requestAllLocation { isLocationAvailable = it }
     var displayMode by remember { mutableStateOf("sample") }
 
-
-
     LaunchedEffect(Unit) {
         requestingLocation.launchMultiplePermissionRequest()
     }

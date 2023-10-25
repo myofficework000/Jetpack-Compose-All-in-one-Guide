@@ -12,7 +12,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class MusicBoundService: Service() {
+class MusicBoundService : Service() {
 
     private val mediaPlayer by lazy {
         MediaPlayer.create(this, Settings.System.DEFAULT_RINGTONE_URI).apply {
@@ -23,7 +23,7 @@ class MusicBoundService: Service() {
     private val binder = RemoteControl()
     private var pauseJob: Job? = null
 
-    inner class RemoteControl: Binder() {
+    inner class RemoteControl : Binder() {
         val service get() = this@MusicBoundService
     }
 

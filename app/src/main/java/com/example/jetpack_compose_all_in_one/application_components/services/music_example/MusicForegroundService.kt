@@ -12,7 +12,7 @@ import android.provider.Settings
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.ui.views.main_ui.MainActivity
 
-class MusicForegroundService: Service() {
+class MusicForegroundService : Service() {
     private val mediaPlayer by lazy {
         MediaPlayer.create(this, Settings.System.DEFAULT_RINGTONE_URI).apply {
             setOnCompletionListener { stopSelf() }
@@ -44,7 +44,8 @@ class MusicForegroundService: Service() {
                     this,
                     0,
                     Intent(this, MainActivity::class.java),
-                    PendingIntent.FLAG_IMMUTABLE)
+                    PendingIntent.FLAG_IMMUTABLE
+                )
             )
             .build()
 
@@ -64,6 +65,7 @@ class MusicForegroundService: Service() {
         val notif_channel = NotificationChannel(
             notif_channel_id.toString(),
             "Play music",
-            NotificationManager.IMPORTANCE_DEFAULT)
+            NotificationManager.IMPORTANCE_DEFAULT
+        )
     }
 }
