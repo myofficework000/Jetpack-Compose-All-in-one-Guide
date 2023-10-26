@@ -10,8 +10,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
-    <uses-permission
-        android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission
         android:name="android.permission.READ_MEDIA_IMAGES"
         android:minSdkVersion="33" />
@@ -21,7 +20,6 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
-        android:usesCleartextTraffic="true"
         android:name=".di.MainApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -30,10 +28,16 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.JetpackComposeAllInOne"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".third_party_lib.graph_ql_country_list.view.MainActivity"
+            android:exported="false"
+            android:label="@string/title_activity_main"
+            android:theme="@style/Theme.JetpackComposeAllInOne" />
+        <activity
             android:name=".lessons.lesson_11.ComposeWithOldWayActivityExample"
-            android:exported="false"/>
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -49,7 +53,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".demos.instagram.InstagramActivity"/>
+        <activity android:name=".demos.instagram.InstagramActivity" />
         <activity
             android:name=".ui.views.quotes_ui.QuoteActivity"
             android:exported="false"
@@ -67,22 +71,18 @@
             android:exported="false" />
 
         <receiver android:name=".features.alarm.AlarmBroadcastReceiver" />
-
         <receiver
             android:name=".application_components.broadcastreceiver.airplanemode.AirplaneModeReceiver"
             android:enabled="true"
             android:exported="true" />
-
-        <receiver android:name=".application_components.broadcastreceiver.bluetooth.BluetoothReceiver"
+        <receiver
+            android:name=".application_components.broadcastreceiver.bluetooth.BluetoothReceiver"
             android:enabled="true"
             android:exported="true" />
-
-        <receiver android:name=".application_components.broadcastreceiver.wifi.WifiReceiver"
-
+        <receiver
+            android:name=".application_components.broadcastreceiver.wifi.WifiReceiver"
             android:enabled="true"
             android:exported="true" />
-
-
 
         <service
             android:name=".utils.FcmRegisterService"
