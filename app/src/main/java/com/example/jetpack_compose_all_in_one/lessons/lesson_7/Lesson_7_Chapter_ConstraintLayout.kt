@@ -78,7 +78,7 @@ private fun LessonContent() {
     val currentPage = rememberSaveable { mutableStateOf(0) }
 
     LogicPager(
-        pageCount = 8,
+        pageCount = 9,
         currentPage = currentPage
     ) {
         Column(
@@ -103,6 +103,7 @@ private fun LessonContent() {
                 5 -> MovieDetailScreenUI()
                 6 -> GetMusicUI()
                 7 -> GetAPIWeatherUI(4)
+                8 -> DemoUI9()
             }
         }
     }
