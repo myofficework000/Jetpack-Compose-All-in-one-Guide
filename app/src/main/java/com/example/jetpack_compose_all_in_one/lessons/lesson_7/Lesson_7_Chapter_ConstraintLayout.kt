@@ -78,7 +78,7 @@ private fun LessonContent() {
     val currentPage = rememberSaveable { mutableStateOf(0) }
 
     LogicPager(
-        pageCount = 9,
+        pageCount = 10,
         currentPage = currentPage
     ) {
         Column(
@@ -104,6 +104,7 @@ private fun LessonContent() {
                 6 -> GetMusicUI()
                 7 -> GetAPIWeatherUI(4)
                 8 -> DemoUI9()
+                9 -> TrailerScreen()
             }
         }
     }
@@ -258,12 +259,12 @@ fun RegistrationScreen() {
                     val (signUpText,usernameTextField, passwordTextField, emailTextField, registerButton) = createRefs()
                     Text(
                         modifier = Modifier
-                        .constrainAs(signUpText) {
-                            top.linkTo(parent.top, margin = dp_15)
-                            start.linkTo(parent.start, margin = dp_15)
-                            end.linkTo(parent.end, margin = dp_15)
-                        }
-                        .fillMaxWidth(),
+                            .constrainAs(signUpText) {
+                                top.linkTo(parent.top, margin = dp_15)
+                                start.linkTo(parent.start, margin = dp_15)
+                                end.linkTo(parent.end, margin = dp_15)
+                            }
+                            .fillMaxWidth(),
                         text = "Sign Up",
                         textAlign = TextAlign.Center
                     )
