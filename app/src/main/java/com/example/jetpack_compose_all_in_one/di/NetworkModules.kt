@@ -302,4 +302,11 @@ object NetworkModules {
     fun provideSpaceXGraphQL(): ApolloClient = ApolloClient.Builder()
         .serverUrl("https://spacex-production.up.railway.app/")
         .build()
+
+    @Singleton
+    @Provides
+    @CountryAPI
+    fun provideCountryGraphQL(): ApolloClient = ApolloClient.Builder()
+        .serverUrl("https://countries.trevorblades.com/")
+        .build()
 }

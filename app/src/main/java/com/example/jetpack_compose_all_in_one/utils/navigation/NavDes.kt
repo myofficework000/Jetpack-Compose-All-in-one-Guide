@@ -45,6 +45,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.Face
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.FacebookUI_About
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.GITHUB_PAGING_DEMO
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.GITHUB_PAGING_DEMO_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.GRAPHQL_DEMO
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.GRAPHQL_DEMO_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.HOME
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.HOME_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.INTERNET
@@ -315,6 +317,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object RxJavaDemo : NavDes(NavigationDrawerData(RXJAVA_DEMO, RXJAVA_DEMO_ABOUT))
 
+    object GraphqlDemo: NavDes(NavigationDrawerData(GRAPHQL_DEMO, GRAPHQL_DEMO_ABOUT))
+
 
     /*object Contacts: NavDes( NavigationDrawerData("contacts","Contacts",
         R.drawable.baseline_contacts_24
@@ -492,7 +496,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 CurrencyExchangeApi,
                 AirtelDemo,
                 SpaceXGraphQLDemo,
-                RxJavaDemo
+                RxJavaDemo,
+                GraphqlDemo
             ), THIRD_PARTY
         )
     )

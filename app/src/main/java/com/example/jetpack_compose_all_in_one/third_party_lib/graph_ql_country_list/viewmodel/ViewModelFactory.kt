@@ -2,12 +2,12 @@ package com.example.jetpack_compose_all_in_one.third_party_lib.graph_ql_country_
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.jetpack_compose_all_in_one.third_party_lib.graph_ql_country_list.model.Repository
+import com.example.jetpack_compose_all_in_one.third_party_lib.graph_ql_country_list.model.CountriesRepository
 
-class ViewModelFactory(private val repository: Repository) : ViewModelProvider.Factory {
+class ViewModelFactory(private val countriesRepository: CountriesRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ContinentsViewModel::class.java)) {
-            return ContinentsViewModel(repository) as T
+            return ContinentsViewModel(countriesRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
