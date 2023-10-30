@@ -49,3 +49,7 @@ annotation class AirtelAPI
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
 annotation class SpaceXAPI
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class CountryAPI

@@ -85,6 +85,7 @@ import com.example.jetpack_compose_all_in_one.lessons.lesson_9.Lesson_9
 import com.example.jetpack_compose_all_in_one.third_party_lib.airtel_api.view.AirtelAPIScreen
 import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.view.ChatUI
 import com.example.jetpack_compose_all_in_one.third_party_lib.currency_exchange.view.CurrencyExchangeScreen
+import com.example.jetpack_compose_all_in_one.third_party_lib.graph_ql_country_list.view.ContinentsScreen
 import com.example.jetpack_compose_all_in_one.third_party_lib.paging3.repo_ui.RepositoryList
 import com.example.jetpack_compose_all_in_one.third_party_lib.rxjava.RxJavaDemo
 import com.example.jetpack_compose_all_in_one.third_party_lib.spacex_api_graphql.view.SpaceXLaunchesPage
@@ -536,6 +537,9 @@ fun MainContainerOfApp(
                 }
                 composable(NavDes.RxJavaDemo.route()) {
                     RxJavaDemo(vm = hiltViewModel())
+                }
+                composable(NavDes.GraphqlDemo.route()) {
+                    ContinentsScreen(viewModel = hiltViewModel())
                 }
             }
 

@@ -6,10 +6,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.jetpack_compose_all_in_one.FindCountriesOfAContinentQuery
 import com.example.jetpack_compose_all_in_one.GetContinentsQuery
-import com.example.jetpack_compose_all_in_one.third_party_lib.graph_ql_country_list.model.Repository
+import com.example.jetpack_compose_all_in_one.di.CountryAPI
+import com.example.jetpack_compose_all_in_one.third_party_lib.graph_ql_country_list.model.CountriesRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ContinentsViewModel(private val repository: Repository) : ViewModel() {
+@HiltViewModel
+class ContinentsViewModel @Inject constructor(
+    @CountryAPI private val countriesRepository: CountriesRepository
+) : ViewModel() {
 
     private val _continents = MutableLiveData<List<GetContinentsQuery.Continent>>()
     val continents: LiveData<List<GetContinentsQuery.Continent>> get() = _continents
@@ -26,7 +32,7 @@ class ContinentsViewModel(private val repository: Repository) : ViewModel() {
 
     private fun fetchContinents() {
         viewModelScope.launch {
-            val response = repository.getContinents()
+            val response = countriesRepository.getContinents()
             if (response.hasErrors() || response.data == null) {
                 _error.value = response.errors?.firstOrNull()?.message ?: "Unknown error"
             } else {
@@ -37,7 +43,7 @@ class ContinentsViewModel(private val repository: Repository) : ViewModel() {
 
     fun fetchCountriesOfSelectedContinent(continentCode: String) {
         viewModelScope.launch {
-            val response = repository.getCountriesOfSelectedContinent(continentCode)
+            val response = countriesRepository.getCountriesOfSelectedContinent(continentCode)
             if (response.hasErrors() || response.data == null) {
                 _error.value = response.errors?.firstOrNull()?.message ?: "Unknown error"
             } else {

@@ -18,6 +18,8 @@ import com.example.jetpack_compose_all_in_one.third_party_lib.currency_exchange.
 import com.example.jetpack_compose_all_in_one.third_party_lib.currency_exchange.remote.repository.CurrencyRepositoryImpl
 import com.example.jetpack_compose_all_in_one.third_party_lib.airtel_api.repo.AirtelRepository
 import com.example.jetpack_compose_all_in_one.third_party_lib.airtel_api.repo.AirtelRepositoryImpl
+import com.example.jetpack_compose_all_in_one.third_party_lib.graph_ql_country_list.model.CountriesRepository
+import com.example.jetpack_compose_all_in_one.third_party_lib.graph_ql_country_list.model.CountriesRepositoryImpl
 import com.example.jetpack_compose_all_in_one.third_party_lib.paging3.repository.GitHubRepository
 import com.example.jetpack_compose_all_in_one.third_party_lib.paging3.repository.GitHubRepositoryImpl
 import com.example.jetpack_compose_all_in_one.third_party_lib.spacex_api_graphql.remote.SpaceXLaunchesRepository
@@ -96,4 +98,9 @@ abstract class RepositoryModules {
     @Singleton
     @SpaceXAPI
     abstract fun bindSpaceXLaunchesRepository(impl: SpaceXLaunchesRepositoryImpl): SpaceXLaunchesRepository
+
+    @Binds
+    @Singleton
+    @CountryAPI
+    abstract fun bindCountriesRepositoryRepository(impl: CountriesRepositoryImpl): CountriesRepository
 }
