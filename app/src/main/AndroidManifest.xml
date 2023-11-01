@@ -59,8 +59,9 @@
             android:exported="false"
             android:label="@string/title_activity_quote"
             android:theme="@style/Theme.JetpackComposeAllInOne" />
+      <activity android:name="com.example.jetpack_compose_all_in_one.demos.history_of_day.HistoryMainActivity" />
 
-        <service
+      <service
             android:name=".application_components.services.counter.CounterAppService"
             android:exported="false" />
         <service
