@@ -49,6 +49,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.GRAP
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.GRAPHQL_DEMO_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.HOME
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.HOME_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.HistoryOfDayUI
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.HistoryOfDayUI_About
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.INTERNET
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.INTERNET_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSONS
@@ -405,6 +407,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     object tikTok : NavDes(NavigationDrawerData(TiKTokUI, TiKTokUI_About))
     object youTube : NavDes(NavigationDrawerData(YoutubeUI, YoutubeUI_ABOUT))
     object faceBook : NavDes(NavigationDrawerData(FacebookUI, FacebookUI_About))
+    object historyOfDay : NavDes(NavigationDrawerData(HistoryOfDayUI, HistoryOfDayUI_About))
 
 
     object AndroidArchitectures : NavDes(
@@ -507,7 +510,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
             listOf(
                 youTube,
                 faceBook,
-                tikTok
+                tikTok,
+                historyOfDay
             ), DEMO_UI
         )
     )

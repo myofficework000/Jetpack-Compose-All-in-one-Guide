@@ -20,24 +20,24 @@ import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 
-class HistoryRepositoryImplMockitoTest{
+class HistoryRepositoryImplMockitoTest {
 
-  val testDispatcher =  StandardTestDispatcher()
+  val testDispatcher = StandardTestDispatcher()
+
   @get:Rule
   val executor = InstantTaskExecutorRule()
 
   @Mock
   lateinit var apiService: ApiService
 
-
   @Before
-  fun setUp(){
+  fun setUp() {
     MockitoAnnotations.openMocks(this)
     Dispatchers.setMain(testDispatcher)
   }
 
   @Test
-  fun `test fetch history response when empty received from server expect Network Error res`(){
+  fun `test fetch history response when empty received from server expect Network Error res`() {
     runTest {
       Mockito.`when`(apiService.getHistoryOfToday()).thenReturn(arrayListOf())
       val sut = HistoryRepositoryImpl(apiService);
@@ -47,7 +47,7 @@ class HistoryRepositoryImplMockitoTest{
   }
 
   @Test
-  fun `test fetch history response when null received from server expect Network Error res`(){
+  fun `test fetch history response when null received from server expect Network Error res`() {
     runTest {
       Mockito.`when`(apiService.getHistoryOfToday()).thenReturn(null)
       val sut = HistoryRepositoryImpl(apiService);
@@ -57,7 +57,7 @@ class HistoryRepositoryImplMockitoTest{
   }
 
   @Test
-  fun `test fetch history when list received from server expect Network Success res`(){
+  fun `test fetch history when list received from server expect Network Success res`() {
     runTest {
       val dataResponse = arrayListOf<Dates>(
         Dates("1-November-1973", "This is dummy data")
@@ -72,7 +72,7 @@ class HistoryRepositoryImplMockitoTest{
   }
 
   @After
-  fun cleanUp(){
+  fun cleanUp() {
     Dispatchers.resetMain()
   }
 

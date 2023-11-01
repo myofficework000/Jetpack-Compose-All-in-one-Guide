@@ -23,15 +23,11 @@ import org.mockito.MockitoAnnotations
 
 class HistoryViewModelTest {
 
-  private val testDispatcher = StandardTestDispatcher()
-  // private val testDispatcher = TestCoroutineScheduler()
-
-
-  @get:Rule
-  val instantTaskExecutorRule = InstantTaskExecutorRule()
-
   @Mock
   lateinit var repository: HistoryRepository
+  @get:Rule
+  val instantTaskExecutorRule = InstantTaskExecutorRule()
+  private val testDispatcher = StandardTestDispatcher()
 
   @Before
   fun setup() {
@@ -116,6 +112,4 @@ class HistoryViewModelTest {
   fun tearDown() {
     Dispatchers.resetMain()
   }
-
-
 }

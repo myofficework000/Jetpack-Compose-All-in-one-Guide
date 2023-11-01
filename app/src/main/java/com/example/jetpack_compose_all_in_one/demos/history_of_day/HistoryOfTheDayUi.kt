@@ -1,9 +1,5 @@
 package com.example.jetpack_compose_all_in_one.demos.history_of_day
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -16,8 +12,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -27,42 +21,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
-import com.example.jetpack_compose_all_in_one.demos.history_of_day.model.Dates
-import com.technocraze.mvvmdatehistroy.ui.theme.MvvmDateHistroyTheme
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.technocraze.mvvmdatehistroy.viewmodel.HistoryViewModel
 
-import dagger.hilt.android.AndroidEntryPoint
-
-@AndroidEntryPoint
-class HistoryMainActivity : ComponentActivity() {
-
-  private val viewModel: HistoryViewModel by viewModels()
-
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    setContent {
-      val state by viewModel.historyState.collectAsState()
-      MvvmDateHistroyTheme {
-        // A surface container using the 'background' color from the theme
-        Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-          HomeUi(state)
-        }
-      }
-    }
-  }
-}
-
-
 @Composable
-fun HomeUi(state: HistoryViewModel.HistoryState) {
-
+fun HistoryOfTheDayUI(viewModel: HistoryViewModel = hiltViewModel()) {
+  val state by viewModel.historyState.collectAsState()
   ConstraintLayout {
-
     val (historyList, progressBar) = createRefs()
-
     if (state.isLoading) {
       Box(modifier = Modifier
         .fillMaxSize()
@@ -129,21 +97,4 @@ fun HomeUi(state: HistoryViewModel.HistoryState) {
     }
 
   }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-  var history = arrayListOf(
-    Dates(
-      "Hello", "ncjdnkjn cjdnskjc jkcjshd" +
-          " cjh schj  hjdc sd cj sdc sd chs hd cjsj"
-    ),
-    Dates(
-      "Hello", "ncjdnkjn cjdnskjc jkcjshd" +
-          " cjh schj  hjdc sd cj sdc sd chs hd cjsj"
-    ),
-  )
-  HomeUi(HistoryViewModel.HistoryState(false,history,""))
-
 }

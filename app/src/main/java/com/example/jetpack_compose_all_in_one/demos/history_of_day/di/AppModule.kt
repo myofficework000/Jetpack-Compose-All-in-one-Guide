@@ -1,5 +1,6 @@
 package com.example.jetpack_compose_all_in_one.demos.history_of_day.di
 
+import com.example.jetpack_compose_all_in_one.demos.history_of_day.Constant.BASE_URL
 import com.example.jetpack_compose_all_in_one.demos.history_of_day.repository.HistoryRepository
 import com.example.jetpack_compose_all_in_one.demos.history_of_day.repository.HistoryRepositoryImpl
 import com.example.jetpack_compose_all_in_one.demos.history_of_day.service.ApiService
@@ -42,7 +43,7 @@ class AppModule {
     return Retrofit.Builder()
       .addConverterFactory(GsonConverterFactory.create())
       //make it constant
-      .baseUrl("https://current-affairs-of-india.p.rapidapi.com/")
+      .baseUrl(BASE_URL)
       .client(okhttp)
       .build()
   }
