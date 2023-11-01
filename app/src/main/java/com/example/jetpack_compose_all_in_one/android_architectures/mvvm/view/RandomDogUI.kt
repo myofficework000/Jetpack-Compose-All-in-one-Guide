@@ -13,7 +13,6 @@ import com.bumptech.glide.integration.compose.GlideImage
 import com.example.jetpack_compose_all_in_one.android_architectures.mvvm.viewmodel.DogViewModel
 import com.example.jetpack_compose_all_in_one.ui.components.SimpleTextButton
 
-
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun RandomDogUI(

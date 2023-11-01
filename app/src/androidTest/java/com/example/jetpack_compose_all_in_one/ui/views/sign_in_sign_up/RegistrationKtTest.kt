@@ -1,7 +1,5 @@
 package com.example.jetpack_compose_all_in_one.ui.views.sign_in_sign_up
 
-import androidx.compose.runtime.clearCompositionErrors
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.test.assert
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
@@ -10,7 +8,6 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performTextClearance
 import androidx.compose.ui.test.performTextInput
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import org.junit.After
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule

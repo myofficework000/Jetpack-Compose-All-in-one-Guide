@@ -10,24 +10,22 @@ import com.example.jetpack_compose_all_in_one.android_architectures.mvvm.model.D
 import com.example.jetpack_compose_all_in_one.android_architectures.mvvm.model.data.DogResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class DogViewModel @Inject constructor(private val repository: DogRepository) : ViewModel() {
 
-    private val dogLiveData = MutableLiveData<DogResponse>()
     private val error = MutableLiveData<String>()
-
     var dogFluff by mutableStateOf(DogResponse.empty)
 
     fun getDogImageFromApi() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(IO) {
             try {
                 val response = repository.getDogImage()
                 if (response.isSuccessful) {
                     response.body()?.let {
-                        dogLiveData.postValue(it)
                         dogFluff = it
                     }
                 } else {
