@@ -230,6 +230,9 @@ object NavConstants {
     const val TiKTokUI = "TiKTokUI"
     const val TiKTokUI_About = "TiKTok"
 
+    const val HistoryOfDayUI = "HistoryOfDayUI"
+    const val HistoryOfDayUI_About = "History of the Day"
+
     const val CLEAN_CODE_WITH_MVI = "CLEAN_CODE_MVI"
     const val CLEAN_CODE_ABOUT_WITH_MVI = "Clean Code + MVI + MVVM"
 
