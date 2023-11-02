@@ -60,7 +60,7 @@
             android:label="@string/title_activity_quote"
             android:theme="@style/Theme.JetpackComposeAllInOne" />
 
-        <service
+      <service
             android:name=".application_components.services.counter.CounterAppService"
             android:exported="false" />
         <service
