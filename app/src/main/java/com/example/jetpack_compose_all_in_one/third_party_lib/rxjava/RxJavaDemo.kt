@@ -35,6 +35,7 @@ fun RxJavaDemo(
                 2 -> RxJavaDemoMaybe(vm)
                 3 -> RxJavaDemoObservable(vm)
                 4 -> RxJavaDemoFlowable(vm)
+                5-> DebounceSearchDemo()
                 else -> {}
             }
         }
