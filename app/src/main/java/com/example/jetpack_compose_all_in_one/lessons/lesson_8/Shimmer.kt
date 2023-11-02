@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun ShimmerAnimation(modifier: Modifier = Modifier) {
-    val infiniteTransition = rememberInfiniteTransition()
+    val infiniteTransition = rememberInfiniteTransition(label = "")
 
     val shimmerTranslateAnim by infiniteTransition.animateFloat(
         initialValue = 0f,
@@ -33,7 +33,7 @@ fun ShimmerAnimation(modifier: Modifier = Modifier) {
         animationSpec = infiniteRepeatable(
             animation = tween(durationMillis = 1200, easing = LinearEasing),
             repeatMode = RepeatMode.Restart
-        )
+        ), label = ""
     )
 
     Canvas(modifier = modifier) {

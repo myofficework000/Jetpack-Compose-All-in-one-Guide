@@ -54,7 +54,7 @@ fun PositionAnimationExample() {
 
     val offset by animateFloatAsState(
         targetValue = if (animate) 0f else screenWidth.value,
-        animationSpec = tween(durationMillis = 500)
+        animationSpec = tween(durationMillis = 500), label = ""
     )
 
     Box(
@@ -70,12 +70,11 @@ fun PositionAnimationExample() {
 fun ScalingAnimationExample() {
     var animate by remember { mutableStateOf(false) }
 
-    val originalSize: Dp = 100.dp
-    val expandedSize: Dp = 200.dp
+    val originalSize = 100.dp
 
     val scale = animateFloatAsState(
         targetValue = if (animate) 1.5f else 1f,
-        animationSpec = tween(durationMillis = 500)
+        animationSpec = tween(durationMillis = 500), label = ""
     ).value
 
     Box(
@@ -93,7 +92,7 @@ fun FadeAnimationExample() {
 
     val opacity by animateFloatAsState(
         targetValue = if (animate) 0.1f else 1f,
-        animationSpec = tween(durationMillis = 500)
+        animationSpec = tween(durationMillis = 500), label = ""
     )
 
     Box(
@@ -113,7 +112,7 @@ fun RotationAnimationWithDelayExample() {
         animationSpec = infiniteRepeatable(
             animation = tween(durationMillis = 1000),
             repeatMode = RepeatMode.Restart
-        )
+        ), label = ""
     )
 
     val coroutineScope = rememberCoroutineScope()
@@ -142,7 +141,7 @@ fun RoundAnimationExample() {
 
     val border by animateIntAsState(
         targetValue = if (animate) 100 else 0,
-        animationSpec = tween(durationMillis = 500)
+        animationSpec = tween(durationMillis = 500), label = ""
     )
 
     Box(
@@ -162,7 +161,7 @@ fun FloatAnimationExample() {
 
     val animateValue by animateFloatAsState(
         targetValue = if (isVisible) 0f else 1f,
-        animationSpec = tween(durationMillis = 500)
+        animationSpec = tween(durationMillis = 500), label = ""
     )
 
     Column(
@@ -215,7 +214,7 @@ fun DownArrowAnimation() {
     val yState by remember { mutableStateOf(0) }
     val yOffset = animateIntAsState(
         targetValue = yState,
-        animationSpec = tween(durationMillis = 4000, easing = LinearEasing)
+        animationSpec = tween(durationMillis = 4000, easing = LinearEasing), label = ""
     )
 
     ShootArrow(modifier = Modifier.fillMaxSize(fraction = .8f), yOffset = yOffset.value) {
