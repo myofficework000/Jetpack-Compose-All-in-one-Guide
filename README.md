@@ -30,6 +30,7 @@ Learn step by step UI development using Jetpack Compose [beginners to advance]. 
    - [x] Barcode Scanner:  ML kit  library integration
    - [ ] MPchart: Charting library
    - [ ] Camera V2 API
+   - [x] RxJava
 - [x] Demos (Planned in August 2023 release)
    - [x] Instagram Demo UI
    - [x] TikTok Demo UI
