@@ -11,17 +11,17 @@ class NoteRepository {
 
     private val database = FirebaseDatabase.getInstance().getReference("notes")
 
-    fun saveNote(note: Note) {
+    fun saveNote(note: Note2) {
         val noteId = database.push().key
         noteId?.let {
             database.child(it).setValue(note)
         }
     }
 
-    fun getNoteUpdates(action: (List<Note>) -> Unit) {
+    fun getNoteUpdates(action: (List<Note2>) -> Unit) {
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val note = snapshot.children.mapNotNull { it.getValue<Note>() }
+                val note = snapshot.children.mapNotNull { it.getValue<Note2>() }
                 action(note)
             }
 

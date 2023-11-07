@@ -6,8 +6,8 @@ import kotlinx.coroutines.flow.StateFlow
 
 class NoteViewModel(private val repository: NoteRepository) : ViewModel() {
 
-    private val _notes = MutableStateFlow<List<Note>>(emptyList())
-    val notes: StateFlow<List<Note>> = _notes
+    private val _notes = MutableStateFlow<List<Note2>>(emptyList())
+    val notes: StateFlow<List<Note2>> = _notes
 
     init {
         loadNotes()
@@ -20,7 +20,7 @@ class NoteViewModel(private val repository: NoteRepository) : ViewModel() {
     }
 
     fun sendNote(title: String, date: String, content: String) {
-        val note = Note(title, date, content)
+        val note = Note2(title, date, content)
         repository.saveNote(note)
     }
 }
