@@ -22,7 +22,7 @@ fun NoteScreen(viewModel: NoteViewModel) {
     val notes by viewModel.notes.collectAsState()
 
     Column {
-        NoteList(notes = notes)
+        NoteList2(notes = notes)
         UserInput {title, date, content ->
             viewModel.sendNote(title, date, content)
         }
@@ -62,7 +62,7 @@ fun UserInput(onNoteSent: (String, String, String) -> Unit) {
 }
 
 @Composable
-fun NoteList(notes: List<Note>) {
+fun NoteList2(notes: List<Note2>) {
     LazyColumn {
         items(notes) { note ->
             NoteItem(note)
@@ -71,7 +71,7 @@ fun NoteList(notes: List<Note>) {
 }
 
 @Composable
-fun NoteItem(note: Note) {
+fun NoteItem(note: Note2) {
     Column(
         modifier = Modifier
             .padding(8.dp)
