@@ -29,6 +29,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CONT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CONTENT_PROVIDER_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CURRENCY_EXCHANGE_API
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CURRENCY_EXCHANGE_API_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CurrencyConverterUI
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CurrencyConverterUI_About
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DEMO_UI
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOG_API
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOG_API_ABOUT
@@ -405,6 +407,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
         NavDes(NavigationDrawerData(CLEAN_CODE_WITH_MVI, CLEAN_CODE_ABOUT_WITH_MVI))
 
     object tikTok : NavDes(NavigationDrawerData(TiKTokUI, TiKTokUI_About))
+    object currencyConverter : NavDes(NavigationDrawerData(CurrencyConverterUI, CurrencyConverterUI_About))
     object youTube : NavDes(NavigationDrawerData(YoutubeUI, YoutubeUI_ABOUT))
     object faceBook : NavDes(NavigationDrawerData(FacebookUI, FacebookUI_About))
     object historyOfDay : NavDes(NavigationDrawerData(HistoryOfDayUI, HistoryOfDayUI_About))
@@ -511,6 +514,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 youTube,
                 faceBook,
                 tikTok,
+                currencyConverter,
                 historyOfDay
             ), DEMO_UI
         )
