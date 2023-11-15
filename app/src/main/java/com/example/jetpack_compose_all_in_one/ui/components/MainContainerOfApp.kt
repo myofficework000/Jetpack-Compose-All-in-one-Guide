@@ -33,6 +33,7 @@ import com.example.jetpack_compose_all_in_one.application_components.broadcastre
 import com.example.jetpack_compose_all_in_one.application_components.content_provider.ContentProviderScreen
 import com.example.jetpack_compose_all_in_one.application_components.content_provider.demo_contacts.ContactList
 import com.example.jetpack_compose_all_in_one.application_components.content_provider.demo_images.ShowImages
+import com.example.jetpack_compose_all_in_one.demos.currency_converter.presentation.view.CurrencyFromToScreen
 import com.example.jetpack_compose_all_in_one.demos.history_of_day.HistoryOfTheDayUI
 import com.example.jetpack_compose_all_in_one.features.alarm.AlarmMainUI
 import com.example.jetpack_compose_all_in_one.features.chatmodule.ChatViewModel
@@ -544,6 +545,9 @@ fun MainContainerOfApp(
                 }
                 composable(NavDes.historyOfDay.route()) {
                     HistoryOfTheDayUI(viewModel = hiltViewModel())
+                }
+                composable(NavDes.currencyConverter.route()) {
+                    CurrencyFromToScreen(viewModel = hiltViewModel())
                 }
             }
 
