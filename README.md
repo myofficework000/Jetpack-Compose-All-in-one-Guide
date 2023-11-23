@@ -21,7 +21,7 @@ Learn step by step UI development using Jetpack Compose [beginners to advance]. 
    - [x] LiveData
    - [x] Room Database
    - [x] WorkManager
-   - [x] Paging
+   - [x] Paging 3
 - [x] Third Party Library 
    - [x] Stripe: Payement gateway integration
    - [x] Chat GPT: AI api implementation
