@@ -138,5 +138,5 @@ fun LessonText2(text: String, modifier: Modifier = Modifier) {
 @Preview(device = Devices.PIXEL_C)
 @Composable
 private fun LessonTextPreview() {
-    StyleableLessonText("Sample text for demonstrating this text")
+    StyleableLessonText("Sample text")
 }
