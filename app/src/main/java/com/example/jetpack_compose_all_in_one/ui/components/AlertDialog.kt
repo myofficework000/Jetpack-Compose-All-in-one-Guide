@@ -1,6 +1,5 @@
 package com.example.jetpack_compose_all_in_one.ui.components
 
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
@@ -16,17 +15,17 @@ import androidx.compose.ui.window.Dialog
 import com.example.jetpack_compose_all_in_one.R
 
 @Composable
-fun AlertDialog(){
+fun AlertDialog() {
     var showPopUp by remember { mutableStateOf(true) }
-    val onPopupDismissed = {showPopUp = false}
+    val onPopupDismissed = { showPopUp = false }
 
-    if(showPopUp){
+    if (showPopUp) {
         AlertDialog(
             onDismissRequest = onPopupDismissed,
             title = {
                 Text(text = stringResource(R.string.dialog_title))
             },
-            text ={
+            text = {
                 Text(text = stringResource(R.string.dialog_text))
             },
             confirmButton = {
@@ -39,22 +38,23 @@ fun AlertDialog(){
         )
     }
 }
+
 fun <T> ((T) -> Boolean).and(arg: (T) -> Boolean): (T) -> Boolean = { this(it) && arg(it) }
 
 @Composable
-fun DeleteDialog(onConfirmClicked:(close: Boolean) ->Unit){
+fun DeleteDialog(onConfirmClicked: (close: Boolean) -> Unit) {
     var showPopUp by remember { mutableStateOf(true) }
     val onPopupDismissed = {
         showPopUp = false
     }
 
-    if(showPopUp){
+    if (showPopUp) {
         AlertDialog(
             onDismissRequest = onPopupDismissed,
             title = {
                 Text(text = stringResource(R.string.dialog_title))
             },
-            text ={
+            text = {
                 Text(text = stringResource(R.string.dialog_text))
             },
             confirmButton = {
@@ -85,7 +85,9 @@ fun ChoiceDialog(
         RadioButtons(
             choices,
             choices[currentChoice],
-            Modifier.fillMaxWidth().then(modifier)
+            Modifier
+                .fillMaxWidth()
+                .then(modifier)
         ) { onChoose(it); onDismiss() }
     }
 }
