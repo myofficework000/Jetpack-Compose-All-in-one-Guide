@@ -297,7 +297,7 @@ fun MainContainerOfApp(
                 }
 
                 composable(NavDes.news.route()) {
-                    NewsScreen()
+                    NewsScreen(hiltViewModel())
                 }
 
                 composable(NavDes.ChatDemoUI.route()) {
