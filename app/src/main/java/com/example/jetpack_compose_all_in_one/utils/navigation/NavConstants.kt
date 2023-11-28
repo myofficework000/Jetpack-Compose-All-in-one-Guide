@@ -122,6 +122,9 @@ object NavConstants {
     const val LESSON_14_DROP_DOWN_MENU = "LESSON_14_Drop_down_menu"
     const val LESSON_14_DROP_DOWN_MENU_ABOUT = "Lesson 14: Dropdown menu"
 
+    const val LESSON_15 = "LESSON_15"
+    const val LESSON_15_ABOUT = "Lesson 15: Custom Radio Buttons"
+
     const val QUOTE_2 = "quote2"
     const val QUOTE_2_ABOUT = "Swipe Quotes"
 

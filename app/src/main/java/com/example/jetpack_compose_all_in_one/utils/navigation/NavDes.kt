@@ -67,6 +67,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_13_LOCALIAZATION_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_14_DROP_DOWN_MENU
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_14_DROP_DOWN_MENU_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_15
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_15_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_1_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_1
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_1_ABOUT
@@ -269,6 +271,9 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     object Lesson13Localization :
         NavDes(NavigationDrawerData(LESSON_13_LOCALIAZATION, LESSON_13_LOCALIAZATION_ABOUT))
 
+    object Lesson15 :
+        NavDes(NavigationDrawerData(LESSON_15, LESSON_15_ABOUT))
+
     object Lesson14DropDownMenu :
         NavDes(NavigationDrawerData(LESSON_14_DROP_DOWN_MENU, LESSON_14_DROP_DOWN_MENU_ABOUT))
 
@@ -464,7 +469,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 Lesson11Interoperability,
                 Lesson12WebView,
                 Lesson13Localization,
-                Lesson14DropDownMenu
+                Lesson14DropDownMenu,
+                Lesson15
             ), LESSONS
         )
     )
