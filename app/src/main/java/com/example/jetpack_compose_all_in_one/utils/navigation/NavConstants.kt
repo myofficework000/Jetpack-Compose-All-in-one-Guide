@@ -224,6 +224,9 @@ object NavConstants {
     const val YoutubeUI = "YoutubeUI"
     const val YoutubeUI_ABOUT = "Youtube"
 
+    const val NewsUI = "NewsUI"
+    const val NewsUI_ABOUT = "News App"
+
     const val FacebookUI = "FacebookUI"
     const val FacebookUI_About = "Facebook"
 

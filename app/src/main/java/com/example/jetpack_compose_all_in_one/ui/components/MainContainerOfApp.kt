@@ -35,6 +35,7 @@ import com.example.jetpack_compose_all_in_one.application_components.content_pro
 import com.example.jetpack_compose_all_in_one.application_components.content_provider.demo_images.ShowImages
 import com.example.jetpack_compose_all_in_one.demos.currency_converter.presentation.view.CurrencyFromToScreen
 import com.example.jetpack_compose_all_in_one.demos.history_of_day.HistoryOfTheDayUI
+import com.example.jetpack_compose_all_in_one.demos.news_app.view.NewsScreen
 import com.example.jetpack_compose_all_in_one.features.alarm.AlarmMainUI
 import com.example.jetpack_compose_all_in_one.features.chatmodule.ChatViewModel
 import com.example.jetpack_compose_all_in_one.features.download_manager.Download
@@ -294,6 +295,11 @@ fun MainContainerOfApp(
                 composable(NavDes.Quotes.route()) {
                     Quote()
                 }
+
+                composable(NavDes.news.route()) {
+                    NewsScreen()
+                }
+
                 composable(NavDes.ChatDemoUI.route()) {
                     val vm = hiltViewModel<ChatViewModel>()
                     DemoFullChat2(
