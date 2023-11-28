@@ -2,6 +2,8 @@ package com.example.jetpack_compose_all_in_one.di
 
 import com.example.jetpack_compose_all_in_one.android_architectures.mvvm.model.DogRepository
 import com.example.jetpack_compose_all_in_one.android_architectures.mvvm.model.IDogRepository
+import com.example.jetpack_compose_all_in_one.demos.news_app.model.repository.RemoteNewRepository
+import com.example.jetpack_compose_all_in_one.demos.news_app.model.repository.RemoteNewsRepositoryImpl
 import com.example.jetpack_compose_all_in_one.features.domain_search.DomainSearchRepository
 import com.example.jetpack_compose_all_in_one.features.domain_search.IDomainSearchRepository
 import com.example.jetpack_compose_all_in_one.features.news_sample.repository.INewsRepository
@@ -103,4 +105,10 @@ abstract class RepositoryModules {
     @Singleton
     @CountryAPI
     abstract fun bindCountriesRepositoryRepository(impl: CountriesRepositoryImpl): CountriesRepository
+
+    @Binds
+    @Singleton
+    @MviNewsAPI
+    abstract fun bindMviNewsRepository(impl:RemoteNewsRepositoryImpl) : RemoteNewRepository
+
 }

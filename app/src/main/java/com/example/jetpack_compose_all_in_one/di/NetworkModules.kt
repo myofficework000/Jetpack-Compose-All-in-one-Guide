@@ -2,9 +2,11 @@ package com.example.jetpack_compose_all_in_one.di
 
 import android.content.Context
 import com.apollographql.apollo3.ApolloClient
-import com.apollographql.apollo3.network.okHttpClient
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.android_architectures.mvvm.model.DogApiService
+import com.example.jetpack_compose_all_in_one.demos.news_app.interceptors.ApiKeyInterceptor
+import com.example.jetpack_compose_all_in_one.demos.news_app.model.repository.api.MviNewsApiService
+import com.example.jetpack_compose_all_in_one.demos.news_app.model.util.Constants.NEWS_API_URL
 import com.example.jetpack_compose_all_in_one.features.domain_search.ApiDomainSearch
 import com.example.jetpack_compose_all_in_one.features.login_style_1.ApiLoginService
 import com.example.jetpack_compose_all_in_one.features.news_sample.data.remote.NewsApiInterceptor
@@ -309,4 +311,24 @@ object NetworkModules {
     fun provideCountryGraphQL(): ApolloClient = ApolloClient.Builder()
         .serverUrl("https://countries.trevorblades.com/")
         .build()
+
+
+    @Singleton
+    @Provides
+    @MviNewsAPI
+    fun provideMviNewsAPIService(): MviNewsApiService {
+
+        val client = OkHttpClient.Builder()
+            .callTimeout(60, TimeUnit.SECONDS)
+            .addInterceptor(ApiKeyInterceptor())
+            .build()
+
+        val retrofit = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .baseUrl(NEWS_API_URL)
+            .build()
+
+        return retrofit.create(MviNewsApiService::class.java)
+    }
 }

@@ -53,3 +53,7 @@ annotation class SpaceXAPI
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
 annotation class CountryAPI
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class MviNewsAPI
