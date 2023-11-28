@@ -56,6 +56,8 @@ Learn step by step UI development using Jetpack Compose [beginners to advance]. 
 | <h3><b>Lesson 11:</b> Compose with Xml compatiblity </h3><br/> This lesson covers compatiblity with xml in Jetpack Compose<br> • **Chapter 1:** Compose View into activity xml  <br>| <img src="https://github.com/myofficework000/Jetpack-Compose-All-In-One-Guide/blob/master/demo/lesson-11.gif" alt="Lesson 11 Preview" width="170" height="300"> |
 | <h3><b>Lesson 12:</b> Web Views </h3><br/> This lesson demonstrates how to create web views in Jetpack Compose<br> | <img src="https://github.com/myofficework000/Jetpack-Compose-All-In-One-Guide/blob/master/demo/lesson-12.gif" alt="Lesson 12 Preview" width="170" height="300"> |
 | <h3><b>Lesson 13:</b> Localization </h3><br/> This lesson covers localization in Jetpack Compose<br> • **Chapter 1:** Adding Language Support <br> • **Chapter 2:** Formatting Dates and Numbers <br> **• Chapter 3:** RTL Support <br>• **Chapter 4:** String Plurals <br> | <img src="" alt="Lesson 11 Preview" width="170" height="300"> |
+| <h3><b>Lesson 14:</b> Drop down menu </h3><br/> This lesson covers drop down menu in Jetpack Compose<br> | <img src="" alt="Lesson 11 Preview" width="170" height="300"> |
+| <h3><b>Lesson 15:</b> Custom Radio button </h3><br/> This lesson covers Customization of radio button in Jetpack Compose<br> | <img src="https://github.com/myofficework000/Jetpack-Compose-All-In-One-Guide/blob/master/demo/lesson-15.gif" alt="Lesson 15 Preview" width="170" height="300"> |
 
 ## Contributors [![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
 Contributions are welcome! If you have any ideas, suggestions, or improvements, please open an issue or submit a pull request.
