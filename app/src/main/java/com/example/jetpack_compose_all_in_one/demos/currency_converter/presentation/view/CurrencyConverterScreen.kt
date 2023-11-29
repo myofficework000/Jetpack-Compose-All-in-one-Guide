@@ -45,7 +45,7 @@ fun CurrencyFromToScreen(viewModel: CurrencyViewModel = hiltViewModel()) {
                 text = it
                 viewModel.handleIntent(CurrencyIntent.CurrencyInputChanged(it))
             },
-            label = { Text("Enter EUR Amount") },
+            placeholder = { Text("Enter EUR Amount") },
             modifier = Modifier.fillMaxWidth()
         )
 
