@@ -37,6 +37,7 @@ import com.example.jetpack_compose_all_in_one.demos.currency_converter.presentat
 import com.example.jetpack_compose_all_in_one.demos.history_of_day.HistoryOfTheDayUI
 import com.example.jetpack_compose_all_in_one.demos.news_app.view.NewsScreen
 import com.example.jetpack_compose_all_in_one.demos.polls.PollScreen
+import com.example.jetpack_compose_all_in_one.demos.quiz.QuizScreen
 import com.example.jetpack_compose_all_in_one.features.alarm.AlarmMainUI
 import com.example.jetpack_compose_all_in_one.features.chatmodule.ChatViewModel
 import com.example.jetpack_compose_all_in_one.features.download_manager.Download
@@ -305,6 +306,10 @@ fun MainContainerOfApp(
 
                 composable(NavDes.polls.route()){
                     PollScreen(viewModel = hiltViewModel())
+                }
+
+                composable(NavDes.quiz.route()){
+                    QuizScreen()
                 }
 
                 composable(NavDes.ChatDemoUI.route()) {

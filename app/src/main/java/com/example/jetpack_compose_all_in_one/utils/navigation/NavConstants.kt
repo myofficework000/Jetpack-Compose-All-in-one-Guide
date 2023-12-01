@@ -242,6 +242,9 @@ object NavConstants {
     const val PollUI = "PollUI"
     const val PollUI_About = "Poll"
 
+    const val QuizUI = "QuizUI"
+    const val QuizUI_About = "Quiz"
+
     const val CurrencyConverterUI = "CurrencyConverterUI"
     const val CurrencyConverterUI_About = "CurrencyConverter"
 
