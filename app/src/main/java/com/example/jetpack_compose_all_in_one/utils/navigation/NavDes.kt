@@ -148,6 +148,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.QUOT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.QUOTES_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.QUOTE_2
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.QUOTE_2_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.QuizUI
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.QuizUI_About
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.RANDOM_DOG_API
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.RANDOM_DOG_API_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.RANDOM_FOX_API
@@ -426,6 +428,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     object news : NavDes(NavigationDrawerData(NewsUI, NewsUI_ABOUT))
 
     object polls : NavDes(NavigationDrawerData(PollUI, PollUI_About))
+    object quiz : NavDes(NavigationDrawerData(QuizUI, QuizUI_About))
     object faceBook : NavDes(NavigationDrawerData(FacebookUI, FacebookUI_About))
     object historyOfDay : NavDes(NavigationDrawerData(HistoryOfDayUI, HistoryOfDayUI_About))
 
@@ -536,7 +539,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 currencyConverter,
                 historyOfDay,
                 news,
-                polls
+                polls,
+                quiz
             ), DEMO_UI
         )
     )
