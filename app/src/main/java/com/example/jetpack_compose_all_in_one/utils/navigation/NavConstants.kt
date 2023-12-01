@@ -239,6 +239,9 @@ object NavConstants {
     const val TiKTokUI = "TiKTokUI"
     const val TiKTokUI_About = "TiKTok"
 
+    const val PollUI = "PollUI"
+    const val PollUI_About = "Poll"
+
     const val CurrencyConverterUI = "CurrencyConverterUI"
     const val CurrencyConverterUI_About = "CurrencyConverter"
 

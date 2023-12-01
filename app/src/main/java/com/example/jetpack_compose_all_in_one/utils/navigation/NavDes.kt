@@ -140,6 +140,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.PASS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.PASSWORD_VALIDATION_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.PROFILE_UPDATE
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.PROFILE_UPDATE_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.PollUI
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.PollUI_About
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.QRCODE_SCANNER
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.QRCODE_SCANNER_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.QUOTES
@@ -422,6 +424,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     object currencyConverter : NavDes(NavigationDrawerData(CurrencyConverterUI, CurrencyConverterUI_About))
     object youTube : NavDes(NavigationDrawerData(YoutubeUI, YoutubeUI_ABOUT))
     object news : NavDes(NavigationDrawerData(NewsUI, NewsUI_ABOUT))
+
+    object polls : NavDes(NavigationDrawerData(PollUI, PollUI_About))
     object faceBook : NavDes(NavigationDrawerData(FacebookUI, FacebookUI_About))
     object historyOfDay : NavDes(NavigationDrawerData(HistoryOfDayUI, HistoryOfDayUI_About))
 
@@ -531,7 +535,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 tikTok,
                 currencyConverter,
                 historyOfDay,
-                news
+                news,
+                polls
             ), DEMO_UI
         )
     )
