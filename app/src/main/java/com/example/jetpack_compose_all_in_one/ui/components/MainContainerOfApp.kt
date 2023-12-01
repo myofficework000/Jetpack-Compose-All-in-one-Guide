@@ -68,6 +68,7 @@ import com.example.jetpack_compose_all_in_one.lessons.lesson_12.Lesson_12
 import com.example.jetpack_compose_all_in_one.lessons.lesson_13.Lesson_13
 import com.example.jetpack_compose_all_in_one.lessons.lesson_14.Lesson_14
 import com.example.jetpack_compose_all_in_one.lessons.lesson_15.Lesson_15
+import com.example.jetpack_compose_all_in_one.lessons.lesson_16.Lesson_16
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_2_Screen
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_4_Image
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_5_Progressbar
@@ -394,6 +395,10 @@ fun MainContainerOfApp(
 
                 composable(NavDes.Lesson15.route()) {
                     Lesson_15()
+                }
+
+                composable(NavDes.Lesson16.route()){
+                    Lesson_16()
                 }
 
                 composable(NavDes.L6Chapter1.route()) {

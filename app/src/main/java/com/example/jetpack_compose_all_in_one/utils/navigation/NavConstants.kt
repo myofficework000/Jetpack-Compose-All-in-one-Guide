@@ -125,6 +125,9 @@ object NavConstants {
     const val LESSON_15 = "LESSON_15"
     const val LESSON_15_ABOUT = "Lesson 15: Custom Radio Buttons"
 
+    const val LESSON_16 = "LESSON_16"
+    const val LESSON_16_ABOUT = "Lesson 16: State and Visibility"
+
     const val QUOTE_2 = "quote2"
     const val QUOTE_2_ABOUT = "Swipe Quotes"
 
