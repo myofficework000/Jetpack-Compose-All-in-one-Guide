@@ -34,6 +34,7 @@ import com.example.jetpack_compose_all_in_one.application_components.content_pro
 import com.example.jetpack_compose_all_in_one.application_components.content_provider.demo_contacts.ContactList
 import com.example.jetpack_compose_all_in_one.application_components.content_provider.demo_images.ShowImages
 import com.example.jetpack_compose_all_in_one.demos.currency_converter.presentation.view.CurrencyFromToScreen
+import com.example.jetpack_compose_all_in_one.demos.github_api.presentation.view.GithubUserListScreen
 import com.example.jetpack_compose_all_in_one.demos.history_of_day.HistoryOfTheDayUI
 import com.example.jetpack_compose_all_in_one.demos.news_app.view.NewsScreen
 import com.example.jetpack_compose_all_in_one.demos.polls.PollScreen
@@ -574,6 +575,9 @@ fun MainContainerOfApp(
                 }
                 composable(NavDes.currencyConverter.route()) {
                     CurrencyFromToScreen(viewModel = hiltViewModel())
+                }
+                composable(NavDes.githubUserList.route()) {
+                    GithubUserListScreen(viewModel = hiltViewModel())
                 }
             }
 
