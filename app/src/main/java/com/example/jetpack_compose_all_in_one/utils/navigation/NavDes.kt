@@ -49,6 +49,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.GITH
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.GITHUB_PAGING_DEMO_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.GRAPHQL_DEMO
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.GRAPHQL_DEMO_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.GithubUserListUI
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.GithubUserListUI_About
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.HOME
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.HOME_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.HistoryOfDayUI
@@ -424,6 +426,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object tikTok : NavDes(NavigationDrawerData(TiKTokUI, TiKTokUI_About))
     object currencyConverter : NavDes(NavigationDrawerData(CurrencyConverterUI, CurrencyConverterUI_About))
+    object githubUserList : NavDes(NavigationDrawerData(GithubUserListUI, GithubUserListUI_About))
+
     object youTube : NavDes(NavigationDrawerData(YoutubeUI, YoutubeUI_ABOUT))
     object news : NavDes(NavigationDrawerData(NewsUI, NewsUI_ABOUT))
 
@@ -537,6 +541,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 faceBook,
                 tikTok,
                 currencyConverter,
+                githubUserList,
                 historyOfDay,
                 news,
                 polls,

@@ -248,6 +248,9 @@ object NavConstants {
     const val CurrencyConverterUI = "CurrencyConverterUI"
     const val CurrencyConverterUI_About = "CurrencyConverter"
 
+    const val GithubUserListUI = "GithubUserListUI"
+    const val GithubUserListUI_About = "GithubUserList"
+
     const val HistoryOfDayUI = "HistoryOfDayUI"
     const val HistoryOfDayUI_About = "History of the Day"
 
