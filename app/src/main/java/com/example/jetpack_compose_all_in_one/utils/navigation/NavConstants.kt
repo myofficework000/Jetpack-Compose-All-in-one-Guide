@@ -128,6 +128,9 @@ object NavConstants {
     const val LESSON_16 = "LESSON_16"
     const val LESSON_16_ABOUT = "Lesson 16: State and Visibility"
 
+    const val LESSON_17 = "LESSON_17"
+    const val LESSON_17_ABOUT = "Lesson 17: Flow Layout"
+
     const val QUOTE_2 = "quote2"
     const val QUOTE_2_ABOUT = "Swipe Quotes"
 
