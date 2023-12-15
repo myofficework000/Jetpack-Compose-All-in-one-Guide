@@ -97,7 +97,7 @@ fun RegistrationForm(
             SpacerSmall()
 
             //register button
-            SimpleTextButton("Register") {
+            SimpleTextButton("Register", modifier = Modifier.testTag("Register button")) {
                 onRegister
             }
         }
@@ -170,7 +170,10 @@ fun ConfirmPasswordTextField() {
     OutlinedTextField(
         value = confirmPassword,
         leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = "lockIcon") },
-        onValueChange = { confirmPassword = it },
+        onValueChange = {
+            confirmPassword = it
+            validConfirmPassword(password = password, confirmPassword = confirmPassword) },
+        isError = isConfirmPasswordInvalid.value,
         label = { Text(text = "Confirm Password") },
     )
 }
@@ -199,10 +202,21 @@ fun validateEmail(email: String) {
     }
 }
 
+fun validConfirmPassword(password: String, confirmPassword: String) {
+    if (password != confirmPassword) {
+        isConfirmPasswordInvalid.value = true
+        emailErrMsg.value = "Password is not matched"
+    } else {
+        isConfirmPasswordInvalid.value = false
+        emailErrMsg.value = ""
+    }
+}
+
 var regUser: RegisterUser = RegisterUser()
 var username: MutableState<String> = mutableStateOf(regUser.name)
 var password: String by mutableStateOf("")
 var confirmPassword: String by mutableStateOf("")
+var isConfirmPasswordInvalid: MutableState<Boolean> = mutableStateOf(false)
 var email: MutableState<String> = mutableStateOf(regUser.email)
 var isEmailValid: MutableState<Boolean> = mutableStateOf(false)
 var emailErrMsg: MutableState<String> = mutableStateOf("")
