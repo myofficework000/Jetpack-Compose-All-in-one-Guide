@@ -13,6 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.example.jetpack_compose_all_in_one.ui.components.ScrollableColumn
 import com.example.jetpack_compose_all_in_one.ui.theme.L1BoxColor1
@@ -33,11 +34,11 @@ fun ComposeLayouts() {
             Column(
                 Modifier.background(L1BoxColor1)
             ) {
-                Text("1")
-                Text("2")
-                Text("3")
-                Text("4")
-                Text("5")
+                Text("1", modifier = Modifier.testTag("column_one"))
+                Text("2", modifier = Modifier.testTag("column_two"))
+                Text("3", modifier = Modifier.testTag("column_three"))
+                Text("4", modifier = Modifier.testTag("column_four"))
+                Text("5", modifier = Modifier.testTag("column_five"))
             }
         }
 
@@ -51,11 +52,11 @@ fun ComposeLayouts() {
             Row(
                 Modifier.background(L1BoxColor2)
             ) {
-                Text("1")
-                Text("2")
-                Text("3")
-                Text("4")
-                Text("5")
+                Text("1", modifier = Modifier.testTag("row_one"))
+                Text("2", modifier = Modifier.testTag("row_two"))
+                Text("3", modifier = Modifier.testTag("row_three"))
+                Text("4", modifier = Modifier.testTag("row_four"))
+                Text("5", modifier = Modifier.testTag("row_five"))
             }
         }
 
