@@ -39,6 +39,7 @@ import com.example.jetpack_compose_all_in_one.demos.history_of_day.HistoryOfTheD
 import com.example.jetpack_compose_all_in_one.demos.news_app.view.NewsScreen
 import com.example.jetpack_compose_all_in_one.demos.polls.PollScreen
 import com.example.jetpack_compose_all_in_one.demos.quiz.QuizScreen
+import com.example.jetpack_compose_all_in_one.demos.swipe_news.News
 import com.example.jetpack_compose_all_in_one.features.alarm.AlarmMainUI
 import com.example.jetpack_compose_all_in_one.features.chatmodule.ChatViewModel
 import com.example.jetpack_compose_all_in_one.features.download_manager.Download
@@ -434,6 +435,11 @@ fun MainContainerOfApp(
                 composable(NavDes.NewsApiHeadline.route()) {
                     NewsUI(hiltViewModel())
                 }
+
+                composable(NavDes.NewsApiHeadlineSwipe.route()) {
+                    News(hiltViewModel())
+                }
+
                 composable(NavDes.WeatherSample.route()) {
                     // Please change this to hilt later please =_=b
                     WeatherSample(
