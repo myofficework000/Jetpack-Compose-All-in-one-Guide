@@ -1,10 +1,9 @@
-package com.example.jetpack_compose_all_in_one.features.newsapi
+package com.example.jetpack_compose_all_in_one.features.newsapi.repository
 
 import com.example.jetpack_compose_all_in_one.features.newsapi.data.data.Article
 import com.example.jetpack_compose_all_in_one.features.newsapi.data.data.HeadlineResponse
 import com.example.jetpack_compose_all_in_one.features.newsapi.data.data.Source
 import com.example.jetpack_compose_all_in_one.features.newsapi.data.remote.NewsApiService
-import com.example.jetpack_compose_all_in_one.features.newsapi.repository.NewsApiRepositoryImpl
 import com.example.jetpack_compose_all_in_one.utils.Constants
 import com.example.jetpack_compose_all_in_one.utils.ResultState
 import io.mockk.coEvery
