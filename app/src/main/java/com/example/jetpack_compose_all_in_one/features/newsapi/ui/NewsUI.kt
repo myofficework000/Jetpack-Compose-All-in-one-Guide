@@ -83,7 +83,7 @@ fun NewsItem(article: Article){
             )
             Spacer(modifier = Modifier.height(dp_8))
 
-            Text(text = article.description)
+            article.description?.let { Text(text = it) }
             Spacer(modifier = Modifier.height(dp_8))
 
             GlideImage(

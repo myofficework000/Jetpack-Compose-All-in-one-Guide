@@ -248,6 +248,9 @@ object NavConstants {
     const val QuizUI = "QuizUI"
     const val QuizUI_About = "Quiz"
 
+    const val NEWS_API_HEADLINE_SWIPE = "newsHeadlineSwipe"
+    const val NEWS_API_HEADLINE_SWIPE_ABOUT = "News Headlines Swipe"
+
     const val CurrencyConverterUI = "CurrencyConverterUI"
     const val CurrencyConverterUI_About = "CurrencyConverter"
 

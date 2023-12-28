@@ -132,6 +132,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.MVVM
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.MVVM_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NEWS_API_HEADLINE
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NEWS_API_HEADLINE_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NEWS_API_HEADLINE_SWIPE
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NEWS_API_HEADLINE_SWIPE_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NEWS_SAMPLE
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NEWS_SAMPLE_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.NOTES_ROOM_DB
@@ -296,6 +298,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object QuoteSwipe : NavDes(NavigationDrawerData(QUOTE_2, QUOTE_2_ABOUT))
 
+    object NewsApiHeadlineSwipe :
+        NavDes(NavigationDrawerData(NEWS_API_HEADLINE_SWIPE, NEWS_API_HEADLINE_SWIPE_ABOUT))
     object NewsSample : NavDes(NavigationDrawerData(NEWS_SAMPLE, NEWS_SAMPLE_ABOUT))
 
     object NewsApiHeadline :
@@ -552,7 +556,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 historyOfDay,
                 news,
                 polls,
-                quiz
+                quiz,
+                NewsApiHeadlineSwipe
             ), DEMO_UI
         )
     )

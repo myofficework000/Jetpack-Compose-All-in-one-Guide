@@ -21,6 +21,7 @@ class NewsApiViewModel @Inject constructor(
 
     fun getHeadlinesNews(){
         viewModelScope.launch {
+            _news.value = ResultState.Loading()
             newsApiRepository.getHeadLines().collect(){ response ->
                 _news.value = response
             }
