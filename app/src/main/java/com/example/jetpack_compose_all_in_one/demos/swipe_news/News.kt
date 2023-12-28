@@ -1,13 +1,19 @@
 package com.example.jetpack_compose_all_in_one.demos.swipe_news
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -20,6 +26,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -28,6 +35,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -35,6 +43,7 @@ import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.features.newsapi.data.data.Article
+import com.example.jetpack_compose_all_in_one.features.newsapi.data.data.HeadlineResponse
 import com.example.jetpack_compose_all_in_one.features.newsapi.viewmodel.NewsApiViewModel
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_16
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_200
@@ -49,6 +58,7 @@ fun News(newsViewModel: NewsApiViewModel = viewModel()) {
         newsViewModel.getHeadlinesNews()
     }
 
+    val context = LocalContext.current
     val newsDataState by newsViewModel.news.collectAsState()
 
     when (val result = newsDataState) {
@@ -57,15 +67,34 @@ fun News(newsViewModel: NewsApiViewModel = viewModel()) {
         }
 
         is ResultState.Error -> {
-
+            ResultState.Error<HeadlineResponse>(result.errorMessage)
         }
 
         is ResultState.Exception -> {
-
+            try {
+                val connectivityManager =
+                    context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+                val capabilities =
+                    connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+                if (capabilities != null) {
+                    if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+                        Log.i("Internet", "NetworkCapabilities.TRANSPORT_CELLULAR")
+                    } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+                        Log.i("Internet", "NetworkCapabilities.TRANSPORT_WIFI")
+                    } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
+                        Log.i("Internet", "NetworkCapabilities.TRANSPORT_ETHERNET")
+                    }
+                }
+            } catch (e: Exception)
+            {
+                ResultState.Exception<HeadlineResponse>(e)
+            }
         }
 
         is ResultState.Loading -> {
-
+            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                CircularProgressIndicator()
+            }
         }
 
         else -> {}
