@@ -15,6 +15,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BOUN
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BOUND_SERVICE_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BROADCAST_RECEIVERS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BROADCAST_RECEIVERS_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BarcodeScannerUI
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.BarcodeScannerUI_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CHATGPT_DEMO
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CHATGPT_DEMO_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CHAT_DEMO_UI
@@ -439,6 +441,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     object githubUserList : NavDes(NavigationDrawerData(GithubUserListUI, GithubUserListUI_About))
 
     object youTube : NavDes(NavigationDrawerData(YoutubeUI, YoutubeUI_ABOUT))
+    object barcodeScanner: NavDes(NavigationDrawerData(BarcodeScannerUI, BarcodeScannerUI_ABOUT))
     object news : NavDes(NavigationDrawerData(NewsUI, NewsUI_ABOUT))
 
     object polls : NavDes(NavigationDrawerData(PollUI, PollUI_About))
@@ -557,7 +560,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 news,
                 polls,
                 quiz,
-                NewsApiHeadlineSwipe
+                NewsApiHeadlineSwipe,
+                barcodeScanner
             ), DEMO_UI
         )
     )
