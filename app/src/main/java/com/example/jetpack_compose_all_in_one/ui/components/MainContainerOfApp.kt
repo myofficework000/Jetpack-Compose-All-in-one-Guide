@@ -33,6 +33,7 @@ import com.example.jetpack_compose_all_in_one.application_components.broadcastre
 import com.example.jetpack_compose_all_in_one.application_components.content_provider.ContentProviderScreen
 import com.example.jetpack_compose_all_in_one.application_components.content_provider.demo_contacts.ContactList
 import com.example.jetpack_compose_all_in_one.application_components.content_provider.demo_images.ShowImages
+import com.example.jetpack_compose_all_in_one.demos.barcode_scanner.ScannerApp
 import com.example.jetpack_compose_all_in_one.demos.currency_converter.presentation.view.CurrencyFromToScreen
 import com.example.jetpack_compose_all_in_one.demos.github_api.presentation.view.GithubUserListScreen
 import com.example.jetpack_compose_all_in_one.demos.history_of_day.HistoryOfTheDayUI
@@ -313,6 +314,9 @@ fun MainContainerOfApp(
 
                 composable(NavDes.quiz.route()){
                     QuizScreen()
+                }
+                composable(NavDes.barcodeScanner.route()){
+                    ScannerApp()
                 }
 
                 composable(NavDes.ChatDemoUI.route()) {

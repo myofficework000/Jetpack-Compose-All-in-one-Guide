@@ -298,4 +298,7 @@ object NavConstants {
 
     const val GRAPHQL_DEMO = "GraphQL Demo 1"
     const val GRAPHQL_DEMO_ABOUT = "GraphQL Demo (Countries)"
+
+    const val BarcodeScannerUI = "BarcodeScannerUI"
+    const val BarcodeScannerUI_ABOUT = "BarcodeScanner"
 }
