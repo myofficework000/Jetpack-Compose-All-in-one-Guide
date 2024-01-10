@@ -1,6 +1,8 @@
 package com.example.jetpack_compose_all_in_one.di
 
 import android.content.Context
+import com.example.jetpack_compose_all_in_one.lessons.lesson_3.PersonRepository
+import com.example.jetpack_compose_all_in_one.lessons.lesson_3.PersonRepositoryImpl
 import com.example.jetpack_compose_all_in_one.utils.Constants
 import dagger.Module
 import dagger.Provides
@@ -16,4 +18,10 @@ object AppModules {
     @Singleton
     fun provideSharedPref(@ApplicationContext context: Context) =
         context.getSharedPreferences(Constants.SHARED_PREF_NAME, Context.MODE_PRIVATE)
+
+    @Provides
+    @Singleton
+    fun providePersonRepository(): PersonRepository {
+        return PersonRepositoryImpl()
+    }
 }
