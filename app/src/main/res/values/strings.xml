@@ -94,6 +94,11 @@
         <item>Flow Column</item>
     </string-array>
 
+    <string-array name="lesson_18_header_text">
+        <item>Login page</item>
+        <item>List</item>
+    </string-array>
+
     <string-array name="l2c5_header_text">
         <item>Simple Progress</item>
         <item>Custom Progress</item>

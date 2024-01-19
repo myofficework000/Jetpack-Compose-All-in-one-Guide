@@ -131,6 +131,9 @@ object NavConstants {
     const val LESSON_17 = "LESSON_17"
     const val LESSON_17_ABOUT = "Lesson 17: Flow Layout"
 
+    const val LESSON_18 = "LESSON_18"
+    const val LESSON_18_ABOUT = "Lesson 18: Compose UI Testing"
+
     const val QUOTE_2 = "quote2"
     const val QUOTE_2_ABOUT = "Swipe Quotes"
 
