@@ -1,12 +1,14 @@
 package com.example.jetpack_compose_all_in_one
 
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.jetpack_compose_all_in_one.lessons.lesson_7.LoginScreen
 import org.junit.Assert.*
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -17,17 +19,19 @@ class LoginScreenTest {
     @get:Rule
     val composeTestRule = createComposeRule()
 
+    @Before
+    fun setUp(){
+        composeTestRule.setContent {
+            LoginScreen()
+        }
+    }
     @Test
     fun testLoginScreen() {
         val email = "test@example.com"
         val password = "password"
 
-        composeTestRule.setContent {
-            LoginScreen()
-        }
-
         // Find the email TextField and perform text input
-        composeTestRule.onNodeWithText("Type your email")
+        composeTestRule.onNodeWithTag("Type your email")
             .performTextInput(email)
 
         // Find the password TextField and perform text input

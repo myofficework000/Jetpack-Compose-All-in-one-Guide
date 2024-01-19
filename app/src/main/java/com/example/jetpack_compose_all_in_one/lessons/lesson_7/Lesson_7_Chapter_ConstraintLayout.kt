@@ -40,6 +40,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.text.font.FontWeight
@@ -366,7 +367,8 @@ fun LoginScreen() {
                     top.linkTo(title.bottom, margin = dp_20)
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
-                },
+                }.testTag("emailtf")
+            ,
             isError = !android.util.Patterns.EMAIL_ADDRESS.matcher(email.value).matches(),
             onValueChange = { email.value = it },
             label = { Text(text = "Email address") },
