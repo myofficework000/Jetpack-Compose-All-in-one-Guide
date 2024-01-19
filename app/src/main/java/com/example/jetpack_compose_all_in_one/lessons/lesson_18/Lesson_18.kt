@@ -1,8 +1,9 @@
 package com.example.jetpack_compose_all_in_one.lessons.lesson_18
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,11 +11,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateListOf
@@ -25,6 +26,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
@@ -33,15 +35,13 @@ import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_15
 import com.example.jetpack_compose_all_in_one.utils.LogicPager
 import com.example.jetpack_compose_all_in_one.utils.PagedLessonHeader
-import kotlinx.coroutines.delay
 
 @Composable
 @Preview(showBackground = true)
-fun Lesson_17() {
+fun Lesson_18() {
     LessonContent()
 }
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun LessonContent() {
     val currentPage = rememberSaveable { mutableIntStateOf(0) }
@@ -60,10 +60,10 @@ private fun LessonContent() {
                     .fillMaxWidth()
                     .padding(dp_15),
                 currentPage = currentPage.intValue,
-                headers = stringArrayResource(R.array.lesson_17_header_text).toList(),
+                headers = stringArrayResource(R.array.lesson_18_header_text).toList(),
                 infoContent = listOf(
-                    "1",
-                    "2",
+                    "View for testing Input fields using Compose testing",
+                    "View for testing Lazy Column - List using Compose testing",
                     "3",
                     "4",
                     "https://www.google.com"
@@ -76,7 +76,7 @@ private fun LessonContent() {
                 }
 
                 1 -> {
-                    val stateList = rememberSaveable {
+                    val stateList = remember {
                         mutableStateListOf<String>()
                     }
                     stateList.add("One")
@@ -103,7 +103,8 @@ fun ComposeUITestForInputField(onclick: (String, String) -> Unit) {
 
     Column(
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.fillMaxWidth()
     ) {
 
         TextField(value = email,
@@ -130,7 +131,14 @@ fun ComposeUITestForListScreen(list: SnapshotStateList<String>) {
 
     LazyColumn {
         items(list) { item ->
-            Text(text = item)
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(10.dp)
+                    .background(Color.Cyan, RoundedCornerShape(10.dp))
+            ) {
+                Text(text = item, modifier = Modifier.padding(10.dp).align(Alignment.Center))
+            }
         }
     }
 }
