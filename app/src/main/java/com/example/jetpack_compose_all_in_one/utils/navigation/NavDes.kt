@@ -41,6 +41,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOMA
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOWNLOAD
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DOWNLOAD_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.FEATURES
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.FIRESTORE_NOTES
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.FIRESTORE_NOTES_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.FLOW_DEMO
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.FLOW_DEMO_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.FOREGROUND_SERVICE
@@ -446,6 +448,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object youTube : NavDes(NavigationDrawerData(YoutubeUI, YoutubeUI_ABOUT))
     object barcodeScanner: NavDes(NavigationDrawerData(BarcodeScannerUI, BarcodeScannerUI_ABOUT))
+    object firestoreNotes: NavDes(NavigationDrawerData(FIRESTORE_NOTES, FIRESTORE_NOTES_ABOUT))
     object news : NavDes(NavigationDrawerData(NewsUI, NewsUI_ABOUT))
 
     object polls : NavDes(NavigationDrawerData(PollUI, PollUI_About))
@@ -566,7 +569,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 polls,
                 quiz,
                 NewsApiHeadlineSwipe,
-                barcodeScanner
+                barcodeScanner,
+                firestoreNotes
             ), DEMO_UI
         )
     )
