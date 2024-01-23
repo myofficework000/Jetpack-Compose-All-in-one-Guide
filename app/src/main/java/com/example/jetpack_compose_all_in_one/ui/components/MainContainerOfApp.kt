@@ -38,6 +38,7 @@ import com.example.jetpack_compose_all_in_one.demos.currency_converter.presentat
 import com.example.jetpack_compose_all_in_one.demos.firestore_notes.NoteScreen
 import com.example.jetpack_compose_all_in_one.demos.github_api.presentation.view.GithubUserListScreen
 import com.example.jetpack_compose_all_in_one.demos.history_of_day.HistoryOfTheDayUI
+import com.example.jetpack_compose_all_in_one.demos.horizontal_pager.IntroductionScreen
 import com.example.jetpack_compose_all_in_one.demos.news_app.view.NewsScreen
 import com.example.jetpack_compose_all_in_one.demos.polls.PollScreen
 import com.example.jetpack_compose_all_in_one.demos.quiz.QuizScreen
@@ -322,6 +323,9 @@ fun MainContainerOfApp(
                 }
                 composable(NavDes.firestoreNotes.route()) {
                     NoteScreen()
+                }
+                composable(NavDes.horizontalPager.route()) {
+                    IntroductionScreen()
                 }
                 composable(NavDes.ChatDemoUI.route()) {
                     val vm = hiltViewModel<ChatViewModel>()
