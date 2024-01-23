@@ -102,6 +102,7 @@ dependencies {
     implementation platform('androidx.compose:compose-bom:2023.03.00')
     implementation 'androidx.compose.ui:ui-graphics'
     implementation 'androidx.benchmark:benchmark-macro:1.2.0'
+    implementation 'com.google.firebase:firebase-firestore:24.10.1'
 //    implementation 'com.google.android.ads:mediation-test-suite:3.0.0'
 
 

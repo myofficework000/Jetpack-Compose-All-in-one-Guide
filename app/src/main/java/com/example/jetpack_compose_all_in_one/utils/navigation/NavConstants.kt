@@ -29,6 +29,9 @@ object NavConstants {
     const val QRCODE_SCANNER = "qrcode_scanner"
     const val QRCODE_SCANNER_ABOUT = "QR Code Scanner"
 
+    const val FIRESTORE_NOTES = "firestore_notes"
+    const val FIRESTORE_NOTES_ABOUT = "Firestore Notes"
+
     const val TMDB = "tmdb"
     const val TMDB_ABOUT = "TMDB API"
 

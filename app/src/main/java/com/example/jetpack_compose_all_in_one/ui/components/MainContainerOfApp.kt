@@ -35,6 +35,7 @@ import com.example.jetpack_compose_all_in_one.application_components.content_pro
 import com.example.jetpack_compose_all_in_one.application_components.content_provider.demo_images.ShowImages
 import com.example.jetpack_compose_all_in_one.demos.barcode_scanner.ScannerApp
 import com.example.jetpack_compose_all_in_one.demos.currency_converter.presentation.view.CurrencyFromToScreen
+import com.example.jetpack_compose_all_in_one.demos.firestore_notes.NoteScreen
 import com.example.jetpack_compose_all_in_one.demos.github_api.presentation.view.GithubUserListScreen
 import com.example.jetpack_compose_all_in_one.demos.history_of_day.HistoryOfTheDayUI
 import com.example.jetpack_compose_all_in_one.demos.news_app.view.NewsScreen
@@ -319,7 +320,9 @@ fun MainContainerOfApp(
                 composable(NavDes.barcodeScanner.route()){
                     ScannerApp()
                 }
-
+                composable(NavDes.firestoreNotes.route()) {
+                    NoteScreen()
+                }
                 composable(NavDes.ChatDemoUI.route()) {
                     val vm = hiltViewModel<ChatViewModel>()
                     DemoFullChat2(
