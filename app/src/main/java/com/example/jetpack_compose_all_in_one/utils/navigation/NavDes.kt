@@ -57,6 +57,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.Gith
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.GithubUserListUI_About
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.HOME
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.HOME_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.HORIZONTAL_PAGER
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.HORIZONTAL_PAGER_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.HistoryOfDayUI
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.HistoryOfDayUI_About
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.INTERNET
@@ -449,6 +451,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     object youTube : NavDes(NavigationDrawerData(YoutubeUI, YoutubeUI_ABOUT))
     object barcodeScanner: NavDes(NavigationDrawerData(BarcodeScannerUI, BarcodeScannerUI_ABOUT))
     object firestoreNotes: NavDes(NavigationDrawerData(FIRESTORE_NOTES, FIRESTORE_NOTES_ABOUT))
+    object horizontalPager: NavDes(NavigationDrawerData(HORIZONTAL_PAGER, HORIZONTAL_PAGER_ABOUT))
     object news : NavDes(NavigationDrawerData(NewsUI, NewsUI_ABOUT))
 
     object polls : NavDes(NavigationDrawerData(PollUI, PollUI_About))
@@ -570,7 +573,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 quiz,
                 NewsApiHeadlineSwipe,
                 barcodeScanner,
-                firestoreNotes
+                firestoreNotes,
+                horizontalPager
             ), DEMO_UI
         )
     )

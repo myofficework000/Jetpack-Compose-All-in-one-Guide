@@ -32,6 +32,9 @@ object NavConstants {
     const val FIRESTORE_NOTES = "firestore_notes"
     const val FIRESTORE_NOTES_ABOUT = "Firestore Notes"
 
+    const val HORIZONTAL_PAGER = "horizontal_pager"
+    const val HORIZONTAL_PAGER_ABOUT = "Horizontal Pager"
+
     const val TMDB = "tmdb"
     const val TMDB_ABOUT = "TMDB API"
 
