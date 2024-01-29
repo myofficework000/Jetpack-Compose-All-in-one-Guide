@@ -313,4 +313,7 @@ object NavConstants {
 
     const val BarcodeScannerUI = "BarcodeScannerUI"
     const val BarcodeScannerUI_ABOUT = "BarcodeScanner"
+
+    const val Camera2 = "Camera2"
+    const val Camera2_ABOUT = "Camera Demo"
 }

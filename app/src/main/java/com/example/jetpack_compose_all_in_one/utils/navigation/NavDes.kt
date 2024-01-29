@@ -31,6 +31,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CONT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CONTENT_PROVIDER_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CURRENCY_EXCHANGE_API
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CURRENCY_EXCHANGE_API_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.Camera2
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.Camera2_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CurrencyConverterUI
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.CurrencyConverterUI_About
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.DEMO_UI
@@ -455,6 +457,7 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
 
     object youTube : NavDes(NavigationDrawerData(YoutubeUI, YoutubeUI_ABOUT))
     object barcodeScanner: NavDes(NavigationDrawerData(BarcodeScannerUI, BarcodeScannerUI_ABOUT))
+    object cameraCapture: NavDes(NavigationDrawerData(Camera2, Camera2_ABOUT))
     object firestoreNotes: NavDes(NavigationDrawerData(FIRESTORE_NOTES, FIRESTORE_NOTES_ABOUT))
     object horizontalPager: NavDes(NavigationDrawerData(HORIZONTAL_PAGER, HORIZONTAL_PAGER_ABOUT))
     object news : NavDes(NavigationDrawerData(NewsUI, NewsUI_ABOUT))
@@ -580,7 +583,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 NewsApiHeadlineSwipe,
                 barcodeScanner,
                 firestoreNotes,
-                horizontalPager
+                horizontalPager,
+                cameraCapture
             ), DEMO_UI
         )
     )
