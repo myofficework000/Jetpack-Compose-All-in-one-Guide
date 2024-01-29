@@ -21,6 +21,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_15
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_8
