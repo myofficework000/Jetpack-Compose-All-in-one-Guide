@@ -6,6 +6,8 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.compose.runtime.Composable
 import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityCompat.requestPermissions
+import androidx.core.content.ContextCompat.checkSelfPermission
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import com.google.accompanist.permissions.rememberPermissionState
@@ -65,4 +67,14 @@ fun requestCamera(isGranted: (Boolean) -> Unit) = rememberPermissionState(
 @Composable
 fun requestReadContacts(isGranted: (Boolean) -> Unit) = rememberPermissionState(
     Manifest.permission.READ_CONTACTS
+) { isGranted(it) }
+
+/*
+    implementation to check if sms permission is enabled so
+    broadcast can notify user if they received SMS
+*/
+@OptIn(ExperimentalPermissionsApi::class)
+@Composable
+fun isSmsPermissionEnabled(isGranted: (Boolean) -> Unit) = rememberPermissionState(
+    Manifest.permission.RECEIVE_SMS
 ) { isGranted(it) }
