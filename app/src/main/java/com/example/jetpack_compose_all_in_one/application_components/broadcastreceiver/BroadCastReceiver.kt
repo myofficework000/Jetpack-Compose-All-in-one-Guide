@@ -4,10 +4,12 @@ import android.bluetooth.BluetoothAdapter
 import android.content.Intent
 import android.content.IntentFilter
 import android.net.wifi.WifiManager
+import android.provider.Telephony
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.mutableStateOf
@@ -19,7 +21,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.application_components.broadcastreceiver.airplanemode.AirplaneModeReceiver
+import com.example.jetpack_compose_all_in_one.application_components.broadcastreceiver.batterybroadcast.BatteryBroadcast
 import com.example.jetpack_compose_all_in_one.application_components.broadcastreceiver.bluetooth.BluetoothReceiver
+import com.example.jetpack_compose_all_in_one.application_components.broadcastreceiver.smsrecevier.SmsBroadcast
 import com.example.jetpack_compose_all_in_one.application_components.broadcastreceiver.wifi.WifiReceiver
 import com.example.jetpack_compose_all_in_one.ui.components.LessonHeader
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_15
@@ -30,7 +34,7 @@ private fun BroadCastReceiverContent() {
     val currentPage = rememberSaveable { mutableStateOf(0) }
 
     LogicPager(
-        pageCount = 3,
+        pageCount = 5,
         currentPage = currentPage
     ) {
         Column(
@@ -50,6 +54,8 @@ private fun BroadCastReceiverContent() {
                 0 -> BluetoothComponent()
                 1 -> AirplaneModeComponent()
                 2 -> WifiComponent()
+                3 -> SmsReceivedComponent()
+                4 -> BatteryReceivedComponent()
             }
         }
     }
@@ -108,4 +114,34 @@ fun AirplaneModeComponent() {
         }
     }
 
+}
+
+@Composable
+fun SmsReceivedComponent() {
+    val context = LocalContext.current
+
+    DisposableEffect(Unit) {
+        val receiver = SmsBroadcast()
+        val intentFilter = IntentFilter(Telephony.Sms.Intents.SMS_RECEIVED_ACTION)
+        context.registerReceiver(receiver, intentFilter)
+
+        onDispose {
+            context.unregisterReceiver(receiver)
+        }
+    }
+}
+
+@Composable
+fun BatteryReceivedComponent() {
+    val context = LocalContext.current
+
+    DisposableEffect(Unit) {
+        val receiver = BatteryBroadcast()
+        val intentFilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
+        context.registerReceiver(receiver, intentFilter)
+
+        onDispose {
+            context.unregisterReceiver(receiver)
+        }
+    }
 }

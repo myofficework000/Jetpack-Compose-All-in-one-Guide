@@ -65,8 +65,6 @@ class MainActivity : ComponentActivity() {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private val locationCancelToken by lazy{ CancellationTokenSource() }
 
-
-
     @OptIn(ExperimentalAnimationApi::class)
     @SuppressLint("MissingPermission") // isLocationAllowed() checked this, but Lint doesn't know.
     override fun onCreate(savedInstanceState: Bundle?) {

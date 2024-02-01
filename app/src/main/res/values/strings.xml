@@ -192,6 +192,8 @@
         <item>Broadcast Bluetooth</item>
         <item>Broadcast Airplane</item>
         <item>Broadcast Wifi</item>
+        <item>Broadcast Sms</item>
+        <item>Broadcast Battery</item>
     </string-array>
 
     <string-array name="content_provider_header_text">
