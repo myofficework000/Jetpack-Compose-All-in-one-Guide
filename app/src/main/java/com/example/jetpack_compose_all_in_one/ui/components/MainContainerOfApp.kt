@@ -89,6 +89,7 @@ import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Chapter_Shape
 import com.example.jetpack_compose_all_in_one.lessons.lesson_2.Lesson_2_Screen
 import com.example.jetpack_compose_all_in_one.lessons.lesson_20.BiometricAuthentication
+import com.example.jetpack_compose_all_in_one.lessons.lesson_21.navigation.DataStoreDemoUI
 import com.example.jetpack_compose_all_in_one.lessons.lesson_3.Lesson_3_Chapter_ListTypes
 import com.example.jetpack_compose_all_in_one.lessons.lesson_4.Lesson_4_Chapter_Dialogs
 import com.example.jetpack_compose_all_in_one.lessons.lesson_5.Lesson_5_Chapter_2_Map_Type
@@ -445,6 +446,10 @@ fun MainContainerOfApp(
                 }
                 composable(NavDes.Lesson20.route()){
                     BiometricAuthentication()
+                }
+
+                composable(NavDes.Lesson21.route()){
+                    DataStoreDemoUI()
                 }
 
                 composable(NavDes.L6Chapter1.route()) {

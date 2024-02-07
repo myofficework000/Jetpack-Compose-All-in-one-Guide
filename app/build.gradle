@@ -104,6 +104,7 @@ dependencies {
     implementation 'androidx.benchmark:benchmark-macro:1.2.0'
     implementation 'com.google.firebase:firebase-firestore:24.10.1'
     implementation "androidx.biometric:biometric:1.2.0-alpha05"
+    implementation platform('androidx.compose:compose-bom:2023.03.00')
 //    implementation 'com.google.android.ads:mediation-test-suite:3.0.0'
 
 
@@ -118,6 +119,7 @@ dependencies {
     androidTestImplementation platform('androidx.compose:compose-bom:2023.03.00')
     androidTestImplementation "io.mockk:mockk-android:1.13.4"
     androidTestImplementation "io.mockk:mockk-agent:1.13.4"
+    androidTestImplementation platform('androidx.compose:compose-bom:2023.03.00')
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
 
@@ -212,6 +214,9 @@ dependencies {
 
     testImplementation("org.mockito:mockito-core:5.3.1")
     testImplementation ("app.cash.turbine:turbine:1.0.0")
+
+    // Data Store
+    implementation ("androidx.datastore:datastore-preferences:1.0.0")
 }
 
 // Remember to add this to local.properties
