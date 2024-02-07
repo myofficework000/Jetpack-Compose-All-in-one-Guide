@@ -36,11 +36,6 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".lessons.lesson_21.DataStoreActivity"
-            android:exported="false"
-            android:label="@string/title_activity_data_store"
-            android:theme="@style/Theme.JetpackComposeAllInOne" />
-        <activity
             android:name=".third_party_lib.graph_ql_country_list.view.MainActivity"
             android:exported="false"
             android:label="@string/title_activity_main"

@@ -32,7 +32,7 @@ fun DashboardScreen() {
                     dataStore.clearData()
                 }
             }) {
-                Text(text = "LOG OUT")
+                Text(text = "Clear data store")
             }
         }
     }

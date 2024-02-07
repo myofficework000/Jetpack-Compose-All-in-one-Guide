@@ -35,7 +35,7 @@ fun BiometricAuthentication() {
             object : BiometricPrompt.AuthenticationCallback() {
                 override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
                     super.onAuthenticationError(errorCode, errString)
-                    Toast.makeText(context, "Authentication error: $errString", Toast.LENGTH_SHORT).show()
+                    Log.i("Authentication error:", errString.toString())
                 }
 
                 override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {

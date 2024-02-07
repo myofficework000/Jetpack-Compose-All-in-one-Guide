@@ -90,6 +90,8 @@ import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESS
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_1_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_20
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_20_ABOUT
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_21
+import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_21_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_1
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_1_ABOUT
 import com.example.jetpack_compose_all_in_one.utils.navigation.NavConstants.LESSON_2_CHAPTER_2
@@ -314,6 +316,9 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
     object Lesson20 :
         NavDes(NavigationDrawerData(LESSON_20, LESSON_20_ABOUT))
 
+    object Lesson21 :
+        NavDes(NavigationDrawerData(LESSON_21, LESSON_21_ABOUT))
+
     object Lesson14DropDownMenu :
         NavDes(NavigationDrawerData(LESSON_14_DROP_DOWN_MENU, LESSON_14_DROP_DOWN_MENU_ABOUT))
 
@@ -526,7 +531,8 @@ sealed class NavDes(val data: INavigationDrawerItem, val customAppBarStringId: I
                 Lesson17,
                 Lesson18,
                 Lesson19,
-                Lesson20
+                Lesson20,
+                Lesson21
             ), LESSONS
         )
     )
