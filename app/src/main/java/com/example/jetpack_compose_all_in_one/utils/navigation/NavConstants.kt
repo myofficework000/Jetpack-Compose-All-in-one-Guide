@@ -143,6 +143,15 @@ object NavConstants {
     const val LESSON_19 = "LESSON_19"
     const val LESSON_19_ABOUT = "Lesson 19: Caching with OkHttp Interceptor"
 
+    const val LESSON_20 = "LESSON_20"
+    const val LESSON_20_ABOUT = "Lesson 20: Biometric Authentication"
+
+    const val LESSON_21 = "LESSON_21"
+    const val LESSON_21_ABOUT = "Lesson 21: DataStore Demo"
+
+    const val LESSON_22 = "LESSON_22"
+    const val LESSON_22_ABOUT = "Lesson 22: Media3 ExoPlayer"
+
     const val QUOTE_2 = "quote2"
     const val QUOTE_2_ABOUT = "Swipe Quotes"
 
