@@ -22,20 +22,36 @@ import com.example.jetpack_compose_all_in_one.utils.requestReadPerm
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import java.io.File
 
+// This composable function displays images from the device's external storage.
+// It uses Jetpack Compose for UI and Glide for image loading.
+
+// Annotations to opt into experimental features for Glide Compose API and Permissions API.
 @OptIn(ExperimentalGlideComposeApi::class, ExperimentalPermissionsApi::class)
 @Composable
 fun ShowImages(
+    // Default parameter specifying the maximum number of images to display.
     limit: Int = 10
 ) {
-    val ctx = LocalContext.current
-    val imagePaths = remember{ mutableStateListOf<String>() }
-    var permissionGranted by remember{ mutableStateOf(false) }
-    val readPermission = requestReadPerm{ permissionGranted = it }
+    // Retrieves the current context using the LocalContext composable.
+    val context = LocalContext.current
 
-    LaunchedEffect(permissionGranted) {
-        if (permissionGranted) {
+    // Creates a remembered mutable state list to store paths of images.
+    val imagePaths = remember { mutableStateListOf<String>() }
+
+    // Creates a remembered mutable state variable to track whether the necessary permissions are granted.
+    var isPermissionGranted by remember { mutableStateOf(false) }
+
+    // Requests read permission and updates the isPermissionGranted variable accordingly.
+    val readPermissionRequester = requestReadPerm { isPermissionGranted = it }
+
+    // Launched effect that triggers when isPermissionGranted value changes.
+    LaunchedEffect(isPermissionGranted) {
+        if (isPermissionGranted) {
+            // Clears the list of image paths.
             imagePaths.clear()
-            ctx.contentResolver.query(
+
+            // Queries the device's external storage for image paths.
+            context.contentResolver.query(
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)
                     MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL)
                 else
@@ -47,29 +63,34 @@ fun ShowImages(
                 null,
                 null
             )?.apply {
-                val pathColumn = getColumnIndex(MediaStore.Images.ImageColumns.DATA)
+                // Retrieves the column index for image data.
+                val pathColumnIndex = getColumnIndex(MediaStore.Images.ImageColumns.DATA)
 
-                var loadLimit = limit
-                while (moveToNext() && loadLimit >= 0) {
-                    if (pathColumn >= 0) {
-                        imagePaths.add(getString(pathColumn))
+                // Iterates over the query result and adds image paths to the list.
+                var remainingLimit = limit
+                while (moveToNext() && remainingLimit >= 0) {
+                    if (pathColumnIndex >= 0) {
+                        imagePaths.add(getString(pathColumnIndex))
                     }
-                    loadLimit--
+                    remainingLimit--
                 }
             }?.close()
         }
     }
 
-    if (permissionGranted) {
+    // Displays images if permission is granted, otherwise displays a button to request permission.
+    if (isPermissionGranted) {
         LazyColumn(
             Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            items(imagePaths) {
-                GlideImage(File(it), "")
+            items(imagePaths) { imagePath ->
+                // Uses GlideImage composable to load and display images.
+                GlideImage(File(imagePath), "")
             }
         }
     } else {
-        SimpleTextButton("Show Images") { readPermission.launchPermissionRequest() }
+        // Displays a button to request permission to access external storage.
+        SimpleTextButton("Show Images") { readPermissionRequester.launchPermissionRequest() }
     }
 }
