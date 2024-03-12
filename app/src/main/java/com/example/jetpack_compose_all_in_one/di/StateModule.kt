@@ -9,14 +9,22 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+/**
+ * Dagger Hilt module for providing dependencies related to state management.
+ */
 @Module
 @InstallIn(SingletonComponent::class)
- class StateModule {
+class StateModule {
 
-     @Singleton
-     @Provides
-     @MviNewsAPI
-     fun provideNewsStates(repository: RemoteNewRepository):NewsState{
-         return NewsState(repository)
-     }
+    /**
+     * Provides an instance of NewsState for MVI (Model-View-Intent) architecture.
+     * @param repository RemoteNewRepository instance.
+     * @return Instance of NewsState.
+     */
+    @Singleton
+    @Provides
+    @MviNewsAPI
+    fun provideNewsStates(repository: RemoteNewRepository): NewsState {
+        return NewsState(repository)
+    }
 }

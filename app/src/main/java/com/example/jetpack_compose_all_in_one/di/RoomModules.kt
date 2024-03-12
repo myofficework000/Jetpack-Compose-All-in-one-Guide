@@ -12,9 +12,17 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+/**
+ * Dagger Hilt module for providing dependencies related to Room database.
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 class RoomModules {
+    /**
+     * Provides an instance of the Room database.
+     * @param context Application context.
+     * @return Instance of the Room database.
+     */
     @Provides
     @Singleton
     fun provideAppDatabase(@ApplicationContext context: Context) = Room.databaseBuilder(
@@ -26,10 +34,20 @@ class RoomModules {
         .addMigrations(migration1To2)
         .build()
 
+    /**
+     * Provides an instance of the AlarmDao.
+     * @param db Instance of the Room database.
+     * @return Instance of the AlarmDao.
+     */
     @Provides
     @Singleton
     fun provideAlarmDao(db: AppDatabase) = db.getAlarmDao()
 
+    /**
+     * Provides an instance of the ProfileDao.
+     * @param db Instance of the Room database.
+     * @return Instance of the ProfileDao.
+     */
     @Provides
     @Singleton
     fun provideProfileDao(db: AppDatabase) = db.getProfileDao()
