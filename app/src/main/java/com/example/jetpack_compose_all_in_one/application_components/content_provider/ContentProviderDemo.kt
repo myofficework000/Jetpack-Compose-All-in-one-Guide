@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
@@ -27,7 +28,7 @@ import com.example.jetpack_compose_all_in_one.utils.LogicPager
 @Composable
 private fun ContentProviderContent() {
     // Remembering the current page using mutableStateOf
-    val currentPage = rememberSaveable { mutableStateOf(0) }
+    val currentPage = rememberSaveable { mutableIntStateOf(0) }
 
     // LogicPager composable for handling page navigation
     LogicPager(
