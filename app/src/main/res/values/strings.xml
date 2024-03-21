@@ -99,6 +99,11 @@
         <item>List</item>
     </string-array>
 
+    <string-array name="lesson_23_header_text">
+        <item>Tabs</item>
+        <item>Custom Tabs</item>
+    </string-array>
+
     <string-array name="l2c5_header_text">
         <item>Simple Progress</item>
         <item>Custom Progress</item>
