@@ -55,6 +55,15 @@ import com.google.accompanist.web.rememberWebViewState
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import kotlinx.coroutines.launch
 
+/**
+ * Generates a BitmapDescriptor from a drawable resource, with optional width and height.
+ *
+ * @param context The context to retrieve resources.
+ * @param redId The resource ID of the drawable.
+ * @param width The desired width of the bitmap, in density-independent pixels (optional).
+ * @param height The desired height of the bitmap, in density-independent pixels (optional).
+ * @return The BitmapDescriptor generated from the drawable resource.
+ */
 fun bitmapDescriptorFromRes(
     context: Context,
     redId: Int,
@@ -70,7 +79,18 @@ fun bitmapDescriptorFromRes(
     BitmapDescriptorFactory.fromBitmap(bitmap)
 }
 
-// cleanupPerPage runs first, then cleanupAllPage
+/**
+ * Composable function to create a paged logic.
+ *
+ * @param modifier The modifier for this composable.
+ * @param pages List of lambdas representing the pages.
+ * @param cleanupPerPage List of lambdas for cleaning up resources per page.
+ * @param cleanupAllPages Lambda for cleaning up all pages.
+ * @param pageCount The total count of pages.
+ * @param dotTint Color of the dots indicating current page.
+ * @param currentPage MutableState holding the current page index.
+ * @param content The content composable.
+ */
 @Composable
 fun LogicPager(
     modifier: Modifier = Modifier,
@@ -146,8 +166,14 @@ fun LogicPager(
     }
 }
 
-// If the into content starts with "http", for now it'll be considered
-//      a url, and shows a web view instead.
+/**
+ * Composable function for displaying a paged lesson header.
+ *
+ * @param modifier The modifier for this composable.
+ * @param currentPage The current page index.
+ * @param headers List of header strings.
+ * @param infoContent List of information content strings.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PagedLessonHeader(
@@ -156,13 +182,13 @@ fun PagedLessonHeader(
     headers: List<String>,
     infoContent: List<String> = listOf()
 ) {
-    var sheetOpened by remember{ mutableStateOf(false) }
+    var sheetOpened by remember { mutableStateOf(false) }
     val sheetState = rememberModalBottomSheetState(true)
     val scope = rememberCoroutineScope()
     val webViewState = rememberWebViewState(
         infoContent.getOrNull(currentPage)?.takeIf { it.startsWith("http") } ?: ""
     )
-    var isWebViewFinishedLoading by remember{ mutableStateOf(false) }
+    var isWebViewFinishedLoading by remember { mutableStateOf(false) }
 
     LaunchedEffect(webViewState.loadingState) {
         isWebViewFinishedLoading = webViewState.loadingState == LoadingState.Finished
@@ -176,8 +202,9 @@ fun PagedLessonHeader(
             Box(
                 Modifier
                     .padding(horizontal = dp_16)
-                    .padding(bottom = 56.dp)) {
-                with (infoContent.getOrElse(currentPage) { "No info" }) {
+                    .padding(bottom = 56.dp)
+            ) {
+                with(infoContent.getOrElse(currentPage) { "No info" }) {
                     if (startsWith("http")) {
                         Box(
                             Modifier.fillMaxWidth(),
@@ -187,7 +214,7 @@ fun PagedLessonHeader(
                         Box(
                             Modifier.verticalScroll(rememberScrollState())
                         ) { WebView(state = webViewState) }
-                    }else Text(this)
+                    } else Text(this)
                 }
             }
         }
@@ -213,11 +240,11 @@ fun PagedLessonHeader(
             }
         }
     }
-
-
-
 }
 
+/**
+ * Preview composable function for LogicPager.
+ */
 @Preview
 @Composable
 private fun LoginPagerPreview() {
@@ -239,3 +266,4 @@ private fun LoginPagerPreview() {
         ) {}
     }
 }
+
