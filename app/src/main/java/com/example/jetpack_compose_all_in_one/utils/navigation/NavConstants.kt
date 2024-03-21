@@ -152,8 +152,8 @@ object NavConstants {
     const val LESSON_22 = "LESSON_22"
     const val LESSON_22_ABOUT = "Lesson 22: Media3 ExoPlayer"
 
-    const val LESSON_23 = "LESSON_22"
-    const val LESSON_23_ABOUT = "Lesson 22: Media3 ExoPlayer"
+    const val LESSON_23 = "LESSON_23"
+    const val LESSON_23_ABOUT = "Lesson 23: Tabs"
 
     const val QUOTE_2 = "quote2"
     const val QUOTE_2_ABOUT = "Swipe Quotes"
