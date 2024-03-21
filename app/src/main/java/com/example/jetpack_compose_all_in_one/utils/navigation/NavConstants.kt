@@ -105,7 +105,7 @@ object NavConstants {
     const val LESSON_6_CHAPTER_1_ABOUT = "Lesson 6: Theme change"
 
     const val LESSON_7_CHAPTER_1 = "Lesson_7_Chapter_1"
-    const val LESSON_7_CHAPTER_ABOUT = "Lesson 7:Constraint Layout"
+    const val LESSON_7_CHAPTER_ABOUT = "Lesson 7: Constraint Layout"
 
     const val LESSON_8_ANIMATIONS = "Lesson_8_Animations"
     const val LESSON_8_ANIMATIONS_ABOUT = "Lesson 8: Animations"
@@ -117,7 +117,7 @@ object NavConstants {
     const val LESSON_10_APP_BARS_ABOUT = "Lesson 10: App bars"
 
     const val LESSON_11_INTEROPERABILITY = "LESSON_11_INTEROPERABILITY "
-    const val LESSON_11_INTEROPERABILITY_ABOUT = "Lesson 11: Interoperability"
+    const val LESSON_11_INTEROPERABILITY_ABOUT = "Lesson 11: XML Interoperability"
 
     const val LESSON_12_WEBVIEW = "LESSON_12_WEB_VIEW "
     const val LESSON_12_WEBVIEW_ABOUT = "Lesson 12: Web View"

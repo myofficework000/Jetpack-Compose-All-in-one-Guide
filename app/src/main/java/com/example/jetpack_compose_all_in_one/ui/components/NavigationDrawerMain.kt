@@ -1,5 +1,8 @@
 package com.example.jetpack_compose_all_in_one.ui.components
 
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.basicMarquee
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -19,6 +22,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.jetpack_compose_all_in_one.ui.theme.dp_16
+import com.example.jetpack_compose_all_in_one.ui.theme.dp_8
 import com.example.jetpack_compose_all_in_one.ui.theme.sp_32
 import com.example.jetpack_compose_all_in_one.ui.theme.spaceLarge
 import com.example.jetpack_compose_all_in_one.ui.views.theming.ThemeSettingsRow
@@ -44,7 +49,7 @@ fun NavigationDrawerMain(
             ModalDrawerSheet {
                 DrawerHeader()
                 ScrollableColumn(
-                    Modifier.weight(1f)
+                    Modifier.weight(1f).padding(horizontal = dp_16)
                 ) {
                     NavDes.drawerList.forEach {
                         DrawerCategoryAndItem(it) { des ->
@@ -62,6 +67,7 @@ fun NavigationDrawerMain(
     ) { content() }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun DrawerCategoryAndItem(
     item: NavDes,
@@ -71,7 +77,8 @@ private fun DrawerCategoryAndItem(
         ExpandableContent({
             Text(
                 item.data.displayName,
-                Modifier.padding(ButtonDefaults.TextButtonContentPadding),
+                Modifier.padding(ButtonDefaults.TextButtonContentPadding)
+                    .basicMarquee(),
                 MaterialTheme.colorScheme.onSurfaceVariant
             )
         }) {
@@ -81,11 +88,14 @@ private fun DrawerCategoryAndItem(
         }
     } else {
         item.data as NavigationDrawerData // This is for smart casting
-        NavigationDrawerItem(
-            selected = false,
-            label = { Text(item.data.displayText) },
-            icon = item.data.iconResId?.run { { Icon(painterResource(this), "") } },
-            onClick = { onItemClick(item) })
+        Text(
+            item.data.displayText,
+            Modifier.padding(ButtonDefaults.TextButtonContentPadding)
+                .fillMaxWidth()
+                .basicMarquee()
+                .clickable { onItemClick(item) },
+            MaterialTheme.colorScheme.onSurfaceVariant
+        )
     }
 }
 

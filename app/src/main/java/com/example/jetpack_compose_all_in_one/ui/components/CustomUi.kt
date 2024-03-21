@@ -55,15 +55,16 @@ fun ExpandableContent(
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable { expandState.value = !expandState.value },
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
+            container()
             if (needArrow) {
                 Icon( painterResource(
                     if (expandState.value) R.drawable.baseline_expand_less_24
                     else R.drawable.baseline_expand_more_24
-                ), "", Modifier.padding(start=16.dp) )
+                ), "")
             }
-            container()
         }
         if (expandState.value) {
             Row(Modifier.fillMaxWidth()){
