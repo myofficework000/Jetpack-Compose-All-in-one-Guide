@@ -72,3 +72,13 @@ Contributions are welcome! If you have any ideas, suggestions, or improvements, 
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
+
+
+ ### Connect with me 👇
+
+ <div>
+  <a href="https://www.linkedin.com/in/myofficework/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
+  <a href = "https://medium.com/@myofficework000"><img src="https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white" target="_blank"></a>
+  <a href = "https://www.instagram.com/kumarpathakabhishek/"><img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" target="_blank"></a>
+  <a href = "mailto:myofficework000@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+ </div>
