@@ -17,19 +17,37 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
+/**
+ * This class provides unit tests for the [NewsViewModel] class.
+ * It verifies the behavior of the ViewModel under various conditions
+ * such as fetching latest news and searching news.
+ */
 class NewsViewModelTest {
+
+    // JUnit rule to instantly execute tasks on the main thread for LiveData testing
     @JvmField
     @Rule
     val rule = InstantTaskExecutorRule()
 
+    // Mocked NewsRepository for testing
     private val repo = mockk<NewsRepository>()
+
+    // The ViewModel under test
     private val vm = NewsViewModel(repo)
 
+    /**
+     * Setup method to configure RxJava scheduler for testing.
+     * It ensures tasks are executed on the same thread.
+     */
     @Before
     fun setUp() {
         RxAndroidPlugins.setInitMainThreadSchedulerHandler { Schedulers.trampoline() }
     }
 
+    /**
+     * Unit test for verifying the behavior when fetching latest news with an empty response.
+     * It checks if the [latestNewsResponse] LiveData is empty.
+     */
     @Test
     fun `getLatestNews WHEN empty response THEN latestNewsResponse is empty`() {
         every { repo.getLatestNews() } returns Single.just(emptyResponse)
@@ -40,6 +58,10 @@ class NewsViewModelTest {
         assertTrue(vm.latestNewsResponse.value == emptyResponse)
     }
 
+    /**
+     * Unit test for verifying the behavior when fetching latest news with one response.
+     * It checks if the [latestNewsResponse] LiveData contains one news item.
+     */
     @Test
     fun `getLatestNews WHEN one response THEN latestNewsResponse has one item`() {
         every { repo.getLatestNews() } returns Single.just(oneResponse)
@@ -50,6 +72,10 @@ class NewsViewModelTest {
         assertTrue(vm.latestNewsResponse.value == oneResponse)
     }
 
+    /**
+     * Unit test for verifying the behavior when searching news with an empty response.
+     * It checks if the [latestNewsResponse] LiveData is empty after searching.
+     */
     @Test
     fun `searchNews WHEN empty response THEN latestNewsResponse is empty`() {
         every {
@@ -62,6 +88,10 @@ class NewsViewModelTest {
         assertTrue(vm.latestNewsResponse.value == emptyResponse)
     }
 
+    /**
+     * Unit test for verifying the behavior when searching news with one response.
+     * It checks if the [latestNewsResponse] LiveData contains one news item after searching.
+     */
     @Test
     fun `searchNews WHEN one response THEN latestNewsResponse has one item`() {
         every {
@@ -75,6 +105,7 @@ class NewsViewModelTest {
     }
 
     companion object {
+        // Fake response with one news item
         val oneResponse = LatestNewsResponse(
             news = listOf(
                 News(
@@ -93,12 +124,14 @@ class NewsViewModelTest {
             status = "ok"
         )
 
+        // Fake response with no news item
         val emptyResponse = LatestNewsResponse(
             news = listOf(),
             page = 0,
             status = "ok"
         )
 
+        // Fake values for keyword and dates used in testing
         const val FAKE_KEYWORD = ""
         val FAKE_START_DATE = 0L.toNewsDate()
         val FAKE_END_DATE = 0L.toNewsDate()
