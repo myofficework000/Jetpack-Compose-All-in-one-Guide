@@ -38,14 +38,10 @@ class RandomFoxImpl @Inject constructor(@RandomFoxAPI val service: RandomFoxServ
                                 it.toString()
                             )
                         )
-
                     }
                 }
-
             }
-
         }
 
     override fun getRandomFoxRxJava() = service.getRandomFoxUsingRxJava()
-
 }
