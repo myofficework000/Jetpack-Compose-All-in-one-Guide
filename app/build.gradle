@@ -6,6 +6,7 @@ plugins {
     id 'com.google.gms.google-services'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
     id 'com.apollographql.apollo3'
+    id 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -107,6 +108,7 @@ dependencies {
     implementation platform('androidx.compose:compose-bom:2023.03.00')
     implementation 'androidx.media3:media3-exoplayer:1.2.1'
     implementation 'androidx.media3:media3-ui:1.2.1'
+    implementation 'com.google.firebase:firebase-crashlytics:18.6.3'
 //    implementation 'com.google.android.ads:mediation-test-suite:3.0.0'
 
 

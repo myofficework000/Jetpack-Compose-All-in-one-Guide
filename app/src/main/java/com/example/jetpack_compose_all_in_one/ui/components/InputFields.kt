@@ -50,7 +50,6 @@ import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.ui.theme.dp_15
 import com.example.jetpack_compose_all_in_one.ui.theme.spaceSmall
 
-
 @Composable
 fun InputFields() {
     Column(
@@ -71,7 +70,6 @@ fun InputFields() {
         TextFieldWithNumbers()
     }
 }
-
 
 @Composable
 fun SimpleTextField() {
