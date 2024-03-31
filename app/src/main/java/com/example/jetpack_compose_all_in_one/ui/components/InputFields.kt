@@ -246,7 +246,9 @@ fun AutoCompleteSearchBar(
         OutlinedTextField(
             value = text,
             onValueChange = onChange,
-            modifier = Modifier.fillMaxWidth().padding(dp_15),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(dp_15),
             enabled = enabled,
             label = label?.run { { Text(this) } },
             trailingIcon = {
@@ -271,21 +273,15 @@ fun AutoCompleteSearchBar(
 }
 
 
-
 @Preview
 @Composable
-private fun SimpleSearchBarPreview() {
-    SimpleSearchBar(
-        "Testing testing...",
-
-    ) {}
-}
+private fun SimpleSearchBarPreview() = SimpleSearchBar("Testing testing..."){}
 
 @Preview
 @Composable
 private fun AutocompleteSearchBarPreview() {
     AutoCompleteSearchBar(
         "Testing testing...",
-        listOf("1","222222....","3. Hey Bob the mic is not working.")
+        listOf("1", "222222....", "3. Hey Bob the mic is not working.")
     ) {}
 }
