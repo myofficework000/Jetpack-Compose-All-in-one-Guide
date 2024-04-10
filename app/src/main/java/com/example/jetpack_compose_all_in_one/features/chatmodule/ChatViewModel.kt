@@ -47,7 +47,6 @@ class ChatViewModel @Inject constructor(
             override fun onCancelled(error: DatabaseError) {
 
             }
-
         })
     }
 

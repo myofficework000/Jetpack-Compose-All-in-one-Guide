@@ -27,17 +27,25 @@ class RandomFoxImpl @Inject constructor(@RandomFoxAPI val service: RandomFoxServ
     override suspend fun getRandomFoxFlow() =
         flow {
             service.getRandomFoxUsingCoroutines().apply {
-                this.body()?.let {
+                if (!this.isSuccessful){
                     emit(
-                        ResultState.Success(
-                            it
+                        ResultState.Error<RandomFoxResponse>(
+                           this.message().toString()
                         )
-                    ).runCatching {
+                    )
+                }else{
+                    this.body()?.let {
                         emit(
-                            ResultState.Error<RandomFoxResponse>(
-                                it.toString()
+                            ResultState.Success(
+                                it
                             )
-                        )
+                        ).runCatching {
+                            emit(
+                                ResultState.Error<RandomFoxResponse>(
+                                    it.toString()
+                                )
+                            )
+                        }
                     }
                 }
             }

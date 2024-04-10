@@ -44,7 +44,7 @@ import kotlin.reflect.KFunction2
 @Composable
 fun AlarmMainUI(
     viewModel: AlarmViewModel = hiltViewModel(),
-    snackbarFunc: (String, Boolean) -> Unit
+    snackBarFunc: (String, Boolean) -> Unit
 ) {
     val localContext = LocalContext.current
 
@@ -80,8 +80,8 @@ fun AlarmMainUI(
                             localContext,
                             data,
                             on,
-                            { info, delta -> snackbarFunc("Alarm ${info.id} rings after ${delta.formatTime()}", false) },
-                            { info -> snackbarFunc("Alarm ${info.id} disabled.", false) },
+                            { info, delta -> snackBarFunc("Alarm ${info.id} rings after ${delta.formatTime()}", false) },
+                            { info -> snackBarFunc("Alarm ${info.id} disabled.", false) },
                             viewModel::toggleAlarm
                         ) },
                         { viewModel.removeAlarm(data) }

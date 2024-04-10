@@ -232,7 +232,11 @@ fun AnimatedExpandableCard(item: Country) {
                     stiffness = Spring.StiffnessMedium
                 )
             )
-            .clickable { expanded.value = !expanded.value },
+            .clickable {
+                expanded.value = !expanded.value
+
+
+                       },
     ) {
         Column(
             modifier = Modifier
