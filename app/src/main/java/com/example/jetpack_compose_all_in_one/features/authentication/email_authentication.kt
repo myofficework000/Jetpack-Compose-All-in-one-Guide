@@ -9,6 +9,6 @@ import androidx.compose.runtime.Composable
 //show toast in each success & failure + handle exception
 @Composable
 fun EmailAuthentication() {
-
+// impl here
 
 }
