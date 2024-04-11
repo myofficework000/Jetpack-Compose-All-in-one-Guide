@@ -4,5 +4,5 @@ import androidx.lifecycle.ViewModel
 
 class ExplandDataVIewModel :ViewModel(){
 
-    val
+
 }
