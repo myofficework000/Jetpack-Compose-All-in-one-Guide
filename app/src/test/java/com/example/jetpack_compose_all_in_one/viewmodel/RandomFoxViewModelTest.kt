@@ -13,7 +13,6 @@ import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
-import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.schedulers.Schedulers
@@ -24,9 +23,23 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import java.util.concurrent.Callable
 
-
+/**
+ * This class contains unit tests for the RandomFoxViewModel class.
+ * It tests various methods for fetching random fox images using different approaches such as coroutines, flow, and RxJava.
+ * These tests ensure that the view model behaves correctly under different scenarios, such as success, error, and loading states.
+ *
+ * Test methods:
+ * - fetchRandomFoxUsingCoroutines should update foxStateCoroutines on success
+ * - fetchRandomFoxUsingCoroutines should update errorState on error
+ * - fetchRandomFoxUsingCoroutines should update loadingState when loading
+ * - fetchRandomFoxUsingCoroutines should update loadingState when not loading
+ * - fetchRandomFoxUsingFlow updates foxStateFlow on success
+ * - fetchRandomFoxUsingRxJava updates foxStateRxJava on success
+ *
+ * @author [Abhishek Pathak]
+ * @since [13th April 2024]
+ */
 @ExperimentalCoroutinesApi
 class RandomFoxViewModelTest {
 
@@ -39,25 +52,37 @@ class RandomFoxViewModelTest {
     private lateinit var viewModel: RandomFoxViewModel
     private lateinit var repository: RandomFoxImpl
 
+    /**
+     * Set up method to initialize objects required for testing.
+     * Mocks repository behavior for fetching random fox images using different approaches.
+     */
     @Before
     fun setup() {
         repository = mockk()
 
         // Since view model runs all 3 fetches on init{}, a default result needs to be mocked here.
-        val result = ResultState.Success( RandomFoxResponse("") )
+        val result = ResultState.Success(RandomFoxResponse(""))
         coEvery { repository.getRandomFoxCoroutines() } returns result
-        coEvery { repository.getRandomFoxFlow() } returns flow { emit( result ) }
+        coEvery { repository.getRandomFoxFlow() } returns flow { emit(result) }
         RxAndroidPlugins.setInitMainThreadSchedulerHandler { Schedulers.trampoline() }
         every { repository.getRandomFoxRxJava() } returns Single.just(RandomFoxResponse(""))
 
         viewModel = RandomFoxViewModel(repository)
     }
 
+
+    /**
+     * Tear down method to clear mocks after each test.
+     */
     @After
     fun teardown() {
         clearAllMocks()
     }
 
+    /**
+     * Test case to verify the behavior of fetchRandomFoxUsingCoroutines method when fetching a random fox image using coroutines.
+     * It verifies that foxStateCoroutines is updated with the expected value on success.
+     */
     @Test
     fun `fetchRandomFoxUsingCoroutines should update foxStateCoroutines on success`() = runTest {
         // Mock the response from the repository
