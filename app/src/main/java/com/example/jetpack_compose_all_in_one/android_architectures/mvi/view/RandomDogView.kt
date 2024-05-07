@@ -22,8 +22,7 @@ import com.example.jetpack_compose_all_in_one.utils.showLongToast
 import com.example.jetpack_compose_all_in_one.R
 
 @Composable
-fun RandomDogView(
-) {
+fun RandomDogView() {
 
     val viewModel: RandomDogViewModel = hiltViewModel()
     val state by viewModel.viewState.collectAsState()

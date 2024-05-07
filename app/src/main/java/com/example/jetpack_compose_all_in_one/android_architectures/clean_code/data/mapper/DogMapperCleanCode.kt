@@ -5,12 +5,12 @@ import com.example.jetpack_compose_all_in_one.android_architectures.clean_code.d
 
 object DogMapperCleanCode: Mapper<DogEntityCleanCode, DogResponseCleanCode> {
     override fun mapFromEntity(type: DogEntityCleanCode) = DogResponseCleanCode(
-        message = type.message,
+        message = type.dogUrl,
         status = type.status
     )
 
     override fun mapToEntity(type: DogResponseCleanCode) = DogEntityCleanCode(
-        message = type.message,
+        dogUrl = type.message,
         status = type.status
     )
 }
