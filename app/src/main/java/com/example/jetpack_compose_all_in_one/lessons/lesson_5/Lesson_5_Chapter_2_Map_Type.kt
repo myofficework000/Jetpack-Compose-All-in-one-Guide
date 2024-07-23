@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
@@ -40,10 +40,10 @@ private fun LessonContent() {
             Constants.MAP_DEFAULT_ZOOM_1
         )
     }
-    val currentPage = rememberSaveable { mutableStateOf(0) }
+    val currentPage = rememberSaveable { mutableIntStateOf(0) }
     val mapType = remember {
         derivedStateOf {
-            when (currentPage.value) {
+            when (currentPage.intValue) {
                 1 -> MapType.NORMAL
                 2 -> MapType.SATELLITE
                 3 -> MapType.HYBRID
@@ -61,7 +61,8 @@ private fun LessonContent() {
             Modifier
                 .fillMaxSize()
                 .background(PAGER_BACKGROUND)
-                .padding(it)) {
+                .padding(it)
+        ) {
             LessonHeader(
                 stringArrayResource(R.array.l5c2_header_text)[currentPage.value],
                 Modifier

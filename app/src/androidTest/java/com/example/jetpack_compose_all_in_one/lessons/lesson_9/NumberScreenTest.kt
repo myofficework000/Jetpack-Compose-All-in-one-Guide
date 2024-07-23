@@ -14,7 +14,6 @@ import org.junit.Test
 
 class NumberScreenTest {
 
-
     @get:Rule
     val composeTestRule = createComposeRule()
 
