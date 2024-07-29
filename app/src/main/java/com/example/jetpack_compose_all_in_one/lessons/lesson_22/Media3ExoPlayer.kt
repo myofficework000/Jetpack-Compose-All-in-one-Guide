@@ -57,6 +57,6 @@ fun ExoPlayerView() {
         // Set the layout parameters for the PlayerView
         modifier = Modifier
             .fillMaxWidth()
-            .height(400.dp)
+            .height(450.dp)
     )
 }
