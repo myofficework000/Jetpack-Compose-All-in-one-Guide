@@ -17,7 +17,6 @@ class ComposeUITestForListScreenTest{
     @get:Rule
     val composeRule = createComposeRule()
 
-
     @Test
     fun testList() {
         val stateList = mutableStateListOf<String>()

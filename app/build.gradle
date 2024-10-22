@@ -20,7 +20,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.jetpack_compose_all_in_one"
-        minSdk 26
+        minSdk 29
         targetSdk 34
         versionCode 1
         versionName "1.0"

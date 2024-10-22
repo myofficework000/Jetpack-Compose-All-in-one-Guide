@@ -9,14 +9,15 @@ import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextClearance
 import androidx.compose.ui.test.performTextInput
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import org.junit.Assert.*
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class RegistrationKtTest{
+class RegistrationKtTest {
 
     @get:Rule
     val composeTestRule = createComposeRule()
@@ -24,14 +25,13 @@ class RegistrationKtTest{
     @Before
     fun setup() {
         composeTestRule.setContent {
-            RegistrationForm{
-
+            RegistrationForm {
             }
         }
     }
 
     @Test
-    fun verifyAllViewExits(){
+    fun verifyAllViewExits() {
         composeTestRule.apply {
             onNodeWithTag("Register").assertExists()
             onNodeWithText("Username").assertExists()
@@ -44,7 +44,7 @@ class RegistrationKtTest{
     }
 
     @Test
-    fun verifyEmailValidationWithValidEmail(){
+    fun verifyEmailValidationWithValidEmail() {
         val validEmail = "abcd@gmail.com"
 
         composeTestRule.onNodeWithText("Email").apply {
@@ -57,7 +57,7 @@ class RegistrationKtTest{
     }
 
     @Test
-    fun verifyEmailValidationWithInvalidEmail(){
+    fun verifyEmailValidationWithInvalidEmail() {
         val invalidEmail = "invalidEmail"
         val errorMsg = "Input proper email id"
 
@@ -71,7 +71,7 @@ class RegistrationKtTest{
     }
 
     @Test
-    fun verifyConfirmPasswordValidationWithValidPassword(){
+    fun verifyConfirmPasswordValidationWithValidPassword() {
         val validConfirmPassword = ""
         val errorMsg = ""
 
@@ -85,7 +85,7 @@ class RegistrationKtTest{
     }
 
     @Test
-    fun verifyConfirmPasswordValidationWithInvalidPassword(){
+    fun verifyConfirmPasswordValidationWithInvalidPassword() {
         val validConfirmPassword = "password"
         val errorMsg = "Password is not matched"
 
@@ -99,7 +99,7 @@ class RegistrationKtTest{
     }
 
     @Test
-    fun verifyButtonClick(){
+    fun verifyButtonClick() {
         val userName = "user"
         val email = "abc@abc.com"
         val mobile = "123-456-789"

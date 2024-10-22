@@ -26,7 +26,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.remote.NetworkResult
 import com.example.jetpack_compose_all_in_one.third_party_lib.chat_gpt.viewmodel.ChatGPTViewModel
@@ -41,7 +43,12 @@ import com.example.jetpack_compose_all_in_one.ui.theme.dp_5
 import com.example.jetpack_compose_all_in_one.ui.views.chat.textBackgroundColor
 import com.example.openai_app.model.remote.responsemodel.ChatResponse
 
-//Luan
+@Preview
+@Composable
+private fun ChatUIPrev() {
+    ChatUI(chatGPTViewModel = viewModel())
+}
+
 @Composable
 fun ChatUI(chatGPTViewModel: ChatGPTViewModel) {
     val result by chatGPTViewModel.result.observeAsState()

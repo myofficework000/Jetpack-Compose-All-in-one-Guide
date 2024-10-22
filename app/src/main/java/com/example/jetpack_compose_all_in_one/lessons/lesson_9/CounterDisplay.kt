@@ -48,9 +48,10 @@ fun CounterDisplay() {
             text = counterText,
             style = TextStyle(
                 fontSize = 36.sp,
-                color = Color.White
+                color = Color.Blue
             )
         )
+
         OutlinedTextField(
             modifier = Modifier
                 .fillMaxWidth()
@@ -64,12 +65,14 @@ fun CounterDisplay() {
                 Text("Input")
             },
             textStyle = TextStyle(
-                color = Color.White,
+                color = Color.Blue,
                 fontSize = 18.sp,
                 textAlign = TextAlign.Start,
             ),
         )
+
         Spacer(modifier = Modifier.height(16.dp))
+
         Button(
             onClick = {
                 counterText = processInput(editedText)
