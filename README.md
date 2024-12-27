@@ -7,7 +7,7 @@ Learn step by step UI development using Jetpack Compose [beginners to advance]. 
 
 ## Table of Contents
 
-- [x] Jetpack Compose Lessons (1-22)
+- [x] Jetpack Compose Lessons (1-23)
 - [x] Application component
    - [x] Activities
    - [x] Services
