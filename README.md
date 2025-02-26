@@ -1,4 +1,4 @@
-# 📘 Compose Guidebook: Learn Android Jetpack Compose Step-by-Step 
+# 📘 Compose Guidebook: Learn Android Jetpack Compose Step-by-Step
 
 ![image](https://github.com/user-attachments/assets/71e3cf09-0247-4d12-b648-15f266f751b9)  **What this repositry brink into Jetpack compose ?**
 ![Language](https://img.shields.io/github/languages/top/cortinico/kotlin-android-template?color=blue&logo=kotlin) 
@@ -87,7 +87,7 @@ This project is licensed under the [MIT License](LICENSE).
   <a href = "mailto:myofficework000@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
  </div>
 
- ## My Apps on Google Playstore 
+ ## Apps on Google Playstore where I used only Jetpack compose as UI
 - https://play.google.com/store/apps/details?id=com.abhishekpathak.tetris
 - https://play.google.com/store/apps/details?id=abhishek.pathak.business
 - https://play.google.com/store/apps/details?id=com.business.money_minder
