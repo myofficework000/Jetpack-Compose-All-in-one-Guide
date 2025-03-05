@@ -30,7 +30,7 @@ Learn step by step UI development using Jetpack Compose [beginners to advance]. 
    - [x] Chat GPT: AI api implementation
    - [x] Grapgh QL API Integration
    - [x] Yelp API
-   - [ ] Barcode Scanner:  ML kit  library integration
+   - [x] Barcode Scanner:  ML kit  library integration
    - [ ] MPchart: Charting library
    - [ ] Camera V2 API
    - [x] RxJava
