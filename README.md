@@ -1,11 +1,13 @@
 # Compose Guidebook: Learn Android Jetpack Compose
 
-![image](https://github.com/user-attachments/assets/71e3cf09-0247-4d12-b648-15f266f751b9)  **What this repositry bring into Jetpack Compose?**
+![image](https://github.com/user-attachments/assets/71e3cf09-0247-4d12-b648-15f266f751b9)  
 ![Language](https://img.shields.io/github/languages/top/cortinico/kotlin-android-template?color=blue&logo=kotlin) 
 ![GitHub repo size](https://img.shields.io/github/repo-size/myofficework000/Jetpack-Compose-All-in-one-Guide)  
 ![GitHub stars](https://img.shields.io/github/stars/myofficework000/Jetpack-Compose-All-in-one-Guide?style=social)  
 ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)
 
+
+**What this repositry bring into Jetpack Compose?**
 Learn step by step UI development using Jetpack Compose [beginners to advance]. This comprehensive collection of lessons and features is specifically designed to guide you through the step-by-step process of understanding Jetpack Compose and Android development.
 
 ## Table of Contents
