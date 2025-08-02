@@ -1,4 +1,4 @@
-# Compose Guidebook: Learn Android Jetpack Compose
+# Compose Guidebook: Learn Jetpack Compose
 
 ![image](https://github.com/user-attachments/assets/71e3cf09-0247-4d12-b648-15f266f751b9)  
 ![Language](https://img.shields.io/github/languages/top/cortinico/kotlin-android-template?color=blue&logo=kotlin) 
