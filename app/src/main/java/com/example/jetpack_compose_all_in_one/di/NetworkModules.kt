@@ -32,8 +32,8 @@ import com.example.jetpack_compose_all_in_one.utils.Constants
 import com.example.jetpack_compose_all_in_one.utils.Constants.QUOTES_BASE_URL
 import com.example.jetpack_compose_all_in_one.utils.Constants.RANDOM_DOG_BASE_URL
 import com.example.jetpack_compose_all_in_one.utils.Constants.RANDOM_FOX_BASE_URL
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
+
+
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -50,6 +50,8 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 import com.example.jetpack_compose_all_in_one.third_party_lib.stripe.ApiStripe
 import com.example.jetpack_compose_all_in_one.third_party_lib.yelp_api.api.YelpAPI
+import com.google.firebase.Firebase
+import com.google.firebase.database.database
 import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.logging.HttpLoggingInterceptor
 

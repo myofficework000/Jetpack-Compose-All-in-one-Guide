@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import androidx.activity.ComponentActivity
+import androidx.core.content.ContextCompat
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import kotlinx.coroutines.Dispatchers
@@ -14,7 +15,7 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.withContext
 
 class DownloadWorker(
-    val context: Context, parameter: WorkerParameters
+    val context: Context, parameter: WorkerParameters,
 ): CoroutineWorker(context, parameter) {
     private lateinit var receiver: BroadcastReceiver
 
@@ -22,7 +23,7 @@ class DownloadWorker(
         when (
             withContext(Dispatchers.Default) {
                 downloadFile(
-                    context.getSystemService(ComponentActivity.DOWNLOAD_SERVICE) as DownloadManager,
+                    context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager,
                     downloadState.downloadId, // It doesn't check if the downloadId is valid. Careful.
                     downloadState
                 )
@@ -36,7 +37,7 @@ class DownloadWorker(
     private suspend fun downloadFile(
         downloadManager: DownloadManager,
         downloadId: Long,
-        downloadState: DownloadState
+        downloadState: DownloadState,
     ): DownloadCompletionStatus {
         registerReceiver()
         val notification = DownloadNotification(context)
@@ -103,11 +104,11 @@ class DownloadWorker(
 
     private fun registerReceiver() {
         receiver = DownloadReceiver()
-        context.registerReceiver(receiver, IntentFilter().apply {
+        ContextCompat.registerReceiver(context, receiver, IntentFilter().apply {
             addAction(DownloadReceiver.DOWNLOAD_PAUSE)
             addAction(DownloadReceiver.DOWNLOAD_RESUME)
             addAction(DownloadReceiver.DOWNLOAD_CANCEL)
-        })
+        }, ContextCompat.RECEIVER_NOT_EXPORTED)
     }
 
     private fun unregisterReceiver() {

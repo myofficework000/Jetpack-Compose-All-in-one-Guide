@@ -1,5 +1,5 @@
 package com.example.jetpack_compose_all_in_one.lessons.lesson_10
-
+import androidx.compose.material3.TopAppBar
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -33,6 +33,7 @@ import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.LibraryMusic
 import androidx.compose.material.icons.outlined.ReadMore
 import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -40,7 +41,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SmallTopAppBar
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -86,7 +86,7 @@ fun LessonContent() {
 fun TopAppBarsDemo() {
     LessonHeader("Top App bar")
 
-    SmallTopAppBar(
+    CenterAlignedTopAppBar(
         title = { Text(text = "Home") },
         navigationIcon = {
             IconButton(onClick = {}) {

@@ -14,11 +14,14 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.ui.views.main_ui.MainActivity
+import com.google.firebase.Firebase
+import com.google.firebase.database.database
 import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
+
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.google.firebase.messaging.ktx.messaging
+import com.google.firebase.messaging.messaging
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.withContext
