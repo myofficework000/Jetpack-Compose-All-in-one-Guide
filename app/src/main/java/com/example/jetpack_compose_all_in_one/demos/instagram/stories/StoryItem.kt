@@ -4,12 +4,13 @@ import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.indication
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Text
+import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -61,11 +62,17 @@ fun StoryItem(
                 )
                 .clickable(
                     interactionSource = interactionSource,
-                    indication = rememberRipple(bounded = false, radius = ProfileSizes.large / 2),
-                    enabled = true,
-                    onClickLabel = null,
+                    indication = null,
                     onClick = onClick
                 )
+                .indication(
+                    interactionSource = interactionSource,
+                    indication = ripple(
+                        bounded = false,
+                        radius = ProfileSizes.large / 2
+                    )
+                )
+
         )
         Text(text = profileName, style = textStyle, textAlign = TextAlign.Center)
     }

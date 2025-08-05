@@ -16,8 +16,9 @@ class DownloadNotification(
     init {
         // createNotificationChannel won't run at all if it already exists.
         (applicationContext
-            .getSystemService(ComponentActivity.NOTIFICATION_SERVICE)
-            as NotificationManager
+            .getSystemService(Context.NOTIFICATION_SERVICE)
+
+                as NotificationManager
         ).createNotificationChannel(
             NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_DEFAULT).apply {
                 description = channelDesc

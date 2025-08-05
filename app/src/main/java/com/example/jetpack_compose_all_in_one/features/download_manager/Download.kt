@@ -65,9 +65,9 @@ class Download(
             return false
         }
 
-        (applicationContext
-            .getSystemService(ComponentActivity.DOWNLOAD_SERVICE) as DownloadManager
-        ).enqueue(downloadRequest).also {
+            (applicationContext.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+
+                ).enqueue(downloadRequest).also {
             DownloadWorker.downloadState.apply {
                 this.fileName = fileName
                 this.downloadId = it

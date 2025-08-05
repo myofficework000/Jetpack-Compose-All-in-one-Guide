@@ -3,15 +3,17 @@ package com.example.jetpack_compose_all_in_one.ui.components
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ModalBottomSheetLayout
-import androidx.compose.material.ModalBottomSheetState
 import androidx.compose.material.ModalBottomSheetValue
+import androidx.compose.material.rememberModalBottomSheetState
+
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.SheetState
+import androidx.compose.material3.SheetValue
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -67,31 +69,29 @@ fun MyScreenContent(onOpenBottomSheet: () -> Unit){
 }
 
 
-@OptIn(ExperimentalMaterialApi::class)
+
+
+
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BottomSheet(){
-
-    val bottomSheetState = remember {
-        ModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden)
-    }
-
+fun BottomSheet() {
+    val bottomSheetState = rememberModalBottomSheetState(
+        initialValue = ModalBottomSheetValue.Hidden
+    )
     val coroutineScope = rememberCoroutineScope()
 
-        ModalBottomSheetLayout(
-            sheetState = bottomSheetState,
-            sheetContent = {
-               MyBottomSheetContent(onDismiss = {
-                   coroutineScope.launch{
-                       bottomSheetState.hide()
-                   }
-               })
-                           },
-            content = {
-                MyScreenContent(onOpenBottomSheet = {
-                    coroutineScope.launch {
-                        bottomSheetState.show()
-                    }
-                })
+    ModalBottomSheetLayout(
+        sheetState = bottomSheetState,
+        sheetContent = {
+            MyBottomSheetContent {
+                coroutineScope.launch { bottomSheetState.hide() }
             }
-        )
+        },
+        content = {
+            MyScreenContent {
+                coroutineScope.launch { bottomSheetState.show() }
+            }
+        }
+    )
 }

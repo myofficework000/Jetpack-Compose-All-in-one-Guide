@@ -20,7 +20,7 @@ class PeriodicWorker(appContext: Context, workerParams: WorkerParameters) :
     private val cancelWorkIntent: PendingIntent
 
     init {
-        (applicationContext.getSystemService(ComponentActivity.NOTIFICATION_SERVICE)
+        (applicationContext.getSystemService(Context.NOTIFICATION_SERVICE)
                 as NotificationManager).apply {
             createNotificationChannel(
                 NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_DEFAULT).apply {

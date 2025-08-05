@@ -10,7 +10,7 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
-import androidx.compose.material.ripple.rememberRipple
+
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -93,7 +93,7 @@ private fun ChatTextField(
                 IndicatingIconButton(
                     onClick = { /*TODO*/ },
                     modifier = Modifier.then(Modifier.size(circleButtonSize)),
-                    indication = rememberRipple(bounded = false, radius = circleButtonSize / 2)
+                    indication = ripple(bounded = false, radius = circleButtonSize / 2)
                 ) {
                     Icon(imageVector = Icons.Default.Mood, contentDescription = "emoji")
                 }
@@ -127,7 +127,7 @@ private fun ChatTextField(
                 IndicatingIconButton(
                     onClick = { /*TODO*/ },
                     modifier = Modifier.then(Modifier.size(circleButtonSize)),
-                    indication = rememberRipple(bounded = false, radius = circleButtonSize / 2)
+                    indication = ripple(bounded = false, radius = circleButtonSize / 2)
                 ) {
                     Icon(
                         modifier = Modifier.rotate(-45f),
@@ -139,7 +139,7 @@ private fun ChatTextField(
                     IndicatingIconButton(
                         onClick = { /*TODO*/ },
                         modifier = Modifier.then(Modifier.size(circleButtonSize)),
-                        indication = rememberRipple(bounded = false, radius = circleButtonSize / 2)
+                        indication = ripple(bounded = false, radius = circleButtonSize / 2)
                     ) {
                         Icon(
                             imageVector = Icons.Filled.CameraAlt,

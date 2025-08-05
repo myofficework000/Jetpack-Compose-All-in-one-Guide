@@ -32,7 +32,7 @@ class DownloadReceiver: BroadcastReceiver() {
 
                 WorkManager.getInstance(p0).cancelWorkById(UUID.fromString(downloadWorkerId))
                 if (downloadManagerId >= 0) {
-                    (p0.getSystemService(ComponentActivity.DOWNLOAD_SERVICE) as DownloadManager)
+                    (p0.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager)
                         .remove(downloadManagerId)
                 }
             }

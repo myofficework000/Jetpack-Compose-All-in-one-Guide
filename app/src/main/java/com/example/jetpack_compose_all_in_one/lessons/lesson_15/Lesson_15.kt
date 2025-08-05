@@ -3,6 +3,7 @@ package com.example.jetpack_compose_all_in_one.lessons.lesson_15
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,9 +21,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material.icons.outlined.HighlightOff
 import androidx.compose.material.icons.outlined.RadioButtonUnchecked
-import androidx.compose.material.ripple.LocalRippleTheme
-import androidx.compose.material.ripple.RippleAlpha
-import androidx.compose.material.ripple.RippleTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
@@ -70,8 +68,6 @@ private fun CustomRadioButtons() {
             fontStyle = FontStyle.Italic
         )
 
-        CompositionLocalProvider(LocalRippleTheme provides NoRippleTheme) {
-
             dogsList.forEach { dogDetails ->
                 Row(
                     modifier = Modifier
@@ -79,7 +75,9 @@ private fun CustomRadioButtons() {
                         .selectable(
                             selected = (selectedItem == dogDetails.name),
                             onClick = { selectedItem = dogDetails.name },
-                            role = Role.RadioButton
+                            role = Role.RadioButton,
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = null  // disables ripple correctly in new API
                         )
                         .padding(vertical = 8.dp)
                 ) {
@@ -103,7 +101,7 @@ private fun CustomRadioButtons() {
             }
         }
     }
-}
+
 
 @Composable
 private fun RadioButtonStyle(
@@ -225,13 +223,19 @@ private fun returnOptionList(): ArrayList<Option> {
 
     return optionList
 }
-
-object NoRippleTheme : RippleTheme {
+//deprecated
+/*object NoRippleTheme : RippleTheme {
     @Composable
-    override fun defaultColor() = Color.Unspecified
+    override fun defaultColor(): Color = Color.Unspecified
 
     @Composable
-    override fun rippleAlpha(): RippleAlpha = RippleAlpha(0.0f, 0.0f, 0.0f, 0.0f)
-}
+    override fun rippleAlpha() = RippleAlpha(
+        draggedAlpha = 0f,
+        focusedAlpha = 0f,
+        hoveredAlpha = 0f,
+        pressedAlpha = 0f
+    )
+}*/
+
 
 data class Option(val image: Int, val name: String, val age: String, val price: String)

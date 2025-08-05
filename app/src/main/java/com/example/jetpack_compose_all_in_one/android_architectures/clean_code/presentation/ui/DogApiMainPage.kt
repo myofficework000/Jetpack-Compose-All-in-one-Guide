@@ -53,23 +53,24 @@ fun DogApiMainPage(
                     contentDescription = "woof",
                     modifier = Modifier.size(400.dp)
                 ) { it2 ->
-                    it2.addListener(object: RequestListener<Drawable> {
+                    it2.addListener(object : RequestListener<Drawable> {
+
                         override fun onLoadFailed(
                             e: GlideException?,
                             model: Any?,
-                            target: Target<Drawable>?,
-                            isFirstResource: Boolean
+                            target: Target<Drawable?>,
+                            isFirstResource: Boolean,
                         ): Boolean {
                             imageLoading = false
                             return true
                         }
 
                         override fun onResourceReady(
-                            resource: Drawable?,
-                            model: Any?,
-                            target: Target<Drawable>?,
-                            dataSource: DataSource?,
-                            isFirstResource: Boolean
+                            resource: Drawable,
+                            model: Any,
+                            target: Target<Drawable?>?,
+                            dataSource: DataSource,
+                            isFirstResource: Boolean,
                         ): Boolean {
                             imageLoading = false
                             return false
