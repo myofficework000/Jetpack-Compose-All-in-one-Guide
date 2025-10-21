@@ -83,7 +83,7 @@ Contributions are welcome! If you have any ideas, suggestions, or improvements, 
 This project is licensed under the [MIT License](LICENSE).
 
 
- ### Connect with me 👇
+ ### Connect 👇
 
  <div>
   <a href="https://www.linkedin.com/in/myofficework/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
