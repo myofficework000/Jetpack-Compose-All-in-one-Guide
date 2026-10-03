@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.apollographql.apollo3.ApolloClient
+import com.apollographql.apollo.ApolloClient
 import com.example.jetpack_compose_all_in_one.third_party_lib.graph_ql_country_list.model.CountriesRepository
 import com.example.jetpack_compose_all_in_one.third_party_lib.graph_ql_country_list.model.CountriesRepositoryImpl
 import com.example.jetpack_compose_all_in_one.third_party_lib.graph_ql_country_list.view.ui.theme.JetpackComposeAllInOneTheme
@@ -41,4 +41,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-

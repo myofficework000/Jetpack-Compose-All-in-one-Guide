@@ -1,7 +1,7 @@
 package com.example.jetpack_compose_all_in_one.third_party_lib.graph_ql_country_list.model
 
-import com.apollographql.apollo3.ApolloClient
-import com.apollographql.apollo3.api.ApolloResponse
+import com.apollographql.apollo.ApolloClient
+import com.apollographql.apollo.api.ApolloResponse
 import com.example.jetpack_compose_all_in_one.FindCountriesOfAContinentQuery
 import com.example.jetpack_compose_all_in_one.GetContinentsQuery
 import com.example.jetpack_compose_all_in_one.di.CountryAPI

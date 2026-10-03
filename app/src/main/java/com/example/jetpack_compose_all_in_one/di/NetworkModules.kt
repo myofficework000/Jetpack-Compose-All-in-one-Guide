@@ -1,7 +1,7 @@
 package com.example.jetpack_compose_all_in_one.di
 
 import android.content.Context
-import com.apollographql.apollo3.ApolloClient
+import com.apollographql.apollo.ApolloClient
 import com.example.jetpack_compose_all_in_one.R
 import com.example.jetpack_compose_all_in_one.android_architectures.mvvm.model.DogApiService
 import com.example.jetpack_compose_all_in_one.demos.news_app.interceptors.ApiKeyInterceptor

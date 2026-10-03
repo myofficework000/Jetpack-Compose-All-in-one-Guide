@@ -1,8 +1,8 @@
 package com.example.jetpack_compose_all_in_one.third_party_lib.spacex_api_graphql.remote
 
-import com.apollographql.apollo3.ApolloClient
-import com.apollographql.apollo3.api.ApolloResponse
-import com.apollographql.apollo3.api.Optional
+import com.apollographql.apollo.ApolloClient
+import com.apollographql.apollo.api.ApolloResponse
+import com.apollographql.apollo.api.Optional
 import com.example.jetpack_compose_all_in_one.GetLaunchesPastQuery
 import com.example.jetpack_compose_all_in_one.di.SpaceXAPI
 import javax.inject.Inject
