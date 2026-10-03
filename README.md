@@ -71,14 +71,49 @@ app/src/main/java/com/example/jetpack_compose_all_in_one/
 └── ui/                      # App entry points, shared views, and theme
 ```
 
-## Lessons and demos
+## Lesson gallery
 
-The in-app menu is the source of truth for runnable examples. Highlights include:
+Each lesson below is available from the in-app menu. Preview GIFs are included wherever the repository has a captured walkthrough.
 
-- **Lessons 1–8:** layouts, Material components, lists, dialogs, Maps, theme switching, ConstraintLayout, and animation.
-- **Lessons 9–23:** testing, theming, XML interoperability, WebView, localization, menus, state, flow layouts, caching, biometrics, DataStore, Media3, and tabs. Some lessons are works in progress.
-- **Architecture and components:** MVP, MVVM, MVI, Clean Architecture, Navigation, Room, WorkManager, Paging 3, and Compose testing.
-- **Demos:** Instagram, TikTok, WhatsApp, weather, quotes, currency conversion, news, camera, barcode scanning, and other experiments.
+| Lesson | What it covers | Preview |
+| --- | --- | --- |
+| 1. Column, Row, Box, Modifier | Core Compose layouts, alignment, and modifiers. | <img src="demo/lesson-1.gif" alt="Lesson 1 preview" width="150"> |
+| 2. Material Design | Shapes, surfaces, text, buttons, images, progress indicators, and floating action buttons. | <img src="demo/lesson-2.gif" alt="Lesson 2 preview" width="150"> |
+| 3. Lists | Vertical and horizontal lists, grids, expandable lists, animated lists, and shimmer. | <img src="demo/lesson-3.gif" alt="Lesson 3 preview" width="150"> |
+| 4. Dialogs | Alert, bottom-sheet, app-rating, and logout dialogs. | <img src="demo/lesson-4.gif" alt="Lesson 4 preview" width="150"> |
+| 5. Maps | Map basics, markers, map types, current location, and search. Requires a Google Maps key. | <img src="demo/lesson-5.gif" alt="Lesson 5 preview" width="150"> |
+| 6. Theme change | Switching between light and dark themes. | <img src="demo/lesson-6.gif" alt="Lesson 6 preview" width="150"> |
+| 7. ConstraintLayout | ConstraintLayout basics, guidelines, chains, barriers, and a complex music UI. | <img src="demo/lesson-7.gif" alt="Lesson 7 preview" width="150"> |
+| 8. Animation | Tween, animated visibility/content, animation specs, and shimmer. | <img src="demo/lesson-8.gif" alt="Lesson 8 preview" width="150"> |
+| 9. UI testing | Compose UI-testing examples. | <img src="demo/lesson-9.gif" alt="Lesson 9 preview" width="150"> |
+| 10. Theming | Custom colors, typography, shapes, and themes. | Source available; walkthrough capture pending. |
+| 11. XML interoperability | Using a Compose view inside a conventional XML activity layout. | <img src="demo/lesson-11.gif" alt="Lesson 11 preview" width="150"> |
+| 12. WebView | Displaying web content from Compose. | <img src="demo/lesson-12.gif" alt="Lesson 12 preview" width="150"> |
+| 13. Localization | Language support, dates/numbers, RTL, and plurals. | Source available; walkthrough capture pending. |
+| 14. Drop-down menu | Compose drop-down menu patterns. | Source available; walkthrough capture pending. |
+| 15. Custom radio button | Radio-button customization. | <img src="demo/lesson-15.gif" alt="Lesson 15 preview" width="150"> |
+| 16. State and visibility | State-driven UI and visibility. | Source available; walkthrough capture pending. |
+| 17. Flow layouts | `FlowRow` and `FlowColumn`. | Source available; walkthrough capture pending. |
+| 18. UI testing | Additional UI-testing examples. | Source available; walkthrough capture pending. |
+| 19. OkHttp caching | Caching Retrofit responses with OkHttp interceptors. | Source available; walkthrough capture pending. |
+| 20. Biometric authentication | Biometric authentication flow. | Source available; walkthrough capture pending. |
+| 21. DataStore | DataStore preferences. | Source available; walkthrough capture pending. |
+| 22. Media3 ExoPlayer | Media playback with Media3. | Source available; walkthrough capture pending. |
+| 23. Tabs | `TabRow`, custom indicators, selection, and Scaffold integration. | Source available; walkthrough capture pending. |
+
+## Demo gallery
+
+The repository also includes the following runnable demo screens. Use the in-app menu to launch them.
+
+| Demo group | Screens |
+| --- | --- |
+| Social and media UI | Instagram, Twitter, Gmail, YouTube, Spotify, TikTok, Facebook, Music UI, and Media3 playback |
+| App concepts | Crypto app (MVVM), Movies app (MVVM), Dating app, Paint, Meditation, Polls, Quiz, and Thread demo |
+| API and data | Currency converter, GitHub API, History of Day, News app, Swipe News, Random Fox, and Firestore Notes |
+| Device features | Barcode scanner, Camera2, and Horizontal Pager |
+| Third-party integration | [Stripe integration walkthrough](demo/third_party-stripe.mp4), Google Maps, GraphQL, Firebase, and ML Kit |
+
+The demo source lives under [`app/src/main/java/com/example/jetpack_compose_all_in_one/demos`](app/src/main/java/com/example/jetpack_compose_all_in_one/demos). Additional captured demo screenshots are welcome in `demo/`; the gallery above preserves every existing lesson preview rather than replacing unavailable captures with generated artwork.
 
 ## Contributing
 
