@@ -41,4 +41,6 @@ class CounterDisplayTest {
         composeRule.onNodeWithText("Copy").performClick()
         composeRule.onNodeWithTag("Counter Display").assertTextEquals("Invalid entry")
     }
+
+
 }
